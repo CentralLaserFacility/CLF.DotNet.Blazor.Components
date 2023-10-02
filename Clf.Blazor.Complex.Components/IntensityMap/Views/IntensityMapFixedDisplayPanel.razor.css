@@ -1,0 +1,20 @@
+grid-border {
+    border: 1px solid black;
+}
+.fixed-display {
+    display: grid;
+    grid-template-columns: 100px auto;
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 5px;
+    width: fit-content;
+    border: 2px solid black;
+}
+.export-display {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 5px;
+    width: fit-content;
+}

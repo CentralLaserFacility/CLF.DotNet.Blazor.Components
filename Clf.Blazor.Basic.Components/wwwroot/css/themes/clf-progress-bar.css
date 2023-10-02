@@ -1,0 +1,36 @@
+﻿:root {
+  --clf-progress-bar-width: 250px;
+  --clf-progress-bar-regular-height: 8px;
+  --clf-progress-bar-small-height: 4px;
+  --clf-progress-bar-margin: 0px;
+  --clf-progress-bar-track-selected-colour: #0082D9;
+  --clf-progress-bar-track-background-colour: #F4F4F4;
+  --clf-regular-progress-bar-font-size: var(--clf-fine-print-font-size);
+  --clf-small-progress-bar-font-size: var(--clf-fine-print-small-font-size);
+  --clf-progress-bar-default-gap: 4px;
+  --clf-progress-bar-default-border-radius: 4px;
+  --clf-progress-bar-track-disabled-colour: #B3B3B3;
+  --clf-progress-bar-value-width: 4ch;
+  /*determinate*/
+  --clf-progress-bar-determinate-transistion: width .6s ease;
+  /*indeterminate*/
+  --clf-progress-bar-indeterminate-width: 100%;
+  --clf-progress-bar-indeterminate-animation: indeterminate-animation 1s infinite linear;
+  --clf-progress-bar-indeterminate-tranform-origin: 0% 50%;
+}
+
+/*https://codepen.io/tmac/pen/QgVRKb*/
+/* Must Include the animation below */
+@keyframes indeterminate-animation {
+  0% {
+    transform: translateX(0) scaleX(0);
+  }
+
+  40% {
+    transform: translateX(0) scaleX(0.4);
+  }
+
+  100% {
+    transform: translateX(100%) scaleX(0.5);
+  }
+}

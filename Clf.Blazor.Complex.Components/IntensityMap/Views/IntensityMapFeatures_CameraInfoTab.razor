@@ -1,0 +1,60 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "camera-info-tab">
+    <div style="grid-column:1;">
+        <label>Manufacturer</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.ManufacturerRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Model Number</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.ModelNumberRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Identification</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.IdentificationRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>IP Address</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.IPAddressRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Sensor Size</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.SizeXRBV" />
+        <TextUpdate ViewModel="@ViewModel.SizeYRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Temperature</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.TemperatureRBV" />
+    </div>
+
+  </div>
+
+
+@code {
+    [Parameter]
+    public ViewModels.IntensityMapFeatures_CameraInfoTabViewModel ViewModel { get; set; }
+
+}

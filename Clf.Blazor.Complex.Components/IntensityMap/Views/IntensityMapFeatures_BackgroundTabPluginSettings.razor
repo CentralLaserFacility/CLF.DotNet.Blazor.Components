@@ -1,0 +1,291 @@
+﻿@page "/Cameras/{PageTitle}/BackgroundSubtraction-Plugin-Settings"
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="background-plugin-settings-tab">
+    <div style="grid-column:1/5; text-align:center;">
+        <label>@ViewModel.pageFileTitle</label>
+    </div>
+    <div style="grid-column:1;">
+      <IntensityMapFeatures_CommonPluginSettings ViewModel="@ViewModel.BackgroundCommonPluginSettingsTab" />        
+    </div>
+    <div style="grid-column:2;">
+        <div class="background-plugin-feature-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Background Subtraction</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Save Background</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.BackgroundSubtractionSaveFile" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundSubtractionSaveFileRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable Background</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundSubtractionEnable" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundSubtractionEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Read TIFF File</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.BackgroundSubtractionReadTIFF" />
+            </div>
+            <div style="grid-column:1/4; text-align:center;">
+                <label>Flat Field Normalization</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Save Flat Field</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.BackgroundFlatFieldSave" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFlatFieldSaveRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable Flat Field</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundFlatFieldEnable" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFlatFieldEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Scale Flat Field</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.BackgroundFlatFieldScale" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFlatFieldScaleRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Read TIFF File</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.BackgroundFlatFieldReadTIFF" />
+            </div>
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Scale and Offset</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable Scale/Offset</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundScaleEnable" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundScaleEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Auto Scale/Offset</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.BackgroundScaleAuto" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Scale Value</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.BackgroundScaleValue" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundScaleValueRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Offset Value</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.BackgroundScaleOffsetValue" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundScaleOffsetValueRBV" />
+            </div>
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Low/High Clipping</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable Low Clip</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundClipEnableLow" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundClipEnableLowRBV"/>
+            </div>
+            <div style="grid-column:1;">
+                <label>Low Clip Value</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.BackgroundClipLowValue" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundClipLowValueRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable High Clip</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundClipEnableHigh" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundClipEnableHighRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>High Clip Value</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.BackgroundClipHighValue" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundClipHighValueRBV" />
+            </div>
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Output Data Type</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Data Type</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundOutputDataType" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundOutputDataTypeRBV" />
+            </div>
+        </div>
+    </div>
+    <div style="grid-column:3;">
+        <div class="background-plugin-feature-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Recursive Filter</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable Filter</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundFilterEnable" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>N Filter</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOrder" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOrderRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>N Filtered</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Filter Type</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundFilterType" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Reset Filter</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.BackgroundFilterReset" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Auto Reset Filter</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundFilterAutoReset" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Filter Callbacks</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.BackgroundFilterCallbacks" />
+            </div>
+            <div style="grid-column:1;">
+                <label>OOffset</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOOffset" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOOffsetRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>OScale</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOScale" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOScaleRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>OC1</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOC1" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOC1RBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>OC2</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOC2" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOC2RBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>OC3</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOC3" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOC3RBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>OC4</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterOC4" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterOC4RBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>FOffset</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterFOffset" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterFOffsetRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>FScale</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterFScale" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterFScaleRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>FC1</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterFC1" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterFC1RBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>FC2</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterFC2" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterFC2RBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>FC3</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterFC3" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterFC3RBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>FC4</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterFC4" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterFC4RBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>ROffset</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterROffset" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterROffsetRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>RC1</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterRC1" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterRC1RBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>RC2</label>
+                <TextEntry ViewModel="@ViewModel.BackgroundFilterRC2" />
+                <TextUpdate ViewModel="@ViewModel.BackgroundFilterRC2RBV" />
+            </div>
+            <div style="grid-column:1/3;">
+                <label>O[n] = OOffset + OScale*((OC1+OC2/N)*F[n-1] + (OC3+OC4/N)*I[n])</label>
+                <label>F[n] = FOffset + FScale*((FC1+FC2/N)*F[n-1] + (FC3+FC4/N)*I[n])</label>
+                <label>On filter reset:</label>
+                <label>F[0] = ROffset + RC1*F[n] + RC2*I[0]</label>
+                <label>I = Input array in callback</label>
+                <label>F = Stored filter (double precision)</label>
+                <label>N = value of NumFiltered</label>
+                <label>O = Output array passed to clients</label>
+            </div>
+            </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_BackgroundTabPluginSettingsViewModel ViewModel { get; set; }
+}

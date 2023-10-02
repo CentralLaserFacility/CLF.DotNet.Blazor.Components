@@ -1,0 +1,7 @@
+﻿th, td {
+  padding: 10px;
+}
+
+::deep .slider-test {
+
+}

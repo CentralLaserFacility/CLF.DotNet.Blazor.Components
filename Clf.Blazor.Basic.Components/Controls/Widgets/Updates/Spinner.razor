@@ -1,0 +1,154 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Common.Arithmatic
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <div class="spinner @Class" style="--spinner-width:@GetWidth(); --spinner-height:@GetHeight();">
+      <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+        <input @ref="_spinnerInput" class="spinner-input"
+               type="number"
+        @bind="StringValue" @bind:event="oninput" @onblur="OnBlur" @onkeydown="OnKeyDown"
+               disabled="@ViewModel.GetDisableStatus()"
+               enter-pressed="@EnterPressed"
+               min="@ViewModel.Minimum"
+               max="@ViewModel.Maximum"
+               step="@ViewModel.Increment" />
+      </Tooltip>
+      <div class="spinner-buttons">
+        <Tooltip Text="Up">
+          <button disabled="@ViewModel.GetDisableStatus()" class="spinner-button-up" @onclick="StepUp" />
+        </Tooltip>
+        <Tooltip Text="Down">
+          <button disabled="@ViewModel.GetDisableStatus()" class="spinner-button-down" @onclick="StepDown" />
+        </Tooltip>
+      </div>
+      @if (GetShowUnits())
+      {
+        <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+          <span class="clf-units" disabled="@ViewModel.GetDisableStatus()">@ViewModel.Units</span>
+        </Tooltip>
+      }
+    </div>
+  </Alarm>
+}
+
+@code
+{
+  [Parameter]
+  public SpinnerViewModel ViewModel { get; set; } = new SpinnerViewModel();
+
+  private ElementReference _spinnerInput;
+
+  /* This is for fixing issues of binding and precision
+   * https://www.meziantou.net/bind-an-inputnumber-on-input-with-decimal-numbers-in-blazor.htm
+   * We are binding to a wrapper string value
+   */
+  private string _stringValue = "0";
+  public string StringValue
+  {
+    get { return _stringValue; }
+    set
+    {
+      _stringValue = value;
+      ViewModel.SetValueFromString(_stringValue);
+    }
+  }
+
+  private bool _enterPressed = false;
+  public bool EnterPressed
+  {
+    get { return _enterPressed; }
+    set
+    {
+      _enterPressed = value;
+      InvokeAsync(StateHasChanged);
+    }
+  }
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    StringValue = Converters.GetPrecisionText(ViewModel.Value, ViewModel.Precision);
+    ViewModel.PropertyChanged += OnValuePropertyChanged;
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  public void OnValuePropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  {
+    if (e.PropertyName == nameof(ViewModel.Value) || e.PropertyName == nameof(ViewModel.Precision))
+    {
+      StringValue = Converters.GetPrecisionText(ViewModel.Value, ViewModel.Precision);
+      // we don't need InvokeAsync(StateHasChanged); in this case
+      // becuase the next method that will be triggered is OnPropertyChanged
+      // that already has InvokeAsync(StateHasChanged);
+    }
+  }
+
+  private void OnBlur(FocusEventArgs e)
+  {
+    //When the focus is lost
+    StringValue = Converters.GetPrecisionText(ViewModel.Value, ViewModel.Precision);
+  }
+
+  public async Task OnKeyDown(KeyboardEventArgs e)
+  {
+    if ((e.Code == "Enter" || e.Code == "NumpadEnter"))
+    {
+      EnterPressed = true;
+      await Task.Delay(100);
+      //when enter key is pressed
+      StringValue = Converters.GetPrecisionText(ViewModel.Value, ViewModel.Precision);
+      ViewModel.OnEnterKeyDownAsync();
+      EnterPressed = false;
+    }
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-spinner-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-spinner-default-height)";
+  }
+
+  private bool GetShowUnits()
+  {
+    return (!string.IsNullOrEmpty(ViewModel.Units) && ViewModel.ShowUnits);
+  }
+
+  private void StepUp()
+  {
+    if (ViewModel.Value < ViewModel.Maximum)
+    {
+      ViewModel.Value += ViewModel.Increment;
+    }
+    _spinnerInput.FocusAsync();
+  }
+
+  private void StepDown()
+  {
+    if (ViewModel.Value > ViewModel.Minimum)
+    {
+      ViewModel.Value -= ViewModel.Increment;
+    }
+    _spinnerInput.FocusAsync();
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnValuePropertyChanged;
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+
+
+}

@@ -1,0 +1,68 @@
+﻿<!-- Extracts from https://stackoverflow.com/questions/59256798/how-to-use-bootstrap-modal-in-blazor-client-app -->
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Microsoft.AspNetCore.Components.Web
+@inherits WidgetBase
+@implements IDisposable
+
+
+@if (ViewModel.IsVisible)
+{
+  <div class="clf-modal" role="dialog">
+    <div class="clf-modal-dialog" role="document">
+      <header class="clf-modal-header">
+        <span>@ViewModel.Title</span>
+      </header>
+      <div class="clf-modal-content">
+        @if(ViewModel.BodyText != null)
+        {
+          <p>@ViewModel.BodyText</p>
+        }        
+        @ChildContent
+      </div>
+      @if (Footer != null)
+      {
+        <footer>
+          @Footer
+        </footer>
+      }
+      else
+      {
+        <footer>
+          <div>
+            @if (ViewModel.Type == Models.ModalTypes.OneButton)
+            {
+              <button class="clf-modal-btn" @onclick="@(()=>ViewModel.Close())">@ViewModel.Button1Text</button>
+            }
+            else if (ViewModel.Type == Models.ModalTypes.TwoButtons)
+            {
+              <button class="clf-modal-btn" @onclick="@(()=>{ViewModel.OnModalDialogButton1Clicked();})">@ViewModel.Button1Text</button>
+              <button class="clf-modal-btn" @onclick="@(()=>{ViewModel.OnModalDialogButton2Clicked();})">@ViewModel.Button2Text</button>
+            }
+          </div>
+        </footer>
+      }
+    </div>
+  </div>
+}
+
+@code {
+
+  [Parameter]
+  public ModalDialogViewModel ViewModel { get; set; } = new ModalDialogViewModel();
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public RenderFragment? Footer { get; set; }
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

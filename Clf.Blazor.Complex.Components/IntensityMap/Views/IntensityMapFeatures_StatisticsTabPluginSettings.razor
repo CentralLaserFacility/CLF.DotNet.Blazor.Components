@@ -1,0 +1,304 @@
+﻿@page "/Cameras/{PageTitle}/HDF5-Plugin-Settings"
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="statistics-plugin-settings-tab">
+    <div style="grid-column:1/4; text-align:center;">
+        <label>@ViewModel.pageFileTitle</label>
+    </div>
+    <div style="grid-column:1;">
+      <IntensityMapFeatures_CommonPluginSettings ViewModel="@ViewModel.StatisticsCommonPluginSettingsTab" />        
+    </div>
+    <div style="grid-column:2;">
+        <div class="statistics-plugin-feature-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Statistics</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Enable</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.StatisticsEnable" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Background Width</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsBackgroundWidth" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsBackgroundWidthRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Minimum</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMinimumPixelRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>Maximum</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMaximumXRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Minimum X</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMinimumXRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>Maximum X</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMaximumXRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Minimum Y</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMinimumYRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>Maximum Y</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMaximumYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Total</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsTotalValueRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>Net</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsNetValueRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Mean</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsMeanValueRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label>Sigma</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsSigmaValueRBV" />
+            </div>
+        </div>
+        <div class="statistics-plugin-feature-settings-tab" >
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Centroid</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Compute Centroid</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.StatisticsCentroidEnable" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsCentroidEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Centroid Threshold</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsCentroidThreshold" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsCentroidThresholdRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Centroid Total</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsCentroidTotalRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Centroid</label>
+            </div>
+            <div style="grid-column:2;">
+                <label> X </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsCentroidXRBV" />
+                <label> Y </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsCentroidYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Sigma</label>
+            </div>
+            <div style="grid-column:2;">
+                <label> X </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsSigmaXRBV" />
+                <label> Y </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsSigmaYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Skewness</label>
+            </div>
+            <div style="grid-column:2;">
+                <label> X </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsSkewnessXRBV" />
+                <label> Y </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsSkewnessYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Kurtosis</label>
+            </div>
+            <div style="grid-column:2;">
+                <label> X </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsKurtosisXRBV" />
+                <label> Y </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsKurtosisYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>SigmaXY    </label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsSigmaXYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Eccentricity   </label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsEccentricityRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Orientation    </label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsOrientationRBV" />
+            </div>
+        </div>
+        <div class="statistics-plugin-feature-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Reset</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Reset</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.StatisticsReset" />
+            </div>
+        </div>
+    </div>
+    <div style="grid-column:3;">
+        <div class="statistics-plugin-feature-settings-tab" >
+            <div style="grid-column:1/3; text-align:center;">
+                <label> Profiles</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Compute Profiles</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.StatisticsProfileEnable" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsProfileEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Size   X</label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsProfileSizeXRBV" />
+            </div>
+            <div style="grid-column:2;">
+                <label> Y </label>
+                <TextUpdate ViewModel="@ViewModel.StatisticsProfileSizeYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label> Cursor X </label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsProfileCursorX" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsProfileCursorXRBV"/>
+            </div>
+            <div style="grid-column:1;">
+                <label>Cursor Y </label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsProfileCursorY" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsProfileCursorYRBV" />
+            </div>
+        </div>
+        <div class="statistics-plugin-feature-settings-tab" >
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Histogram</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Compute Histogram</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.StatisticsHistogramEnable" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramEnableRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Size</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsHistogramSize" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramSizeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Minimum</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsHistogramMinimum" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramMinimumRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Maximum</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsHistogramMaximum" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramMaximumRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>#below minimum</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramBelowMinimumRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>#above maximum</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramAboveMaximumRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Entropy</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsHistogramEntropyRBV" />
+            </div>
+        </div>
+        <div class="statistics-plugin-feature-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Time Series</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Acquire</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.StatisticsTimeSeriesStart" />
+                <ActionButton ViewModel="@ViewModel.StatisticsTimeSeriesStop" />
+                <TextUpdate ViewModel="@ViewModel.StatisticsTimeSeriesAcquireRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Number of points</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.StatisticsTimeSeriesNumPoints" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Current point</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.StatisticsTimeSeriesCurrentPointsRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Read Rate </label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.StatisticsTimeSeriesReadRate" />
+                <ActionButton ViewModel="@ViewModel.StatisticsTimeSeriesRead" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Acquire Mode</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.StatisticsTimeSeriesAcquireMode" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+[Parameter]
+    public IntensityMapFeatures_StatisticsTabPluginSettingsViewModel ViewModel { get; set; }
+}
+

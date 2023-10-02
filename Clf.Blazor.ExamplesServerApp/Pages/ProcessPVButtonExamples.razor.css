@@ -1,0 +1,11 @@
+﻿
+th, td {
+  padding: 15px;
+}
+
+td > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,0 +1,60 @@
+﻿:root {
+  --clf-slider-default-width: 130px;
+  --clf-slider-default-height: 32px;
+  --clf-input-range-default-height: 8px;
+  --clf-slider-margin: 0px;
+  --clf-slider-gap: 8px;
+  --clf-slider-track-selected-colour: #0082D9;
+  --clf-slider-track-disabled-selected-colour: #A5A5A5;
+  --clf-slider-track-background-colour: #C2E7FF;
+  --clf-slider-track-disabled-background-colour: var(--clf-text-update-background-color);
+  --clf-slider-thumb-background-colour: white;
+  --clf-slider-thumb-selected-background-colour: color-mix(in srgb, #ffff00 20%, white);
+  --clf-slider-thumb-border: 1px solid rgba(000,000,000,0.1);
+  --clf-slider-thumb-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
+  --clf-slider-thumb-border-radius: 50%;
+  --clf-slider-ticks-thickness: 1px;
+  --clf-slider-ticks-height: 5px;
+  --clf-slider-ticks-color: silver;
+  --clf-slider-output-border-radius: 10px;
+  --clf-slider-output-padding: 2px 4px;
+}
+
+input[type=range]{
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--clf-slider-track-background-colour);
+  cursor: pointer;
+  height: var(--clf-input-range-default-height);
+  border-radius: var(--clf-input-range-default-height);
+  margin: var(--clf-slider-margin);
+}
+  input[type=range]:focus {
+    outline: none;
+  }
+    input[type=range]:focus::-webkit-slider-thumb {
+      border-color: var(--clf-slider-track-selected-colour);
+      background-color: var(--clf-slider-thumb-selected-background-colour);
+    }
+
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: calc(var(--clf-input-range-default-height) * 2);
+    height: calc(var(--clf-input-range-default-height) * 2);
+    background-color: var(--clf-slider-thumb-background-colour);
+    box-shadow: var(--clf-slider-thumb-box-shadow);
+    border-radius: var(--clf-slider-thumb-border-radius);
+    border: var(--clf-slider-thumb-border);
+  }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      border-color: var(--clf-slider-track-selected-colour);
+      background-color: var(--clf-slider-thumb-selected-background-colour);
+    }
+
+  input[type=range]:disabled {
+    pointer-events: none;
+    background: var(--clf-text-update-background-color);
+    filter: var(--clf-disabled-filter);
+  }

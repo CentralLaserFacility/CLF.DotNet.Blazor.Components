@@ -1,0 +1,76 @@
+﻿@page "/check-box-examples"
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+
+<h3>Checkbox Examples</h3>
+
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><div><Checkbox ViewModel="@_default" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Checked</th>
+    <td><div><Checkbox ViewModel="@_checked" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable</th>
+    <td><div><Checkbox ViewModel="@_disabled" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable Checked</th>
+    <td><div><Checkbox ViewModel="@_disabledChecked" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><div><Checkbox ViewModel="@_notConnectedChecked" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><div><Checkbox ViewModel="@_invalidChecked" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">HTML Checkbox</th>
+    <td><div><input type="checkbox" checked /></div></td>
+  </tr>
+</table>
+
+@code {
+  private CheckboxViewModel _default = new CheckboxViewModel(
+    borderStatus: BorderStatus.Connected,
+    label: "Default",
+    tooltipText: "Default"
+  );
+  private CheckboxViewModel _checked = new CheckboxViewModel(
+    borderStatus: BorderStatus.Connected,
+    label: "Checked",
+    value: true,
+    tooltipText: "Checked"
+  );
+  private CheckboxViewModel _disabled = new CheckboxViewModel(
+    borderStatus: BorderStatus.Connected,
+    label: "Disabled",
+    isDisabled: true,
+    tooltipText: "Disabled"
+  );
+  private CheckboxViewModel _disabledChecked = new CheckboxViewModel(
+    borderStatus: BorderStatus.Connected,
+    label: "Disabled Checked",
+    isDisabled: true,
+    value: true,
+    tooltipText: "Disabled Checked"
+  );
+  private CheckboxViewModel _notConnectedChecked = new CheckboxViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    label: "Not Connected",
+    value: true,
+    tooltipText: "Not Connected"
+  );
+  private CheckboxViewModel _invalidChecked = new CheckboxViewModel(
+    borderStatus: BorderStatus.Invalid,
+    label: "Invalid",
+    value: true,
+    tooltipText: "Invalid"
+  );
+}

@@ -1,0 +1,48 @@
+﻿:root {
+  --clf-spinner-default-width: 128px;
+  --clf-spinner-default-height: 32px;
+  --clf-spinner-border-radius: 3px;
+  --clf-spinner-input-border-radius: 3px;
+  --clf-spinner-units-border-radius: 0px 3px 3px 0px;
+  --clf-spinner-input-padding: 0px 8px;
+  --clf-spinner-transparent-border: 1px solid transparent;
+  --clf-spinner-disabled-background-colour: var(--clf-text-update-background-color);
+  --clf-spinner-units-background-colour: var(--clf-text-update-background-color);
+  --clf-spinner-input-background-colour: #C2E7FF;
+  --clf-spinner-edit-background-colour: rgba(255,255,0,0.2);
+  --clf-spinner-edit-border: 1px solid #0082D9;
+  --clf-spinner-disable-font-colour: #A5A5A5;
+  --clf-spinner-buttons-width: 24px;
+  --clf-spinner-buttons-font-size: 8px;
+}
+
+input[type="number"] {
+  border-radius: var(--clf-spinner-input-border-radius);
+  border: none;
+  outline: var(--clf-spinner-transparent-border);
+  background-color: var(--clf-spinner-input-background-colour);
+  width: var(--clf-spinner-default-width);
+  height: var(--clf-spinner-default-height);
+  padding: var(--clf-spinner-input-padding);
+  color: var(--clf-font-colour);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--clf-text-input-font-weight);
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+  input[type="number"]:focus {   
+  background-color: var(--clf-spinner-edit-background-colour);  
+  outline: var(--clf-spinner-edit-border);
+}
+
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+  }
+
+  input[type="number"]:disabled {
+    pointer-events: none;
+    background-color: var(--clf-spinner-disabled-background-colour);
+    filter: var(--clf-disabled-filter);
+  }

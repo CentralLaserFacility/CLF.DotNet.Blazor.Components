@@ -1,0 +1,70 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <div class="slide-button-wrapper" disabled="@ViewModel.GetDisableStatus()">
+        <label class="slide-button-track @Class" style="--slide-button-width:@GetWidth(); --slide-button-height:@GetHeight(); --slide-button-on-colour:@GetOnColour(); --slide-button-off-colour:@GetOffColour();">
+          <input type="checkbox"
+          @bind="@ViewModel.Value"
+          @onclick="ViewModel.OnBooleanWidgetClicked" />
+        </label>
+        @if (IsLabelExist())
+        {
+          @ViewModel.Label
+        }
+      </div>
+    </Tooltip>
+  </Alarm>
+}
+
+@code
+{
+  [Parameter]
+  public SlideButtonViewModel ViewModel { get; set; } = new SlideButtonViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-slide-button-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-slide-button-default-height)";
+  }
+
+  private string GetOnColour()
+  {
+    return ViewModel.OnColor != null ? ViewModel.OnColor.HtmlRgbaString : "var(--clf-slide-button-track-on-colour)";
+  }
+
+  private string GetOffColour()
+  {
+    return ViewModel.OffColor != null ? ViewModel.OffColor.HtmlRgbaString : "var(--clf-slide-button-track-off-colour)";
+  }
+
+  private bool IsLabelExist()
+  {
+    return !string.IsNullOrEmpty(ViewModel.Label);
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+
+}

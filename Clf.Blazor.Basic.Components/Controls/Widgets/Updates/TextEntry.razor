@@ -1,0 +1,72 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using System.ComponentModel
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    @if (ViewModel.IsMultiLine)
+    {
+      <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+        <textarea class="text-area @Class"
+                  style="--text-input-width:@GetWidth(); --text-input-height:@GetHeight()"
+                  disabled="@ViewModel.GetDisableStatus()"
+        @bind="ViewModel.Text" @bind:event="oninput" @onkeydown="@ViewModel.OnEnterKeyDownAsync" />
+      </Tooltip>
+    }
+    else
+    {
+      <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+        <div class="text-entry @Class"
+             style="--text-input-width:@GetWidth(); --text-input-height:@GetHeight()">
+          <input class="text-input" type="text" disabled="@ViewModel.GetDisableStatus()" show-units="@GetShowUnits()"
+          @bind="ViewModel.Text" @bind:event="oninput" @onkeydown="@ViewModel.OnEnterKeyDownAsync" />
+          @if (GetShowUnits())
+          {
+            <span class="clf-units" disabled="@ViewModel.GetDisableStatus()">@ViewModel.Units</span>
+          }
+        </div>
+      </Tooltip>
+    }
+  </Alarm>
+}
+
+@code
+{
+  [Parameter]
+  public TextEntryViewModel ViewModel { get; set; } = new TextEntryViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private bool GetShowUnits()
+  {
+    return (!string.IsNullOrEmpty(ViewModel.Units) && ViewModel.ShowUnits);
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-text-entry-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-text-entry-default-height)";
+  }
+
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+
+}

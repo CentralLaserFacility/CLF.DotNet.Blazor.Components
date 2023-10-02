@@ -1,0 +1,231 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@inherits WidgetBase
+@implements IDisposable
+
+
+@if (IsVisible)
+{
+  @if (_isPinned)
+  {
+    @if (Parent.IsDraggable)
+    {
+      <div class="dashboard-pane-wrapper @SelectedClass @DropClass" draggable="true" dropzone="move" style=" order:@Order.ToString();"
+      @ondragstart="HandleDragStart"
+      @ondragend="HandleDragEnd"
+      ondragover="event.preventDefault();"
+      @ondrop="@(() => HandleDrop(this))"
+      @ondragenter="HandleDragEnter"
+      @ondragleave="HandleDragLeave">
+        @GetDashboardPaneHtml()
+      </div>
+    }
+    else
+    {
+      <div class="dashboard-pane-wrapper" style="order:@Order.ToString();">
+        @GetDashboardPaneHtml()
+      </div>
+    }
+
+  }
+  else
+  {
+    @*<div class="dashboard-pane-floating @Class">
+        <div class="pane-body">
+          @ChildContent
+        </div>
+      </div>*@
+  }
+}
+
+@code {
+
+  [CascadingParameter]
+  private DashboardPanel Parent { get; set; }
+
+  [Parameter, EditorRequired]
+  public string Title { get; set; } = "";
+
+  [Parameter]
+  public string? UnpinnedText { get; set; } = null;
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public Action? OnSettingsButtonClicked { get; set; }
+
+  [Parameter]
+  public bool Pinned { get; set; } = true;
+
+  [Parameter]
+  public string HeaderClass { get; set; } = "";
+
+  [Parameter]
+  public string BodyClass { get; set; } = "";
+
+  public int? Order { get; set; } = null;
+
+  public string SelectedClass { get; set; } = "";
+
+  public string DropClass { get; set; } = "";
+
+  internal Guid Id { get; set; }
+
+  private const string _pinnedId = "clf_ic_pin_24_regular";
+  private const string _unpinnedId = "clf_ic_pin_off_24_regular";
+
+  private string _buttonPinnedIconId = _pinnedId;
+
+  private int _counter = 0;
+
+  private bool _isPinned = true;
+
+  protected override void OnInitialized()
+  {
+    if (Parent == null)
+      throw new ArgumentNullException(nameof(Parent),
+          "DashboardPane must exist within a DashboardPanel control");
+
+    base.OnInitialized();
+    Parent.AddPane(this);
+    UnpinnedText ??= Title;
+    if (!Pinned)
+    {
+      _buttonPinnedIconId = _unpinnedId;
+      _isPinned = Pinned;
+      IsVisible = false;
+      Parent.AddUnPinnedPane(this);
+    }
+  }
+
+  public void SetPanePinning(bool pinned)
+  {
+    if (pinned)
+    {
+      _buttonPinnedIconId = _pinnedId;
+      _isPinned = true;
+      IsVisible = true;
+    }
+    else
+    {
+      _buttonPinnedIconId = _unpinnedId;
+      _isPinned = false;
+      IsVisible = false;
+    }
+  }
+
+  public void ToggleVisibility()
+  {
+    IsVisible = !IsVisible;
+  }
+
+  public bool IsPinned()
+  {
+    return _isPinned;
+  }
+
+  private RenderFragment GetDashboardPaneHtml()
+  {
+    return (__builder) =>
+    {
+      <div class="dashboard-pane @Class">
+        <div class="pane-header" tabindex="1">
+          <span class="pane-header-title">@Title</span>
+          <div class="pane-header-buttons">
+            @if (OnSettingsButtonClicked != null)
+            {
+              <button class="pane-header-button" @onclick="OnSettingsButtonClicked">
+                <SingleColourIcon class="pane-header-icon" IconId="clf_ic_settings_24_regular" />
+              </button>
+            }
+            <button class="pane-header-button" @onclick="OnPinButtonToggle">
+              <SingleColourIcon class="pane-header-icon" IconId="@_buttonPinnedIconId" />
+            </button>
+          </div>
+        </div>
+        <div class="pane-body">
+          @ChildContent
+        </div>
+      </div>
+    };
+  }
+
+  public RenderFragment GetDashboardPaneBodyHtml()
+  {
+    return (__builder) =>
+    {
+      <div class="dashboard-pane-unpinned @Class">
+        <div class="pane-body unpinned">
+          @ChildContent
+        </div>
+      </div>
+    };
+  }
+
+  private void HandleDragStart(DragEventArgs dragEventArgs)
+  {
+    SelectedClass = "pane-selected";
+    Parent.SelectedPane = this;
+  }
+
+  private void HandleDragEnd(DragEventArgs dragEventArgs)
+  {
+    SelectedClass = "";
+  }
+
+  private void HandleDrop(DashboardPane pane)
+  {
+    DropClass = SelectedClass = "";
+    _counter = 0;
+    Parent.ReorderPanes(pane);
+
+  }
+
+  private void HandleDragEnter(DragEventArgs dragEventArgs)
+  {
+    if (this != Parent.SelectedPane)
+    {
+      _counter++;
+      DropClass = "pane-dragover";
+    }
+  }
+
+  private void HandleDragLeave(DragEventArgs dragEventArgs)
+  {
+    if (this != Parent.SelectedPane)
+    {
+      _counter--;
+      if (_counter == 0)
+      {
+        DropClass = "";
+      }
+    }
+
+  }
+
+  public void OnPinButtonToggle()
+  {
+    if (_buttonPinnedIconId == _pinnedId)
+    {
+      _buttonPinnedIconId = _unpinnedId;
+      _isPinned = false;
+      IsVisible = false;
+      Parent.AddUnPinnedPane(this);
+    }
+    else
+    {
+      _buttonPinnedIconId = _pinnedId;
+      _isPinned = true;
+      IsVisible = true;
+      Parent.RemoveUnPinnedPane(this);
+
+    }
+  }
+
+  void IDisposable.Dispose()
+  {
+    Parent.RemovePane(this);
+  }
+
+}

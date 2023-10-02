@@ -1,0 +1,9 @@
+﻿:root {
+    --clf-boolean-button-default-width: 100px;
+    --clf-boolean-button-default-height: 32px;
+    --clf-boolean-button-background-on-colour: #00DE0A;
+    --clf-boolean-button-background-off-colour: #005A02;
+    --clf-boolean-button-on-colour: #222222;
+    --clf-boolean-button-off-colour: #E2E2E2;
+    --clf-boolean-button-focus-border-colour: #000000;
+}

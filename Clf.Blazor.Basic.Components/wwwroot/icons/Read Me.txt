@@ -1,0 +1,8 @@
+This icon library is are based on fluent system icons from Microsoft.
+https://github.com/microsoft/fluentui-system-icons
+
+Most of the icons in this library are either directly used from the above mentioned repository, or we have created modified/ custom icons for our use-case.
+Please include the LICENSE file, if you are using these icons in your project.
+
+The SVG sprites are created using Icomoon free app.
+There is CLF Icons.json file in the Icomoon folder, that should be use as Icomoon project for future editing.

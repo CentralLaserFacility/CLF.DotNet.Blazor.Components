@@ -1,0 +1,49 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using System.ComponentModel
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <input type="color" @bind="ViewModel.SelectedColorString"
+             style="--color-picker-width:@GetWidth(); --color-picker-height:@GetHeight();"
+             disabled="@ViewModel.GetDisableStatus()" />
+    </Tooltip>
+  </Alarm>
+}
+
+@code
+{
+  [Parameter]
+  public ColorPickerViewModel ViewModel { get; set; } = new ColorPickerViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-color-picker-default-size)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-color-picker-default-size)";
+  }
+
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+
+}

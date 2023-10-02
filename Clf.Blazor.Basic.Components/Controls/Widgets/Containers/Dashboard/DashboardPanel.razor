@@ -1,0 +1,187 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+
+<CascadingValue Value="this">
+  <div class="dashboard-panel">
+    @Profile
+    <div class="unpinned-navigation">
+      @foreach (var pane in _unpinnedPanes)
+      {
+        if (_showUnpinnedPane && pane.UnpinnedText == _selectedUnpinnedPaneText)
+        {
+          <span class="unpinned-button-wrapper">
+            <span class="unpinned-button unpinned-button-selected" @onclick="@(() => HideUnpinnedPane())">
+              <Tooltip Text="@pane.Title">
+                <span>@pane.UnpinnedText</span>
+                <button class="unpin-icon-button" @onclick="pane.OnPinButtonToggle">
+                  <SingleColourIcon class="unpin-icon" IconId="clf_ic_pin_off_24_regular" />
+                </button>
+              </Tooltip>
+            </span>
+            @pane.GetDashboardPaneBodyHtml()
+          </span>
+        }
+        else
+        {
+          <span class="unpinned-button-wrapper">
+            <span class="unpinned-button" @onclick="@(() => ShowUnpinnedPane(pane.UnpinnedText))">
+              <Tooltip Text="@pane.Title">
+                @pane.UnpinnedText
+              </Tooltip>
+            </span>
+          </span>
+        }
+
+      }
+
+    </div>
+    <div class="dashboard-panel-grid">
+      @Dashboard
+    </div>
+  </div>
+</CascadingValue>
+
+@code {
+  [Parameter]
+  public RenderFragment? Dashboard { get; set; }
+
+  [Parameter]
+  public RenderFragment? Profile { get; set; }
+
+  [Parameter]
+  public bool IsDraggable { get; set; } = false;
+
+  public DashboardPane? SelectedPane { get; set; }
+
+  private List<DashboardPane> _panes = new List<DashboardPane>();
+
+  private List<DashboardPane> _unpinnedPanes = new List<DashboardPane>();
+
+  private int _paneCount = 0;
+
+  private string? _selectedUnpinnedPaneText = null;
+  private bool _showUnpinnedPane = false;
+
+  public void SetProfile(DashboardProfile? profile)
+  {
+    if (profile != null && profile.Panes != null && profile.Panes.Count == _panes.Count)
+    {
+      foreach (var paneProfile in profile.Panes)
+      {
+        var desiredPane = _panes.Find(x => x.Title == paneProfile.Title);
+        if (desiredPane != null)
+        {
+          desiredPane.Order = paneProfile.Order;
+          if (desiredPane.IsPinned() != paneProfile.isPinned)
+          {
+            desiredPane.SetPanePinning(paneProfile.isPinned);
+            _unpinnedPanes.Remove(desiredPane);
+            if (!desiredPane.IsPinned())
+              _unpinnedPanes.Add(desiredPane);
+          }
+        }
+      }
+      _panes = _panes.OrderBy(x => x.Order).ToList();
+      InvokeAsync(StateHasChanged);
+    }
+  }
+
+  public DashboardProfile GetProfile()
+  {
+    var profile = new DashboardProfile();
+    foreach (var pane in _panes)
+    {
+      profile.Panes.Add(new DashboardPaneProfile(pane.Title, pane.Order.GetValueOrDefault(), pane.IsPinned()));
+    }
+    return profile;
+  }
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    await InvokeDashboardToMasonaryJSInterop();
+  }
+
+  private async Task InvokeDashboardToMasonaryJSInterop()
+  {
+    await JSRuntime.InvokeVoidAsync("resizeDashboardToMasonaryLayout");
+  }
+
+  internal void AddPane(DashboardPane pane)
+  {
+    pane.Id = Guid.NewGuid();
+    if (pane.Order == null)
+      pane.Order = _paneCount;
+    _panes.Add(pane);
+    _paneCount++;
+  }
+
+  internal void RemovePane(DashboardPane pane)
+  {
+    _panes.Remove(pane);
+    _paneCount--;
+  }
+
+  internal bool IsFirstPane(DashboardPane pane)
+  {
+    return _panes.Count > 0 ? _panes.FindIndex(p => p.Id == pane.Id) == 0 : false;
+  }
+
+  internal bool IsOnlyPane(DashboardPane pane)
+  {
+    return _panes.Count == 1;
+  }
+
+  internal void SwitchPanes(DashboardPane pane)
+  {
+    if (SelectedPane != null)
+    {
+      var selectedPaneOrder = SelectedPane.Order;
+      SelectedPane.Order = pane.Order;
+      pane.Order = selectedPaneOrder;
+      InvokeAsync(StateHasChanged);
+    }
+  }
+
+  internal void ReorderPanes(DashboardPane pane)
+  {
+    if (SelectedPane != null && SelectedPane.Id != pane.Id)
+    {
+      _panes.Remove(SelectedPane);
+      var indexWhereToPlace = _panes.IndexOf(pane);
+      _panes.Insert(indexWhereToPlace, SelectedPane);
+      for (int i = 0; i < _panes.Count; i++)
+      {
+        _panes[i].Order = i;
+      }
+      InvokeAsync(StateHasChanged);
+    }
+  }
+
+  internal void AddUnPinnedPane(DashboardPane pane)
+  {
+    _unpinnedPanes.Add(pane);
+    InvokeAsync(StateHasChanged);
+  }
+
+  internal void RemoveUnPinnedPane(DashboardPane pane)
+  {
+    _unpinnedPanes.Remove(pane);
+    InvokeAsync(StateHasChanged);
+  }
+
+  private void ShowUnpinnedPane(string? selectedUnpinnedPaneText)
+  {
+    _selectedUnpinnedPaneText = selectedUnpinnedPaneText;
+    _showUnpinnedPane = true;
+  }
+
+  private void HideUnpinnedPane()
+  {
+    _showUnpinnedPane = false;
+  }
+}

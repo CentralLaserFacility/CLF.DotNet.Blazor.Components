@@ -1,0 +1,13 @@
+﻿:root {
+  --clf-alarm-not-connected-colour: #FA00FA;
+  --clf-alarm-major-colour: #DE3730;
+  --clf-alarm-minor-colour: #FF9E1B;
+  --clf-alarm-invalid-colour: #A5A5A5;
+  --clf-alarm-outline: 2px solid transparent;
+  --clf-alarm-outline-offset: 2px;
+  --clf-alarm-margin: var(--clf-alarm-margin-top) var(--clf-alarm-margin-right) var(--clf-alarm-margin-bottom) var(--clf-alarm-margin-left);
+  --clf-alarm-margin-top: 12px;
+  --clf-alarm-margin-bottom: 6px;
+  --clf-alarm-margin-left: 12px;
+  --clf-alarm-margin-right: 6px;
+}

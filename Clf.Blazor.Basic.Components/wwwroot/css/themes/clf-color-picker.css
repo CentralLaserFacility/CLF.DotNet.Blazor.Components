@@ -1,0 +1,40 @@
+﻿:root {
+  --clf-color-picker-default-size: var(--clf-action-button-default-height);
+  --clf-color-picker-swatch-padding: 6px 5px;
+  --clf-color-picker-swatch-border-radius: 2px;
+}
+
+input[type="color"] {
+  width: var(--clf-color-picker-default-size);
+  height: var(--clf-color-picker-default-size);
+  background-color: var(--clf-action-button-background-color);
+  border-radius: var(--clf-border-radius);
+  border: 0px;
+  cursor: pointer;
+}
+
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: var(--clf-color-picker-swatch-padding);
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: var(--clf-color-picker-swatch-border-radius);
+  }
+
+  input[type="color"]:hover {
+    background-color: var(--clf-action-button-hover-color);
+  }
+  input[type="color"]:focus {
+    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-color);
+  }
+
+  input[type="color"]:active {
+    background-color: var(--clf-action-button-active-background-color);
+    color: var(--clf-action-button-active-font-colour);
+  }
+
+  input[type="color"]:disabled {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }

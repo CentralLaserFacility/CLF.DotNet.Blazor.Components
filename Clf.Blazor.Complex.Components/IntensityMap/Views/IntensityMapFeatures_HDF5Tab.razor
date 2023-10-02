@@ -1,0 +1,34 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "hdf5-tab">
+    <div style="grid-column:1/2;">
+        <ActionButton ViewModel="@ViewModel.StartHdf5Capture" />
+        <ActionButton ViewModel="@ViewModel.StopHdf5Capture" />
+    </div>
+    <div style="grid-column:1/2;">
+        <label>Status</label>
+        <TextUpdate ViewModel="@ViewModel.Hdf5CaptureRBV" />
+    </div>
+    <div style="grid-column:1/2;">
+        <div style="display:flex; row-gap: 5px; padding:8px; justify-content:center;">
+            <ActionButton ViewModel="@ViewModel.Hdf5PluginSettings" />
+        </div>
+    </div>
+   
+  </div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_HDF5TabViewModel ViewModel { get; set; }
+}

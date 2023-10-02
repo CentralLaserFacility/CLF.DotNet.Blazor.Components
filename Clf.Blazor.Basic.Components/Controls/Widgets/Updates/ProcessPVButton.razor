@@ -1,0 +1,25 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@inherits WidgetBase
+@implements IDisposable
+
+<ActionButton class="@Class" ViewModel="@ViewModel"></ActionButton>
+
+@code {
+
+	[Parameter]
+	public ProcessPVButtonViewModel ViewModel { get; set; } = new ProcessPVButtonViewModel();
+
+  protected override void OnInitialized()
+  {
+	  base.OnInitialized();
+	  ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  void IDisposable.Dispose()
+  {
+	  ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

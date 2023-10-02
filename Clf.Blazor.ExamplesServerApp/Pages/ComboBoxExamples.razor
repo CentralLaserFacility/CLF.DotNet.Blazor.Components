@@ -1,0 +1,77 @@
+﻿@page "/combo-box-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Common.ImageProcessing;
+@using System.Collections.ObjectModel;
+
+<h3>Combo Box Examples</h3>
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><ComboBox ViewModel="@_defaultComboBox" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><ComboBox ViewModel="@_notConnectedComboBox" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><ComboBox ViewModel="@_majorAlarmComboBox" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><ComboBox ViewModel="@_minorAlarmComboBox" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><ComboBox ViewModel="@_invalidComboBox" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Disabled</th>
+    <td><ComboBox ViewModel="@_disabledComboBox" /></td>
+  </tr>
+</table>
+
+@code {
+  static ObservableCollection<string> exampleString = new ObservableCollection<string> { "Checklist", "1p", "3p", "10p", "30p", "100p" };
+  private ComboBoxViewModel _defaultComboBox = new ComboBoxViewModel(
+      tooltipText: "Default",
+      items: exampleString,
+  borderStatus: BorderStatus.Connected
+   );
+
+  private ComboBoxViewModel _notConnectedComboBox = new ComboBoxViewModel(
+    tooltipText: "Default",
+      items: exampleString,
+      borderStatus: BorderStatus.NotConnected
+   );
+
+  private ComboBoxViewModel _majorAlarmComboBox = new ComboBoxViewModel(
+    tooltipText: "Default",
+      items: exampleString,
+      borderStatus: BorderStatus.MajorAlarm
+   );
+
+  private ComboBoxViewModel _minorAlarmComboBox = new ComboBoxViewModel(
+    tooltipText: "Default",
+      items: exampleString,
+      borderStatus: BorderStatus.MinorAlarm
+   );
+
+  private ComboBoxViewModel _invalidComboBox = new ComboBoxViewModel(
+    tooltipText: "Default",
+      items: exampleString,
+      borderStatus: BorderStatus.Invalid
+   );
+  private ComboBoxViewModel _disabledComboBox = new ComboBoxViewModel(
+     tooltipText: "Default",
+       items: exampleString,
+       borderStatus: BorderStatus.Connected,
+       isDisabled: true
+  );
+
+}

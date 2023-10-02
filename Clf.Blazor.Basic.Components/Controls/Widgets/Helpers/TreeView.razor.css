@@ -1,0 +1,74 @@
+﻿.tree-view {
+  display: flex;
+  flex-direction: column;
+}
+
+  .tree-view[disabled] {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }
+.tree-view[clickable] {
+  cursor: pointer;
+}
+
+.tree-item {
+  display: flex;
+  flex-direction: row;
+  gap: var(--clf-treeview-item-gap);
+  align-content: center;
+}
+
+  .tree-item:hover {
+    border-radius: var(--clf-treeview-item-border-radius);
+    background-color: var(--clf-treeview-hover-color);
+  }
+
+.tree-view[clickable] > .tree-item:active {
+  background-color: var(--clf-treeview-active-background-color);
+  color: var(--clf-treeview-active-font-colour);
+}
+
+.tree-item-title {
+  display: flex;
+  align-items: center;
+}
+
+::deep .expander-button {
+  outline: none;
+  background-color: transparent;
+  border: none; /* Remove borders */
+  margin: var(--clf-treeview-expander-margin); /* Some padding */
+  font-size: var(--clf-treeview-expander-font-size);
+  width: var(--clf-treeview-expander-resize);
+  height: var(--clf-treeview-expander-resize);
+  cursor: pointer; /* Mouse pointer on hover */
+  display: flex;
+  color: inherit;
+  padding: 0;
+}
+
+::deep .expander-svg-icon {
+  font-size: inherit;
+}
+
+.expander-button:hover {
+  background-color: var(--clf-treeview-expander-hover-background-color);
+}
+
+.expander-button:active {
+  background-color: var(--clf-treeview-active-background-color);
+  color: var(--clf-treeview-active-font-colour);
+}
+
+.expanded-content {
+  padding-left: var(--clf-treeview-expanded-content-padding);
+}
+
+.expander-icon {
+  transition: var(--clf-treeview-transition);
+}
+
+.expander-icon-down {
+  transform: rotate(90deg);
+  transition: var(--clf-treeview-transition);
+}

@@ -1,0 +1,77 @@
+﻿@page "/PixelMappingTestPage_01"
+
+@inject IJSRuntime JSRuntime
+
+<h3>PixelMappingTestPage_01</h3>
+
+<!-- 
+<Clf.Blazor.Primitive.Components.Controls.Widgets.Updates.Slider />
+-->
+
+<!-- 
+@for (int i = 1; i <= 4; i++)
+{
+int i2 = i ; // Not captured ...
+  <input type="range"
+       min="0"
+       max="100"
+       orient="horizontal"
+       step="10"
+       title="My slider"
+       @oninput="(e)=>OnSliderChanged(i2,e)" />
+}
+-->
+
+<hr />
+
+@{
+  // int iSlider = 0 ;
+}
+@foreach ( var slider in Sliders )
+{
+  // If we avoid using a 'for' to step through the array,
+  // we can avoid having to take a copy of the index
+  // which would otherwise be necessary to get around
+  // the unintuitive behaviour of Lambda Capture ...
+  // int jSlider = iSlider ;
+  <input
+    type     = "range"
+    orient   = "horizontal"
+    min      = "@slider.Min"
+    max      = "@slider.Max"
+    step     = "@slider.Step"
+    value    = "@slider.Value"
+    @oninput = "(e)=>OnSliderChanged(slider,e)"
+  />
+  // iSlider++ ; 
+}
+
+<p>Sliders : @SliderValues</p>
+
+<p>Mapper : @MapperValues</p>
+
+<hr />
+
+<canvas @ref="@m_canvasRef_original"
+        width="@Width"
+        height="@Height"
+        style="background:yellow;" 
+/>
+
+<hr />
+
+<canvas @ref="@m_canvasRef_mapped"
+        width="@Width"
+        height="@Height"
+        style="background:lightblue;" 
+/>
+
+<hr />
+
+<PixelMappingProfileGraph 
+  @ref = "m_pixelMappingProfileGraph"
+  XValues="@MapperValuesX" 
+  YValues="@MapperValuesY"
+  ReferencePointsAlongX="@MapperMinAndMax" 
+/>
+

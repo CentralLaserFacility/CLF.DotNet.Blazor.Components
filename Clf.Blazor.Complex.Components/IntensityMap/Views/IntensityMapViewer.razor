@@ -1,0 +1,114 @@
+@using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Common.FilePicker;
+
+@inherits WidgetBase
+@implements IDisposable
+
+
+<!-- 
+
+      +---------+---------------------------------+-----------+
+      |                        T                              |
+      +---------+---------------------------------+-----------+
+      |         |                                 |           |
+      |    A    |              B                  |     C     |
+      |         |                                 |           |      Overall size fills available area
+      |         |                                 |           |      That is :
+      |         |                                 |           |        'B' is variable size
+      |         |                                 |           |        'A' height is variable
+      |         |                                 |           |        'C' height is variable
+      |         |                                 |           |        'E' width  is variable
+      |         |                                 |           |
+      +---------+---------------------------------+           + ---
+      |         |                                 |           |  |
+      |    D    |              E                  |           | 100px
+      |         |                                 |           |  |
+      +---------+---------------------------------+-----------+ ---
+      |         |                                 |           |
+      |  100px  |                                 |   300px   |
+
+   Area           Content
+   |              |
+   T              Title
+   A              VerticalProfileGraph
+   B              Image display
+   C              Panels (stacked vertically)
+   D              Miscellaneous
+   E              HorizontalProfileGraph
+
+-->
+
+<!-- 
+  Hello
+</GroupBox>
+-->
+@*width                 : @(IntensityMapViewer.TotalWidth+"px") ;*@
+@{
+  int a = 0;
+}
+<div 
+  class = "imv-main"
+  style = "  
+    grid-template-columns : @(ViewModels.IntensityMapViewerViewModel.GraphHeight+"px")     @(ViewModel.DisplaySize.Width.ToString())px auto ;
+    grid-template-rows    : auto @(ViewModel.DisplaySize.Height+"px") @(ViewModels.IntensityMapViewerViewModel.GraphHeight+"px") auto ;
+  "
+>
+  <div class="imv-t">
+    <!--
+    Intensity Map : PV = '@ViewModel.PvPrefix' Stream = '@ViewModel.StreamPrefix'
+    -->
+      <TextUpdate ViewModel="@ViewModel.UserName" />
+      <Led ViewModel="@ViewModel.CameraStatus" />
+  </div>
+
+    <div class="imv-a">
+    <!-- 
+    -->
+        <IntensityMapVerticalProfileGraphPanel ViewModel="@ViewModel.VerticalProfileGraph" />
+    </div>
+    <div class="imv-b">
+        <ImageViewer ViewModel = "@ViewModel.IntensityMapImage.ImageViewer" />
+    </div>
+  <div class="imv-c" style="height: @($"{ViewModel.DisplaySize.Height+ViewModels.IntensityMapViewerViewModel.GraphHeight}px");">
+    <IntensityMapFixedDisplayPanel ViewModel="@ViewModel.FixedDisplay" />
+    <IntensityMapFeatures ViewModel="@ViewModel.Features" />
+    <!-- 
+    -->
+  </div>
+  <div class="imv-d">
+    <!-- 
+    <SpinnerWithSlider />
+    -->
+  </div>
+  <div class="imv-e">
+    <!-- 
+    -->
+    <IntensityMapHorizontalProfileGraphPanel ViewModel="@ViewModel.HorizontalProfileGraph"/>
+  </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public ViewModels.IntensityMapViewerViewModel ViewModel { get ; set ; }
+
+    protected override void OnInitialized ( )
+    {
+        base.OnInitialized() ;
+        if (ViewModel != null)
+            ViewModel.PropertyChanged += OnPropertyChanged;
+    }
+
+    void IDisposable.Dispose()
+    {
+        if (ViewModel != null)
+        {
+            ViewModel.PropertyChanged -= OnPropertyChanged;
+            ViewModel.Dispose();
+        }
+            
+    }
+}

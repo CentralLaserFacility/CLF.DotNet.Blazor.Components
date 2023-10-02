@@ -1,0 +1,125 @@
+﻿@page "/choice-button-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Common.ImageProcessing;
+@using System.Collections.ObjectModel;
+
+<h3>Choice Button Examples</h3>
+
+<table>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Horizontal</th>
+    <th scope="col">Vertical</th>
+  </tr>
+  <tr>
+    <th scope="row">Default</th>
+    <td><ChoiceButton ViewModel="@_defaultChoiceButton" /></td>
+    <td><ChoiceButton ViewModel="@_defaultVerticalChoiceButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><ChoiceButton ViewModel="@_notConnectedChoiceButton" /></td>
+    <td><ChoiceButton ViewModel="@_notConnectedVerticalChoiceButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><ChoiceButton ViewModel="@_minorAlarmChoiceButton" /></td>
+    <td><ChoiceButton ViewModel="@_minorAlarmVerticalChoiceButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><ChoiceButton ViewModel="@_majorAlarmChoiceButton" /></td>
+    <td><ChoiceButton ViewModel="@_majorAlarmVerticalChoiceButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><ChoiceButton ViewModel="@_invalidChoiceButton" /></td>
+    <td><ChoiceButton ViewModel="@_invalidVerticalChoiceButton" /></td>
+  </tr>
+
+</table>
+<div style="height:100px"></div>
+
+
+@code {
+
+  private static ObservableCollection<string> items = new ObservableCollection<string> {
+      "Option 1",
+      "Option 2",
+      "Option 3"
+  };
+
+  private ChoiceButtonViewModel _defaultChoiceButton = new ChoiceButtonViewModel(
+          items: items,
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Default Horizontal",
+          isHorizontal: true
+  );
+
+  private ChoiceButtonViewModel _notConnectedChoiceButton = new ChoiceButtonViewModel(
+        items: items,
+        borderStatus: BorderStatus.NotConnected,
+        tooltipText: "Default Horizontal",
+        isHorizontal: true
+  );
+
+  private ChoiceButtonViewModel _minorAlarmChoiceButton = new ChoiceButtonViewModel(
+        items: items,
+        borderStatus: BorderStatus.MinorAlarm,
+        tooltipText: "Default Horizontal",
+        isHorizontal: true
+  );
+
+  private ChoiceButtonViewModel _majorAlarmChoiceButton = new ChoiceButtonViewModel(
+        items: items,
+        borderStatus: BorderStatus.MajorAlarm,
+        tooltipText: "Default Horizontal",
+        isHorizontal: true
+  );
+
+  private ChoiceButtonViewModel _invalidChoiceButton = new ChoiceButtonViewModel(
+        items: items,
+        borderStatus: BorderStatus.Invalid,
+        tooltipText: "Default Horizontal",
+        isHorizontal: true
+  );
+
+
+  // Vertical
+  private ChoiceButtonViewModel _defaultVerticalChoiceButton = new ChoiceButtonViewModel(
+         items: items,
+          tooltipText: "Default Vertical",
+         borderStatus: BorderStatus.Connected
+   );
+
+  private ChoiceButtonViewModel _notConnectedVerticalChoiceButton = new ChoiceButtonViewModel(
+      items: items,
+          tooltipText: "Default Vertical",
+      borderStatus: BorderStatus.NotConnected
+  );
+
+  private ChoiceButtonViewModel _minorAlarmVerticalChoiceButton = new ChoiceButtonViewModel(
+       items: items,
+          tooltipText: "Default Vertical",
+       borderStatus: BorderStatus.MinorAlarm
+   );
+
+  private ChoiceButtonViewModel _majorAlarmVerticalChoiceButton = new ChoiceButtonViewModel(
+      items: items,
+          tooltipText: "Default Vertical",
+      borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private ChoiceButtonViewModel _invalidVerticalChoiceButton = new ChoiceButtonViewModel(
+       items: items,
+          tooltipText: "Default Vertical",
+       borderStatus: BorderStatus.Invalid
+   );
+
+}

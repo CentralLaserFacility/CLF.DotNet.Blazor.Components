@@ -1,0 +1,117 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Common.Arithmatic;
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <div class="slider-wrapper @Class" style="--slider-width:@GetWidth(); --slider-height:@GetHeight();
+                    --slider-selected-percentage:@($"{DraggedPercentage}%");">
+      <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+        <div class="range @RangeClass" disabled=@ViewModel.GetDisableStatus() show-ticks="@ViewModel.ShowTicks" style="--step: @ViewModel.TickInterval; --min:@ViewModel.Minimum; --max:@ViewModel.Maximum; --value:@DraggedValue;">
+          <input type="range"
+                 min="@ViewModel.Minimum"
+                 max="@ViewModel.Maximum"
+                 value="@ViewModel.Value"
+                 step="@ViewModel.Increment"
+                 disabled=@ViewModel.GetDisableStatus()
+                 list="tick-marks"
+          @oninput="UpdateSelectedPercentage"
+          @onchange="ViewModel.OnSliderValueChange" />
+          @if (ViewModel.ShowValue)
+          {
+            <output>@DraggedValue</output>
+          }
+        </div>
+      </Tooltip>
+      @if (ViewModel.ShowSpinner)
+      {
+        <div @onkeydown="OnSpinnerKeyDown">
+          <Spinner class="@($"slider-value {SpinnerClass}")" ViewModel="ViewModel.SpinnerViewModel" />
+        </div>
+      }
+    </div>
+  </Alarm>
+}
+
+@code {
+
+  [Parameter]
+  public SliderViewModel ViewModel { get; set; } = new SliderViewModel();
+
+  [Parameter]
+  public string SpinnerClass { get; set; } = "";
+
+  [Parameter]
+  public string RangeClass { get; set; } = "";
+
+  public double DraggedValue { get; set; }
+  public int DraggedPercentage => (int)Math.Floor((DraggedValue - ViewModel.Minimum) / (ViewModel.Maximum - ViewModel.Minimum) * 100);
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    SetValuePercentage(ViewModel.Value);
+    ViewModel.PropertyChanged += OnValuePropertyChanged;
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private void UpdateSelectedPercentage(ChangeEventArgs e)
+  {
+    SetValuePercentage(Converters.GetDoubleFromObject(e.Value));
+  }
+
+  private void SetValuePercentage(double value)
+  {
+    DraggedValue = value;
+    ViewModel.SpinnerViewModel.Value = DraggedValue;
+  }
+
+  private void OnValuePropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  {
+    switch (e.PropertyName)
+    {
+      case nameof(ViewModel.Value):
+        SetValuePercentage(ViewModel.Value);
+        break;
+      default:
+        break;
+    }
+    // we don't need InvokeAsync(StateHasChanged); in this case
+    // becuase the next method that will be triggered is OnPropertyChanged
+    // that already has InvokeAsync(StateHasChanged);
+
+  }
+
+  public void OnSpinnerKeyDown(KeyboardEventArgs e)
+  {
+    if ((e.Code == "Enter" || e.Code == "NumpadEnter"))
+    {
+      if (ViewModel.SpinnerViewModel != null)
+        ViewModel.Value = ViewModel.SpinnerViewModel.Value;
+    }
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-slider-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-slider-default-height)";
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnValuePropertyChanged;
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

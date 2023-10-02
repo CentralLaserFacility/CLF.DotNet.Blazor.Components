@@ -1,0 +1,49 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+
+<Tabs Direction="Direction.Vertical">
+    <Tab Title="Display" Name="display" > 
+        <IntensityMapFeatures_DisplayTab ViewModel="@ViewModel.DisplayTab" />
+    </Tab>
+    <Tab Title="Acquisition" Name="acquisition">
+        <IntensityMapFeatures_AcquisitionTab ViewModel="@ViewModel.AcquisitionTab" />
+    </Tab>
+    <Tab Title="ROI" Name="roi">
+        <IntensityMapFeatures_ROITab ViewModel="@ViewModel.ROITab" />
+    </Tab>
+    <Tab Title="Binning" Name="binning">
+        <IntensityMapFeatures_BinningTab ViewModel="@ViewModel.BinningTab" />
+    </Tab>
+    <Tab Title="Centroid" Name="centroid">
+        <IntensityMapFeatures_CentroidTab ViewModel="@ViewModel.CentroidTab" />
+    </Tab>
+    <Tab Title="Overlay" Name="overlay">
+        <IntensityMapFeatures_OverlayTab ViewModel="@ViewModel.OverlayTab" />
+    </Tab>
+    <Tab Title="Background" Name="background">
+        <IntensityMapFeatures_BackgroundTab ViewModel="@ViewModel.BackgroundTab" />
+    </Tab>
+    <Tab Title="Transform" Name="transform">
+        <IntensityMapFeatures_TransformTab ViewModel="@ViewModel.TransformTab" />
+    </Tab>
+    <Tab Title="Statistics" Name="statistics">
+        <IntensityMapFeatures_StatisticsTab ViewModel="@ViewModel.StatisticsTab" />
+    </Tab>
+    <Tab Title="Kafka" Name="kafka">
+        @*<IntensityMapFeatures_KafkaTab ViewModel="@ViewModel.KafkaTab" />*@
+    </Tab>
+    <Tab Title="HDF5" Name="hdf5">
+        @*<IntensityMapFeatures_HDF5Tab ViewModel="@ViewModel.HDF5Tab" />*@
+    </Tab>
+    <Tab Title="Camera Info" Name="camerainfo">
+        <IntensityMapFeatures_CameraInfoTab ViewModel="@ViewModel.CameraInfoTab" />
+    </Tab>
+    <Tab Title="Advanced" Name="advanced">
+        <IntensityMapFeatures_AdvancedTab ViewModel="@ViewModel.AdvancedTab" />
+    </Tab>
+</Tabs>
+
+@code {
+    [Parameter]
+    public ViewModels.IntensityMapFeaturesViewModel ViewModel { get; set; }
+}

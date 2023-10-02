@@ -1,0 +1,125 @@
+﻿
+/* Tabs */
+.tabs {
+    width: fit-content;
+    display: flex;
+}
+
+.tabs-hor {
+    flex-direction: column;
+}
+
+.tabs-ver {
+    flex-direction: row;
+}
+
+/* Tab Container */
+.tabs-menu {
+  gap: var(--clf-tab-gap);
+  display: inline-flex;
+}
+
+.tabs-hor > .tabs-menu {
+  flex-direction: row;
+}
+
+.tabs-ver > .tabs-menu {
+  flex-direction: column;
+}
+
+/* Tab */
+.tab {
+  background-color: var(--clf-tab-background-color);
+  color: var(--clf-tab-colour);
+  padding: var(--clf-tab-padding);
+  cursor: pointer;
+  position: relative;
+  border: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+  font-size: var(--clf-tab-font-size);
+}
+
+.tabs-hor .tab {
+  top: var(--clf-tab-offset);
+  border-top-left-radius: var(--clf-tab-radius);
+  border-top-right-radius: var(--clf-tab-radius);
+}
+
+.tabs-ver .tab {
+  left: var(--clf-tab-offset);
+  border-top-left-radius: var(--clf-tab-radius);
+  border-bottom-left-radius: var(--clf-tab-radius);
+}
+
+
+/* Tab Hover */
+.tab:hover {
+    background-color: var(--clf-tab-hover-background-color);
+}
+
+/* Tab Active */
+.tab-active {
+    font-weight: bold;
+    background-color: var(--clf-tab-active-background-color)!important;
+    z-index: 3;
+    
+}
+.tabs-hor .tab-active {
+  border-bottom: 0px;
+}
+
+.tabs-ver .tab-active {
+  border-right: 0px;
+}
+
+/* Tab Disabled */
+.tab-disabled {
+  pointer-events: none;
+  filter: var(--clf-disabled-filter);
+}
+
+/* Tab Content Padder */
+/* Used to hide the bottom border of tabs */
+.tab-content-padder {
+  background-color: var(--clf-tab-content-background-color);
+  position: relative;
+  z-index: 2;
+}
+
+.tabs-hor .tab-content-padder {
+  width: 100%;
+  border-top: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+}
+
+.tabs-ver .tab-content-padder {
+  height: 100%;
+  border-right: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+}
+
+
+/*Tab Content*/
+.tab-content {
+  background-color: var(--clf-tab-content-background-color);
+  border: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+  display: flex;
+}
+
+.tabs-hor .tab-content {
+  border-radius: var(--clf-tab-radius);
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  flex-direction: column;
+  border-top: 0px;
+}
+
+.tabs-ver .tab-content {
+  border-radius: var(--clf-tab-radius);
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  flex-direction: row;
+  border-left: 0px;
+}
+
+/* Tab Body */
+.tab-body {
+    padding: var(--clf-tab-content-padding);
+}

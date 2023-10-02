@@ -1,0 +1,58 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "acquisition-tab">
+    <div style="grid-column:1;">
+        <label>Acquire</label>
+    </div>
+    <div style="grid-column:2;">
+        <ActionButton ViewModel="@ViewModel.StartAcquisition" />
+        <ActionButton ViewModel="@ViewModel.StopAcquisition" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.AcquisitionStatusRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>TriggerSource</label>
+    </div>
+    <div style="grid-column:2;">
+        <ComboBox ViewModel="@ViewModel.TriggerSource" />
+    </div>
+    <div style="grid-column:3;">
+        <ActionButton ViewModel="@ViewModel.SoftwareTrigger" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Exposure Time (ms)</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.ExposureTimeSet" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.ExposureTimeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Gain</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.GainSet" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.GainRBV" />
+    </div>
+  </div>
+
+@code {
+    [Parameter]
+    public ViewModels.IntensityMapFeatures_AcquisitionTabViewModel ViewModel { get; set; }
+}
+

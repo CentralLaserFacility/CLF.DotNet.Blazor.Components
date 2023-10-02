@@ -1,0 +1,40 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+
+<!-- 
+<h3>SpinnerWithSlider</h3>
+-->
+
+<div	
+  style = "
+		position       : relative;
+		display        : inline-flex ;
+		flex-direction : row ;
+    gap            : 10px ;
+	"
+>
+  <!-- 
+  <GroupBox ViewModel="@ViewModel.GroupBox">
+  </GroupBox>
+  -->
+    <!--
+    <Label ViewModel="@ViewModel.Label"/>
+    -->
+    <div>
+      <Slider  ViewModel="@ViewModel.Slider"/>
+    </div>
+    <div>
+      <Spinner ViewModel="@ViewModel.Spinner"/>
+    </div>   
+    
+    @*<TextUpdate ViewModel="@ViewModel.TextUpdate"/>*@
+</div>
+

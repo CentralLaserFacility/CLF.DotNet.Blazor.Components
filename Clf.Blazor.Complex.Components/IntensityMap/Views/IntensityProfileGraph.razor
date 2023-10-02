@@ -1,0 +1,197 @@
+﻿@using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using System.Globalization
+@inherits WidgetBase
+@implements IDisposable
+
+@if ( ViewModel.IsVisible )
+{
+
+  <div 
+    style = " 
+     display    : inline-block ;
+     box-shadow : @($"0 0 0 2px {ViewModel.ComputeBorderColourFromPvStatuses()}") ;
+    "
+    title = "@(
+      ViewModel.ShowTooltip 
+      ? ViewModel.TooltipText 
+      : string.Empty
+    )"
+  >
+
+    <!--
+      If the 'viewbox' of the SVG element isn't specified,
+      it defaults to the equivalent of '0 0 width height'
+    -->
+
+    <svg 
+      xmlns   = "http://www.w3.org/2000/svg" 
+      width   = "@ViewModel.Width" 
+      height  = "@ViewModel.Height"
+      viewBox = "0 0 @(ViewModel.Width) @(ViewModel.Height)"
+    >
+      <style type="text/css">
+        text {
+          font : @ViewModel.HtmlFontString ;
+        }
+      </style>
+
+      @if ( ViewModel.ShowGrid )
+      {
+        @foreach ( double x in ViewModel.XDataTickCoordinates )
+        {
+          @* Draw a vertical line at 'x' *@
+          <line 
+            x1 =               "@ViewModel.GetDataPositionInViewCoordinates_X(x)" 
+            x2 =               "@ViewModel.GetDataPositionInViewCoordinates_X(x)" 
+            y1 =               "0" 
+            y2 =               "@ViewModel.Height" 
+            stroke-dasharray = "4" 
+            stroke           = "grey"
+          />
+        }
+        @foreach ( double y in ViewModel.YDataTickCoordinates )
+        {
+          @* Draw a horizontal line at 'y' *@
+          <line 
+            x1               = "0" 
+            x2               = "@ViewModel.Width" 
+            y1               = "@ViewModel.GetDataPositionInViewCoordinates_Y(y)" 
+            y2               = "@ViewModel.GetDataPositionInViewCoordinates_Y(y)" 
+            stroke-dasharray = "4" 
+            stroke           = "grey"
+          />
+        }
+      }
+
+      @* Draw an X-axis solid line, horizontal along the bottom edge *@
+
+      <line 
+        x1           = "0" 
+        y1           = "@ViewModel.Height" 
+        x2           = "@ViewModel.Width" 
+        y2           = "@ViewModel.Height" 
+        stroke-width = "4"
+        stroke       = "black"
+      />
+
+      @* Draw a Y-axis solid line, vertical along the left edge *@
+
+      <line 
+        x1           = "0" 
+        y1           = "0" 
+        x2           = "0" 
+        y2           = "@ViewModel.Height" 
+        stroke-width = "4"
+        stroke       = "black"
+      />
+
+      @if ( ViewModel.ErrorMessageLines.Any() )
+      {
+
+        @* Show an error message instead of the graph plot *@
+
+        <!-- 
+          As an alternative to drawing our text with SVG, 
+          we could use a <foreignObject> element and HTML ...
+        -->
+        <rect 
+          x      = "0" 
+          y      = "0" 
+          width  = "@ViewModel.Width" 
+          height = "@ViewModel.Height"
+          style  = "
+            fill    : white ;
+            opacity : 0.5 ;
+          "
+        ></rect>
+        int iLine = 1 ;
+        @foreach ( string errorMessageLine in ViewModel.ErrorMessageLines )
+        {
+          <text>
+            <text 
+              x     = "@( 20            )" 
+              y     = "@( 20 + iLine*14 )" 
+              style = "
+                fill : red ;
+              "
+            >
+              @errorMessageLine
+            </text>
+          </text>
+          iLine++ ;
+        }
+      }
+      else
+      {
+
+        @* Plot the data *@
+
+        @if ( ViewModel.GraphType == GraphType.Line )
+        {
+          <polyline 
+            points       = "@ViewModel.GraphPointsString" 
+            stroke       = "@ViewModel.TraceColor.HtmlRgbaString" 
+            fill         = "none" 
+            stroke-width = "@ViewModel.TraceWidth"
+          />
+        }
+        else if ( ViewModel.GraphType == GraphType.Area )
+        {
+          <polygon 
+            points = "@ViewModel.GraphPointsString" 
+            stroke = "@ViewModel.TraceColor.HtmlRgbaString" 
+            fill   = "@ViewModel.TraceColor.HtmlRgbaString"
+          />
+        }
+        
+      }
+
+    </svg>
+
+  </div>
+}
+
+@code {
+
+  // Hmm, the 'Dispose' logic still needs some work ...
+
+  private ViewModels.IntensityProfileGraphViewModel m_viewModel = null! ;
+
+  [Parameter]
+  public ViewModels.IntensityProfileGraphViewModel ViewModel 
+  { 
+    get => m_viewModel ; 
+    set {
+      if ( m_viewModel != null )
+      {
+        m_viewModel.PropertyChanged -= OnPropertyChanged ;
+      }
+      m_viewModel = value ;
+      if ( m_viewModel != null )
+      {
+        m_viewModel.PropertyChanged += OnPropertyChanged ;
+      }
+    }
+  }
+
+  public IntensityProfileGraph ( )
+  {
+    // Useful for putting a breakpoint ...
+  }
+
+  protected override void OnInitialized ( )
+  {
+    base.OnInitialized() ;
+    ViewModel.PropertyChanged += OnPropertyChanged ;
+  }
+
+  void IDisposable.Dispose ( )
+  {
+    m_viewModel.PropertyChanged -= OnPropertyChanged ;
+  }
+
+}
+

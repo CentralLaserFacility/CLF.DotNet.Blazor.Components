@@ -1,0 +1,38 @@
+﻿@page "/modal-dialog-examples"
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers;
+@using Basic.Components.Controls.Models;
+
+<div class="main-container">
+
+    <h3>ModalDialogExamples</h3>
+    <button @onclick="@_modalDialog.Open"> Modal Dialog </button>
+    <button @onclick=@_modalDialogMultipleButton.Open>Modal Dialog with buttons </button>
+    <ModalDialog ViewModel="@_modalDialog"></ModalDialog>
+    <ModalDialog ViewModel = "@_modalDialogMultipleButton"></ModalDialog>
+    </div>
+
+@code {
+
+  private ModalDialogViewModel _modalDialog = new ModalDialogViewModel(
+      title: "Popup",
+      bodyText:"This is the First popup",
+      type: ModalTypes.OneButton,
+      button1Text:"Close"
+  );
+
+  private ModalDialogViewModel _modalDialogMultipleButton = new ModalDialogViewModel(
+      title: "Popup With Multiple Buttons",
+      bodyText: " This is the popup with multiple Buttons with options to add more features to it",
+      type: ModalTypes.TwoButtons,
+      button1Text: "Close",
+      button2Text: "Ok"
+  );
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    _modalDialogMultipleButton.OnModalDialogButton1Clicked = _modalDialogMultipleButton.Close;
+  }
+
+}

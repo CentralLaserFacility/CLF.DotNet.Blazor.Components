@@ -1,0 +1,282 @@
+﻿@page "/multi-state-led-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors;
+@using Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors.MultiStateLedWidget
+
+<h3>MultiStateLed</h3>
+<div>
+  <table>
+    <tr>
+      <th scope="col"></th>
+      <th colspan="1" scope="colgroup">Round</th>
+      <th colspan="1" scope="colgroup">Rectangle</th>
+    </tr>
+    <tr>
+      <th scope="row">On</th>
+      <td>
+      <MultiStateLed ViewModel="@_on">
+        <LedState Type="MultiStateLedType.On" Value="1"/>
+      </MultiStateLed>  
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareOn">
+        <LedState Type="MultiStateLedType.On" Value="1" Label="ON"/>
+      </MultiStateLed>  
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Off</th>
+      <td>
+        <MultiStateLed ViewModel="@_off">
+          <LedState Type="MultiStateLedType.Off" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareOff">
+          <LedState Type="MultiStateLedType.Off" Value="1" Label="Off"/>
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Warning</th>
+      <td>
+        <MultiStateLed ViewModel="@_warning">
+          <LedState Type="MultiStateLedType.Warning" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareWarning">
+          <LedState Type="MultiStateLedType.Warning" Value="1" Label="Warning" />
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Error</th>
+      <td>
+        <MultiStateLed ViewModel="@_error">
+          <LedState Type="MultiStateLedType.Error" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareError">
+          <LedState Type="MultiStateLedType.Error" Value="1" Label="Error"/>
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Invalid</th>
+      <td>
+        <MultiStateLed ViewModel="@_invalid">
+          <LedState Type="MultiStateLedType.Invalid" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareInvalid">
+          <LedState Type="MultiStateLedType.Invalid" Value="1" Label="Invalid"/>
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">FallBack</th>
+      <td>
+        <MultiStateLed ViewModel="@_fallback">
+          <LedState Type="MultiStateLedType.On" Value="" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareFallback">
+          <LedState Type="MultiStateLedType.On" Value="" />
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Custom</th>
+      <td>
+        <MultiStateLed ViewModel="@_custom">
+          <LedState Type="MultiStateLedType.On" Value="1" Colour="Aqua" IconId="clf_ic_glasses_24_regular" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareCustom">
+          <LedState Type="MultiStateLedType.On" Value="1" Label="Custom" Colour="Aqua" IconId="clf_ic_glasses_24_regular" />
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Blinking</th>
+      <td>
+        <MultiStateLed ViewModel="@_blinking" >
+          <LedState Type="MultiStateLedType.On" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareBlinking" >
+          <LedState Type="MultiStateLedType.On" Value="1" Label="Blinking" />
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">NotConnected</th>
+      <td>
+        <MultiStateLed ViewModel="@_notConnected">
+          <LedState Type="MultiStateLedType.On" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squarenotConnected">
+          <LedState Type="MultiStateLedType.On" Value="1" Label="NotConnected" />
+        </MultiStateLed>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Invalid Alarm</th>
+      <td>
+        <MultiStateLed ViewModel="@_invalidAlarm">
+          <LedState Type="MultiStateLedType.On" Value="1" />
+        </MultiStateLed>
+      </td>
+      <td>
+        <MultiStateLed Class="led-rectangle" ViewModel="@_squareinvalidAlarm">
+          <LedState Type="MultiStateLedType.On" Value="1" Label="InvalidAlarm" />
+        </MultiStateLed>
+      </td>
+    </tr>
+  </table>
+</div>
+
+@code {
+
+  private MultiStateLedViewModel _on = new MultiStateLedViewModel(
+      borderStatus: BorderStatus.Connected,
+      ledValue: "1",
+      tooltipText: "On"
+    );
+
+  private MultiStateLedViewModel _squareOn = new MultiStateLedViewModel(
+    borderStatus:BorderStatus.Connected,
+    ledValue:"1",
+    tooltipText:"Square On",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _off = new MultiStateLedViewModel(
+      borderStatus: BorderStatus.Connected,
+      ledValue: "1",
+      tooltipText: "Off"
+    );
+
+  private MultiStateLedViewModel _squareOff = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Off",
+    isSquare: true
+  );
+  private MultiStateLedViewModel _warning = new MultiStateLedViewModel(
+      borderStatus: BorderStatus.Connected,
+      ledValue: "1",
+      tooltipText: "Warning"
+    );
+
+  private MultiStateLedViewModel _squareWarning = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Warning",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _error = new MultiStateLedViewModel(
+     borderStatus: BorderStatus.Connected,
+     ledValue: "1",
+     tooltipText: "Error"
+   );
+
+  private MultiStateLedViewModel _squareError= new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Error",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _invalid = new MultiStateLedViewModel(
+     borderStatus: BorderStatus.Connected,
+     ledValue: "1",
+     tooltipText: "Invalid"
+   );
+
+  private MultiStateLedViewModel _squareInvalid= new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Invalid",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _fallback = new MultiStateLedViewModel(
+     borderStatus: BorderStatus.Connected,
+     ledValue: "1",
+     tooltipText: "Fallback"
+   );
+
+  private MultiStateLedViewModel _squareFallback = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Fallback",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _custom = new MultiStateLedViewModel(
+       borderStatus: BorderStatus.Connected,
+       ledValue: "1",
+       tooltipText: "Custom"
+     );
+
+  private MultiStateLedViewModel _squareCustom = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Custom",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _blinking = new MultiStateLedViewModel(
+       borderStatus: BorderStatus.Connected,
+       ledValue: "1",
+       tooltipText: "Blinking",
+       ledBlink:true
+     );
+
+  private MultiStateLedViewModel _squareBlinking = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Connected,
+    ledValue: "1",
+    tooltipText: "Square Blinking",
+    isSquare: true,
+    ledBlink: true
+  );
+
+  private MultiStateLedViewModel _notConnected = new MultiStateLedViewModel(
+       borderStatus: BorderStatus.NotConnected,
+       ledValue: "1",
+       tooltipText: "Not Connected"
+     );
+
+  private MultiStateLedViewModel _squarenotConnected = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    ledValue: "1",
+    tooltipText: "Square Not Connected",
+    isSquare: true
+  );
+
+  private MultiStateLedViewModel _invalidAlarm = new MultiStateLedViewModel(
+      borderStatus: BorderStatus.Invalid,
+      ledValue: "1",
+      tooltipText: "Invalid"
+    );
+
+  private MultiStateLedViewModel _squareinvalidAlarm = new MultiStateLedViewModel(
+    borderStatus: BorderStatus.Invalid,
+    ledValue: "1",
+    tooltipText: "Square Invalid",
+    isSquare: true
+  );
+}
+

@@ -1,0 +1,59 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using System.Collections.Specialized
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <select class="@Class"
+              style="--combo-box-width:@GetWidth(); --combo-box-height:@GetHeight();"
+              value="@ViewModel.SelectedItem"
+              disabled="@ViewModel.GetDisableStatus()"
+              onchange="@((ChangeEventArgs e) => {ViewModel.SelectedItem = e.Value.ToString(); ViewModel?.WriteSelectedItemToPV(); ViewModel?.OnSelectionChange();})">
+
+        @foreach (var item in ViewModel.Items)
+        {
+          <option>
+            @item
+          </option>
+        }
+      </select>
+    </Tooltip>
+  </Alarm>
+}
+
+@code {
+  [Parameter]
+  public ComboBoxViewModel ViewModel { get; set; } = new ComboBoxViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+    ViewModel.Items.CollectionChanged += OnItemsCollectionChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-combo-box-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-combo-box-default-height)";
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+    ViewModel.Items.CollectionChanged -= OnItemsCollectionChanged;
+  }
+
+}

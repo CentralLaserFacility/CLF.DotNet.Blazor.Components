@@ -1,0 +1,209 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Common.ImageProcessing;
+@using Microsoft.AspNetCore.Components.Web
+@using System.Text;
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <div class="led-wrapper">
+    <Alarm class="@(ViewModel.IsSquare?"":"alarm-round")" IconClass="@(ViewModel.IsSquare?"":"alarm-icon-position")" BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <div class="@GetLedCssClasses() @GetLedBlinkingCssClass() @Class" disabled="@Utilities.GetBorderStatusDisable(ViewModel.BorderStatus)"
+             style="background-color:@GetLedBackgroundColour(); --offColor:@GetOffColour();
+                --led-width:@GetLedWidth(); --led-height:@GetLedHeight();">
+
+          @if (ViewModel.LedValue == true)
+          {
+            //If there is custom view for Led On state
+            @if (LedOn != null)
+            {
+              @LedOn
+            }
+            //Otherwise use the LedType property from View model to render the appropriate UI for Led On state
+            else
+            {
+              <div class="led-content @GetLedContentColourClass()">
+                @if (ViewModel.ShowIcon && ViewModel.IsSquare == false)
+                {
+                  <SingleColourIcon class="led-icon" IconId="@GetLedIconId()" />
+                }
+                @if (ViewModel.IsSquare && !string.IsNullOrEmpty(ViewModel.OnLabel))
+                {
+                  <span>@ViewModel.OnLabel</span>
+                }
+              </div>
+            }
+          }
+          else
+          {
+            //If there is custom view for Led Off state
+            @if (LedOff != null)
+            {
+              @LedOff
+            }
+            //Otherwise use the LedType property from View model to render the appropriate UI for Led Off state
+            else
+            {
+              <div class="led-content @GetLedContentColourClass()">
+                @if (ViewModel.ShowIcon && ViewModel.IsSquare == false)
+                {
+                  <SingleColourIcon class="led-icon" IconId="@GetLedIconId()" />
+                }
+                @if (ViewModel.IsSquare && !string.IsNullOrEmpty(ViewModel.OffLabel))
+                {
+                  <span>@ViewModel.OffLabel</span>
+                }
+              </div>
+            }
+          }
+        </div>
+      </Tooltip>
+    </Alarm>
+  </div>
+}
+
+@code
+{
+  [Parameter]
+  public LedViewModel ViewModel { get; set; } = new LedViewModel();
+
+  [Parameter]
+  public RenderFragment? LedOn { get; set; }
+
+  [Parameter]
+  public RenderFragment? LedOff { get; set; }
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetLedCssClasses()
+  {
+    StringBuilder ledCssStringBuilder = new StringBuilder("led-main");
+    if (ViewModel.IsSquare)
+      ledCssStringBuilder.Append(" led-square");
+
+    return ledCssStringBuilder.ToString();
+  }
+
+  private string GetLedBlinkingCssClass()
+  {
+    if (ViewModel.LedValue && ViewModel.IsBlink)
+      return "led-blink";
+    else
+      return "";
+  }
+
+  private string GetLedBackgroundColour()
+  {
+    return (ViewModel.LedValue == true ?
+              ViewModel.OnColor != null ? ViewModel.OnColor.HtmlRgbaString : GetCssVariableForLedBackgroundColour(true)
+            : ViewModel.OffColor != null ? ViewModel.OffColor.HtmlRgbaString : GetCssVariableForLedBackgroundColour(false));
+  }
+
+  private string GetOffColour()
+  {
+    return ViewModel.OffColor != null ? ViewModel.OffColor.HtmlRgbaString : GetCssVariableForLedBackgroundColour(false);
+  }
+
+  private string GetLedWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-led-default-width)";
+  }
+
+  private string GetLedHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-led-default-height)";
+  }
+
+  private string GetCssVariableForLedBackgroundColour(bool ledValue)
+  {
+    StringBuilder cssVariableStringBuilder = new StringBuilder("var(--clf-led-");
+
+    switch (ViewModel.LedType)
+    {
+      case LedType.Error:
+        cssVariableStringBuilder.Append("error-");
+        break;
+      case LedType.Warning:
+        cssVariableStringBuilder.Append("warning-");
+        break;
+      case LedType.Binary:
+        cssVariableStringBuilder.Append("binary-");
+        break;
+      case LedType.Default:
+      default:
+        cssVariableStringBuilder.Append("default-");
+        break;
+    }
+
+    if (ledValue == true)
+    {
+      cssVariableStringBuilder.Append("on-colour");
+    }
+    else
+    {
+      cssVariableStringBuilder.Append("off-colour");
+    }
+    cssVariableStringBuilder.Append(")");
+    return cssVariableStringBuilder.ToString();
+  }
+
+  private string GetLedIconId()
+  {
+    switch (ViewModel.LedType)
+    {
+      case LedType.Error:
+        if (ViewModel.LedValue == true)
+          return "clf_ic_dismiss_24_regular";
+        else
+          return "";
+      case LedType.Warning:
+        if (ViewModel.LedValue == true)
+          return "clf_ic_exclamation_24_regular";
+        else
+          return "";
+      case LedType.Binary:
+        if (ViewModel.LedValue == true)
+          return "clf_ic_checkmark_24_regular";
+        else
+          return "clf_ic_dismiss_24_regular";
+      case LedType.Default:
+      default:
+        if (ViewModel.LedValue == true)
+          return "clf_ic_checkmark_24_regular";
+        else
+          return "";
+    }
+  }
+
+  private string GetLedContentColourClass()
+  {
+    string colourClass = "";
+    if (ViewModel.LedValue == true)
+    {
+      if (ViewModel.LedType == LedType.Error)
+        colourClass = "led-content-contrast";
+    }
+    else
+    {
+      colourClass = "led-content-contrast";
+    }
+    return colourClass;
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel!.PropertyChanged -= OnPropertyChanged;
+  }
+}
+

@@ -1,0 +1,560 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M554.551 661.372c0-23.531-19.076-42.611-42.607-42.611-23.535 0-42.611 19.081-42.611 42.611s19.076 42.611 42.611 42.611c23.531 0 42.607-19.081 42.607-42.611z",
+          "M543.492 326.299c-2.129-15.618-15.526-27.645-31.727-27.633-17.677 0.014-31.991 14.353-31.974 32.026l0.154 192.068 0.294 4.343c2.129 15.616 15.531 27.644 31.731 27.631 17.673-0.013 31.987-14.353 31.974-32.026l-0.154-192.068-0.299-4.342z",
+          "M907.413 512.751c0-217.936-176.691-394.668-394.667-394.668-217.974 0-394.666 176.732-394.666 394.668 0 217.933 176.692 394.667 394.666 394.667 217.975 0 394.667-176.734 394.667-394.667z",
+          "M342.927 679.957v-334.416l169.82 284.334 169.822-284.334v334.416"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(255, 255, 255)"
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          },
+          {
+            "fill": "rgb(222, 55, 48)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": true,
+        "grid": 0,
+        "tags": [
+          "ic_machine_safety_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 4
+            },
+            {
+              "f": 4
+            },
+            {
+              "f": 1,
+              "s": 4
+            },
+            {
+              "s": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "fill": "rgb(222, 55, 48)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 136,
+        "id": 6,
+        "name": "ic_machine_safety_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
+          "M311.232 155.301c24.005-24.005 56.562-37.49 90.51-37.49h220.518c33.95 0 66.505 13.486 90.509 37.49l155.93 155.93c24.004 24.005 37.491 56.562 37.491 90.51v220.519c0 33.946-13.487 66.505-37.491 90.509l-155.93 155.93c-24.004 24.004-56.559 37.491-90.509 37.491h-220.518c-33.948 0-66.505-13.487-90.51-37.491l-155.93-155.93c-24.005-24.004-37.49-56.563-37.49-90.509v-220.519c0-33.948 13.486-66.505 37.49-90.51l155.93-155.93z",
+          "M768 768l-512-512"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(222, 55, 48)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "ic_stop_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 1,
+              "s": 4
+            },
+            {
+              "s": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(222, 55, 48)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 137,
+        "id": 5,
+        "name": "ic_stop_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 1
+    },
+    {
+      "icon": {
+        "paths": [
+          "M143.932 575.373c-34.673-34.671-34.673-90.889 0-125.559l305.882-305.882c34.671-34.673 90.889-34.673 125.559 0l305.882 305.882c34.675 34.671 34.675 90.889 0 125.559l-305.882 305.882c-34.671 34.675-90.889 34.675-125.559 0l-305.882-305.882z",
+          "M512.516 662.050c23.599 0 42.726 19.127 42.726 42.722s-19.127 42.722-42.726 42.722c-23.595 0-42.722-19.127-42.722-42.722s19.127-42.722 42.722-42.722zM512.516 288.224c64.887 0 117.491 52.601 117.491 117.488 0 43.184-12.715 67.248-44.911 100.767l-7.198 7.334c-26.569 26.573-33.34 37.854-33.34 62.788 0 17.698-14.345 32.043-32.043 32.043-17.694 0-32.038-14.345-32.038-32.043 0-43.179 12.71-67.247 44.907-100.762l7.198-7.339c26.569-26.569 33.34-37.85 33.34-62.79 0-29.494-23.91-53.403-53.406-53.403-27.648 0-50.389 21.014-53.124 47.943l-0.277 5.46c0 17.696-14.345 32.044-32.043 32.044-17.696 0-32.042-14.348-32.042-32.044 0-64.887 52.603-117.488 117.487-117.488z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(165, 165, 165)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": true,
+        "grid": 0,
+        "tags": [
+          "ic_invalid_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 3,
+              "s": 4
+            },
+            {
+              "f": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(165, 165, 165)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "properties": {
+        "order": 138,
+        "id": 4,
+        "name": "ic_invalid_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 2
+    },
+    {
+      "icon": {
+        "paths": [
+          "M907.413 512.751c0-217.936-176.691-394.668-394.667-394.668-217.974 0-394.666 176.732-394.666 394.668 0 217.933 176.692 394.667 394.666 394.667 217.975 0 394.667-176.734 394.667-394.667z",
+          "M554.551 661.372c0-23.531-19.076-42.611-42.607-42.611-23.535 0-42.611 19.081-42.611 42.611s19.076 42.611 42.611 42.611c23.531 0 42.607-19.081 42.607-42.611z",
+          "M543.492 326.299c-2.129-15.618-15.526-27.645-31.727-27.633-17.677 0.014-31.991 14.353-31.974 32.026l0.154 192.068 0.294 4.343c2.129 15.616 15.531 27.644 31.731 27.631 17.673-0.013 31.987-14.353 31.974-32.026l-0.154-192.068-0.299-4.342z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(222, 55, 48)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": true,
+        "grid": 0,
+        "tags": [
+          "ic_major_warning_circle_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 1,
+              "s": 4
+            },
+            {
+              "f": 4
+            },
+            {
+              "f": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(222, 55, 48)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "properties": {
+        "order": 139,
+        "id": 3,
+        "name": "ic_major_warning_circle_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 3
+    },
+    {
+      "icon": {
+        "paths": [
+          "M589.879 861.077c-33.796 61.094-121.63 61.090-155.426-0.004l-305.718-552.66c-32.744-59.193 10.068-131.8 77.713-131.8h611.458c67.644 0 110.455 72.609 77.709 131.802l-305.737 552.662z",
+          "M511.945 636.011c23.531 0 42.607 19.081 42.607 42.611s-19.076 42.611-42.607 42.611c-23.535 0-42.611-19.081-42.611-42.611s19.076-42.611 42.611-42.611z",
+          "M511.765 315.917c16.201-0.013 29.598 12.015 31.727 27.632l0.299 4.342 0.154 192.068c0.013 17.673-14.302 32.013-31.974 32.026-16.201 0.013-29.602-12.015-31.731-27.631l-0.294-4.343-0.154-192.068c-0.017-17.673 14.298-32.012 31.974-32.026z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(222, 55, 48)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": true,
+        "grid": 0,
+        "tags": [
+          "ic_major_warning_triangle_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 1,
+              "s": 4
+            },
+            {
+              "f": 4
+            },
+            {
+              "f": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(222, 55, 48)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "properties": {
+        "order": 140,
+        "id": 2,
+        "name": "ic_major_warning_triangle_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 4
+    },
+    {
+      "icon": {
+        "paths": [
+          "M589.879 222.862c-33.796-61.094-121.63-61.093-155.426 0.002l-305.718 552.658c-32.744 59.196 10.068 131.802 77.713 131.802h611.458c67.644 0 110.455-72.61 77.709-131.802l-305.737-552.66z",
+          "M511.945 682.803c23.531 0 42.607 19.076 42.607 42.611 0 23.531-19.076 42.607-42.607 42.607-23.535 0-42.611-19.076-42.611-42.607 0-23.535 19.076-42.611 42.611-42.611z",
+          "M511.765 362.708c16.201-0.013 29.598 12.015 31.727 27.632l0.299 4.342 0.154 192.069c0.013 17.673-14.302 32.009-31.974 32.026-16.201 0.013-29.602-12.015-31.731-27.635l-0.294-4.339-0.154-192.069c-0.017-17.673 14.298-32.012 31.974-32.026z"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(255, 158, 27)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "miter",
+            "strokeLinecap": "butt",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          },
+          {
+            "fill": "rgb(255, 255, 255)"
+          }
+        ],
+        "isMulticolor": true,
+        "isMulticolor2": true,
+        "grid": 0,
+        "tags": [
+          "ic_minor_warning_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 2,
+              "s": 4
+            },
+            {
+              "f": 4
+            },
+            {
+              "f": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(255, 158, 27)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "miter",
+          "strokeLinecap": "butt",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        },
+        {
+          "fill": "rgb(255, 255, 255)"
+        }
+      ],
+      "properties": {
+        "order": 141,
+        "id": 1,
+        "name": "ic_minor_warning_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 5
+    },
+    {
+      "icon": {
+        "paths": [
+          "M117.635 260.154c0-78.711 63.808-142.519 142.519-142.519h504.296c78.711 0 142.519 63.808 142.519 142.519v504.296c0 78.711-63.808 142.519-142.519 142.519h-504.296c-78.711 0-142.519-63.808-142.519-142.519v-504.296z",
+          "M760.329 614.494c4.954-12.497 7.671-26.078 7.671-40.273 0-58.325-45.862-106.24-104.439-111.518-11.985-70.863-75.277-124.925-151.561-124.925-11.43 0-22.571 1.214-33.293 3.517M391.359 394.67c-15.726 19.372-26.621 42.625-30.918 68.033-58.579 5.278-104.441 53.193-104.441 111.518 0 61.858 51.577 112 115.2 112h281.6c11.674 0 22.946-1.685 33.566-4.826M281.6 288l460.8 448"
+        ],
+        "attrs": [
+          {
+            "fill": "rgb(250, 0, 250)",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          },
+          {
+            "fill": "none",
+            "stroke": "rgb(255, 255, 255)",
+            "strokeLinejoin": "round",
+            "strokeLinecap": "round",
+            "strokeMiterlimit": "4",
+            "strokeWidth": 64
+          }
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "ic_not_connected_24_filled"
+        ],
+        "colorPermutations": {
+          "165165165122255481250025012551582712552552551": [
+            {
+              "f": 0,
+              "s": 4
+            },
+            {
+              "s": 4
+            }
+          ]
+        }
+      },
+      "attrs": [
+        {
+          "fill": "rgb(250, 0, 250)",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        },
+        {
+          "fill": "none",
+          "stroke": "rgb(255, 255, 255)",
+          "strokeLinejoin": "round",
+          "strokeLinecap": "round",
+          "strokeMiterlimit": "4",
+          "strokeWidth": 64
+        }
+      ],
+      "properties": {
+        "order": 142,
+        "id": 0,
+        "name": "ic_not_connected_24_filled",
+        "prevSize": 24
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 6
+    }
+  ],
+  "height": 1024,
+  "preferences": {
+    "showGlyphs": true,
+    "showCodes": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "clf_",
+      "metadata": {
+        "fontFamily": "clf-fluent-icons-regular",
+        "majorVersion": 1,
+        "minorVersion": 0,
+        "license": "MIT",
+        "licenseURL": "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
+        "designer": "Microsoft"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false,
+      "hideFormats": false,
+      "showSelector": true,
+      "selector": "",
+      "classSelector": ".icon",
+      "showMetrics": true,
+      "showMetadata": true,
+      "showVersion": true,
+      "noie8": true,
+      "ie7": false
+    },
+    "imagePref": {
+      "prefix": "clf_",
+      "png": false,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "name": "CLF-Icons-set",
+      "classSelector": ".clf",
+      "height": 24,
+      "columns": 16,
+      "margin": 16,
+      "overrideSize": "true",
+      "autoHost": false,
+      "sprite": false
+    },
+    "historySize": 50,
+    "gridSize": 16,
+    "quickUsageToken": {
+      "CLFIcons": "Y2M2NzQ4ZjYzYTM3NWE4NmIzMjZhMWE2N2IxNjk0ZjcjMSMxNjg4NzM3NzMyIyMjYWEyNDNiNjVhMGJl"
+    },
+    "showLiga": false
+  }
+}

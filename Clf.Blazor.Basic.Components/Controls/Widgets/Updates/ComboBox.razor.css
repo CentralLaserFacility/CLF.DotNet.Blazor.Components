@@ -1,0 +1,4 @@
+﻿select {
+  width: var(--combo-box-width);
+  height: var(--combo-box-height);
+}

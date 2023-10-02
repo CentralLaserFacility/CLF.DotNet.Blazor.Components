@@ -1,0 +1,17 @@
+﻿.hdf5-plugin-settings-tab {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 15px;
+    width: fit-content;
+}
+.hdf5-plugin-feature-settings-tab {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 15px;
+    width: fit-content;
+    border: 2px solid black;
+}

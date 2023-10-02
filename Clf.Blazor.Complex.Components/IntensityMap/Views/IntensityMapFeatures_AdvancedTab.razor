@@ -1,0 +1,53 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class = "advanced-tab">
+    <div style="grid-column:1;">
+        <label>Stream Bytes per sec</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.CameraStreamsBytesPerSecond" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraStreamsBytesPerSecondRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Jumbo Packet Size</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.CameraJumboPacketSize" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraJumboPacketSizeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Image Pixel Format</label>
+    </div>
+    <div style="grid-column:2;">
+        <ComboBox ViewModel="@ViewModel.CameraPixelFormat" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraPixelFormatRBV" />
+    </div>
+    <div style="grid-column:1/4;text-align:center">
+        <ActionButton ViewModel="@ViewModel.CameraDriverSettings" />
+    </div>
+    <div style="grid-column:1/4;text-align:center">
+        <ActionButton ViewModel="@ViewModel.CameraAdvancedDriverSettings" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_AdvancedTabViewModel ViewModel { get; set; }
+}

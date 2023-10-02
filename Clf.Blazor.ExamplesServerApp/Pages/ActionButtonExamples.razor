@@ -1,0 +1,82 @@
+﻿@page "/action-button-examples"
+
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Common.ImageProcessing;
+
+<h3>Action Button Examples</h3>
+
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><ActionButton ViewModel="@_defaultActionButton" /></td>
+  </tr>
+   <tr>
+    <th scope="row">Disabled</th>
+    <td><ActionButton ViewModel="@_disabledActionButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><ActionButton ViewModel="@_disconnectedActionButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><ActionButton ViewModel="@_minorAlarmActionButton" /></td>
+  </tr>
+   <tr>
+    <th scope="row">Major Alarm</th>
+    <td><ActionButton ViewModel="@_majorAlarmActionButton" /></td>
+  </tr>
+   <tr>
+    <th scope="row">Invalid</th>
+    <td><ActionButton ViewModel="@_invalidActionButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Basic</th>
+    <td><button >Basic HTML Button</button></td>
+  </tr>
+
+
+</table>
+
+@code {
+
+  private ActionButtonViewModel _defaultActionButton = new ActionButtonViewModel(
+        text: "Default",
+        tooltipText: "Default",
+        borderStatus: BorderStatus.Connected
+  );
+
+  private ActionButtonViewModel _disabledActionButton = new ActionButtonViewModel(
+        text: "Default",
+        tooltipText: "Default",
+        borderStatus: BorderStatus.Connected,
+        isDisabled: true
+  );
+  private ActionButtonViewModel _disconnectedActionButton = new ActionButtonViewModel(
+       text: "Default",
+       tooltipText: "Default",
+       borderStatus: BorderStatus.NotConnected
+   );
+  private ActionButtonViewModel _minorAlarmActionButton = new ActionButtonViewModel(
+        text: "Default",
+        tooltipText: "Default",
+        borderStatus: BorderStatus.MinorAlarm
+  );
+  private ActionButtonViewModel _majorAlarmActionButton = new ActionButtonViewModel(
+        text: "Default",
+        tooltipText: "Default",
+        borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private ActionButtonViewModel _invalidActionButton = new ActionButtonViewModel(
+      text: "Default",
+      tooltipText: "Default",
+      borderStatus: BorderStatus.Invalid
+  );
+
+}

@@ -1,0 +1,25 @@
+﻿@page "/CanvasDrawingTestPage_01"
+
+@inject IJSRuntime JSRuntime
+
+<!--
+  This currently not linked into a NavMenu,
+  so to view this page you have to specify
+  the URI in the browser window
+  eg
+    https://localhost:7213/CanvasDrawingTestPage_01
+-->
+
+@using Microsoft.JSInterop
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+
+@inject IJSRuntime JSRuntime
+
+<h2>CanvasDrawingTestPage_01</h2>
+<h3>Refresh the page to toggle between 'Thick'' and 'Thin''</h3>
+<canvas @ref="@m_canvasRef"
+  width  = "@Width"
+  height = "@Height" 
+/>
+

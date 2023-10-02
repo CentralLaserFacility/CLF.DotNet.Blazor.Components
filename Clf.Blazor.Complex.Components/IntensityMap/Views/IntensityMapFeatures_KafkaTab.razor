@@ -1,0 +1,44 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "kafka-tab">
+    <div style="grid-column:1;">
+        <ActionButton ViewModel="@ViewModel.StartKafkaStreaming" />
+    </div>
+    <div style="grid-column:2;">
+        <ActionButton ViewModel="@ViewModel.StopKafkaStreaming" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Status</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.KafkaStreamingRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Connection</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.KafkaConnectionStatusRBV" />
+    </div>
+    <div style="grid-column:1/3;">
+        <div style="display:flex; row-gap: 5px; padding:8px; justify-content:center;">
+            <ActionButton ViewModel="@ViewModel.KafkaPluginSettings" />
+        </div>
+    </div>
+   
+  </div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_KafkaTabViewModel ViewModel { get; set; }
+}

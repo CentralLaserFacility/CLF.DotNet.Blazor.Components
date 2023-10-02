@@ -1,0 +1,18 @@
+﻿.choice-button-container {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    gap: var(--clf-choice-button-gap);
+}
+
+.choice-button {
+   overflow:hidden;
+   width: var(--choice-button-width);
+   height: var(--choice-button-height);
+   transition: all 0.2s ease-in-out;
+}
+
+.choice-button-selected {
+    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-color);
+    background-color: var(--clf-action-button-active-background-color);
+    color: var(--clf-action-button-active-font-colour);
+}

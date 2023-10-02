@@ -1,0 +1,54 @@
+﻿:root {
+    --clf-combo-box-default-width: 120px;
+    --clf-combo-box-default-height: 32px;
+    --clf-combo-box-border-radius: 4px;
+    --clf-combo-box-border-width: 1px;
+    --clf-combo-box-background-colour: #F1F1F1;
+    --clf-combo-box-hover-background-colour: #D3D3D3;
+    --clf-combo-box-text-colour: #1B1B1B;
+    --clf-combo-box-active-background-color: #8B8B8B;
+    --clf-combo-box-active-font-colour: #DDDDDD;
+}
+select {
+  display: flex;
+  align-items: center;
+  outline: none;
+  border-radius: var(--clf-combo-box-border-radius);
+  border-style: solid;
+  color: var(--clf-combo-box-text-colour);
+  background-color: var(--clf-combo-box-background-colour);
+  width: var(--clf-combo-box-default-width);
+  height: var(--clf-combo-box-default-height);
+  border-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--clf-text-input-font-weight);
+}
+
+select > option {
+  background-color: var(--clf-combo-box-background-colour);
+}
+
+select:hover { 
+background-color: var(--clf-combo-box-hover-background-colour);
+}
+
+select:active {
+background-color: var(--clf-combo-box-active-background-color);
+color: var(--clf-combo-box-active-font-colour);
+}
+
+select:focus {
+  outline: 1px solid var(--clf-combo-box-focus-border-color);
+}
+
+select:disabled {
+pointer-events: none;
+filter: var(--clf-disabled-filter);
+}
+
+
+
+
+
+    

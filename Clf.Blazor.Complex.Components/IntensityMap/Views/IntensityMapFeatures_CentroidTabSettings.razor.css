@@ -1,0 +1,8 @@
+﻿.centroid-settings-tab {
+    display: grid;
+    grid-template-columns: 300px auto;
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 15px;
+    width: 435px;
+}

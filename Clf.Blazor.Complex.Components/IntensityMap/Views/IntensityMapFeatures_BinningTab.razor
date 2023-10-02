@@ -1,0 +1,41 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "binning-tab">
+    <div style="grid-column:1;">
+        <RadioButton ViewModel="@ViewModel?.BinningMethod" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Binnig X</label>
+        <TextEntry ViewModel="@ViewModel.CameraBinningXSet" />
+        <TextEntry ViewModel="@ViewModel.SoftwareBinningXSet" />
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.CameraBinningXRBV" />
+        <TextUpdate ViewModel="@ViewModel.SoftwareBinningXRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Binnig Y</label>
+        <TextEntry ViewModel="@ViewModel.CameraBinningYSet" />
+        <TextEntry ViewModel="@ViewModel.SoftwareBinningYSet" />
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.CameraBinningYRBV" />
+        <TextUpdate ViewModel="@ViewModel.SoftwareBinningYRBV" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public ViewModels.IntensityMapFeatures_BinningTabViewModel ViewModel { get; set; }
+
+}

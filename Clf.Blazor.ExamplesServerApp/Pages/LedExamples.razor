@@ -1,0 +1,255 @@
+﻿@page "/led-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Common.ImageProcessing;
+
+<h3>Led Examples</h3>
+<div>
+<table>
+  <tr>
+    <th scope="col"></th>
+    <th colspan="2" scope="colgroup">Round</th>
+    <th colspan="2" scope="colgroup">Rectangle</th>
+  </tr>
+  <tr>
+    <td rowspan="1"></td>
+    <th scope="col">On</th>
+    <th scope="col">Off</th>
+    <th scope="col">On</th>
+    <th scope="col">Off</th>
+  </tr>
+  <tr>
+    <th scope="row">Binary</th>
+    <td><div><Led ViewModel="@_binaryLedOn" /></div></td>
+    <td><div><Led ViewModel="@_binaryLedOff" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_binarySquareLedOn" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_binarySquareLedOff" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Default</th>
+    <td><div><Led ViewModel="@_defaultLedOn" /></div></td>
+    <td><div><Led ViewModel="@_defaultLedOff" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_defaultSquareLedOn" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_defaultSquareLedOff" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Error</th>
+    <td><div><Led ViewModel="@_errorLedOn" /></div></td>
+    <td><div><Led ViewModel="@_errorLedOff" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_errorSquareLedOn" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_errorSquareLedOff" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Warning</th>
+    <td><div><Led ViewModel="@_warningLedOn" /></div></td>
+    <td><div><Led ViewModel="@_warningLedOff" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_warningSquareLedOn" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_warningSquareLedOff" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><div><Led ViewModel="@_invalidLedOn" /></div></td>
+    <td><div><Led ViewModel="@_invalidLedOff" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_invalidSquareLedOn" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_invalidSquareLedOff" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><div><Led ViewModel="@_notConnectedLedOn" /></div></td>
+    <td><div><Led ViewModel="@_notConnectedLedOff" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_notConnectedSquareLedOn" /></div></td>
+      <td><div><Led class="led-rectangle" ViewModel="@_notConnectedSquareLedOff" /></div></td>
+  </tr>
+</table>
+</div>
+
+@code {
+  private LedViewModel _binaryLedOn = new LedViewModel(
+  ledValue: true,
+  tooltipText: "Binary On",
+  borderStatus: BorderStatus.Connected,
+  ledType: LedType.Binary
+  );
+
+  private LedViewModel _binaryLedOff = new LedViewModel(
+  ledValue: false,
+  tooltipText: "Binary Off",
+  borderStatus: BorderStatus.Connected,
+  ledType: LedType.Binary
+  );
+  private LedViewModel _binarySquareLedOn = new LedViewModel(
+  ledValue: true,
+  tooltipText: "Binary Square On",
+  borderStatus: BorderStatus.Connected,
+  onLabel: "Binary On",
+  isSquare: true,
+  ledType: LedType.Binary
+  );
+
+  private LedViewModel _binarySquareLedOff = new LedViewModel(
+  ledValue: false,
+  tooltipText: "Binary Square Off",
+  borderStatus: BorderStatus.Connected,
+  offLabel: "Binary Off",
+  isSquare: true,
+  ledType: LedType.Binary
+  );
+
+  private LedViewModel _defaultLedOn= new LedViewModel(
+  ledValue: true,
+  tooltipText: "Default On",
+  borderStatus: BorderStatus.Connected
+  );
+
+  private LedViewModel _defaultLedOff = new LedViewModel(
+  ledValue: false,
+  tooltipText: "Default Off",
+  borderStatus: BorderStatus.Connected
+  );
+
+  private LedViewModel _defaultSquareLedOn = new LedViewModel(
+  ledValue: true,
+  tooltipText: "Default Square On",
+  borderStatus: BorderStatus.Connected,
+  onLabel: "Default On",
+  isSquare: true
+  );
+
+  private LedViewModel _defaultSquareLedOff = new LedViewModel(
+  ledValue: false,
+  tooltipText: "Default Square Off",
+  borderStatus: BorderStatus.Connected,
+  offLabel: "Default Off",
+  isSquare: true
+  );
+
+  private LedViewModel _invalidLedOn = new LedViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Invalid On",
+    ledValue: true
+  );
+
+  private LedViewModel _invalidLedOff = new LedViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Invalid Off",
+    ledValue: false
+  );
+
+  private LedViewModel _invalidSquareLedOn = new LedViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Invalid Square On",
+    ledValue: true,
+    onLabel: "Invalid On",
+    isSquare: true
+  );
+
+  private LedViewModel _invalidSquareLedOff = new LedViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Invalid Square Off",
+    ledValue: false,
+    offLabel: "Invalid Off",
+    isSquare: true
+  );
+
+  private LedViewModel _notConnectedLedOn = new LedViewModel(
+    ledValue: true,
+    tooltipText: "Not Connected On",
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private LedViewModel _notConnectedLedOff = new LedViewModel(
+    ledValue: false,
+    tooltipText: "Not Connected Off",
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private LedViewModel _notConnectedSquareLedOn = new LedViewModel(
+    ledValue: true,
+    tooltipText: "Not Connected Square On",
+    borderStatus: BorderStatus.NotConnected,
+    onLabel: "Not Connected On",
+    isSquare: true
+  );
+
+  private LedViewModel _notConnectedSquareLedOff = new LedViewModel(
+    ledValue: false,
+    tooltipText: "Not Connected Square Off",
+    borderStatus: BorderStatus.NotConnected,
+    offLabel: "Not Connected Off",
+    isSquare: true
+  );
+
+  private LedViewModel _errorLedOn = new LedViewModel(
+  ledValue: true,
+  tooltipText: "Error On",
+  borderStatus: BorderStatus.Connected,
+  ledType: LedType.Error
+  );
+
+  private LedViewModel _errorLedOff = new LedViewModel(
+    ledValue: false,
+    tooltipText: "Error Off",
+    borderStatus: BorderStatus.Connected,
+    ledType: LedType.Error
+  );
+
+  private LedViewModel _errorSquareLedOn = new LedViewModel(
+    ledValue: true,
+  tooltipText: "Error Square On",
+    borderStatus: BorderStatus.Connected,
+    onLabel: "Error On",
+    isSquare: true,
+    ledType: LedType.Error
+  );
+
+  private LedViewModel _errorSquareLedOff = new LedViewModel(
+    ledValue: false,
+  tooltipText: "Error Square Off",
+    borderStatus: BorderStatus.Connected,
+    offLabel: "Error Off",
+    isSquare: true,
+    ledType: LedType.Error
+  );
+
+  private LedViewModel _warningLedOn = new LedViewModel(
+    ledValue: true,
+    tooltipText: "Warning On",
+    borderStatus: BorderStatus.Connected,
+    ledType: LedType.Warning
+  );
+
+  private LedViewModel _warningLedOff = new LedViewModel(
+    ledValue: false,
+    tooltipText: "Warning Off",
+    borderStatus: BorderStatus.Connected,
+    ledType: LedType.Warning
+  );
+  
+  private LedViewModel _warningSquareLedOn = new LedViewModel(
+    ledValue: true,
+    tooltipText: "Warning Square On",
+    borderStatus: BorderStatus.Connected,
+    onLabel: "Warning On",
+    isSquare: true,
+    ledType: LedType.Warning
+  );
+
+  private LedViewModel _warningSquareLedOff = new LedViewModel(
+    ledValue: false,
+    tooltipText: "Warning Square On",
+    borderStatus: BorderStatus.Connected,
+    offLabel: "Warning Off",
+    isSquare: true,
+    ledType: LedType.Warning
+  );
+
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+  }
+
+}

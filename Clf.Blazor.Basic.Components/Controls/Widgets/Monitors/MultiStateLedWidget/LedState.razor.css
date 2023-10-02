@@ -1,0 +1,25 @@
+﻿::deep .led-icon {
+  font-size: var(--clf-led-icon-font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  stroke-width: 1px;
+}
+
+.state-content {
+  background-color:var(--background-color);
+  width:inherit;
+  height: inherit;
+}
+
+.state-blink {
+  animation: state-blinking 1s infinite;
+}
+
+@keyframes state-blinking {
+  50% {
+    background-color: transparent;
+    color: var(--clf-font-colour);
+  }
+}

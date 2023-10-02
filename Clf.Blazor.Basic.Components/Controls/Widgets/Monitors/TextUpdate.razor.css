@@ -1,0 +1,27 @@
+﻿.text-update, .text-update-value{
+  display: flex;
+  align-items: center;
+}
+
+.text-update {
+  height: var(--text-update-height);
+  width: var(--text-update-width);
+  overflow: hidden;
+  border-radius: var(--clf-border-radius);
+  font-weight: var(--clf-text-input-font-weight);
+  gap: var(--clf-text-update-gap-width);
+}
+
+  .text-update[disabled] {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }
+
+.text-update-value {
+  background-color: var(--clf-text-update-background-color);
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  padding-right: var(--clf-text-update-padding);
+  padding-left: var(--clf-text-update-padding);
+}

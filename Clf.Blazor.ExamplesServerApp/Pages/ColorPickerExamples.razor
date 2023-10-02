@@ -1,0 +1,68 @@
+﻿@page "/color-picker-examples"
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates;
+
+
+<h3>Color Picker Examples</h3>
+
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><ColorPicker ViewModel="@_default" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Disabled</th>
+    <td><ColorPicker ViewModel="@_disabled" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><ColorPicker ViewModel="@_notConnected" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><ColorPicker ViewModel="@_minorAlarm" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><ColorPicker ViewModel="@_majorAlarm" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><ColorPicker ViewModel="@_invalid" /></td>
+  </tr>
+</table>
+
+@code {
+  private ColorPickerViewModel _default = new ColorPickerViewModel(
+      tooltipText: "Default",
+      borderStatus: BorderStatus.Connected
+    );
+
+  private ColorPickerViewModel _disabled = new ColorPickerViewModel(
+    isDisabled: true,
+   tooltipText: "Default",
+   borderStatus: BorderStatus.Connected
+   );
+
+  private ColorPickerViewModel _notConnected = new ColorPickerViewModel(
+    tooltipText: "Default",
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private ColorPickerViewModel _majorAlarm = new ColorPickerViewModel(
+   tooltipText: "Default",
+   borderStatus: BorderStatus.MajorAlarm
+   );
+
+  private ColorPickerViewModel _minorAlarm = new ColorPickerViewModel(
+    tooltipText: "Default",
+    borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private ColorPickerViewModel _invalid = new ColorPickerViewModel(
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Invalid
+  );
+
+}

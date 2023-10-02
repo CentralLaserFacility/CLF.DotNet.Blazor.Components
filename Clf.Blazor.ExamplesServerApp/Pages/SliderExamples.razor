@@ -1,0 +1,284 @@
+﻿@page "/slider-examples"
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+
+
+<h3>Slider Examples</h3>
+
+
+<table>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Default</th>
+    <th scope="col">Tick Marks</th>
+    <th scope="col">With Spinner</th>
+    <th scope="col">Both</th>
+  </tr>
+  <tr>
+    <th scope="row">Default</th>
+    <td><Slider ViewModel="@_default" /></td>
+    <td><Slider ViewModel="@_showTickMarks" /></td>
+    <td><Slider ViewModel="@_editValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksEditValue" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Without Value</th>
+    <td><Slider ViewModel="@_noValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksNoValue" /></td>
+    <td><Slider ViewModel="@_noValueEditValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksNoValueEditValue" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable</th>
+    <td><Slider ViewModel="@_disable" /></td>
+    <td><Slider ViewModel="@_showTickMarksDisable" /></td>
+    <td><Slider ViewModel="@_disableEditValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksDisableEditValue" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><Slider ViewModel="@_notConnected" /></td>
+    <td><Slider ViewModel="@_showTickMarksNotConnected" /></td>
+    <td><Slider ViewModel="@_notConnectedEditValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksNotConnectedEditValue" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><Slider ViewModel="@_majorAlarm" /></td>
+    <td><Slider ViewModel="@_showTickMarksMajorAlarm" /></td>
+    <td><Slider ViewModel="@_majorAlarmEditValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksMajorAlarmEditValue" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><Slider ViewModel="@_minorAlarm" /></td>
+    <td><Slider ViewModel="@_showTickMarksMinorAlarm" /></td>
+    <td><Slider ViewModel="@_minorAlarmEditValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksMinorAlarmEditValue" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><Slider ViewModel="@_invalid" /></td>
+    <td><Slider ViewModel="@_showTickMarksInvalid" /></td>
+    <td><Slider ViewModel="@_invalidEditValue" /></td>
+    <td><Slider ViewModel="@_showTickMarksInvalidEditValue" /></td>
+  </tr>
+</table>
+<br />
+
+
+
+@code {
+  private SliderViewModel _default = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Default",
+           value: 40
+  );
+
+  private SliderViewModel _showTickMarks = new SliderViewModel(
+        borderStatus: BorderStatus.Connected,
+          tooltipText: "With Tick-marks",
+        showTicks: true,
+        value: 40
+  );
+
+  private SliderViewModel _editValue = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Editable",
+          value: 40,
+          showSpinner: true
+  );
+
+
+  private SliderViewModel _showTickMarksEditValue = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "With Tick-marks Editable",
+          value: 40,
+          showTicks: true,
+          showSpinner: true
+  );
+
+  private SliderViewModel _noValue = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Default No Value",
+          value: 40,
+          showValue: false
+  );
+
+  private SliderViewModel _showTickMarksNoValue = new SliderViewModel(
+      borderStatus: BorderStatus.Connected,
+          tooltipText: "With Tick-marks No Value",
+      showTicks: true,
+      showValue: false,
+      value: 40
+  );
+
+  private SliderViewModel _noValueEditValue = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Editable No Value",
+          value: 40,
+          showValue: false,
+          showSpinner: true
+  );
+
+  private SliderViewModel _showTickMarksNoValueEditValue = new SliderViewModel(
+      borderStatus: BorderStatus.Connected,
+          tooltipText: "With Tick-marks Editable No Value",
+      showTicks: true,
+      showValue: false,
+      value: 40,
+      showSpinner: true
+  );
+
+  private SliderViewModel _disable = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Default",
+          value: 40,
+          isDisabled: true
+  );
+
+
+  private SliderViewModel _showTickMarksDisable = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "With Tick-marks",
+          value: 40,
+          isDisabled: true,
+          showTicks: true
+  );
+
+  private SliderViewModel _disableEditValue = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "Editable",
+          value: 40,
+          isDisabled: true,
+          showSpinner: true
+  );
+
+
+  private SliderViewModel _showTickMarksDisableEditValue = new SliderViewModel(
+          borderStatus: BorderStatus.Connected,
+          tooltipText: "With Tick-marks Editable",
+          value: 40,
+          isDisabled: true,
+          showTicks: true,
+          showSpinner: true
+  );
+
+  private SliderViewModel _notConnected = new SliderViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    tooltipText: "Default",
+    value: 40
+
+  );
+
+  private SliderViewModel _showTickMarksNotConnected = new SliderViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    tooltipText: "With Tick-marks",
+    value: 40,
+    showTicks: true
+  );
+
+  private SliderViewModel _notConnectedEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    tooltipText: "Editable",
+    value: 40,
+    showSpinner: true
+  );
+
+  private SliderViewModel _showTickMarksNotConnectedEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    tooltipText: "With Tick-marks Editable",
+    value: 40,
+    showTicks: true,
+    showSpinner: true
+  );
+
+  private SliderViewModel _majorAlarm = new SliderViewModel(
+    borderStatus: BorderStatus.MajorAlarm,
+    tooltipText: "Default",
+    value: 40
+
+  );
+
+  private SliderViewModel _showTickMarksMajorAlarm = new SliderViewModel(
+    borderStatus: BorderStatus.MajorAlarm,
+    tooltipText: "With Tick-marks",
+    value: 40,
+    showTicks: true
+  );
+
+  private SliderViewModel _majorAlarmEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.MajorAlarm,
+    tooltipText: "Editable",
+    value: 40,
+    showSpinner: true
+  );
+
+  private SliderViewModel _showTickMarksMajorAlarmEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.MajorAlarm,
+    tooltipText: "With Tick-marks Editable",
+    value: 40,
+    showTicks: true,
+    showSpinner: true
+  );
+
+  private SliderViewModel _minorAlarm = new SliderViewModel(
+    borderStatus: BorderStatus.MinorAlarm,
+    tooltipText: "Default",
+    value: 40
+
+  );
+
+  private SliderViewModel _showTickMarksMinorAlarm = new SliderViewModel(
+    borderStatus: BorderStatus.MinorAlarm,
+    tooltipText: "With Tick-marks",
+    value: 40,
+    showTicks: true
+  );
+
+  private SliderViewModel _minorAlarmEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.MinorAlarm,
+    tooltipText: "Editable",
+    value: 40,
+    showSpinner: true
+  );
+
+  private SliderViewModel _showTickMarksMinorAlarmEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.MinorAlarm,
+    tooltipText: "With Tick-marks Editable",
+    value: 40,
+    showTicks: true,
+    showSpinner: true
+  );
+
+  private SliderViewModel _invalid = new SliderViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Default",
+    value: 40
+  );
+
+  private SliderViewModel _showTickMarksInvalid = new SliderViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "With Tick-marks",
+    value: 40,
+    showTicks: true
+  );
+
+  private SliderViewModel _invalidEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Editable",
+    value: 40,
+    showSpinner: true
+  );
+
+  private SliderViewModel _showTickMarksInvalidEditValue = new SliderViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "With Tick-marks Editable",
+    value: 40,
+    showTicks: true,
+    showSpinner: true
+  );
+
+}

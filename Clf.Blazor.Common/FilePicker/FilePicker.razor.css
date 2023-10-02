@@ -1,0 +1,31 @@
+﻿.file-picker-button {
+  background-color: transparent;
+  border: none; /* Remove borders */
+  margin: 2px; /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+  /*  border: 1px solid black;*/
+  height:30px;
+  border-radius: 4px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: FluentSystemIcons-Regular !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  font-size: 30px;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  color: inherit;
+  outline: none;
+}
+
+  .file-picker-button:hover {
+    background-color: rgba(0,0,0,0.1);
+  }
+
+button:disabled {
+  filter: opacity(60%) !important;
+}

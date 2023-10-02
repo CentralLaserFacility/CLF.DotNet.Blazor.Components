@@ -1,0 +1,76 @@
+﻿@page "/process-pv-button-examples"
+
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Common.ImageProcessing;
+
+<h3>Process PV Button Examples</h3>
+
+<table>
+  <tr>
+    <th scope="col">Process PV Button Types</th>
+  </tr>
+
+  <tr>
+    <th scope="row">Default</th>
+    <td><ProcessPVButton ViewModel="@_defaultProcessPVButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Disabled</th>
+    <td><ProcessPVButton ViewModel="@_disabledProcessPVButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><ProcessPVButton ViewModel="@_disconnectedProcessPVButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><ProcessPVButton ViewModel="@_minorAlarmProcessPVButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><ProcessPVButton ViewModel="@_majorAlarmProcessPVButton" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><ProcessPVButton ViewModel="@_invalidProcessPVButton" /></td>
+  </tr>
+
+</table>
+
+@code {
+
+  private const string text = "Status";
+  private ProcessPVButtonViewModel _defaultProcessPVButton = new ProcessPVButtonViewModel(
+      text: text,
+      borderStatus: BorderStatus.Connected
+  );
+
+  private ProcessPVButtonViewModel _disabledProcessPVButton = new ProcessPVButtonViewModel(
+        text: text,
+        borderStatus: BorderStatus.Connected,
+        isDisabled: true
+  );
+  private ProcessPVButtonViewModel _disconnectedProcessPVButton = new ProcessPVButtonViewModel(
+       text: text,
+       borderStatus: BorderStatus.NotConnected
+   );
+  private ProcessPVButtonViewModel _minorAlarmProcessPVButton = new ProcessPVButtonViewModel(
+        text: text,
+        borderStatus: BorderStatus.MinorAlarm
+  );
+  private ProcessPVButtonViewModel _majorAlarmProcessPVButton = new ProcessPVButtonViewModel(
+        text: text,
+        borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private ProcessPVButtonViewModel _invalidProcessPVButton = new ProcessPVButtonViewModel(
+      text: text,
+      borderStatus: BorderStatus.Invalid
+  );
+
+}

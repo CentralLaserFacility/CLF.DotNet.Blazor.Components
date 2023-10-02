@@ -1,0 +1,23 @@
+﻿:root {
+  --clf-text-update-default-width: var(--clf-text-input-default-width);
+  --clf-text-update-default-height: 32px;
+  --clf-text-update-background-color: #F0F0F0;
+  --clf-text-update-padding: 6px;
+  --clf-text-update-gap-width: 1px;
+  --clf-text-update-units-border-radius: 0px 3px 3px 0px;
+}
+
+.clf-units {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-radius: var(--clf-text-update-units-border-radius);
+  background-color: var(--clf-text-update-background-color);
+  padding-right: var(--clf-text-update-padding);
+  padding-left: var(--clf-text-update-padding);
+}
+
+  .clf-units[disabled] {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }

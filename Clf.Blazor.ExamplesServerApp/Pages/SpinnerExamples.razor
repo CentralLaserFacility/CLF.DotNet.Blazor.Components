@@ -1,0 +1,84 @@
+﻿@page "/spinner-examples"
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+
+<h3>Spinner Examples</h3>
+
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><div><Spinner ViewModel="@_default" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Without Units</th>
+    <td><div><Spinner ViewModel="@_withoutUnits" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable</th>
+    <td><div><Spinner ViewModel="@_disabled" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><div><Spinner ViewModel="@_notConnected" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><div><Spinner ViewModel="@_majorAlarm" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><div><Spinner ViewModel="@_minorAlarm" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><div><Spinner ViewModel="@_invalid" /></div></td>
+  </tr>
+</table>
+
+@code {
+
+  private SpinnerViewModel _withoutUnits = new SpinnerViewModel(
+    showUnits: false,
+    tooltipText: "Without Units",
+    borderStatus:BorderStatus.Connected
+  );
+
+  private SpinnerViewModel _disabled = new SpinnerViewModel(
+    isDisabled: true,
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus:BorderStatus.Connected
+  );
+
+  private SpinnerViewModel _default = new SpinnerViewModel(
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Connected
+  );
+
+  private SpinnerViewModel _notConnected = new SpinnerViewModel(
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private SpinnerViewModel _majorAlarm = new SpinnerViewModel(
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private SpinnerViewModel _minorAlarm = new SpinnerViewModel(
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private SpinnerViewModel _invalid = new SpinnerViewModel(
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Invalid
+  );
+}

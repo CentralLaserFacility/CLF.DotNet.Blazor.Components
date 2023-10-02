@@ -1,0 +1,82 @@
+﻿@page "/text-update-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Common.ImageProcessing;
+
+<h3>Text Update Examples</h3>
+
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><TextUpdate ViewModel="@_defaultTextUpdate" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Without Units</th>
+    <td><TextUpdate ViewModel="@_withoutUnitsTextUpdate" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><TextUpdate ViewModel="@_notConnectedTextUpdate" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><TextUpdate ViewModel="@_majorAlarmTextUpdate" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><TextUpdate ViewModel="@_minorAlarmTextUpdate" /></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><TextUpdate ViewModel="@_invalidTextUpdate" /></td>
+  </tr>
+
+</table>
+
+@code {
+
+  private TextUpdateViewModel _defaultTextUpdate = new TextUpdateViewModel(
+        text: "1243.2244",
+        units: "mm",
+        tooltipText: "Default",
+        borderStatus: BorderStatus.Connected
+   );
+
+  private TextUpdateViewModel _withoutUnitsTextUpdate = new TextUpdateViewModel(
+       text: "Lorem Ipsum",
+       showUnits: false,
+       tooltipText: "Without Units",
+       borderStatus: BorderStatus.Connected
+  );
+
+  private TextUpdateViewModel _notConnectedTextUpdate = new TextUpdateViewModel(
+    text: "1243.2244",
+    units: "mm",
+    tooltipText: "Default",
+     borderStatus: BorderStatus.NotConnected
+   );
+
+  private TextUpdateViewModel _majorAlarmTextUpdate = new TextUpdateViewModel(
+   text: "1243.2244",
+   units: "mm",
+   tooltipText: "Default",
+    borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private TextUpdateViewModel _minorAlarmTextUpdate = new TextUpdateViewModel(
+    text: "1243.2244",
+    units: "mm",
+    tooltipText: "Default",
+     borderStatus: BorderStatus.MinorAlarm
+   );
+
+  private TextUpdateViewModel _invalidTextUpdate = new TextUpdateViewModel(
+   text: "1243.2244",
+   units: "mm",
+   tooltipText: "Default",
+    borderStatus: BorderStatus.Invalid
+  );
+
+}

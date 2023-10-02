@@ -1,0 +1,70 @@
+﻿@page "/Cameras/{PageTitle}/Kafka-Plugin-Settings"
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="kafka-plugin-settings-tab">
+    <div style="grid-column:1/4; text-align:center;">
+        <label>@ViewModel.pageFileTitle</label>
+    </div>
+    <div style="grid-column:1;">
+      <IntensityMapFeatures_CommonPluginSettings ViewModel="@ViewModel.KafkaCommonPluginSettingsTab" />        
+    </div>
+    <div style="grid-column:2;">
+        <div class="kafka-plugin-feature-settings-tab">
+            <div style="grid-column:1;">
+                <label>Connection Status</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextUpdate ViewModel="@ViewModel.KafkaConnectionStatusRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Status Message</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextUpdate ViewModel="@ViewModel.KafkaStatusMessageRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Broker Address</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextEntry ViewModel="@ViewModel.KafkaBrokerAddress" />
+                <TextUpdate ViewModel="@ViewModel.KafkaBrokerAddressRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Broker Topic</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextEntry ViewModel="@ViewModel.KafkaBrokerTopic" />
+                <TextUpdate ViewModel="@ViewModel.KafkaBrokerTopicRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Stats Interval</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextEntry ViewModel="@ViewModel.KafkaStatsInterval" />
+                <TextUpdate ViewModel="@ViewModel.KafkaStatsIntervalRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Array Counter</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.KafkaArrayCounterRBV" />
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public IntensityMapFeatures_KafkaTabPluginSettingsViewModel ViewModel { get; set; }
+
+}

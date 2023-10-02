@@ -1,0 +1,34 @@
+﻿::deep .alarm-round {
+  border-radius: 50%;
+}
+
+::deep .alarm-icon-position {
+  top: -12px;
+  left: -12px;
+}
+
+::deep .led-icon {
+  font-size: var(--clf-led-icon-font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  stroke-width:1px;
+}
+
+.led-icon-bold {
+font-weight: bold;
+}
+
+.led-blink {
+  animation: blinking 1s infinite;
+}
+
+@keyframes blinking {
+  50% {
+    background-color: var(--offColor);
+  }
+}
+
+
+

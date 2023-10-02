@@ -1,0 +1,155 @@
+﻿@page "/text-entry-examples"
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+
+<h3>Text Entry Examples</h3>
+
+<table>
+  <tr>
+  <th></th>
+  <th>Text Entry (Single Line)</th>
+  <th>Text Entry (Multi Line)</th>
+  </tr>
+  <tr>
+    <th scope="row">Default</th>
+    <td><div><TextEntry ViewModel="@_default" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineDefault" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Without Units</th>
+    <td><div><TextEntry ViewModel="@_withoutUnits" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineWithoutUnits"  /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable</th>
+    <td><div><TextEntry ViewModel="@_disabled" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineDisabled" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><div><TextEntry ViewModel="@_notConnected" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineNotConnected" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+    <td><div><TextEntry ViewModel="@_majorAlarm" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineMajorAlarm" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+    <td><div><TextEntry ViewModel="@_minorAlarm" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineMinorAlarm" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><div><TextEntry ViewModel="@_invalid" /></div></td>
+    <td><div><TextEntry ViewModel="@_multiLineInvalid" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">HTML Input</th>
+    <td><div><input type="text" value="Lorem Ipsum" /></div></td>
+    <td><div><textarea>Lorem Ipsum</textarea></div></td>
+  </tr>
+  
+</table>
+ <br />
+
+
+@code {
+  private TextEntryViewModel _withoutUnits = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    showUnits: false,
+    tooltipText: "Without Units",
+    borderStatus: BorderStatus.Connected
+  );
+
+  private TextEntryViewModel _disabled = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    isDisabled: true,
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Connected
+  );
+
+  private TextEntryViewModel _default = new TextEntryViewModel(
+    text: "1234.2343",
+    units: "mm",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Connected
+  );
+
+  private TextEntryViewModel _notConnected = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private TextEntryViewModel _majorAlarm = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private TextEntryViewModel _minorAlarm = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private TextEntryViewModel _invalid = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Invalid
+  );
+
+  private TextEntryViewModel _multiLineWithoutUnits = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText:"Without Units",
+    isMultiLine: true,
+    borderStatus:BorderStatus.Connected
+  );
+
+  private TextEntryViewModel _multiLineDisabled = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    isDisabled: true,
+    tooltipText: "Default",
+    isMultiLine: true,
+    borderStatus: BorderStatus.Connected
+  );
+
+  private TextEntryViewModel _multiLineDefault = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    isMultiLine: true,
+    borderStatus: BorderStatus.Connected
+  );
+
+  private TextEntryViewModel _multiLineNotConnected = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    isMultiLine: true,
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private TextEntryViewModel _multiLineMajorAlarm = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    isMultiLine: true,
+    borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private TextEntryViewModel _multiLineMinorAlarm = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    isMultiLine: true,
+    borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private TextEntryViewModel _multiLineInvalid = new TextEntryViewModel(
+    text: "Lorem Ipsum",
+    tooltipText: "Default",
+    isMultiLine: true,
+    borderStatus:BorderStatus.Invalid  
+  );
+}

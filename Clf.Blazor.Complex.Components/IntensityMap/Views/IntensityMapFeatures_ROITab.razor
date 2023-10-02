@@ -1,0 +1,72 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "roi-tab">
+    <div style="grid-column:1;">
+        <RadioButton ViewModel="@ViewModel?.ROIMethod" />
+    </div>
+    <div style="grid-column:1;">
+        <label>ROI Start X</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.CameraROIStartXSet" />
+        <TextEntry ViewModel="@ViewModel.SoftwareROIStartXSet" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraROIStartXRBV" />
+        <TextUpdate ViewModel="@ViewModel.SoftwareROIStartXRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>ROI Start Y</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.CameraROIStartYSet" />
+        <TextEntry ViewModel="@ViewModel.SoftwareROIStartYSet" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraROIStartYRBV" />
+        <TextUpdate ViewModel="@ViewModel.SoftwareROIStartYRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>ROI Size X</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.CameraROISizeXSet" />
+        <TextEntry ViewModel="@ViewModel.SoftwareROISizeXSet" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraROISizeXRBV" />
+        <TextUpdate ViewModel="@ViewModel.SoftwareROISizeXRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>ROI Size Y</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.CameraROISizeYSet" />
+        <TextEntry ViewModel="@ViewModel.SoftwareROISizeYSet" />
+    </div>
+    <div style="grid-column:3;">
+        <TextUpdate ViewModel="@ViewModel.CameraROISizeYRBV" />
+        <TextUpdate ViewModel="@ViewModel.SoftwareROISizeYRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <ActionButton ViewModel="@ViewModel.ROIPluginSettings" />
+    </div>
+  </div>
+
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_ROITabViewModel ViewModel { get; set; }
+
+}

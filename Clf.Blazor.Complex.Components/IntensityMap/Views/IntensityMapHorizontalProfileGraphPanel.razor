@@ -1,0 +1,32 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<!-- 
+<PlaceHolder Text="Horiz Graph" Width="200px" Height="100px" />
+-->
+
+<div  
+  style="
+    transform-origin : top left ;
+    transform        : rotate(0deg) translate(0%,0%) ;
+  "
+>
+
+	<IntensityProfileGraph ViewModel="ViewModel.IntensityProfileGraph"/>
+</div>
+
+@code {
+
+	[Parameter]
+	public ViewModels.IntensityMapProfileGraphViewModel ViewModel { get ; set ; } 
+
+}

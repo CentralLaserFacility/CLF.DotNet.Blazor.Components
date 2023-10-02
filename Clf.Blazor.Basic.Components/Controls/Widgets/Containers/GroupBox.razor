@@ -1,0 +1,36 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Microsoft.AspNetCore.Components.Web
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{	
+		<div class="group-box-wrapper"
+		disabled="@ViewModel.IsDisabled">			
+			<div class="group-box-header">
+			<h4 class="group-box-title">@ViewModel.Title</h4>
+		</div>
+		<div class="group-box-content">@ChildContent</div>
+		</div>	
+}
+
+@code
+{
+	[Parameter]
+	public GroupBoxViewModel ViewModel { get; set; } = new GroupBoxViewModel();
+	[Parameter]
+  public RenderFragment? ChildContent { get; set; }
+  
+  protected override void OnInitialized()
+	{
+		base.OnInitialized();  
+		ViewModel.PropertyChanged += OnPropertyChanged;
+	}
+
+	void IDisposable.Dispose()
+	{
+		ViewModel.PropertyChanged -= OnPropertyChanged;
+	}
+}

@@ -1,0 +1,63 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Collections.Specialized
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <div class="radio-button-group @GroupClass">
+      @foreach (var item in ViewModel.Items)
+      {
+        <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+          <label class="radio-button-label @Class" disabled="@ViewModel.GetDisableStatus()"
+                 style="--radio-button-width:@GetRadioButtonWidth(); --radio-button-height:@GetRadioButtonHeight();">
+            <input type="radio"
+                   checked="@(ViewModel.SelectedItem == item)"
+                   onchange="@(() => {ViewModel.SelectedItem = item; ViewModel.WriteSelectedItemToPV(); ViewModel.OnSelectionChange();})"
+                   disabled="@ViewModel.GetDisableStatus()">
+            <span class="radio-button-label-text">@item</span>
+          </label>
+        </Tooltip>
+      }
+    </div>
+  </Alarm>
+}
+
+
+@code {
+  [Parameter]
+  public RadioButtonViewModel ViewModel { get; set; } = new RadioButtonViewModel();
+
+  [Parameter]
+  public string GroupClass { get; set; } = "";
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+    ViewModel.Items.CollectionChanged += OnItemsCollectionChanged;
+  }
+
+  private string GetRadioButtonWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "max-content";
+  }
+
+  private string GetRadioButtonHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-radio-button-default-size)";
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+    ViewModel.Items.CollectionChanged -= OnItemsCollectionChanged;
+  }
+
+}

@@ -1,0 +1,28 @@
+﻿@page "/treeview-examples"
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+
+<h3>Treeview Example</h3>
+
+<TreeView Title="Item 1">
+  <TreeView Title="Sub-item 1" IsDisabled="true"></TreeView>
+  <TreeView Title="Sub-item 2"></TreeView>
+</TreeView>
+<TreeView Title="Item 2">
+  <TreeView Title="Sub-item 1">
+    <TreeView Title="Sub-sub-item 1" IsDisabled="true"></TreeView>
+    <TreeView Title="Sub-sub-item 2"></TreeView>
+  </TreeView>
+  <TreeView Title="Sub-item 2"></TreeView>
+</TreeView>
+<TreeView Title="Item 3" IsDisabled="true">
+  <TreeView Title="Sub-item 1"></TreeView>
+  <TreeView Title="Sub-item 2"></TreeView>
+</TreeView>
+<TreeView Title="Item 4">
+  <TreeView Title="Sub-item 1"></TreeView>
+  <TreeView Title="Sub-item 2"></TreeView>
+</TreeView>
+
+@code {
+
+}

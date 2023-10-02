@@ -1,0 +1,152 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="common-plugin-settings-tab">
+    <div style="grid-column:1;">
+        <label>Asyn Port</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginAsynPortRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Plugin Type</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginTypeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>ADCore Version</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginADCoreVersionRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Plugin Version</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginVersionRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Array Port</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.PluginArrayPortSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginArrayPortRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Array Address</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.PluginArrayAddressSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginArrayAddressRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Enable</label>
+    </div>
+    <div style="grid-column:2;">
+        <ComboBox ViewModel="@ViewModel.PluginEnableSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginEnableRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Min. Time</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.PluginMinTimeSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginMinTimeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Queue Size/free</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.PluginQueueSizeSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginQueueSizeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Array Counter</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.PluginArrayCounterSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginArrayCounterRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Array Rate</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginArrayRateRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Execution Time</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginExecutionTimeRBV" />
+    </div>
+     <div style="grid-column:1;">
+        <label>Dropped Array</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextEntry ViewModel="@ViewModel.PluginDroppedArraySet" />
+        <TextUpdate ViewModel="@ViewModel.PluginDroppedArrayRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label># Dimensions</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginDimensionsRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Array Size</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginArraySizeXRBV" />
+        <TextUpdate ViewModel="@ViewModel.PluginArraySizeYRBV" />
+        <TextUpdate ViewModel="@ViewModel.PluginArraySizeZRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Data Type</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginDataTypeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Colour Mode</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginColourModeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Unique ID</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginUniqueIDRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Time Stamp</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PluginTimestampRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Array Callbacks</label>
+    </div>
+    <div style="grid-column:2;">
+        <ComboBox ViewModel="@ViewModel.PluginArrayCallbacksSet" />
+        <TextUpdate ViewModel="@ViewModel.PluginArrayCallbacksRBV" />
+    </div>
+  </div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_CommonPluginSettingsViewModel ViewModel { get; set; }
+
+}

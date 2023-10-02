@@ -1,0 +1,85 @@
+﻿.dashboard-panel {
+  display: flex;
+  gap: var(--clf-dashboard-panel-gap);
+  margin: var(--clf-dashboard-panel-margin);
+  flex-direction: column;
+}
+
+.dashboard-panel-grid {
+  display: grid;
+  grid-gap: 0;
+  grid-auto-rows: var(--clf-dashboard-panel-grid-size);
+  grid-template-columns: repeat(auto-fill, var(--clf-dashboard-panel-grid-size));
+  width: 100%;
+}
+
+.unpinned-navigation {
+  display: flex;
+  width: max-content;
+  overflow: visible;
+  margin-left: var(--clf-dashboard-unpinned-navigation-margin);
+  height: var(--clf-dashboard-unpinned-navigation-height);
+}
+
+.unpinned-button-wrapper {
+  position: relative;
+  height: inherit;
+}
+
+.unpinned-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--clf-dashboard-unpinned-navigation-button-padding);
+  background-color: var(--clf-action-button-background-color);
+  outline: none;
+  border: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-header-border-colour);
+  border-right: 0px;
+  border-radius: 0px;
+  cursor: pointer;
+  gap: var(--clf-dashboard-unpinned-navigation-button-gap);
+  font-size: var(--clf-dashboard-pane-header-font-size);
+  position: relative;
+  overflow: visible;
+  height: inherit;
+}
+
+.unpinned-navigation > span:first-of-type > .unpinned-button {
+  border-right: 0px;
+  border-top-left-radius: var(--clf-dashboard-pane-border-radius);
+  border-bottom-left-radius: var(--clf-dashboard-pane-border-radius);
+}
+
+.unpinned-navigation > span:last-of-type > .unpinned-button {
+  border-right: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-header-border-colour);
+  border-top-right-radius: var(--clf-dashboard-pane-border-radius);
+  border-bottom-right-radius: var(--clf-dashboard-pane-border-radius);
+}
+
+.unpinned-button-selected {
+  background-color: var(--clf-dashboard-unpinned-button-selected-background-colour);
+  color: var(--clf-dashboard-unpinned-button-selected-font-colour);
+  font-weight: var(--clf-bold-font-weight);
+}
+
+.unpinned-button:hover {
+  background-color: var(--clf-dashboard-unpinned-button-selected-background-colour);
+  color: var(--clf-dashboard-unpinned-button-selected-font-colour);
+}
+
+.unpin-icon-button {
+  background-color: transparent;
+  border: none; /* Remove borders */
+  cursor: pointer; /* Mouse pointer on hover */
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+  padding: var(--clf-dashboard-pane-header-button-padding);
+  outline: none;
+}
+
+::deep .unpin-icon {
+  font-size: var(--clf-dashboard-pane-icon-font-size);
+}

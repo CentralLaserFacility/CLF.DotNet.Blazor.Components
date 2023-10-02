@@ -1,0 +1,98 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Enums
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <div class="progress-bar-container @Class"
+           disabled="@Utilities.GetBorderStatusDisable(ViewModel.BorderStatus)"
+           style="--progress-bar-width:@GetWidth(); --progress-bar-height:@GetHeight(); --progress-bar-value-font-size:@GetFontSize();">
+        <div class="clf-progress-bar">
+          @if (ViewModel.IsIndeterminate)
+          {
+            <div class="progress-bar-indeterminate" disabled="@Utilities.GetBorderStatusDisable(ViewModel.BorderStatus)" />
+          }
+          else
+          {
+            <div class="progress-bar-determinate" disabled="@Utilities.GetBorderStatusDisable(ViewModel.BorderStatus)"
+                 style="--progress-width: @GetValuePercentage()" />
+          }
+        </div>
+
+        @if (!ViewModel.IsIndeterminate && ViewModel.ShowValue)
+        {
+          <span class="progress-bar-value">
+            @GetValuePercentage()
+          </span>
+        }
+      </div>
+    </Tooltip>
+  </Alarm>
+}
+
+@code
+{
+  [Parameter]
+  public ProgressBarViewModel ViewModel { get; set; } = new ProgressBarViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-progress-bar-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : GetSize();
+  }
+
+  private string GetSize()
+  {
+    switch (ViewModel.ProgressBarSize)
+    {
+      case ProgressBarSize.Regular:
+      default:
+        if (ViewModel.ProgressBarSize == ProgressBarSize.Regular)
+          return "var(--clf-progress-bar-regular-height)";
+        else
+          return "var(--clf-progress-bar-small-height)";
+    }
+  }
+
+  private string GetFontSize()
+  {
+    switch (ViewModel.ProgressBarSize)
+    {
+      case ProgressBarSize.Small:
+        return "var(--clf-small-progress-bar-font-size)";
+      case ProgressBarSize.Regular:
+      default:
+        return "var(--clf-regular-progress-bar-font-size)";
+    }
+  }
+
+  private string GetValuePercentage()
+  {
+    return String.Format("{0:0}%", ((ViewModel.Value - ViewModel.Minimum) * 100) / (ViewModel.Maximum - ViewModel.Minimum));
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+
+}

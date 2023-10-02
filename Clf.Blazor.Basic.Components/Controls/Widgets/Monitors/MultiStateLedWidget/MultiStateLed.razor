@@ -1,0 +1,119 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using System.Text;
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <CascadingValue Value="this">
+    <div class="led-wrapper">
+      <Alarm class="@(ViewModel.IsSquare?"":"alarm-round")" IconClass="@(ViewModel.IsSquare?"":"alarm-icon-position")" BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+        <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+          <div class="@GetLedCssClasses() @Class" disabled="@Utilities.GetBorderStatusDisable(ViewModel.BorderStatus)"
+               style="--led-width:@GetLedWidth(); --led-height:@GetLedHeight();">
+            @AddFallbackState()
+            @ChildContent
+          </div>
+        </Tooltip>
+      </Alarm>
+    </div>
+  </CascadingValue>
+}
+
+@code
+{
+  [Parameter]
+  public MultiStateLedViewModel ViewModel { get; set; } = new MultiStateLedViewModel();
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  public LedState? CurrentState { get; set; }
+
+  private string _fallbackStateValue = "FallBack Value";
+  private Dictionary<string, LedState> _states = new Dictionary<string, LedState>();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnValuePropertyChanged;
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+
+
+  internal void AddState(LedState state)
+  {
+    _states.Add(state.Value, state);
+    if (CurrentState == null && state.Value == _fallbackStateValue)
+      SetCurrentState(_fallbackStateValue);
+    else if (ViewModel.LedValue == state.Value)
+      SetCurrentState(ViewModel.LedValue);
+    StateHasChanged();
+  }
+
+  private RenderFragment AddFallbackState()
+  {
+    return (__builder) =>
+    {
+      <LedState Value="@_fallbackStateValue" Colour="var(--clf-led-fallback-colour)" Label="Fallback" />
+    };
+  }
+
+  private string GetLedCssClasses()
+  {
+    StringBuilder ledCssStringBuilder = new StringBuilder("led-main");
+    if (ViewModel.IsSquare)
+      ledCssStringBuilder.Append(" led-square");
+    if (ViewModel.IsBlink)
+      ledCssStringBuilder.Append(" led-blink");
+
+    return ledCssStringBuilder.ToString();
+  }
+
+  private string GetLedWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-led-default-width)";
+  }
+
+  private string GetLedHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-led-default-height)";
+  }
+
+  private void OnValuePropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  {
+    switch (e.PropertyName)
+    {
+      case nameof(ViewModel.LedValue):
+        SetCurrentState(ViewModel.LedValue);
+        break;
+      default:
+        break;
+    }
+  }
+
+  private void SetCurrentState(string ledValue)
+  {
+    if (_states.ContainsKey(ledValue))
+    {
+      CurrentState = _states[ledValue];
+    }
+    else
+    {
+      CurrentState = _states[_fallbackStateValue];
+    }
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel!.PropertyChanged -= OnPropertyChanged;
+    ViewModel.PropertyChanged -= OnValuePropertyChanged;
+  }
+}
+

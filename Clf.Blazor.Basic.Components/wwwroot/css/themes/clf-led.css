@@ -1,0 +1,71 @@
+﻿:root {
+  --clf-led-default-width: 28px;
+  --clf-led-default-height: 28px;
+  --clf-led-default-radius: 50%;
+  --clf-led-border-size: 2px;
+  --clf-led-border-style: solid;
+  --clf-led-border-colour: #242424;
+  --clf-led-font-colour: #222222;
+  --clf-led-font-colour-contrast: #E2E2E2;
+  --clf-led-content-gap: 4px;
+  --clf-led-content-padding: 4px 4px 4px 4px;
+  --clf-led-icon-font-size: 16px;
+  --clf-led-default-on-colour: #00DE0A;
+  --clf-led-default-off-colour: #005A02;
+  --clf-led-error-on-colour: #FF0000;
+  --clf-led-error-off-colour: #8C0600;
+  --clf-led-warning-on-colour: #FFD600;
+  --clf-led-warning-off-colour: #AA6100;
+  --clf-led-binary-on-colour: #00DE0A;
+  --clf-led-binary-off-colour: #FF0000;
+  --clf-led-invalid-colour: #D0D5DD;
+  --clf-led-fallback-colour: #FA00FA;
+}
+
+.led-wrapper {
+  width: fit-content;
+}
+
+.led-main {
+  position: relative;
+  overflow: hidden;
+  min-width: var(--clf-led-default-width);
+  width: var(--led-width);
+  height: var(--led-height);
+  border: var(--clf-led-border-size) var(--clf-led-border-style) var(--clf-led-border-colour);
+  border-radius: var(--clf-led-default-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--clf-led-font-colour);
+}
+
+  .led-main[disabled] {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }
+
+.led-square {
+  border-radius: var(--clf-border-radius);
+}
+
+
+.led-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--clf-led-content-gap);
+  padding: var(--clf-led-content-padding);
+}
+
+.led-content-contrast {
+  color: var(--clf-led-font-colour-contrast);
+}
+
+.led-content-text {
+  text-overflow:ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+}

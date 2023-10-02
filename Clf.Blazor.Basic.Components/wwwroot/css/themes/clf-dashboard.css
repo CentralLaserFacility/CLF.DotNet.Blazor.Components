@@ -1,0 +1,32 @@
+﻿:root {
+  --clf-dashboard-panel-gap: 16px;
+  --clf-dashboard-panel-margin: 10px;
+  --clf-dashboard-panel-grid-size: 2px;
+  --clf-dashboard-background-colour: rgba(255,255,255,0.5);
+  --clf-dashboard-header-background-colour: rgba(57,57,57,0.1);
+  --clf-dashboard-header-border-colour: rgba(143,143,143,0.4);
+  --clf-dashboard-body-border-colour: #EAECF0;
+  --clf-dashboard-body-padding: 10px;
+  --clf-dashboard-pane-selected-filter: blur(5px);
+  --clf-dashboard-pane-icon-colour: #0082D9;
+  --clf-dashboard-pane-icon-font-size: 1.5em;
+  --clf-dashboard-pane-drag-line-border: 4px solid #0082D9;
+  --clf-dashboard-pane-margin: 0px 12px 12px 0px;
+  --clf-dashboard-pane-drag-line-padding: 4px 0px 0px 4px;
+  --clf-dashboard-pane-border-radius: 8px;
+  --clf-dashboard-pane-border-width: 1px;
+  --clf-dashboard-pane-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+  --clf-dashboard-pane-header-padding: 4px 12px 4px 16px;
+  --clf-dashboard-pane-header-font-size: var(--clf-h3-font-size);
+  --clf-dashboard-pane-header-button-margin: 2px;
+  --clf-dashboard-pane-header-button-padding: 2px;
+  --clf-dashboard-unpinned-button-selected-background-colour: #0082D9;
+  --clf-dashboard-unpinned-button-selected-font-colour: #DDDDDD;
+  --clf-dashboard-unpinned-navigation-margin: 8px;
+  --clf-dashboard-unpinned-navigation-height: 32px;
+  --clf-dashboard-unpinned-navigation-button-padding: 8px 8px;
+  --clf-dashboard-unpinned-navigation-button-gap: 32px;
+  --clf-dashboard-pane-unpinned-top: var(--clf-dashboard-unpinned-navigation-height);
+  --clf-dashboard-pane-unpinned-box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.20);
+
+}

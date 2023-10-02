@@ -1,0 +1,64 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "display-tab">
+    <div style="grid-column:1;">
+        <label>Image Counter</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.ImageCounterRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Max Pixel Value</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.MaxPixelValueRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Pixel Bit Depth</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.PixelBitDepthRBV" />
+    </div>
+        <div style="grid-column:1;">
+        <label>Colour Map</label>
+    </div>
+    <div style="grid-column:2;">
+        <ComboBox ViewModel="@ViewModel.ColourMap" />
+    </div>
+   @* <div style="grid-column:1;">
+        <label>Brightness</label>
+    </div>
+    <div style="grid-column:1;">
+        <Slider ViewModel="@ViewModel.BrightnessSliderSet" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Contrast</label>
+    </div>
+    <div style="grid-column:1;">
+        <Slider ViewModel="@ViewModel.ContrastSliderSet" />
+    </div>*@
+    <div style="grid-column:1;">
+        <label>Normalisation</label>
+    </div>
+    <div style="grid-column:1;">
+        <Checkbox ViewModel="@ViewModel.AutoNormalise" />
+    </div>
+    <div style="grid-column:1;">
+        <Slider ViewModel="@ViewModel.ManualNormalisationValue" />
+    </div>
+  </div>
+
+@code {
+    [Parameter]
+    public ViewModels.IntensityMapFeatures_DisplayTabViewModel ViewModel { get; set; }
+}

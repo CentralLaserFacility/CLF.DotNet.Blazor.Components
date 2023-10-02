@@ -1,0 +1,26 @@
+﻿.group-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.group-box-wrapper {
+  display:inline-flex;
+  flex-direction:column;
+  margin:12px;
+  min-width: fit-content;  
+  /*border-bottom:1px solid var(--clf-group-box-border-colour);*/
+}
+
+.group-box-title {
+  width: 100%; /* Or auto */
+  padding: 4px 16px; /* To give a bit of padding on the left and right */
+  border-radius: 4px;
+  background-color: var(--clf-group-box-title-background-colour);
+  text-align: center;
+}
+
+.group-box-content{
+  padding:12px 0px;
+}

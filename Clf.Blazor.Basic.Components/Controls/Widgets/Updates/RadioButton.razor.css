@@ -1,0 +1,31 @@
+﻿.radio-button-label {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  text-align: start;
+  gap: var(--clf-radio-button-label-gap);
+  width: var(--radio-button-width);
+  height: var(--radio-button-height);
+  cursor: pointer;
+}
+
+  .radio-button-label[disabled] {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }
+
+input[type="radio"] {
+  width: var(--radio-button-height);
+  min-width: var(--radio-button-height);
+  height: var(--radio-button-height);
+}
+
+.radio-button-group {
+  display: flex;
+  gap: var(--clf-radio-button-to-radio-button-gap);
+  flex-direction: column;
+}
+
+.radio-button-label-text {
+  flex: 1;
+}

@@ -1,0 +1,9 @@
+﻿
+th,td{
+  padding:15px;
+}
+
+::deep .test {
+  --slide-button-width: 200px !important;
+  --slide-button-height: 100px !important;
+}

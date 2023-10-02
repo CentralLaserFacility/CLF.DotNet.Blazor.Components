@@ -1,0 +1,54 @@
+record(ao, "Blazor:SliderCheck") {
+    field(DESC, "Slider test")
+    field(PREC, "3")
+    field(EGU,  "Volts")
+    field(DRVL, "-30.598")
+    field(DRVH, "+50.598")
+    field(VAL,  "5.123")
+}
+
+record(mbbi, "Blazor:ComboBoxCheck") {
+    field(DESC, "ComboBox test")
+    field(ZRST, "zero")
+    field(ZRVL, "0")
+    field(ONST, "one") 
+    field(ONVL, "1")
+    field(TWST, "two") 
+    field(TWVL, "2")
+    field(THST, "three") 
+    field(THVL, "3")
+    field(FRST, "four") 
+    field(FRVL, "4")
+}
+
+record(mbbi, "Blazor:ChoiceButtonCheck") {
+    field(DESC, "description")
+    field(ZRST, "zero_string")        field(ZRVL, "0")
+    field(ONST, "one_string")         field(ONVL, "1")
+    field(TWST, "two_string")         field(TWVL, "2")
+    field(THST, "three_string")       field(THVL, "3")
+}
+
+record(waveform, "Blazor:GraphCheckX")
+{
+  field(DESC, "Array of 800 int, range from 0 to 4095")
+  field(NELM, "100")
+  field(FTVL, "DOUBLE")
+}
+
+record(waveform, "Blazor:GraphCheckY")
+{
+  field(DESC, "Array of 800 int, range from 0 to 4095")
+  field(NELM, "100")
+  field(FTVL, "DOUBLE")
+}
+
+record(ao, "Blazor:SymbolCheck") {
+    field(VAL,  "2")
+}
+
+record(calcout, "Blazor:ActionButtonPV") {
+    field(CALC, "a+10")
+    field(INPA, "Blazor:ActionButtonPV")
+    field(OUT,  "Blazor:ActionButtonPV")
+}

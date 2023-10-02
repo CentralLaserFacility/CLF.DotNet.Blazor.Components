@@ -1,0 +1,54 @@
+﻿:root {
+  --clf-action-button-active-font-colour: #DDDDDD;
+  --clf-action-button-default-width: 100px;
+  --clf-action-button-default-height: 32px;
+  --clf-action-button-background-color: #F1F1F1;
+  --clf-action-button-hover-color: #D3D3D3;
+  --clf-action-button-active-background-color: #8B8B8B;
+  --clf-action-button-active-outline-width: 1px;
+  --clf-action-button-focus-border-color: #000000;
+  /* Navigation Button*/
+  --clf-navigation-action-button-default-width: 98px;
+  --clf-navigation-action-button-default-height: 32px;
+  --clf-navigation-action-button-background-color: #808080;
+  --clf-navigation-action-button-color: #FFFFFF;
+  --clf-navigation-action-button-hover-background-color: #D3D3D3;
+  --clf-navigation-action-button-active-background-color: #8B8B8B;
+  --clf-navigation-action-button-focus-border-color: #8B8B8B;
+}
+
+button {
+  width: max-content;
+  height: var(--clf-action-button-default-height);
+  background-color: var(--clf-action-button-background-color);
+  color: var(--clf-font-colour);
+  border-radius: var(--clf-border-radius);
+  border: 0px;
+  font-family: var(--clf-font-family);
+  font-style: var(--clf-font-style);
+  font-weight: var(--clf-medium-font-weight);
+  font-size: var(--clf-default-font-size);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 8px;
+  cursor: pointer;
+}
+
+  button:hover {
+    background-color: var(--clf-action-button-hover-color);
+  }
+
+  button:focus {
+    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-color);
+  }
+
+  button:active {
+    background-color: var(--clf-action-button-active-background-color);
+    color: var(--clf-action-button-active-font-colour);
+  }
+
+  button:disabled {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }

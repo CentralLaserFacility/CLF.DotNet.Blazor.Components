@@ -1,0 +1,62 @@
+﻿:root {
+  --clf-check-box-label-gap: 8px;
+  --clf-check-box-default-height: 22px;
+  --clf-check-box-round-default-radius: 50%;
+  --clf-check-box-square-default-radius: 20%;
+  --clf-check-box-border-size: 1px;
+  --clf-check-box-default-border-disabled-colour: #B3B3B3;
+  --clf-check-box-border-style: solid;
+  --clf-check-box-hover-focus-checked-border-colour: #0082D9;
+  --clf-check-box-focus-checked-background-colour: rgba(255,255,0,0.2);
+}
+
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+  width: var(--clf-check-box-default-height);
+  min-width: var(--clf-check-box-default-height);
+  height: var(--clf-check-box-default-height);
+  font: inherit;
+  border: var(--clf-check-box-border-size) var(--clf-check-box-border-style) var(--clf-check-box-default-border-disabled-colour);
+  border-radius: var(--clf-border-radius);
+  outline: none;
+}
+
+  input[type="checkbox"]:hover:enabled {
+    cursor: pointer;
+    border: var(--clf-check-box-border-size) var(--clf-check-box-border-style) var(--clf-check-box-hover-focus-checked-border-colour);
+  }
+
+  input[type="checkbox"]:focus {
+    border: var(--clf-check-box-border-size) var(--clf-check-box-border-style) var(--clf-check-box-hover-focus-checked-border-colour);
+  }
+
+  input[type="checkbox"]:checked {
+    color: var(--clf-check-box-hover-focus-checked-border-colour);
+  }
+
+  input[type="checkbox"]:disabled {
+    pointer-events: none;
+    background-color: var(--clf-check-box-disabled-background-colour);
+    color: var(--clf-check-box-default-border-disabled-colour);
+  }
+
+  input[type="checkbox"]:focus:checked {
+    background-color: var(--clf-check-box-focus-checked-background-colour);
+    color: var(--clf-font-colour);
+  }
+
+  input[type="checkbox"]:checked::before {
+    content: "✓";
+    font-size: var(--clf-h2-font-size);
+    font-weight: var(--clf-bold-font-weight);
+    letter-spacing: 0.06em;
+    position: relative;
+  }
+

@@ -1,0 +1,21 @@
+﻿.alarm-main {
+  position: relative;
+  outline: var(--clf-alarm-outline);
+  outline-offset: var(--clf-alarm-outline-offset);
+  border-radius: var(--clf-border-radius);
+  width: fit-content;
+  height: fit-content;
+  margin: var(--clf-alarm-margin);
+}
+
+.alarm-content {
+  display: flex;
+}
+
+::deep .alarm-icon {
+  position: absolute;
+  z-index: 999;
+  top: -15px;
+  left: -15px;
+}
+

@@ -1,0 +1,13 @@
+﻿
+<button class="file-picker-button @(FilePickerType==FilePickerType.Open?"icon-ic_fluent_folder_open_16_regular":"icon-ic_fluent_save_16_regular")" @onclick="@OnClicked" />
+
+@code {
+  [Parameter]
+  public FilePickerType FilePickerType { get; set; } = FilePickerType.Open;
+
+  [Parameter]
+  public Action OnClicked { get; set; } = delegate { };
+
+
+  
+}

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;EPAC_SIM</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj" />
+    <ProjectReference Include="..\..\Clf.Blazor.Basic.Components\Clf.Blazor.Basic.Components.csproj" />
+    <ProjectReference Include="..\..\Clf.Blazor.Common\Clf.Blazor.Common.csproj" />
+  </ItemGroup>
+
+</Project>

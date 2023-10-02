@@ -1,0 +1,327 @@
+﻿@page "/Cameras/{PageTitle}/Camera-Driver-Settings"
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="camera-driver-settings-tab">
+    <div style="grid-column:1/5; text-align:center;">
+        <label>@ViewModel.pageFileTitle</label>
+    </div>
+    <div style="grid-column:1;">
+        <div class="camera-driver-advanced-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Collect</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Exposure Time</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraExposureTime" />
+                <TextUpdate ViewModel="@ViewModel.CameraExposureTimeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Exposure Auto</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraExposureAuto" />
+                <TextUpdate ViewModel="@ViewModel.CameraExposureAutoRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Acquire Period</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraAcquirePeriod" />
+                <TextUpdate ViewModel="@ViewModel.CameraAcquirePeriodRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Frame Rate</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraFrameRate" />
+                <TextUpdate ViewModel="@ViewModel.CameraFrameRateRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label># images</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraNumImages" />
+                <TextUpdate ViewModel="@ViewModel.CameraNumImagesRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label># Images Complete</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraImagesCompleteRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Image Mode</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraImageMode" />
+                <TextUpdate ViewModel="@ViewModel.CameraImageModeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Acquire</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.CameraAcquireStart" />
+                <ActionButton ViewModel="@ViewModel.CameraAcquireStop" />
+            </div>
+            <div style="grid-column:1;">
+                <label># Queued Arrays</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraQueuedArraysRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Wait for Plugins</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraWaitForPlugins" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Acquire busy</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraAcquireBusyRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Detector State</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraDetectorStateRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Status</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraStatusRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Image Counter </label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraImageCounter" />
+                <TextUpdate ViewModel="@ViewModel.CameraImageCounterRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Image Rate</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraImageRateRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Array Callbacks</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraArrayCallbacks" />
+                <TextUpdate ViewModel="@ViewModel.CameraArrayCallbacksRBV" />
+            </div>
+        </div>
+    </div>
+    <div style="grid-column:2;">
+        <div class="camera-driver-advanced-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Status</label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Status Rate</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraStatusRate" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Frames Delivered</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraFramesDeliveredRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Frames Dropped</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraFramesDroppedRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Frames Underruns</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraFramesUnderunsRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Packets Received</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraPacketsReceivedRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Packed Missed</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraPacketsMissedRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Packet Errors</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraPacketsErrorsRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Packets Requested</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraPacketsRequestedRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Packets Resent</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraPacketsResentRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Temperature</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraTemperatureRBV" />
+            </div>
+        </div>
+    </div>
+    <div style="grid-column:3;">
+        <div class="camera-driver-advanced-settings-tab">
+            <div style="grid-column:1/3; text-align:center;">
+                <label>Readout</label>
+            </div>
+            <div style="grid-column:2;text-align:center;">
+                <label> X </label>
+            </div>
+            <div style="grid-column:3;text-align:center;">
+                <label> Y </label>
+            </div>
+            <div style="grid-column:1;">
+                <label>Sensor Size</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraSensorSizeXRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <TextUpdate ViewModel="@ViewModel.CameraSensorSizeYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Region Start</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraROIStartX" />
+                <TextUpdate ViewModel="@ViewModel.CameraROIStartXRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <TextEntry ViewModel="@ViewModel.CameraROIStartY" />
+                <TextUpdate ViewModel="@ViewModel.CameraROIStartYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Region Size</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraROISizeX" />
+                <TextUpdate ViewModel="@ViewModel.CameraROISizeXRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <TextEntry ViewModel="@ViewModel.CameraROISizeY" />
+                <TextUpdate ViewModel="@ViewModel.CameraROISizeYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Binning</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraBinningX" />
+                <TextUpdate ViewModel="@ViewModel.CameraBinningXRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <TextEntry ViewModel="@ViewModel.CameraBinningY" />
+                <TextUpdate ViewModel="@ViewModel.CameraBinningYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Image Size</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraImageSizeXRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <TextUpdate ViewModel="@ViewModel.CameraImageSizeYRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Image Size (Bytes)</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraImageBytesRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Gain</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.CameraGain" />
+                <TextUpdate ViewModel="@ViewModel.CameraGainRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Gain Auto</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraGainAuto" />
+                <TextUpdate ViewModel="@ViewModel.CameraGainAutoRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Data Type</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraDataTypeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Colour Mode</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.CameraColourModeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Pixel Format</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraPixelFormat" />
+                <TextUpdate ViewModel="@ViewModel.CameraPixelFormatRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Convert Format</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraConvertFormat" />
+                <TextUpdate ViewModel="@ViewModel.CameraConvertFormatRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Timestamp Mode</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraTimestampMode" />
+                <TextUpdate ViewModel="@ViewModel.CameraTimestampModeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>UniqueID Mode</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.CameraUniqueIDMode" />
+                <TextUpdate ViewModel="@ViewModel.CameraUniqueIDModeRBV" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_AdvancedTabCameraDriverSettingsViewModel ViewModel { get; set; }
+}

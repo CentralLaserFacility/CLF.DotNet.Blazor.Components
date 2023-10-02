@@ -1,0 +1,49 @@
+﻿@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+@using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Common.ExtensionMethods
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using System.Globalization
+@inherits WidgetBase
+@implements IDisposable
+
+@if ( ViewModel?.IsVisible == true )
+{
+  <!-- ??? 
+    title  = "@(ViewModel.ShowTooltip ? ViewModel.TooltipText : string.Empty)"
+  -->
+  <canvas 
+    @ref   = "@m_canvasRef" 
+    width  = "@(ViewModel.DisplayWidth)" 
+    height = "@(ViewModel.DisplayHeight)"
+  />
+}
+
+@code {
+
+  [Parameter]
+  public ImageViewerViewModel? ViewModel { get ; set ; } // TODO !!!!! PropertyChanged ...
+
+  private ElementReference m_canvasRef ;
+
+  protected override void OnInitialized ( )
+  {
+    base.OnInitialized() ;
+    if(ViewModel!=null)
+      ViewModel.PropertyChanged += OnPropertyChanged;
+	}
+
+	void IDisposable.Dispose()
+	{
+    if(ViewModel!=null)
+		  ViewModel.PropertyChanged -= OnPropertyChanged;
+	}
+
+  // See the '.razor.cs' file for additional code that renders the image
+
+}

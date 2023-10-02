@@ -1,0 +1,38 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Microsoft.AspNetCore.Hosting
+@using System.IO
+@inject IWebHostEnvironment webHostEnv
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+	var source = "_content/Clf.Blazor.Basic.Components/no-image.svg";
+  if (File.Exists(Path.Combine(webHostEnv.WebRootPath, ViewModel.ImagePath)))
+  {
+	  source = ViewModel.ImagePath;
+  }
+  <img 
+		  src="@source" 
+		  width="@(ViewModel.Width)" 
+		  height="@(ViewModel.Height)"
+			title= "@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)"
+	/>
+}
+
+@code {
+	[Parameter]
+	public PictureViewModel ViewModel { get; set; } = new PictureViewModel();
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		ViewModel.PropertyChanged += OnPropertyChanged;
+	}
+
+	void IDisposable.Dispose()
+	{
+	  ViewModel!.PropertyChanged -= OnPropertyChanged;
+	}
+
+}

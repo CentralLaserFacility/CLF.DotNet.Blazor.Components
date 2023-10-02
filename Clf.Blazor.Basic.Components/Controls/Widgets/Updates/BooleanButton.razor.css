@@ -1,0 +1,24 @@
+﻿.boolean-button {
+    width: var(--boolean-button-width);
+    height: var(--boolean-button-height);
+    color: var(--boolean-button-color);
+    border-radius: var(--clf-border-radius);
+    border: 0px;
+}
+
+.boolean-button:hover {
+   filter: opacity(85%) !important;
+}
+
+.boolean-button:focus {
+    border: 1px solid var(--clf-boolean-button-focus-border-colour);
+}
+
+.boolean-button:active {
+   filter: opacity(95%) !important;
+}
+
+  .boolean-button:disabled {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }

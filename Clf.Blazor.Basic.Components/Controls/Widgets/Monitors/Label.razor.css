@@ -1,0 +1,4 @@
+﻿.label-main {
+  width: var(--label-width);
+  height: var(--label-height);
+}

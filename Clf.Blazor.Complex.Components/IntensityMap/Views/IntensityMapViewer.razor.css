@@ -1,0 +1,63 @@
+﻿/* IntensityMapViewer.razor.css */
+
+/* 
+CSS Isolation, explaining '::deep' etc ...
+https://docs.microsoft.com/en-us/aspnet/core/blazor/components/css-isolation?view=aspnetcore-6.0 
+*/
+
+.imv-main {
+  display: inline-grid;
+  /*background-color: lightgreen;*/
+  column-gap: 0px;
+  row-gap: 0px;
+  padding: 0px;
+  height: auto;
+  grid-template-areas:
+    "T T ."
+    "A B C"
+    "D E C"
+    ". . C";
+}
+
+
+.imv-t {
+  grid-area: T;
+  display:inline-flex;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.imv-a {
+  grid-area : A;
+}
+
+.imv-b {
+  background-color:white;
+  grid-area : B;
+}
+
+.imv-c {
+  /*margin-top: -11px;*/
+  grid-area: C;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.imv-d {
+  grid-area : D;
+}
+
+.imv-e {
+  grid-area : E;
+}
+
+::deep .group-grid {
+  display: inline-grid;
+  grid-template-columns: 100px auto auto;
+  column-gap: 10px;
+  row-gap: 5px;
+  padding: 5px;
+}

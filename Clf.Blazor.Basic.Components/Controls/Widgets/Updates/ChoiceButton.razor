@@ -1,0 +1,98 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using System.Collections.Specialized
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <div class="choice-button-container @Class"
+         style="--flex-direction:@GetFlexDirection();">
+      @foreach (var item in ViewModel.Items)
+      {
+        <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+          <button class="@GetButtonClass(item)"
+                  style="--choice-button-width: @GetButtonWidth();--choice-button-height: @GetButtonHeight();"
+          @onclick="@(() => {OnButtonClicked(item);})"
+                  disabled="@ViewModel.GetDisableStatus()">
+            @item
+          </button>
+        </Tooltip>
+      }
+
+    </div>
+  </Alarm>
+
+}
+
+@code {
+  [Parameter]
+  public ChoiceButtonViewModel ViewModel { get; set; } = new ChoiceButtonViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+    ViewModel.Items.CollectionChanged += OnItemsCollectionChanged;
+  }
+
+  // helper
+  private void OnButtonClicked(string item)
+  {
+    ViewModel.SelectedItem = item;
+    ViewModel.WriteSelectedItemToPV();
+    ViewModel?.OnSelectionChange();
+  }
+
+  string GetButtonClass(string item)
+  {
+    string buttonClass = "choice-button";
+    if (ViewModel.SelectedItem == item)
+    {
+      buttonClass = buttonClass + " choice-button-selected";
+    }
+
+    if (ViewModel.IsHorizontal)
+    {
+      buttonClass = buttonClass + " choice-button-horizontal";
+    }
+    else
+    {
+      buttonClass = buttonClass + " choice-button-vertical";
+    }
+    return buttonClass;
+  }
+
+  private string GetButtonWidth()
+  {
+    return ViewModel.ButtonWidth != null ? $"{ViewModel.ButtonWidth}px" : "var(--clf-action-button-default-width)";
+  }
+  private string GetButtonHeight()
+  {
+    return ViewModel.ButtonHeight != null ? $"{ViewModel.ButtonHeight}px" : "var(--clf-action-button-default-height)";
+  }
+
+  private string GetFlexDirection()
+  {
+    if (ViewModel.IsHorizontal)
+    {
+      return "row";
+    }
+    else
+    {
+      return "column";
+    }
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+    ViewModel.Items.CollectionChanged -= OnItemsCollectionChanged;
+  }
+}
+

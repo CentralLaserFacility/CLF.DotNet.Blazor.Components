@@ -1,0 +1,111 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "centroid-settings-tab">
+    <div style="grid-column:1;">
+        <label>Validation Methods </label>
+    </div>
+    <div style="grid-column:1;">
+        <label>Threshold for min enclosing area (%) </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.MinEnclosingAreaSet" />
+        <TextUpdate ViewModel="@ViewModel.MinEnclosingAreaRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>No of Iteration per calculation </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.NumIterationSet" />
+        <TextUpdate ViewModel="@ViewModel.NumIterationRBV" />
+     </div>
+
+    <div style="grid-column:1;">
+        <label>Distance between two consecutive centroids (COG) </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.DistanceCentroidsSet" />
+        <TextUpdate ViewModel="@ViewModel.DistanceCentroidsRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Threshold </label>
+    </div>
+    <div style="grid-column:1;">
+        <label>Initial threshold value (% of max pixel) </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.InitialThresholdSet" />
+        <TextUpdate ViewModel="@ViewModel.InitialThresholdRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Pixel increment per iteration </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.PixelIncrementSet" />
+        <TextUpdate ViewModel="@ViewModel.PixelIncrementRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Min % of pixels above threshold </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.MinPixelAboveThresholdSet" />
+        <TextUpdate ViewModel="@ViewModel.MinPixelAboveThresholdRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Max % of pixels above threshold </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.MaxPixelAboveThresholdSet" />
+        <TextUpdate ViewModel="@ViewModel.MaxPixelAboveThresholdRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Downsampling </label>
+    </div>
+    <div style="grid-column:1;">
+        <label>X </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.DownsampleXSet" />
+        <TextUpdate ViewModel="@ViewModel.DownsampleXRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Y </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.DownsampleYSet" />
+        <TextUpdate ViewModel="@ViewModel.DownsampleYRBV" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Overlay </label>
+    </div>
+    <div style="grid-column:1;">
+        <label>Colour </label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.EDOverlayColourSet" />
+        <TextUpdate ViewModel="@ViewModel.EDOverlayColourRBV" />
+    </div>
+
+  </div>
+
+    @code {
+        [Parameter]
+        public ViewModels.IntensityMapFeatures_CentroidTabSettingsViewModel ViewModel { get; set; }
+    }

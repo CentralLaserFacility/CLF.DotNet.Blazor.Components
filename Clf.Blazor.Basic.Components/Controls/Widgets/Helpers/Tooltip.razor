@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Components.Web;
+@using System.Threading;
+@using Microsoft.JSInterop;
+@inject IJSRuntime JSRuntime
+@inherits WidgetBase
+
+@if (ChildContent != null)
+{
+  @if (!string.IsNullOrEmpty(Text) || TooltipContent != null)
+  {
+    <div class="tooltip-wrapper">
+      <div @ref=_tooltip class="tooltip-content @ShowTooltipClass @Class" style="--tooltip-mouse-x: @($"{_mouseX:F0}px"); --tooltip-mouse-y: @($"{_mouseY:F0}px"); --tooltip-delay: @($"{_delay}ms");">
+        @if (TooltipContent == null)
+        {
+          <span class="tooltip-text">@Text</span>
+        }
+        else
+        {
+          @TooltipContent
+        }
+      </div>
+      <div class="content-wrapper" @onmousemove="MouseMove" @onmouseenter="MouseEnter" @onmouseleave="MouseLeave">
+        @ChildContent
+      </div>
+    </div>
+  }
+  else
+  {
+    @ChildContent
+  }
+
+}
+
+@code {
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public RenderFragment? TooltipContent { get; set; }
+
+  [Parameter]
+  public string Text { get; set; } = "";
+
+  double _mouseX = 0;
+  double _mouseY = 0;
+  bool _showTooltip = false;
+  CancellationTokenSource tokenSource = new CancellationTokenSource();
+  int _delay = 500; //delay in ms
+  private IJSObjectReference? _module;
+  private ElementReference _tooltip;
+
+  public string ShowTooltipClass
+  {
+    get
+    {
+      if (_showTooltip)
+        return "show-tooltip-content";
+      else
+        return "";
+    }
+  }
+
+  //protected override async Task OnAfterRenderAsync(bool firstRender)
+  //{
+  //  await JSRuntime.InvokeVoidAsync("translateTooltip", _tooltip);
+  //}
+
+  private async void MouseEnter(MouseEventArgs e)
+  {
+    try
+    {
+      tokenSource = new CancellationTokenSource();
+      await Task.Delay(_delay, tokenSource.Token);
+      _showTooltip = true;
+      await InvokeAsync(StateHasChanged);
+    }
+    catch (OperationCanceledException)
+    {
+      
+    }
+  }
+
+  private async void MouseLeave(MouseEventArgs e)
+  {
+    tokenSource.Cancel();
+    _showTooltip = false;
+    await InvokeAsync(StateHasChanged);
+  }
+
+  private void MouseMove(MouseEventArgs e)
+  {
+    if(!_showTooltip)
+    {
+      _mouseX = e.ClientX;
+      _mouseY = e.ClientY;
+    }
+
+
+  }
+}

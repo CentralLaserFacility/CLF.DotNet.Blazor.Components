@@ -1,0 +1,117 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@inherits WidgetBase
+
+<div class="alarm-main @Class" style="outline-color:@GetAlarmColour(BorderStatus);">
+  @if (BorderStatus != BorderStatus.Connected)
+  {
+
+    <Tooltip Text="@AlarmIconTooltipText">
+      <svg class="clf-icon alarm-icon @IconClass">
+        <use href="_content/Clf.Blazor.Basic.Components/icons/multi_colour/symbol-defs.svg#@GetAlarmIconId(BorderStatus)" />
+      </svg>
+    </Tooltip>
+  }
+  @if (GetDisableStatus())
+  {
+    <Tooltip Text="@ContentDisabledTooltip">
+      @GetContent()
+    </Tooltip>
+  }
+  else
+  {
+    @GetContent()
+  }
+
+</div>
+
+
+@code {
+  [Parameter]
+  public string IconClass { get; set; } = "";
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public BorderStatus BorderStatus { get; set; } = BorderStatus.NotConnected;
+
+  [Parameter]
+  public string? ContentDisabledTooltip { get; set; }
+
+  [Parameter]
+  public bool IsContentDisabled { get; set; } = false;
+
+  public string AlarmIconTooltipText
+  {
+    get
+    {
+      switch (this.BorderStatus)
+      {
+        case BorderStatus.NotConnected:
+          return "Not Connected";
+        case BorderStatus.MajorAlarm:
+          return "Major Alarm";
+        case BorderStatus.MinorAlarm:
+          return "Minor Alarm";
+        case BorderStatus.Invalid:
+          return "Invalid";
+        case BorderStatus.Connected:
+        default:
+          return "";
+      }
+    }
+  }
+
+  private string GetAlarmColour(BorderStatus borderStatus)
+  {
+    switch (borderStatus)
+    {
+      case BorderStatus.NotConnected:
+        return "var(--clf-alarm-not-connected-colour)";
+      case BorderStatus.MajorAlarm:
+        return "var(--clf-alarm-major-colour)";
+      case BorderStatus.MinorAlarm:
+        return "var(--clf-alarm-minor-colour)";
+      case BorderStatus.Invalid:
+        return "var(--clf-alarm-invalid-colour)";
+      case BorderStatus.Connected:
+      default:
+        return "transparent";
+    }
+  }
+
+  private string GetAlarmIconId(BorderStatus borderStatus)
+  {
+    switch (borderStatus)
+    {
+      case BorderStatus.NotConnected:
+        return "clf_ic_not_connected_24_filled";
+      case BorderStatus.MajorAlarm:
+        return "clf_ic_major_warning_circle_24_filled";
+      case BorderStatus.MinorAlarm:
+        return "clf_ic_minor_warning_24_filled";
+      case BorderStatus.Invalid:
+        return "clf_ic_invalid_24_filled";
+      case BorderStatus.Connected:
+      default:
+        return "";
+    }
+  }
+
+  private bool GetDisableStatus()
+  {
+    return Utilities.GetBorderStatusDisable(BorderStatus) || IsContentDisabled;
+  }
+
+  private RenderFragment GetContent()
+  {
+    return (__builder) =>
+    {
+      <div class="alarm-content">
+        @ChildContent
+      </div>
+    };
+  }
+}

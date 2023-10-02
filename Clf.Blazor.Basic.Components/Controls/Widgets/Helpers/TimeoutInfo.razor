@@ -1,0 +1,26 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+
+
+@if (ViewModel!.IsVisible && ViewModel!.NoOfTries > 0)
+{
+  <div class="timeout-info-grid" style="color:#d30303; font: @($"{ViewModel.HtmlFontString}"); text-align:center;">
+    &#128712; @ViewModel.Message@ViewModel.NoOfTries
+    <button @onclick="@(()=>{ViewModel.OnOKButtonClicked();})">OK</button>
+  </div>
+}
+
+
+
+@code {
+
+  [Parameter]
+  public TimeoutInfoViewModel? ViewModel { get; set; }
+
+  protected override void OnInitialized()
+  {
+      base.OnInitialized();
+      ViewModel!.PropertyChanged += (o, e) => InvokeAsync(StateHasChanged);
+  }
+}

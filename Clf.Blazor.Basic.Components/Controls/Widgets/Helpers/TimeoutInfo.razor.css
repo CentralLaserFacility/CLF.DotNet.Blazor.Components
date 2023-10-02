@@ -1,0 +1,5 @@
+﻿.timeout-info-grid{
+  display: inline-flex;
+  flex-direction: row;
+  column-gap: 5px;
+}

@@ -1,0 +1,23 @@
+﻿:root {
+  --clf-modal-btn-min-width: 50px;
+  --clf-modal-content-padding: 8px;
+  /*Modal*/
+  --clf-modal-width: 100%;
+  --clf-modal-height: 100%;
+  --clf-modal-background-colour: #00000070;
+  --clf-modal-backdrop-filter: blur(4px);
+  /*Modal_Dialog*/
+  --clf-modal-dialog-min-width: 25%;
+  --clf-modal-dialog-min-height: 15vh;
+  --clf-modal-dialog-max-width: 80%;
+  --clf-modal-dialog-max-height: 80vh;
+  --clf-modal-dialog-background-colour: #FFFFFF;
+  --clf-modal-dialog-border-radius: 8px;
+  /*Modal-header*/
+  --clf-modal-dialog-header-background-colour: var(--clf-dashboard-background-colour);
+  --clf-modal-dialog-header-border: 1px solid var(--clf-dashboard-header-border-colour);
+  --clf-modal-header-min-height: 46px;
+  /*Modal-Footer*/
+  --clf-modal-footer-padding: 5px;
+  --clf-modal-footer-border-top: 1px solid var(--clf-dashboard-header-border-colour);
+}

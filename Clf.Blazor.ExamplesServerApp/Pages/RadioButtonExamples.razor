@@ -1,0 +1,93 @@
+﻿@page "/radio-button-examples"
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using System.Collections.ObjectModel;
+
+<h3>Radio Button Examples</h3>
+
+<table>
+  <tr>
+    <th scope="row">Default</th>
+    <td><div><RadioButton ViewModel="@_defaultRadioButton" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Checked</th>
+    <td><div><RadioButton ViewModel="@_checkedRadioButton" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable</th>
+    <td><div><RadioButton ViewModel="@_disabledRadioButton" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Disable Checked</th>
+    <td><div><RadioButton ViewModel="@_disabledCheckedRadioButton" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Not Connected</th>
+    <td><div><RadioButton ViewModel="@_notConnectedCheckedRadioButton" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+    <td><div><RadioButton ViewModel="@_invalidCheckedRadioButton" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Radio Button Group (Vertical)</th>
+    <td><div><RadioButton ViewModel="@_twoRadioButtons" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">Radio Button Group (Horizontal)</th>
+    <td><div><RadioButton GroupClass="radio-button-horizontal" ViewModel="@_twoRadioButtons" /></div></td>
+  </tr>
+  <tr>
+    <th scope="row">HTML Radio Button</th>
+    <td><div><input type="radio" checked /></div></td>
+  </tr>
+</table>
+
+@code {
+  private RadioButtonViewModel _defaultRadioButton = new RadioButtonViewModel(
+    items: new ObservableCollection<string> { "Default Unchecked" },
+    selectedItem: "",
+    tooltipText: "Default",
+    borderStatus: BorderStatus.Connected
+  );
+  private RadioButtonViewModel _checkedRadioButton = new RadioButtonViewModel(
+    borderStatus: BorderStatus.Connected,
+    tooltipText: "Default Checked",
+    items: new ObservableCollection<string> { "Default Checked" },
+    selectedItem: "Default Checked"
+  );
+  private RadioButtonViewModel _disabledRadioButton = new RadioButtonViewModel(
+    borderStatus: BorderStatus.Connected,
+    tooltipText: "Default",
+    items: new ObservableCollection<string> { "Default" },
+    selectedItem: "",
+    isDisabled: true
+  );
+  private RadioButtonViewModel _disabledCheckedRadioButton = new RadioButtonViewModel(
+   borderStatus: BorderStatus.Connected,
+    tooltipText: "Default Checked",
+   items: new ObservableCollection<string> { "Default Checked" },
+   selectedItem: "Default Checked",
+   isDisabled: true
+   );
+  private RadioButtonViewModel _notConnectedCheckedRadioButton = new RadioButtonViewModel(
+    borderStatus: BorderStatus.NotConnected,
+    tooltipText: "Default Checked",
+    items: new ObservableCollection<string> { "Default Checked" },
+    selectedItem: "Default Checked"
+  );
+  private RadioButtonViewModel _invalidCheckedRadioButton = new RadioButtonViewModel(
+    borderStatus: BorderStatus.Invalid,
+    tooltipText: "Default Checked",
+    items: new ObservableCollection<string> { "Default Checked" },
+    selectedItem: "Default Checked"
+  );
+  private RadioButtonViewModel _twoRadioButtons = new RadioButtonViewModel(
+    borderStatus: BorderStatus.Connected,
+    tooltipText: "Grouped",
+    items: new ObservableCollection<string> { "Choice 1", "Choice 2" },
+    selectedItem: "Choice 1"
+  );
+}

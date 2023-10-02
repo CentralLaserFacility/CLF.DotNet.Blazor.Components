@@ -1,0 +1,50 @@
+﻿@page "/Cameras/{PageTitle}/HDF5-Plugin-Settings"
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="transform-plugin-settings-tab">
+    <div style="grid-column:1/5; text-align:center;">
+        <label>@ViewModel.pageFileTitle</label>
+    </div>
+    <div style="grid-column:1;">
+        <IntensityMapFeatures_CommonPluginSettings ViewModel="@ViewModel.TransformCommonPluginSettingsTab" />
+    </div>
+    <div style="grid-column:1;">
+        <div class="transform-plugin-feature-settings-tab">
+            <div style="grid-column:1;">
+                <label>Transform Type</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.TransformTypeSet" />
+            </div>
+            <div style="grid-column:3;">
+                <TextUpdate ViewModel="@ViewModel.TransformTypeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Output Size</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.TransformOutputArraySizeX" />
+            </div>
+            <div style="grid-column:3;">
+                <TextUpdate ViewModel="@ViewModel.TransformOutputArraySizeY" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public IntensityMapFeatures_TransformTabPluginSettingsViewModel ViewModel { get; set; }
+}

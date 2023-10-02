@@ -1,0 +1,7 @@
+﻿:root {
+  --clf-tooltip-background-colour: #EBEBEB;
+  --clf-tooltip-border-width: 1px;
+  --clf-tooltip-border-colour: rgba(143,143,143,0.4);
+  --clf-tooltip-padding: 4px 8px;
+  --clf-tooltip-border-radius: 6px;
+}

@@ -1,0 +1,205 @@
+﻿@page "/progress-bar-examples"
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Enums
+
+<h3>Progress Bar Examples</h3>
+
+<table>
+  <tr>
+    <th></th>
+    <th colspan="2">Determinate</th>
+    <th colspan="2">Indeterminate</th>
+  </tr>
+  <tr>
+    <td rowspan="1"></td>
+    <th scope="col">Regular</th>
+    <th scope="col">Small</th>
+    <th scope="col">Regular</th>
+    <th scope="col">Small</th>
+  </tr>
+  <tr>
+    <th scope="row">Default</th>
+
+    <td ><ProgressBar ViewModel="@_default"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_defaultSmall"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_defaultIndeterminate"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_defaultIndeterminateSmall"></ProgressBar></td>
+
+  </tr>
+  <tr>
+    <th scope="row">Invalid</th>
+
+    <td><ProgressBar ViewModel="@_invalid"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_invalidSmall"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_invalidIndeterminate"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_invalidIndeterminateSmall"></ProgressBar></td>
+
+  </tr>
+  <tr>
+    <th scope="row">NotConnected</th>
+
+    <td><ProgressBar ViewModel="@_notConnected"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_notConnectedSmall"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_notConnectedIndeterminate"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_notConnectedIndeterminateSmall"></ProgressBar></td>
+
+  </tr>
+  <tr>
+    <th scope="row">Minor Alarm</th>
+
+    <td><ProgressBar ViewModel="@_minorAlarm"></ProgressBar></td>
+    <td> <ProgressBar ViewModel="@_minorAlarmSmall"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_minorAlarmIndeterminate"></ProgressBar></td>
+    <td> <ProgressBar ViewModel="@_minorAlarmIndeterminateSmall"></ProgressBar></td>
+
+  </tr>
+  <tr>
+    <th scope="row">Major Alarm</th>
+
+    <td><ProgressBar ViewModel="@_majorAlarm"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_majorAlarmSmall"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_majorAlarmIndeterminate"></ProgressBar></td>
+    <td><ProgressBar ViewModel="@_majorAlarmIndeterminateSmall"></ProgressBar></td>
+
+  </tr>
+
+</table>
+
+@code {
+
+  private ProgressBarViewModel _default = new ProgressBarViewModel(
+            value: 69,
+            tooltipText: "Default",
+            borderStatus: BorderStatus.Connected
+  );
+
+  private ProgressBarViewModel _invalid = new ProgressBarViewModel(
+        value: 33,
+        tooltipText: "Default",
+        borderStatus: BorderStatus.Invalid
+  );
+
+  private ProgressBarViewModel _notConnected = new ProgressBarViewModel(
+        value:54,
+        tooltipText: "Default",
+        borderStatus: BorderStatus.NotConnected
+  );
+
+  private ProgressBarViewModel _minorAlarm = new ProgressBarViewModel(
+        value:9,
+        tooltipText: "Default",
+        borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private ProgressBarViewModel _majorAlarm = new ProgressBarViewModel(
+        value:77,
+        tooltipText: "Default",
+        borderStatus: BorderStatus.MajorAlarm
+  );
+  private ProgressBarViewModel _defaultSmall = new ProgressBarViewModel(
+        value: 69,
+        tooltipText: "Default Small",
+        borderStatus: BorderStatus.Connected,
+        progressBarSize: ProgressBarSize.Small
+   );
+
+  private ProgressBarViewModel _invalidSmall = new ProgressBarViewModel(
+        value: 33,
+        tooltipText: "Default Small",
+        borderStatus: BorderStatus.Invalid,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+  private ProgressBarViewModel _notConnectedSmall = new ProgressBarViewModel(
+        value: 54,
+        tooltipText: "Default Small",
+        borderStatus: BorderStatus.NotConnected,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+  private ProgressBarViewModel _minorAlarmSmall = new ProgressBarViewModel(
+        value: 9,
+        tooltipText: "Default Small",
+        borderStatus: BorderStatus.MinorAlarm,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+  private ProgressBarViewModel _majorAlarmSmall = new ProgressBarViewModel(
+        value: 77,
+        tooltipText: "Default Small",
+        borderStatus: BorderStatus.MajorAlarm,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+
+  private ProgressBarViewModel _defaultIndeterminate = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate",
+        borderStatus: BorderStatus.Connected,
+        isIndeterminate:true
+  );
+
+  private ProgressBarViewModel _invalidIndeterminate = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate",
+        isIndeterminate: true,
+        borderStatus: BorderStatus.Invalid
+        
+  );
+
+  private ProgressBarViewModel _notConnectedIndeterminate = new ProgressBarViewModel(
+        value: 54,
+        tooltipText: "Default Indeterminate",
+        borderStatus: BorderStatus.NotConnected,
+        isIndeterminate: true
+  );
+
+  private ProgressBarViewModel _minorAlarmIndeterminate = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate",
+        isIndeterminate:true,
+        borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private ProgressBarViewModel _majorAlarmIndeterminate = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate",
+        isIndeterminate:true,
+        borderStatus: BorderStatus.MajorAlarm
+  );
+  private ProgressBarViewModel _defaultIndeterminateSmall = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate Small",
+        isIndeterminate: true,
+        borderStatus: BorderStatus.Connected,
+        progressBarSize: ProgressBarSize.Small
+   );
+
+  private ProgressBarViewModel _invalidIndeterminateSmall = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate Small",
+        isIndeterminate: true,
+        borderStatus: BorderStatus.Invalid,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+  private ProgressBarViewModel _notConnectedIndeterminateSmall = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate Small",
+        isIndeterminate: true,
+        borderStatus: BorderStatus.NotConnected,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+  private ProgressBarViewModel _minorAlarmIndeterminateSmall = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate Small",
+        isIndeterminate: true,
+        borderStatus: BorderStatus.MinorAlarm,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+  private ProgressBarViewModel _majorAlarmIndeterminateSmall = new ProgressBarViewModel(
+        tooltipText: "Default Indeterminate Small",
+        isIndeterminate: true,
+        borderStatus: BorderStatus.MajorAlarm,
+        progressBarSize: ProgressBarSize.Small
+  );
+
+}

@@ -1,0 +1,184 @@
+﻿@page "/Slide-button-examples"
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Enums
+
+<h3>Toggle Button Examples</h3>
+
+<table>
+  <tr>
+    <th></th>
+    <th scope="col">Without Label</th>
+    <th scope="col">With Label</th>
+    
+    </tr>
+  <tr>
+    <th>Off</th>
+    <td><SlideButton ViewModel="@_defaultOff" /></td>
+    <td><SlideButton ViewModel="@_defaultOffWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>On</th>
+    <td><SlideButton ViewModel="@_defaultOn" /></td>
+    <td><SlideButton ViewModel="@_defaultOnWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>Disabled Off</th>
+    <td><SlideButton ViewModel="@_disabledOff" /></td>
+    <td><SlideButton ViewModel="@_disabledOffWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>Disabled On</th>
+    <td><SlideButton ViewModel="@_disabledOn" /></td>
+    <td><SlideButton ViewModel="@_disabledOnWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>Not connected</th>
+    <td><SlideButton ViewModel="@_notConnected" /></td>
+    <td><SlideButton ViewModel="@_notConnectedWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>Minor Alarm</th>
+    <td><SlideButton ViewModel="@_minorAlarm" /></td>
+    <td><SlideButton ViewModel="@_minorAlarmWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>Major Alarm</th>
+    <td><SlideButton ViewModel="@_majorAlarm" /></td>
+    <td><SlideButton ViewModel="@_majorAlarmWithLabel" /></td>
+  </tr>
+  <tr>
+    <th>Invalid</th>
+    <td><SlideButton ViewModel="@_invalid"/></td>
+    <td><SlideButton ViewModel="@_invalidWithLabel" /></td>
+  </tr>
+  
+</table>
+
+@code {
+  private SlideButtonViewModel _defaultOff = new SlideButtonViewModel(
+    value:false,
+    showTooltip:true,
+    tooltipText:"Off",
+    borderStatus:BorderStatus.Connected
+  );
+  private SlideButtonViewModel _defaultOffWithLabel = new SlideButtonViewModel(
+    value: false,
+    showTooltip: true,
+    tooltipText: "Off",
+    borderStatus: BorderStatus.Connected,
+    label:"Slide Button"
+  );
+  private SlideButtonViewModel _defaultOn = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.Connected
+  );
+
+  private SlideButtonViewModel _defaultOnWithLabel = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.Connected,
+    label: "Slide Button"
+  );
+
+  private SlideButtonViewModel _disabledOff = new SlideButtonViewModel(
+    value: false,
+    showTooltip: true,
+    tooltipText: "Off",
+    isDisabled:true,
+    borderStatus: BorderStatus.Connected
+  );
+
+  private SlideButtonViewModel _disabledOffWithLabel = new SlideButtonViewModel(
+   showTooltip: true,
+   tooltipText: "Off",
+   isDisabled: true,
+   borderStatus: BorderStatus.Connected,
+   label: "Slide Button"
+   );
+
+
+  private SlideButtonViewModel _disabledOn = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    isDisabled: true,
+    borderStatus: BorderStatus.Connected
+  );
+
+  private SlideButtonViewModel _disabledOnWithLabel = new SlideButtonViewModel(
+   value: true,
+   showTooltip: true,
+   tooltipText: "On",
+   isDisabled: true,
+   borderStatus: BorderStatus.Connected,
+   label: "Slide Button"
+   );
+
+  private SlideButtonViewModel _notConnected = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    isDisabled: true,
+    borderStatus: BorderStatus.NotConnected
+  );
+
+  private SlideButtonViewModel _notConnectedWithLabel = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    isDisabled: true,
+    borderStatus: BorderStatus.NotConnected,
+    label: "Slide Button"
+  );
+  
+  private SlideButtonViewModel _minorAlarm = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.MinorAlarm
+  );
+
+  private SlideButtonViewModel _minorAlarmWithLabel = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.MinorAlarm,
+   label: "Slide Button"
+  );
+
+  private SlideButtonViewModel _majorAlarm = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.MajorAlarm
+  );
+
+  private SlideButtonViewModel _majorAlarmWithLabel = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.MajorAlarm,
+    label: "Slide Button"
+  );
+
+
+  private SlideButtonViewModel _invalid = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.Invalid
+  );
+
+  private SlideButtonViewModel _invalidWithLabel = new SlideButtonViewModel(
+    value: true,
+    showTooltip: true,
+    tooltipText: "On",
+    borderStatus: BorderStatus.Invalid,
+   label: "Slide Button"
+  );
+}

@@ -1,0 +1,71 @@
+﻿:root {
+  --clf-text-entry-default-width: 128px;
+  --clf-text-entry-default-height: 32px;
+  --clf-text-entry-border-radius: 3px;
+  --clf-text-entry-input-border-radius: 3px;
+  --clf-text-entry-units-border-radius: 0px 3px 3px 0px;
+  --clf-text-entry-input-padding: 0px 8px;
+  --clf-text-area-padding: 4px 8px;
+  --clf-text-entry-disabled-font-colour: #A5A5A5;
+  --clf-text-entry-transparent-border: 1px solid transparent;
+  --clf-text-entry-disabled-background-colour: var(--clf-text-update-background-color);
+  --clf-text-entry-units-background-colour: var(--clf-text-update-background-color);
+  --clf-text-entry-input-background-colour: #C2E7FF;
+  --clf-text-entry-edit-background-colour: rgba(255,255,0,0.2);
+  --clf-text-entry-edit-border: 1px solid #0082D9;
+}
+
+
+input[type="text"] {
+  border-radius: var(--clf-text-entry-input-border-radius);
+  outline: var(--clf-text-entry-transparent-border);
+  border: none;
+  background-color: var(--clf-text-entry-input-background-colour);
+  width: var(--clf-text-entry-default-width);
+  height: var(--clf-text-entry-default-height);
+  padding: var(--clf-text-entry-input-padding);
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: var(--clf-text-input-font-weight);
+
+}
+
+  input[type="text"]:focus {
+    background-color: var(--clf-text-entry-edit-background-colour);
+    outline: var(--clf-text-entry-edit-border);
+  }
+
+  input[type="text"]:disabled {
+    pointer-events: none;
+    background-color: var(--clf-text-entry-disabled-background-colour);
+    filter: var(--clf-disabled-filter);
+  }
+
+  textarea {
+    border: none;
+    outline: var(--clf-text-entry-transparent-border);
+    font-weight: var(--clf-text-input-font-weight);
+    width: var(--clf-text-entry-default-width);
+    height: var(--clf-text-entry-default-height);
+    border-radius: var(--clf-text-entry-border-radius);
+    resize: none;
+    background-color: var(--clf-text-entry-input-background-colour);
+    font-family: inherit;
+    font-size: inherit;
+    padding: var(--clf-text-area-padding);
+    color: inherit;
+  }
+
+  textarea:focus {
+    outline: var(--clf-text-entry-edit-border);
+    background-color: var(--clf-text-entry-edit-background-colour);
+  }
+
+  textarea:disabled {
+    pointer-events: none;
+    background-color: var(--clf-text-entry-disabled-background-colour);
+    filter: var(--clf-disabled-filter);
+  }
+
+

@@ -1,0 +1,74 @@
+﻿html[data-theme='Dark'] {
+  color-scheme: dark;
+  --clf-test-background-colour: #000;
+  --clf-background-colour: #181818;
+  --clf-font-colour: #DDDDDD;
+  /*led*/
+  --clf-led-border-colour: #D2D2D2;
+  /*group-box*/
+  --clf-group-box-title-background-colour: #212121;
+  --clf-group-box-border-colour: #303030;
+  /*check-box*/
+  --clf-check-box-disabled-background-colour: #1B1B1B;
+  --clf-check-box-not-connected-colour: #B3B3B3;
+  /*combo-box*/
+  --clf-combo-box-hover-background-colour: #383838;
+  --clf-combo-box-background-colour: #1B1B1B;
+  --clf-combo-box-text-colour: #DDDDDD;
+  --clf-combo-box-selected-border-colour: #0082D9;
+  --clf-combo-box-focus-text-colour: #0D0D0D;
+  /*text-update*/
+  --clf-text-update-background-color: #1C1C1C;
+  /*Dashboard*/
+  --clf-dashboard-background-colour: rgba(13,13,13,0.5);
+  --clf-dashboard-body-border-colour: #1A1D24;
+  /*Need some better box shadow values for dark background*/
+  --clf-dashboard-pane-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+  /*radio-button*/
+  --clf-radio-button-disabled-background-colour: #1B1B1B;
+  /*text-entry*/
+  --clf-text-entry-disabled-background-colour: #1C1C1C;
+  --clf-text-entry-input-background-colour: #003456;
+  --clf-text-entry-edit-background-colour: rgba(255,255,26,0.2);
+  --clf-text-entry-edit-border-colour: 1px solid #0091F3;
+  /* Boolean Button */
+  --clf-boolean-button-background-on-colour: #00DE0A;
+  --clf-boolean-button-background-off-colour: #005A02;
+  --clf-boolean-button-focus-border-colour: #FFFFFF;
+  /*Spinner*/
+  --clf-spinner-disabled-background-colour: var(--clf-text-update-background-color);
+  --clf-spinner-units-background-colour: var(--clf-text-update-background-color);
+  --clf-spinner-input-background-colour: #003456;
+  --clf-spinner-edit-background-colour: rgba(255,255,0,0.2);
+  --clf-spinner-edit-border: 1px solid #0091F3;
+  --clf-spinner-disable-font-colour: rgba(165,165,165,0.6);
+  /*Action Button*/
+  --clf-action-button-background-color: #1B1B1B;
+  --clf-action-button-hover-color: #383838;
+  --clf-action-button-active-background-color: #8B8B8B;
+  --clf-action-button-focus-border-color: #FFFFFF;
+  /* Navigation Button*/
+  --clf-navigation-action-button-background-color: #808080;
+  --clf-navigation-action-button-hover-background-color: #383838;
+  --clf-navigation-action-button-active-background-color: #8B8B8B;
+  --clf-navigation-action-button-focus-border-color: #FFFFFF;
+  /*Progress Bar*/
+  --clf-progress-bar-track-selected-colour: #0091F3;
+  --clf-progress-bar-track-background-colour: #4B4B4B;
+  /* Tab */
+  --clf-tab-active-background-color: #131313;
+  --clf-tab-border-color: #474747;
+  /*Slider*/
+  --clf-slider-track-background-colour: #003456;
+  --clf-slider-thumb-selected-background-colour: color-mix(in srgb, #FFFF00 30%, black);
+  /*Slide Button*/
+  --clf-slide-button-thumb-colour: #0D0D0D;
+  /*TreeView*/
+  --clf-treeview-expander-hover-background-color: #FFFFFF1A;
+  /*Tooltip*/
+  --clf-tooltip-background-colour: #212121;
+  /*Modal*/
+  --clf-modal-background-colour: #00000070;
+  --clf-modal-dialog-background-colour: #0D0D0D50;
+  --clf-modal-button-colour: #0082D9;
+}

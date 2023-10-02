@@ -1,0 +1,57 @@
+﻿@using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Common.FilePicker
+@using Clf.Blazor.Complex.IocManager
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Complex.IocManager.ViewModels
+@using System.Globalization
+@inherits WidgetBase
+@implements IDisposable
+
+<div class="ioc-manager-grid">
+  <TextUpdate ViewModel="@ViewModel.IOCPrefixTextUpdateViewModel"/>
+  <Led ViewModel="@ViewModel.IOCStatusLedViewModel" />  
+  <ActionButton ViewModel="@ViewModel.StartServiceFileActionButtonViewModel"/>
+  <ActionButton ViewModel="@ViewModel.StopServiceFileActionButtonViewModel"/>
+  <ActionButton ViewModel="@ViewModel.RestartServiceFileActionButtonViewModel"/>
+  <label>IP Address:</label>
+  <TextUpdate ViewModel="@ViewModel.HostNameTextUpdateViewModel" />
+  <label>Port:</label>
+  <TextUpdate ViewModel="@ViewModel.PortNumberTextUpdateViewModel" />
+  <label>Path:</label>
+  <TextUpdate ViewModel="@ViewModel.PathTextUpdateViewModel" />
+</div>
+<ModalDialog ViewModel="@ViewModel.CredentialsModalDialogViewModel">
+  <div class="modal-dialog-grid">
+    <label>User Name</label>
+    <TextEntry ViewModel="@ViewModel.UsernameTextEntryViewModel"/>
+    <label>Password</label>
+    <input type="password" style="width:180px" @bind-value="ViewModel.Password" @bind-value:event="oninput"/>
+    <div class="col1-2">
+      <ProgressBar ViewModel="@ViewModel.StartProgressBarViewModel"/>
+    </div>
+    <div class="col1-2" style="color:red">
+      @ViewModel.ErrorMsg
+    </div>
+  </div>
+</ModalDialog>
+
+
+@code {
+  [Parameter]
+  public IocManagerViewModel ViewModel { get; set; }
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

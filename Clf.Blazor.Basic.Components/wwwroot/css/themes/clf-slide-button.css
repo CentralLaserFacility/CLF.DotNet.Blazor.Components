@@ -1,0 +1,13 @@
+﻿:root {
+  --clf-slide-button-default-width: 52px;
+  --clf-slide-button-default-height: 32px;
+  --clf-slide-button-wrapper-gap: 8px;
+  --clf-slide-button-wrapper-width: max-content;
+  --clf-slide-button-track-transition: background-color 0.5s;
+  --clf-slide-button-track-disabled-colour: #D3D3D4;
+  --clf-slide-button-track-off-colour: #9E9E9E;
+  --clf-slide-button-thumb-colour: #F0F0F0;
+  --clf-slide-button-track-on-colour: #0082D9;
+  --clf-slide-button-thumb-border-radius: 50%;
+  --clf-slide-button-thumb-transition: transform 0.5s;
+}

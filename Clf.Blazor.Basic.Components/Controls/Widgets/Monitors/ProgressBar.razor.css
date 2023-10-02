@@ -1,0 +1,54 @@
+﻿.progress-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--clf-progress-bar-default-gap);
+  width: var(--progress-bar-width);
+  font-size: var(--progress-bar-value-font-size);
+}
+
+  .progress-bar-container[disabled] {
+    pointer-events:none;
+    filter: var(--clf-disabled-filter);
+  }
+
+.clf-progress-bar {
+  display: flex;
+  overflow: hidden;
+  background-color: var(--clf-progress-bar-track-background-colour);
+  border-radius: var(--progress-bar-height);
+  height: var(--progress-bar-height);
+  flex: 1;
+}
+
+.progress-bar-determinate, .progress-bar-indeterminate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--clf-progress-bar-track-selected-colour);
+}
+
+
+  .progress-bar-determinate[disabled], .progress-bar-indeterminate[disabled] {
+    background-color: var(--clf-progress-bar-track-disabled-colour);
+  }
+
+.progress-bar-determinate {
+  transition: var(--clf-progress-bar-determinate-transistion);
+  width:var(--progress-width);
+}
+
+.progress-bar-indeterminate {
+  width: var(--clf-progress-bar-indeterminate-width);
+  animation: var(--clf-progress-bar-indeterminate-animation);
+  transform-origin: var(--clf-progress-bar-indeterminate-tranform-origin);
+}
+
+.progress-bar-value {
+  font-size: inherit;
+  width:var(--clf-progress-bar-value-width);
+}
+

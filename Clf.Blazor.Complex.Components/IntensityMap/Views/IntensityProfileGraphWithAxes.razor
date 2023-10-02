@@ -1,0 +1,54 @@
+﻿@using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using System.Globalization
+@inherits WidgetBase
+@implements IDisposable
+
+@if ( ViewModel.IsVisible )
+{
+  <IntensityProfileGraph ViewModel="@ViewModel" />
+}
+
+@code {
+
+  // Hmm, the 'Dispose' logic still needs some work ...
+
+  private ViewModels.IntensityProfileGraphWithAxesViewModel m_viewModel = null! ;
+
+  [Parameter]
+  public ViewModels.IntensityProfileGraphWithAxesViewModel ViewModel 
+  { 
+    get => m_viewModel ; 
+    set {
+      if ( m_viewModel != null )
+      {
+        m_viewModel.PropertyChanged -= OnPropertyChanged ;
+      }
+      m_viewModel = value ;
+      if ( m_viewModel != null )
+      {
+        m_viewModel.PropertyChanged += OnPropertyChanged ;
+      }
+    }
+  }
+
+  public IntensityProfileGraphWithAxes ( )
+  {
+    // Useful for putting a breakpoint ...
+  }
+
+  protected override void OnInitialized ( )
+  {
+    base.OnInitialized() ;
+    ViewModel.PropertyChanged += OnPropertyChanged ;
+  }
+
+  void IDisposable.Dispose ( )
+  {
+    m_viewModel.PropertyChanged -= OnPropertyChanged ;
+  }
+
+}
+

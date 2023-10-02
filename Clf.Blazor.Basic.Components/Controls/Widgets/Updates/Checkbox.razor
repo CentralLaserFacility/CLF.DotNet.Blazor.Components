@@ -1,0 +1,52 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <label class="check-box-label @Class" disabled="@ViewModel.GetDisableStatus()"
+             style="--check-box-width:@GetCheckBoxWidth(); --check-box-height:@GetCheckBoxHeight();">
+        <input type="checkbox"
+               disabled="@ViewModel.GetDisableStatus()"
+        @bind="@ViewModel.Value"
+        @onclick="ViewModel.OnBooleanWidgetClicked">
+        </input>
+        @ViewModel.Label
+      </label>
+    </Tooltip>
+  </Alarm>
+}
+
+@code
+{
+  [Parameter]
+  public CheckboxViewModel ViewModel { get; set; } = new CheckboxViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetCheckBoxWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "max-content";
+  }
+
+  private string GetCheckBoxHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-check-box-default-height)";
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

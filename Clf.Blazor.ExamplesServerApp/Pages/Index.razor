@@ -1,0 +1,238 @@
+﻿@page "/OldIndex"
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using System.Threading
+@inject IWebHostEnvironment webHostEnv
+@using System.IO
+@using Clf.ChannelAccess
+@using System.Collections.ObjectModel
+@using Clf.Common.Drawing
+@using Clf.Common.ImageProcessing
+
+
+<br />
+<Led ViewModel="@(new LedViewModel(
+onLabel: "On",
+offLabel: "Off",
+showIcon: true,
+ledValue:true
+))" />
+
+<BooleanButton />
+<SlideButton ViewModel="new SlideButtonViewModel(borderStatus: BorderStatus.Connected)" />
+<Checkbox ViewModel="new CheckboxViewModel(borderStatus: BorderStatus.Connected)" />
+
+<ProcessPVButton ViewModel="@m_MyActionButtonPVVM" />
+<FileSelector ViewModel="@m_FileVM" />
+<Picture ViewModel="@m_PictureVM" />
+<Symbol ViewModel="@m_SymbolVM" />
+<Graph ViewModel="@m_LineGraphVM"></Graph>
+<ImageViewer ViewModel="@m_ImageViewerVM"></ImageViewer>
+<ActionButton ViewModel="@m_MyActionButtonVM"></ActionButton>
+<Slider ViewModel="@m_SliderVM" />
+<ChoiceButton ViewModel="@m_ChoiceButtonVM"></ChoiceButton>
+<ModalDialog ViewModel="@m_ModalDialogVM" />
+<Tabs OnTabChanged="OnTabChanged">
+  <Tab Title="Tab 1" Name="Tab1">
+    <Label Text="Label 1" Width="200" Height="100" />
+  </Tab>
+  <Tab Title="Tab 2" Name="Tab2">
+    <h2>Content Tab 2</h2>
+    <p>
+      This is the content for the Tab 2. It is enabled.
+    </p>
+  </Tab>
+  <Tab Title="Tab 3" Name="Tab3">
+    <h2>Content Tab 3</h2>
+    <p>
+      This is the content for the Tab 3. It is enabled.
+    </p>
+  </Tab>
+  <Tab Title="Tab 4" Enabled="false" Name="Tab4">
+    <h2>Content Tab 4</h2>
+    <p>
+      This is the content for the Tab 4. It is disabled if <i>IsEnabled = false</i>
+    </p>
+  </Tab>
+</Tabs>
+
+<button @onclick="() => m_ModalDialogVM?.Open()">Open Modal</button>
+@code {
+  private ActionButtonViewModel m_MyActionButtonVM = null;
+  private ProcessPVButtonViewModel m_MyActionButtonPVVM = null;
+  private SliderViewModel m_SliderVM = null;
+  private ComboBoxViewModel m_ComboBoxVM = null;
+  private ChoiceButtonViewModel m_ChoiceButtonVM = null;
+  private GraphViewModel m_LineGraphVM = null;
+  private ModalDialogViewModel m_ModalDialogVM = null;
+  private ImageViewerViewModel m_ImageViewerVM = null;
+  private SymbolViewModel m_SymbolVM = null;
+  private PictureViewModel m_PictureVM = null;
+  private FileSelectorViewModel m_FileVM = new FileSelectorViewModel();
+  ChannelsHandler m_channelsHandler = new ChannelsHandler();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+
+    m_ImageViewerVM = new ImageViewerViewModel(
+    imageDataRecord: new("TEST-PM-FE-CAM1:image1:LimitedArrayData", m_channelsHandler),
+    imageHeightRecord: new("TEST-PM-FE-CAM1:cam1:SizeY_RBV", m_channelsHandler),
+    imageWidthRecord: new("TEST-PM-FE-CAM4:cam1:SizeX_RBV", m_channelsHandler)
+    );
+
+    m_MyActionButtonVM = new ActionButtonViewModel(
+    width: 0,
+    height: 0,
+    isVisible: true,
+    isDisabled: false,
+    text: "Click bait"
+    );
+
+    m_MyActionButtonPVVM = new ProcessPVButtonViewModel(
+    channelRecord: new("Blazor:ActionButtonPV", m_channelsHandler),
+    text: "Process PV"
+    );
+
+    m_SliderVM = new SliderViewModel(
+    minimum: -10,
+    maximum: 10,
+    increment: 0.001,
+    limitsFromPv: true,
+    channelRecord: new("Blazor:SliderCheck", m_channelsHandler));
+
+    m_ComboBoxVM = new ComboBoxViewModel(
+      items: new ObservableCollection<string> { "Current (A)", "Power (W)" },
+      width: 0,
+      height: 0,
+      itemsFromPv: true,
+      channelRecord: new("Blazor:ComboBoxCheck", m_channelsHandler)
+    );
+
+    //var Items = new List<ChoiceButtonViewModel.BobChoiceButtonItemViewModel>();
+    //Items.Add(new ChoiceButtonViewModel.BobChoiceButtonItemViewModel("Default Item-1", true));
+    //Items.Add(new ChoiceButtonViewModel.BobChoiceButtonItemViewModel("Default Item-2", false));
+    //Items.Add(new ChoiceButtonViewModel.BobChoiceButtonItemViewModel("Default Item-3", false));
+
+    m_ModalDialogVM = new ModalDialogViewModel(
+      title: "Hello modal",
+      bodyText: "This is the modal body"
+    );
+
+    m_ChoiceButtonVM = new ChoiceButtonViewModel(
+      items: new ObservableCollection<string> { "Item 1", "Item 2", "Item 3" },
+      borderStatus: BorderStatus.Connected
+    );
+
+    // Example 1 Graph
+
+    //Hub.GetOrCreateLocalChannel(new RecordDescriptor("Blazor:GraphCheckX",new DbFieldDescriptor( DbFieldType.DBF_LONG_i32,100)), true);
+    //Hub.GetOrCreateLocalChannel(new RecordDescriptor("Blazor:GraphCheckY",new DbFieldDescriptor( DbFieldType.DBF_LONG_i32,100)), true);
+
+    m_LineGraphVM = new GraphViewModel(
+      xMinimum: 0,
+      xMaximum: 100,
+      yMinimum: 0,
+      yMaximum: 100,
+      graphType: GraphType.Area,
+      showOverlay: true,
+      overlayStart: 0,
+      overlayEnd: 70,
+      width: 700,
+      height: 500,
+      xChannelRecord: new("Blazor:GraphCheckX", m_channelsHandler),
+      yChannelRecord: new("Blazor:GraphCheckY", m_channelsHandler)
+    );
+
+    Random rand = new Random();
+    List<double> xValue = new List<double>();
+    List<double> yValue = new List<double>();
+    yValue.Clear();
+    for (int i = 0; i < 100; i++)
+    {
+      var temp = rand.Next(0, 99);
+      xValue.Add(i % 100);
+      yValue.Add(temp);
+    }
+    m_LineGraphVM.XChannelRecord?.Channel?.PutValue(xValue.ToArray());
+    m_LineGraphVM.YChannelRecord?.Channel?.PutValue(yValue.ToArray());
+    //xValue.Clear();
+    //yValue.Clear();
+
+    //  // Example 2
+    //  m_LineGraphVM = new GraphViewModel(
+    //    position: new Position(100, 100),
+    //    xTitle: "Time(ns)",
+    //    yTitle: "Amplitude",
+    //    xMinimum: 0,
+    //    xMaximum: 100,
+    //    yMinimum: 0,
+    //    yMaximum: 4000,
+    //    xTickSize: 10,
+    //    yTickSize: 500,
+    //    showGrid: false,
+    //    autoScale: false,
+    //    graphType: GraphType.Area,
+    //    traceColor: Colour.SystemDrawingColorToColour(System.Drawing.Color.Purple),
+    //    traceWidth: 3,
+    //    overlayWidth: 5,
+    //    showOverlay: true,
+    //    overlayStart: 2.5,
+    //    overlayEnd: 70.5,
+    //    overlayColor: Colour.SystemDrawingColorToColour(System.Drawing.Color.AliceBlue),
+    //    width: 700,
+    //    height: 500,
+    //    name: "Test Line Graph",
+    //    parentWidgetViewModel: null
+    //);
+    //  string path = Path.Combine(webHostEnv.WebRootPath, "Data\\locwave3.txt");
+    //  string[] lines = System.IO.File.ReadAllLines(path);
+    //  List<double> yValues = new List<double>();
+    //  foreach (var line in lines)
+    //  {
+    //    yValues.Add(m_LineGraphVM.ScaleYValue(Convert.ToDouble(line)));
+    //  }
+    //  xValue.Clear();
+    //  for (double x = 0; x < 100; x += 0.125)
+    //  {
+    //    xValue.Add(m_LineGraphVM.ScaleXValue(x));
+    //  }
+
+    //  m_LineGraphVM.PolylinePointX = xValue;
+    //  m_LineGraphVM.PolylinePointY = yValues;
+    //  m_LineGraphVM.UpdatePoints();
+
+    List<string> Symbols = new List<string> {
+      "cat.jpg",
+      "images/squirrel.jpg",
+      "../Pages/fish.jpg"};
+
+    m_SymbolVM = new SymbolViewModel(
+      width: 100,
+      height: 100,
+      symbols: Symbols,
+      selectedSymbol: 2,
+      preserveRatio: true,
+      channelRecord: new("Blazor:SymbolCheck", m_channelsHandler)
+    );
+
+    m_PictureVM = new PictureViewModel(
+      imagePath: "cat.jpg",
+      width: 100,
+      height: 100);
+  }
+
+  public void OnTabChanged(Tab tab)
+  {
+
+  }
+}
+

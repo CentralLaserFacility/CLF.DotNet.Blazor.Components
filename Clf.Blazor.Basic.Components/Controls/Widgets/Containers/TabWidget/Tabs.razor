@@ -1,0 +1,75 @@
+﻿@*Based on : https://www.puresourcecode.com/dotnet/blazor/tabs-control-for-blazor/*@
+
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop;
+@inherits WidgetBase
+
+<CascadingValue Value="this">
+  <div class="tabs @(Direction==Direction.Vertical?"tabs-ver":"tabs-hor") @Class">
+    <div class="tabs-menu">
+      @foreach (Tab tabPage in Pages)
+      {
+        <div class="@GetTabCSS(tabPage)" @onclick=@( () => ActivatePage(tabPage) )>
+          @tabPage.Title
+        </div>
+      }
+    </div>
+    
+    <div class="tab-content">
+      <div class="tab-content-padder"></div>
+      <div class="tab-body">
+        @ChildContent
+      </div>
+    </div>
+  </div>
+</CascadingValue>
+
+@code {
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public EventCallback<Tab> OnTabChanged { get; set; }
+
+  [Parameter]
+  public Direction Direction { get; set; } = Direction.Horizontal;
+
+  public Tab? ActivePage { get; set; }
+  List<Tab> Pages = new List<Tab>();
+
+  internal void AddPage(Tab tabPage)
+  {
+    Pages.Add(tabPage);
+    if (Pages.Count == 1)
+      ActivePage = tabPage;
+
+    StateHasChanged();
+  }
+
+  string GetTabCSS(Tab page)
+  {
+
+    string tabClass = "tab ";
+
+    if (!page.Enabled)
+    {
+      tabClass += "tab-disabled";
+    }
+    if (page == ActivePage)
+    {
+      tabClass += "tab-active";
+    }
+
+    return tabClass;
+  }
+
+  void ActivatePage(Tab page)
+  {
+    if (page.Enabled)
+    {
+      ActivePage = page;
+      OnTabChanged.InvokeAsync(page);
+    }
+  }
+}

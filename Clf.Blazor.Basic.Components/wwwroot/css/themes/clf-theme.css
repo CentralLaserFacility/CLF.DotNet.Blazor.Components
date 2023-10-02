@@ -1,0 +1,61 @@
+﻿@import url('../../../../_content/Clf.Blazor.Basic.Components/fonts/Inter/inter.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-icons.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-led.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-alarms.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-type-scale.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-dashboard.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-text-update.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-text-entry.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-spinner.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-light-theme.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-dark-theme.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-check-box.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-boolean-button.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-action-button.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-radio-button.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-label.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-progress-bar.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-slider.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-choice-button.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-combo-box.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-tab.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-treeview.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-slide-button.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-color-picker.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-tooltip.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-modal-dialog.css');
+
+
+:root {
+  --clf-background-colour: #F4F4F4;
+  --clf-font-colour: #222222;
+  --clf-bold-font-weight: 700;
+  --clf-medium-font-weight: 500;
+  --clf-normal-font-weight: 400;
+  --clf-h1-font-size: 20px;
+  --clf-h2-font-size: 18px;
+  --clf-h3-font-size: 16px;
+  --clf-h4-font-size: 14px;
+  --clf-fine-print-font-size: 12px;
+  --clf-fine-print-small-font-size: 10px;
+  --clf-border-radius: 4px;
+  --clf-text-input-default-width: 130px;
+  --clf-text-input-font-weight: var(--clf-normal-font-weight);
+  --clf-disabled-filter: opacity(60%) !important;
+  --clf-font-family: 'Inter', sans-serif !important;
+  --clf-font-style: normal;
+  --clf-default-font-size: 14px;
+}
+
+body {
+  background: var(--clf-background-colour);
+  color: var(--clf-font-colour);
+  font-family: var(--clf-font-family);
+  font-style: var(--clf-font-style);
+  font-weight: var(--clf-medium-font-weight);
+  font-size: var(--clf-default-font-size);
+}
+
+p {
+  font-weight: var(--clf-normal-font-weight);
+}

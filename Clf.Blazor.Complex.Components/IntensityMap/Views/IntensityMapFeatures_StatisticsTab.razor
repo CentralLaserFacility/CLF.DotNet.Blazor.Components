@@ -1,0 +1,84 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="statistics-tab">
+    <div style="grid-column:1;">
+        <label>Enable</label>
+    </div>
+    <div style="display:flex;">
+        <ComboBox ViewModel="@ViewModel.StatisticsEnable" />
+        <TextUpdate ViewModel="@ViewModel.StatisticsEnableRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Background Width</label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.StatisticsBackgroundWidth" />
+        <TextUpdate ViewModel="@ViewModel.StatisticsBackgroundWidthRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Minimum</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMinimumPixelRBV" />
+    </div>
+    <div style="grid-column:2;">
+        <label>Maximum</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMaximumXRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Minimum X</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMinimumXRBV" />
+    </div>
+    <div style="grid-column:2;">
+        <label>Maximum X</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMaximumXRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Minimum Y</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMinimumYRBV" />
+    </div>
+    <div style="grid-column:2;">
+        <label>Maximum Y</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMaximumYRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Total</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsTotalValueRBV" />
+    </div>
+    <div style="grid-column:2;">
+        <label>Net</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsNetValueRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Mean</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsMeanValueRBV" />
+    </div>
+    <div style="grid-column:2;">
+        <label>Sigma</label>
+        <TextUpdate ViewModel="@ViewModel.StatisticsSigmaValueRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Energy Calibration Factor</label>
+    </div>
+    <div style="display:flex;">
+        <TextEntry ViewModel="@ViewModel.StatisticsEnergyCalibrationFactor" />
+        <TextUpdate ViewModel="@ViewModel.StatisticsEnergyCalibrationFactorRBV" />
+    </div>
+    <div style="grid-column:1/3;text-align:center">
+        <ActionButton ViewModel="@ViewModel.StatisticsPluginSettings" />
+    </div>
+   </div>
+
+   @code {
+    [Parameter]
+    public IntensityMapFeatures_StatisticsTabViewModel ViewModel { get; set; }
+}

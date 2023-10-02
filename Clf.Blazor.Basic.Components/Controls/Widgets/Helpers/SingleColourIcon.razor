@@ -1,0 +1,10 @@
+﻿@inherits WidgetBase
+
+<svg class="clf-icon @Class">
+  <use href="_content/Clf.Blazor.Basic.Components/icons/single_colour/symbol-defs.svg#@(IconId)" />
+</svg>
+
+@code {
+  [Parameter, EditorRequired]
+  public string IconId { get; set; } = "";
+}

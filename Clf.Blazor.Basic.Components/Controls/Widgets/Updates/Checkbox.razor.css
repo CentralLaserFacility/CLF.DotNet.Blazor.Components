@@ -1,0 +1,20 @@
+﻿.check-box-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: var(--check-box-width);
+  height: var(--check-box-height);
+  gap: var(--clf-check-box-label-gap);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin:0px;
+  cursor: pointer;
+}
+
+  .check-box-label[disabled] {
+    pointer-events: none;
+    filter: var(--clf-disabled-filter);
+  }

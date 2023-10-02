@@ -1,0 +1,139 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using System.Text;
+@inherits WidgetBase
+
+@if (Parent?.CurrentState == this)
+{
+  <div class="led-content state-content @GetFontColourClass() @GetBlinkingClass() @Class" style="--background-color:@GetBackgroundColour();">
+    @if (ChildContent != null)
+    {
+      @ChildContent
+    }
+    else
+    {
+      @if (Parent.ViewModel.ShowIcon)
+      {
+        var iconId = GetStateIconId();
+        if (string.IsNullOrEmpty(iconId) == false)
+        {
+          <SingleColourIcon class="led-icon" IconId="@iconId" />
+        }
+      }
+      @if (Parent.ViewModel.IsSquare && !string.IsNullOrEmpty(Label))
+      {
+        <span class="led-content-text">@Label</span>
+      }
+    }
+  </div>
+
+}
+
+@code {
+  [CascadingParameter]
+  private MultiStateLed? Parent { get; set; }
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter, EditorRequired]
+  public string Value { get; set; } = "";
+
+  [Parameter]
+  public string? Label { get; set; }
+
+  [Parameter]
+  public string? Colour { get; set; }
+
+  [Parameter]
+  public MultiStateLedType Type { get; set; } = MultiStateLedType.Off;
+
+  [Parameter]
+  public string? IconId { get; set; }
+
+  protected override void OnInitialized()
+  {
+    if (Parent == null)
+      throw new ArgumentNullException(nameof(Parent),
+          "LedState must exist within a MultiStateLed control");
+
+    base.OnInitialized();
+    Parent.AddState(this);
+  }
+
+  private string GetBackgroundColour()
+  {
+    return Colour != null ? Colour : GetBackgroundColourFromType();
+  }
+
+  private string GetBackgroundColourFromType()
+  {
+    switch (Type)
+    {
+      case MultiStateLedType.Error:
+        return "var(--clf-led-error-on-colour)";
+      case MultiStateLedType.Warning:
+        return "var(--clf-led-warning-on-colour)";
+      case MultiStateLedType.Invalid:
+        return "var(--clf-led-invalid-colour)";
+      case MultiStateLedType.Off:
+        return "var(--clf-led-default-off-colour)";
+      case MultiStateLedType.On:
+        return "var(--clf-led-default-on-colour)";
+      default:
+        return "var(--clf-led-fallback-colour)";
+    }
+  }
+
+  private string GetFontColourClass()
+  {
+    switch (Type)
+    {
+      case MultiStateLedType.Error:
+      case MultiStateLedType.Off:
+        return "led-content-contrast";
+      case MultiStateLedType.Warning:
+      case MultiStateLedType.Invalid:
+      case MultiStateLedType.On:
+      default:
+        return "";
+    }
+  }
+
+  private string GetBlinkingClass()
+  {
+    var blinkingClass = "";
+
+    if (Parent!.ViewModel.IsBlink)
+      blinkingClass = "state-blink";
+
+    return blinkingClass;
+  }
+
+  private string GetStateIconId()
+  {
+    if (!string.IsNullOrEmpty(IconId))
+      return IconId;
+
+    string iconId = "";
+    switch (Type)
+    {
+      case MultiStateLedType.Error:
+        iconId = "clf_ic_dismiss_24_regular";
+        break;
+      case MultiStateLedType.Warning:
+        iconId = "clf_ic_exclamation_24_regular";
+        break;
+      case MultiStateLedType.Invalid:
+        iconId = "clf_ic_invalid_24_regular";
+        break;
+      case MultiStateLedType.On:
+        iconId = "clf_ic_checkmark_24_regular";
+        break;
+      case MultiStateLedType.Off:
+      default:
+        break;
+    }
+    return iconId;
+  }
+}

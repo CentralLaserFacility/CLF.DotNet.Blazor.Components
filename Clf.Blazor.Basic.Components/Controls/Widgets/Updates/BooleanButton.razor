@@ -1,0 +1,111 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@using System.Text;
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <button class="boolean-button @Class"
+              style=" background-color:@GetBackgroundColour(); --boolean-button-width: @GetWidth();
+                    --boolean-button-height: @GetHeight(); --boolean-button-color: @GetColour();"
+      @onclick="ViewModel.OnBooleanWidgetClicked"
+              disabled="@ViewModel.GetDisableStatus()">
+
+        @if (ViewModel.Value == true)
+        {
+          @if (ButtonOn != null)
+          {
+            @ButtonOn
+          }
+          else
+          {
+            @ViewModel.OnLabel
+          }
+        }
+        else
+        {
+          @if (ButtonOff != null)
+          {
+            @ButtonOff
+          }
+          else
+          {
+            @ViewModel.OffLabel
+          }
+        }
+      </button>
+    </Tooltip>
+  </Alarm>
+}
+
+@code {
+  [Parameter]
+  public BooleanButtonViewModel ViewModel { get; set; } = new BooleanButtonViewModel();
+
+  [Parameter]
+  public RenderFragment? ButtonOn { get; set; }
+
+  [Parameter]
+  public RenderFragment? ButtonOff { get; set; }
+
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-boolean-button-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-boolean-button-default-height)";
+  }
+
+
+  private string GetBackgroundColour()
+  {
+    return (ViewModel.Value == true ?
+              ViewModel.OnColor != null ? ViewModel.OnColor.HtmlRgbaString : GetCssVariableForBooleanButtonBackgroundColour(true)
+            : ViewModel.OffColor != null ? ViewModel.OffColor.HtmlRgbaString : GetCssVariableForBooleanButtonBackgroundColour(false));
+  }
+
+  private string GetColour()
+  {
+    if (ViewModel.Value == true)
+    {
+      return "var(--clf-boolean-button-on-colour)";
+    }
+    else
+    {
+      return "var(--clf-boolean-button-off-colour)";
+    }
+  }
+
+  private string GetCssVariableForBooleanButtonBackgroundColour(bool value)
+  {
+    if (value == true)
+    {
+      return "var(--clf-boolean-button-background-on-colour)";
+    }
+    else
+    {
+      return "var(--clf-boolean-button-background-off-colour)";
+    }
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

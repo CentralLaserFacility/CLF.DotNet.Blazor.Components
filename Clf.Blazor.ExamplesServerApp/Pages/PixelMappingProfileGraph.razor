@@ -1,0 +1,138 @@
+﻿@using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using System.Globalization
+
+<h5>@Title</h5>
+
+<div 
+  style = " 
+    display : inline-block ;
+  "
+  title = "@(
+    ShowTooltip 
+    ? TooltipText 
+    : string.Empty
+  )"
+>
+
+  <!--
+    If the 'viewbox' of the SVG element isn't specified,
+    it defaults to the equivalent of '0 0 width height'
+  -->
+
+  <svg 
+    xmlns   = "http://www.w3.org/2000/svg" 
+    width   = "@Width" 
+    height  = "@Height"
+    viewBox = "0 0 @(Width) @(Height)"
+  >
+
+    <!--
+    <style type="text/css">
+      text {
+        font : @HtmlFontString ;
+      }
+    </style>
+    -->
+
+    <rect 
+      width  = "@Width"
+      height = "@Height"
+      style  = "
+        stroke       : yellow ;
+        stroke-width : 4 ;
+        fill         : none;
+      " 
+    />
+
+    @if ( ShowGrid )
+    {
+      @foreach ( double x in XDataTickCoordinates )
+      {
+        // Draw a vertical line at 'x'
+        <line 
+          x1 =               "@GetDataPositionInViewCoordinates_X(x)" 
+          x2 =               "@GetDataPositionInViewCoordinates_X(x)" 
+          y1 =               "0" 
+          y2 =               "@Height" 
+          stroke-dasharray = "4" 
+          stroke           = "grey"
+        />
+      }
+      @foreach ( double y in YDataTickCoordinates )
+      {
+        // Draw a horizontal line at 'y'
+        <line 
+          x1               = "0" 
+          x2               = "@Width" 
+          y1               = "@GetDataPositionInViewCoordinates_Y(y)" 
+          y2               = "@GetDataPositionInViewCoordinates_Y(y)" 
+          stroke-dasharray = "4" 
+          stroke           = "grey"
+        />
+      }
+    }
+
+    // Draw an X-axis solid line, horizontal along the bottom edge
+
+    <line 
+      x1           = "0" 
+      y1           = "@Height" 
+      x2           = "@Width" 
+      y2           = "@Height" 
+      stroke-width = "4"
+      stroke       = "black"
+    />
+
+    // Draw a Y-axis solid line, vertical along the left edge
+
+    <line 
+      x1           = "0" 
+      y1           = "0" 
+      x2           = "0" 
+      y2           = "@Height" 
+      stroke-width = "4"
+      stroke       = "black"
+    />
+
+    // Plot the data
+
+    @if ( GraphType == GraphType.Line )
+    {
+      <polyline 
+        points       = "@GraphPointsString" 
+        stroke       = "@TraceColor.HtmlRgbaString" 
+        fill         = "none" 
+        stroke-width = "@TraceWidth"
+      />
+    }
+    else if ( GraphType == GraphType.Area )
+    {
+      <polygon 
+        points = "@GraphPointsString" 
+        stroke = "@TraceColor.HtmlRgbaString" 
+        fill   = "@TraceColor.HtmlRgbaString"
+      />
+    }
+
+    // Draw vertical lines representing the Min/Max X coordinates
+
+    @foreach ( double x in ReferencePointsAlongX )
+    {
+      string mappedPosX = @GetDataPositionInViewCoordinates_X(x);
+      <line 
+        x1="@mappedPosX"
+        y1="0"
+        x2="@mappedPosX"
+        y2="@Height"
+        stroke-width="1"
+        stroke="green" 
+      />
+    }
+
+  </svg>
+
+</div>
+
+

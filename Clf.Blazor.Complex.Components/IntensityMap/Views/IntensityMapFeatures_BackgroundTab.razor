@@ -1,0 +1,68 @@
+﻿@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class = "background-tab">
+    <div style="grid-column:1;">
+        <label>Show</label>
+    </div>
+    <div style="grid-column:2;">
+        <ComboBox ViewModel="@ViewModel.BackgroundShow" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Status</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.BackgroundSubtractionStatus" />
+    </div>
+    <div style="grid-column:1;">
+        <ActionButton ViewModel="@ViewModel.BackgroundSetNewBackground" />
+    </div>
+    <div style="grid-column:2; justify-content:center;">
+        <TextUpdate ViewModel="@ViewModel.BackgroundSubtractionValidFile" />
+    </div>
+    <div style="grid-column:1;">
+        <label>File Path</label>
+    </div>
+    <div style="grid-column:1/3;">
+        <TextEntry ViewModel="@ViewModel.BackgroundFilePath" />
+    </div>
+    <div style="grid-column:1/3;">
+        <TextUpdate ViewModel="@ViewModel.BackgroundFilePathRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>File Name</label>
+    </div>
+    <div style="grid-column:1/3;">
+        <TextEntry ViewModel="@ViewModel.BackgroundFileName" />
+    </div>
+    <div style="grid-column:1/3;">
+        <TextUpdate ViewModel="@ViewModel.BackgroundFileNameRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>File Template</label>
+    </div>
+    <div style="grid-column:1/3;">
+        <TextEntry ViewModel="@ViewModel.BackgroundFileTemplate" />
+    </div>
+    <div style="grid-column:1/3;">
+        <TextUpdate ViewModel="@ViewModel.BackgroundFileTemplateRBV" />
+    </div>
+    <div style="grid-column:1/3;">
+        <ActionButton ViewModel="@ViewModel.BackgroundPluginSettings" />
+    </div>
+</div>
+@code {
+    [Parameter]
+    public IntensityMapFeatures_BackgroundTabViewModel ViewModel { get; set; }
+
+}

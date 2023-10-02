@@ -1,0 +1,67 @@
+﻿:root {
+  --clf-radio-button-label-gap: 8px;
+  --clf-radio-button-default-size: 24px;
+  --clf-radio-button-inner-circle-default-size: 12px;
+  --clf-radio-button-default-radius: 50%;
+  --clf-radio-button-border-size: 2px;
+  --clf-radio-button-inner-border-size: 1px;
+  --clf-radio-button-default-border-disabled-colour: #B3B3B3;
+  --clf-radio-button-border-style: solid;
+  --clf-radio-button-hover-focus-checked-border-colour: #0082D9;
+  --clf-radio-button-focus-checked-background-color: rgba(255,255,0,0.2);
+  --clf-radio-button-to-radio-button-gap: 10px;
+}
+
+input[type="radio"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  appearance: none;
+  margin: 0;
+  font: inherit;
+  width: var(--clf-radio-button-default-size);
+  min-width: var(--clf-radio-button-default-size);
+  height: var(--clf-radio-button-default-size);
+  border: var(--clf-radio-button-border-size) var(--clf-radio-button-border-style) var(--clf-radio-button-default-border-disabled-colour);
+  border-radius: var(--clf-radio-button-default-radius);
+  outline:none;  
+}
+
+  input[type="radio"]::before {
+    content: "";
+    width: var(--clf-radio-button-inner-circle-default-size);
+    height: var(--clf-radio-button-inner-circle-default-size);
+    border-radius: var(--clf-radio-button-default-radius);
+  }
+
+  input[type="radio"]:checked::before {
+    box-shadow: inset var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-hover-focus-checked-border-colour);
+  }
+
+  input[type="radio"]:focus {
+    border: var(--clf-radio-button-border-size) var(--clf-radio-button-border-style) var(--clf-radio-button-hover-focus-checked-border-colour);
+  }
+
+  input[type="radio"]:focus:checked::before {
+    box-shadow: inset var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-focus-checked-background-color);
+    outline: var(--clf-radio-button-inner-border-size) var(--clf-radio-button-border-style) var(--clf-radio-button-hover-focus-checked-border-colour);
+  }
+
+input[type="radio"]:focus:checked {
+  border: var(--clf-radio-button-border-size) var(--clf-radio-button-border-style) var(--clf-radio-button-hover-focus-checked-border-colour);
+}
+
+input[type="radio"]:hover:enabled {
+  cursor: pointer;
+  border: var(--clf-radio-button-border-size) var(--clf-radio-button-border-style) var(--clf-radio-button-hover-focus-checked-border-colour);
+}
+
+input[type="radio"]:disabled {
+  background-color: var(--clf-radio-button-disabled-background-colour);
+  color: var(--clf-radio-button-default-border-disabled-colour);
+}
+
+  input[type="radio"]:disabled:checked::before {
+    box-shadow: inset var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-default-border-disabled-colour);
+  }

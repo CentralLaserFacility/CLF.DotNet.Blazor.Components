@@ -1,0 +1,60 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Common.ExtensionMethods
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <div class="text-update @Class" disabled="@Utilities.GetBorderStatusDisable(ViewModel.BorderStatus)"
+           style="--text-update-width: @GetWidth(); --text-update-height:@GetHeight();">
+        <span class="text-update-value">@ViewModel.Text</span>
+        @if (GetShowUnits())
+        {
+          <span class="clf-units">@ViewModel.Units</span>
+        }
+
+      </div>
+    </Tooltip>
+  </Alarm>
+}
+
+
+@code {
+
+  [Parameter]
+  public TextUpdateViewModel ViewModel { get; set; } = new TextUpdateViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-text-update-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-text-update-default-height)";
+  }
+
+  private bool GetShowUnits()
+  {
+    return (!string.IsNullOrEmpty(ViewModel.Units) && ViewModel.ShowUnits);
+  }
+
+}

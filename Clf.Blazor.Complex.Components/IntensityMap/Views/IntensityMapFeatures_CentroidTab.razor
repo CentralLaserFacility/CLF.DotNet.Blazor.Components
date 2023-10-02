@@ -1,0 +1,114 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+  <div class = "centroid-tab">
+    <div style="grid-column:1;">
+        <Checkbox ViewModel="@ViewModel.CentroidEnable" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Execution Time</label>
+    </div>
+    <div style="grid-column:2;">
+        <TextUpdate ViewModel="@ViewModel.CentroidTimeElapsed" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Centroid </label>
+    </div>
+    <div style="display:flex;">
+        <label>X</label>
+        <TextUpdate ViewModel="@ViewModel.CentroidX" />
+        <label>Y</label>
+        <TextUpdate ViewModel="@ViewModel.CentroidY" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Algorithm </label>
+    </div>
+    <div style="grid-column:2;">
+        <RadioButton ViewModel="@ViewModel?.CentroidAlgorithm" />
+    </div>
+
+    <div style="grid-column:1;">
+        <label>Threshold </label>
+    </div>
+    <div style="grid-column:2;">
+        <RadioButton ViewModel="@ViewModel?.ThresholdAlgorithm" />
+        <div style="display:flex;">
+            <TextEntry ViewModel="@ViewModel.ThresholdManualSet" />
+            <TextUpdate ViewModel="@ViewModel.ThresholdAppliedRBV" />
+        </div>
+    </div>
+
+    <div style="grid-column:1; width:fit-content;">
+        <GroupBox ViewModel = "@ViewModel.EdgeDetectionGroupBox" >
+            <div style="padding:8px;">
+            <div style="display:flex; row-gap: 5px;">
+                <label>Beam Shape </label>
+                <RadioButton ViewModel="@ViewModel?.BeamShape" />
+             </div>
+            <div style="display:flex; row-gap: 5px;">
+                <Checkbox ViewModel="@ViewModel.EDBeamShapeShow" />
+                <Checkbox ViewModel="@ViewModel.EDBeamShapeThick" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Colour</label>
+                <ColorPicker ViewModel="@ViewModel.EDBeamShapeColor" />
+            </div>
+            <div style="grid-column:1;">
+                <Checkbox ViewModel="@ViewModel.EdgeDetectionContourShow" />
+            </div>
+            <div style="grid-column:1;">
+                <Checkbox ViewModel="@ViewModel.EdgeDetectionContourThick" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Colour</label>
+                <ColorPicker ViewModel="@ViewModel.EdgeDetectionContourColor" />
+            </div>
+
+            <div style="display:flex; row-gap: 5px;">
+                <Label ViewModel="@ViewModel.BeamDiameterLabel"/>
+                <TextUpdate ViewModel="@ViewModel.BeamDiameter" />
+            </div>
+            <div style="display:flex; row-gap: 5px;">
+                <Label ViewModel="@ViewModel.BeamHeightLabel"/>
+                <TextUpdate ViewModel="@ViewModel.BeamHeight" />
+            </div>
+            <div style="display:flex; row-gap: 5px;">
+                <Label ViewModel="@ViewModel.BeamWidthLabel"/>
+                <TextUpdate ViewModel="@ViewModel.BeamWidth" />
+                </div>
+            <div style="display:flex; row-gap: 5px; ">
+                <label>Min Enclosing area (%) </label>
+            </div>
+            <div style="display:flex; row-gap: 5px;">
+                <label>Set  </label>
+                <TextUpdate ViewModel="@ViewModel.SetCentroidAreaPercent" />
+                <label>Actual </label>
+                <TextUpdate ViewModel="@ViewModel.ActualCentroidAreaPercent" />
+            </div>
+            <div style="display:flex; row-gap: 5px; padding:8px; justify-content:center;">
+                 <ActionButton ViewModel="@ViewModel.CentroidSettingsED" />
+             </div>
+            </div>
+        </GroupBox>
+    </div>
+  </div>
+
+  <ModalDialog ViewModel="@ViewModel.CentroidSettingsEDModal">
+      <IntensityMapFeatures_CentroidTabSettings ViewModel="@ViewModel.CentroidSettingsTab"/>
+  </ModalDialog>
+
+    @code {
+        [Parameter]
+        public ViewModels.IntensityMapFeatures_CentroidTabViewModel ViewModel { get; set; }
+    }

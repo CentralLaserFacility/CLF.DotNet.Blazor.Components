@@ -1,0 +1,45 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Common.ExtensionMethods
+@using Clf.Common.ImageProcessing
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Common.Drawing
+@inherits WidgetBase
+@implements IDisposable
+
+@if (ViewModel!.IsVisible)
+{
+  <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+    <label class="label-main @Class"
+           style="--label-width:@GetLabelWidth(); --label-height:@GetLabelHeight();">
+      @ViewModel.Text
+    </label>
+  </Tooltip>
+}
+
+@code {
+  [Parameter]
+  public LabelViewModel ViewModel { get; set; } = new LabelViewModel();
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetLabelWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "max-content";
+  }
+
+  private string GetLabelHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "fit-content";
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel!.PropertyChanged -= OnPropertyChanged;
+  }
+}

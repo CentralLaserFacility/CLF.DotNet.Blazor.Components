@@ -1,0 +1,254 @@
+﻿@page "/Cameras/{PageTitle}/HDF5-Plugin-Settings"
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+
+<div class="hdf5-plugin-settings-tab">
+    <div style="grid-column:1/5; text-align:center;">
+        <label>@ViewModel.pageFileTitle</label>
+    </div>
+    <div style="grid-column:1;">
+      <IntensityMapFeatures_CommonPluginSettings ViewModel="@ViewModel.HDF5CommonPluginSettingsTab" />        
+    </div>
+
+    <div style="grid-column:2;">
+         <div class="hdf5-plugin-feature-settings-tab">
+            <div style="grid-column:1;">
+                <label>File Path Exist</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.HDF5FilePathExistRBV"/>
+            </div>
+            <div style="grid-column:1;">
+                <label>File Path</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextEntry ViewModel="@ViewModel.HDF5FilePathSet" />
+            </div>
+            <div style="grid-column:2/4;">
+                <TextUpdate ViewModel="@ViewModel.HDF5FilePathRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Create Directory Path</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.HDF5DirDepthSet" />
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.HDF5DirDepthRBV"/>
+            </div>
+            <div style="grid-column:1;">
+                <label>File Name</label>
+            </div>
+            <div style="grid-column:2/4;">
+                <TextEntry ViewModel="@ViewModel.HDF5FileNameSet" />
+            </div>
+            <div style="grid-column:2/4;">
+                <TextUpdate ViewModel="@ViewModel.HDF5FileNameRBV" />
+            </div>
+            <div style="grid-column:1/3;">
+                <label>Next File </label>
+                <TextEntry ViewModel="@ViewModel.HDF5NextFileSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5NextFileRBV" />
+            </div>
+            <div style="grid-column:3/5;">
+                <label>Temp Suffix</label>
+                <TextEntry ViewModel="@ViewModel.HDF5TempSuffixSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5TempSuffixRBV" />
+            </div>
+            <div style="grid-column:1/3;">
+                <label>Auto Increment</label>
+                <ComboBox ViewModel="@ViewModel.HDF5AutoIncrementSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5AutoIncrementRBV" />
+            </div>
+            <div style="grid-column:3/5;">
+                <label>Lazy Open</label>
+                <ComboBox ViewModel="@ViewModel.HDF5LazyOpenSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5LazyOpenRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Filename Format</label>     
+            </div>
+            <div style="grid-column:2;">
+                <TextEntry ViewModel="@ViewModel.HDF5FileFormatSet" />
+            </div>
+            <div style="grid-column:3;">
+                <TextUpdate ViewModel="@ViewModel.HDF5FileFormatRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Last Filename</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.HDF5LastFileNameRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Save File</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.HDF5SaveFileSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5SaveFileRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <label>Read File</label>
+                <ActionButton ViewModel="@ViewModel.HDF5ReadFileSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5ReadFileRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Auto Save</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.HDF5AutoSaveSet"/>
+                <TextUpdate ViewModel="@ViewModel.HDF5AutoSaveRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <label>Write Mode</label>
+                <ComboBox ViewModel="@ViewModel.HDF5WriteModeSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5WriteModeRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Capture</label>
+            </div>
+            <div style="grid-column:2;">
+                <ActionButton ViewModel="@ViewModel.HDF5CaptureStart" />
+                <ActionButton ViewModel="@ViewModel.HDF5CaptureStop" />
+                <TextUpdate ViewModel="@ViewModel.HDF5CapturedRBV" />
+            </div>
+            <div style="grid-column:3;">
+                <label>Capture Status</label>
+                <TextEntry ViewModel="@ViewModel.HDF5CaptureSet" />
+                <TextUpdate ViewModel="@ViewModel.HDF5CaptureRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Delete driver File</label>
+            </div>
+            <div style="grid-column:2;">
+                <ComboBox ViewModel="@ViewModel.HDF5DeleteDriverFile" />
+                <TextUpdate ViewModel="@ViewModel.HDF5DeleteDriverFileRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Write Status</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.HDF5WriteStatusRBV" />
+            </div>
+            <div style="grid-column:1;">
+                <label>Write Message</label>
+            </div>
+            <div style="grid-column:2;">
+                <TextUpdate ViewModel="@ViewModel.HDF5WriteMessageRBV" />
+            </div>
+
+            <div style="grid-column:1/3;">
+                <div class="hdf5-plugin-feature-settings-tab">
+                    <div style="grid-column:1;">
+                        <label>Compression</label>
+                        <ComboBox ViewModel="@ViewModel.HDF5CompressionSet" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5CompressionRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>N-bit data- bits</label>
+                        <TextEntry ViewModel="@ViewModel.HDF5DatabitsSet" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5DatabitsRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>N-bit offset bits</label>
+                        <TextEntry ViewModel="@ViewModel.HDF5OffsetbitsSet" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5OffsetbitsRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>SZip Pixels</label>
+                        <TextEntry ViewModel="@ViewModel.HDF5SzipPixelSet" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5SzipPixelRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Zlib level</label>
+                        <TextEntry ViewModel="@ViewModel.HDF5ZlibLevelSet" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5ZlibLevelRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>JPEG Quality</label>
+                        <TextEntry ViewModel="@ViewModel.HDF5JPEGQualitySet" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5JPEGQualityRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Store Performance</label>
+                        <ComboBox ViewModel="@ViewModel.HDF5StorePerformance" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5StorePerformanceRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Store Attributes</label>
+                        <ComboBox ViewModel="@ViewModel.HDF5StoreAttributes" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5StoreAttributesRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Run Time</label>
+                        <TextUpdate ViewModel="@ViewModel.HDF5RunTimeRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>I/O Speed</label>
+                        <TextUpdate ViewModel="@ViewModel.HDF5IOSpeedRBV" />
+                    </div>
+                </div>
+            </div>
+
+            <div style="grid-column:3/5;">
+                <div class="hdf5-plugin-feature-settings-tab">
+                    <div style="grid-column:1;">
+                        <label>SWMR Supported</label>
+                        <TextUpdate ViewModel="@ViewModel.HDF5SWMRSupportedRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>SWMR Mode</label>
+                        <ComboBox ViewModel="@ViewModel.HDF5SWMRMode" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5SWMRModeRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>SWMR active</label>
+                        <TextUpdate ViewModel="@ViewModel.HDF5SWMRActiveRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>SWMR Callbacks</label>
+                        <TextUpdate ViewModel="@ViewModel.HDF5SWMRCallbacksRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Flush to Disk</label>
+                        <ActionButton ViewModel="@ViewModel.HDF5SWMRFlushDisk" />
+                    </div>
+                
+                </div>
+                <div class="hdf5-plugin-feature-settings-tab">
+                    <div style="grid-column:1;">
+                        <label> Blosc Shuffle</label>
+                        <ComboBox ViewModel="@ViewModel.HDF5BloscShuffle" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5BloscShuffleRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Blosc Compressor</label>
+                        <ComboBox ViewModel="@ViewModel.HDF5BloscCompressor" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5BloscCompressorRBV" />
+                    </div>
+                    <div style="grid-column:1;">
+                        <label>Blosc Level</label>
+                        <TextEntry ViewModel="@ViewModel.HDF5BloscLevel" />
+                        <TextUpdate ViewModel="@ViewModel.HDF5BloscLevelRBV" />
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+[Parameter]
+    public IntensityMapFeatures_Hdf5TabPluginSettingsViewModel ViewModel { get; set; }
+}

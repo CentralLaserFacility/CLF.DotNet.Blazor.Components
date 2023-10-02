@@ -1,0 +1,25 @@
+﻿th, td {
+  padding: 15px;
+}
+
+  td > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.led-example{
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  margin: 1%;
+  width:30%;
+}
+
+  .led-example div{
+    width:30%;
+  }
+
+::deep .led-rectangle {
+  width: 140px;
+}

@@ -1,0 +1,41 @@
+﻿.clf-title {
+  font-size: 24px;
+  font-weight: var(--clf-bold-font-weight);
+}
+
+h1 {
+  font-size: var(--clf-h1-font-size);
+  font-weight: var(--clf-bold-font-weight);
+}
+
+h2 {
+  font-size: var(--clf-h2-font-size);
+  font-weight: var(--clf-bold-font-weight);
+}
+
+h3 {
+  font-size: var(--clf-h3-font-size);
+  font-weight: var(--clf-bold-font-weight);
+}
+
+h4 {
+  font-size: var(--clf-h4-font-size);
+  font-weight: var(--clf-bold-font-weight);
+}
+
+b {
+  font-weight: var(--clf-bold-font-weight);
+}
+
+.clf-medium-font {
+  font-weight: var(--clf-medium-font-weight);
+}
+
+
+.clf-fine-print {
+  font-size: var(--clf-fine-print-font-size);
+}
+
+.clf-fine-print-small {
+  font-size: var(--clf-fine-print-small-font-size);
+}

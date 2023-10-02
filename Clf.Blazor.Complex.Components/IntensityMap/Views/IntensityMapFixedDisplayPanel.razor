@@ -1,0 +1,60 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.ViewModels
+@using Clf.Blazor.Common.FilePicker;
+
+
+<!-- 
+<PlaceHolder Text="Display Settings" Width="300px" Height="100px" />
+-->
+  <div class = "fixed-display">
+    <div style="grid-column:1;">
+        <label>Trigger Source</label>
+    </div>
+    <div style="grid-column:2/4;">
+        <TextUpdate ViewModel="@ViewModel.TriggerModeRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>No of Frames</label>
+    </div>
+    <div style="grid-column:2/4;">
+        <TextUpdate ViewModel="@ViewModel.NumFramesRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <label>Image Rate</label>
+    </div>
+    <div style="grid-column:2/4;">
+        <TextUpdate ViewModel="@ViewModel.ArrayRateRBV" />
+    </div>
+    <div style="grid-column:1;">
+        <Checkbox ViewModel="@ViewModel.ShowProfileGraph" />
+    </div>
+    <div style="grid-column:1;">
+        <ActionButton ViewModel="@ViewModel.ExportProfileGraph" />
+    </div>
+    <div style="grid-column:2;">
+        <ActionButton ViewModel="@ViewModel.ExportImage" />
+    </div>
+  </div>
+<ModalDialog ViewModel="@ViewModel.ExportProfileGraphModal">
+    <div class = "export-display">
+        <div style="grid-column:1;">
+            <ActionButton ViewModel="@ViewModel.ExportProfileGraphXViewModel" />
+            <ActionButton ViewModel="@ViewModel.ExportProfileGraphYViewModel" />
+        </div>
+    </div>
+</ModalDialog>
+
+@code {
+    [Parameter]
+    public ViewModels.IntensityMapFixedDisplayViewModel ViewModel { get; set; }
+
+}

@@ -1,0 +1,65 @@
+﻿@page "/tab-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Common.ImageProcessing;
+@using System.Collections.ObjectModel;
+
+<h3>Tab Examples</h3>
+<table>
+  <tr>
+    <th scope="col">Tab Types</th>
+  </tr>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Horizontal</th>
+    <th scope="col">Vertical</th>
+  </tr>
+  <tr>
+    <th scope="row">Default</th>
+    <td>
+      <Tabs Direction="Direction.Horizontal">
+        @foreach(string tab in tabsList)
+        {
+          <Tab Title="@tab" Name="@tab" Enabled="@(tab != disabledTab)">
+            <div style="height:300px; width: 500px;">
+              @tab
+            </div>
+          </Tab>
+        }
+      </Tabs>
+    </td>
+    <td>
+      <Tabs Direction="Direction.Vertical">
+        @foreach (string tab in tabsList)
+        {
+          <Tab Title="@tab" Name="@tab" Enabled="@(tab != disabledTab)">
+            <div style="width:300px; height: 300px;">
+              @tab
+            </div>
+          </Tab>
+        }
+      </Tabs>
+    </td>
+  </tr>
+
+</table>
+<div style="height:100px"></div>
+
+
+@code {
+  List<string> tabsList = new List<string>
+        {
+            "Item 1",
+            "Item 2",
+            "Item 3",
+            "Item 4"
+        };
+
+    string disabledTab = "Item 3";
+}

@@ -1,0 +1,60 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@inherits WidgetBase
+
+<div class="tree-view"
+     disabled="@IsDisabled"
+     clickable="@(OnClick!=null)"
+@onclick="@onClick">
+  <div class="tree-item @Class">
+    <button class="expander-button @buttonExpandedClass @ExpanderButtonClass" @onclick="OnPinButtonToggle" style="visibility:@(ChildContent!=null?"visible":"hidden");">
+      <SingleColourIcon class="expander-svg-icon" IconId="clf_ic_chevron_right_24_regular" />
+    </button>
+    <span class="tree-item-title">@Title</span>
+  </div>
+  @if (buttonExpandedClass == expandedClass)
+  {
+    <div class="expanded-content">
+      @ChildContent
+    </div>
+  }
+</div>
+
+@code {
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter, EditorRequired]
+  public string Title { get; set; } = "";
+
+  [Parameter]
+  public Action? OnClick { get; set; } = null;
+
+  [Parameter]
+  public bool IsDisabled { get; set; } = false;
+
+  [Parameter]
+  public string ExpanderButtonClass { get; set; } = "";
+
+  private const string collapsedClass = "expander-icon";
+  private const string expandedClass = "expander-icon-down";
+
+  private string buttonExpandedClass = collapsedClass;
+
+  private void OnPinButtonToggle()
+  {
+    if (buttonExpandedClass == collapsedClass)
+    {
+      buttonExpandedClass = expandedClass;
+    }
+    else
+    {
+      buttonExpandedClass = collapsedClass;
+    }
+  }
+
+  private void onClick()
+  {
+    if (OnClick != null)
+      OnClick();
+  }
+}

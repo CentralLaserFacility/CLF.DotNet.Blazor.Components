@@ -1,0 +1,97 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Models
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
+@inherits WidgetBase
+@implements IDisposable
+
+
+@if (ViewModel.IsVisible)
+{
+  <Alarm BorderStatus="@ViewModel.BorderStatus" ContentDisabledTooltip="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)" IsContentDisabled="@ViewModel.IsDisabled">
+    <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <button class="@GetClass() @Class"
+              style="--action-button-width: @GetWidth(); --action-button-height:@GetHeight()"
+      @onclick="ViewModel.OnActionButtonClicked"
+              disabled="@ViewModel.GetDisableStatus()">
+        <div class="action-button-body">
+          @if (Icon != null)
+          {
+            @Icon
+          }
+          else
+          {
+            var iconId = GetIconId();
+            if (string.IsNullOrEmpty(iconId) == false)
+            {
+              <SingleColourIcon class="small-icon" IconId="@iconId" />
+            }
+          }
+          @if (string.IsNullOrEmpty(ViewModel.Text) == false)
+          {
+            @ViewModel.Text
+          }
+        </div>
+
+      </button>
+    </Tooltip>
+  </Alarm>
+
+}
+
+@code {
+  [Parameter]
+  public ActionButtonViewModel ViewModel { get; set; } = new ActionButtonViewModel();
+
+  [Parameter]
+  public RenderFragment? Icon { get; set; }
+
+  [Parameter]
+  public string? IconId { get; set; }
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "var(--clf-action-button-default-width)";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-action-button-default-height)";
+  }
+
+  private string? GetIconId()
+  {
+    if (string.IsNullOrEmpty(IconId) && ViewModel.Type == ActionButtonType.Navigation)
+    {
+      return "clf_ic_settings_24_regular";
+    }
+    else
+      return IconId;
+  }
+
+  private string GetClass()
+  {
+    switch (ViewModel.Type)
+    {
+      case ActionButtonType.Default:
+        return "action-button";
+      case ActionButtonType.Navigation:
+        return "action-button-navigation";
+    }
+    return "";
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}
