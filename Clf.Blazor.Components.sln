@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.ChannelAccess", "..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj", "{273F41EA-0F7B-41D1-9DB2-31F42E09887F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Common", "..\CLF.DotNet.Common\Clf.Common\Clf.Common.csproj", "{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.ChannelAccess", "CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj", "{273F41EA-0F7B-41D1-9DB2-31F42E09887F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Blazor.Complex.IntensityMap", "Clf.Blazor.Complex.Components\IntensityMap\Clf.Blazor.Complex.IntensityMap.csproj", "{A6443E9C-8521-411D-B5BB-3F4A5A5343F0}"
 EndProject
@@ -17,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Blazor.ExamplesServerAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Blazor.Common", "Clf.Blazor.Common\Clf.Blazor.Common.csproj", "{CB19D3A6-0186-4E98-9526-43527F6B3BC2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Tiff", "..\CLF.DotNet.Common\Clf.Tiff\Clf.Tiff.csproj", "{742694FE-D935-40F1-A18F-B50EBCCA3354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Common", "CLF.DotNet.ChannelAccess\CLF.DotNet.Common\Clf.Common\Clf.Common.csproj", "{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Tiff", "CLF.DotNet.ChannelAccess\CLF.DotNet.Common\Clf.Tiff\Clf.Tiff.csproj", "{38960DBF-367C-469F-832E-3436A31470CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,12 +32,6 @@ Global
 		{273F41EA-0F7B-41D1-9DB2-31F42E09887F}.EPAC_SIM|Any CPU.Build.0 = EPAC_SIM|Any CPU
 		{273F41EA-0F7B-41D1-9DB2-31F42E09887F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{273F41EA-0F7B-41D1-9DB2-31F42E09887F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}.EPAC_SIM|Any CPU.ActiveCfg = EPAC_SIM|Any CPU
-		{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}.EPAC_SIM|Any CPU.Build.0 = EPAC_SIM|Any CPU
-		{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3060FE75-E9F9-45D7-A2C7-8D359E4AFC24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6443E9C-8521-411D-B5BB-3F4A5A5343F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A6443E9C-8521-411D-B5BB-3F4A5A5343F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6443E9C-8521-411D-B5BB-3F4A5A5343F0}.EPAC_SIM|Any CPU.ActiveCfg = EPAC_SIM|Any CPU
@@ -68,12 +62,18 @@ Global
 		{CB19D3A6-0186-4E98-9526-43527F6B3BC2}.EPAC_SIM|Any CPU.Build.0 = EPAC_SIM|Any CPU
 		{CB19D3A6-0186-4E98-9526-43527F6B3BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB19D3A6-0186-4E98-9526-43527F6B3BC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{742694FE-D935-40F1-A18F-B50EBCCA3354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{742694FE-D935-40F1-A18F-B50EBCCA3354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{742694FE-D935-40F1-A18F-B50EBCCA3354}.EPAC_SIM|Any CPU.ActiveCfg = Debug|Any CPU
-		{742694FE-D935-40F1-A18F-B50EBCCA3354}.EPAC_SIM|Any CPU.Build.0 = Debug|Any CPU
-		{742694FE-D935-40F1-A18F-B50EBCCA3354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{742694FE-D935-40F1-A18F-B50EBCCA3354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}.EPAC_SIM|Any CPU.ActiveCfg = EPAC_SIM|Any CPU
+		{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}.EPAC_SIM|Any CPU.Build.0 = EPAC_SIM|Any CPU
+		{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FCBEAB-E76A-4AA6-8887-E31B810BB7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38960DBF-367C-469F-832E-3436A31470CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38960DBF-367C-469F-832E-3436A31470CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38960DBF-367C-469F-832E-3436A31470CA}.EPAC_SIM|Any CPU.ActiveCfg = Debug|Any CPU
+		{38960DBF-367C-469F-832E-3436A31470CA}.EPAC_SIM|Any CPU.Build.0 = Debug|Any CPU
+		{38960DBF-367C-469F-832E-3436A31470CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38960DBF-367C-469F-832E-3436A31470CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

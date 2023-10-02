@@ -1,0 +1,4 @@
+[submodule "CLF.DotNet.ChannelAccess"]
+	path = CLF.DotNet.ChannelAccess
+	url = git@github.com:CentralLaserFacility/CLF.DotNet.ChannelAccess.git
+	branch = main

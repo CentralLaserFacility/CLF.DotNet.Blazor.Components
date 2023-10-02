@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Configurations>Debug;Release;EPAC_SIM</Configurations>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
 
@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj" />
-    <ProjectReference Include="..\..\..\CLF.DotNet.Common\Clf.Tiff\Clf.Tiff.csproj" />
+    <ProjectReference Include="..\..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj" />
+    <ProjectReference Include="..\..\CLF.DotNet.ChannelAccess\CLF.DotNet.Common\Clf.Tiff\Clf.Tiff.csproj" />
     <ProjectReference Include="..\..\Clf.Blazor.Basic.Components\Clf.Blazor.Basic.Components.csproj" />
     <ProjectReference Include="..\..\Clf.Blazor.Common\Clf.Blazor.Common.csproj" />
   </ItemGroup>
