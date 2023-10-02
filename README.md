@@ -19,4 +19,4 @@ Contributors:
  - [Sourabh Halli](https://github.com/SourabhHalli)
  - [Tim Speight](https://github.com/tim-speight)
  - [SaiLikitha Veeraboomma](https://github.com/SaiLikithaVeeraboomma)
- - [Monoj Garai](https://github.com/garaimonoj)
+ - [Manoj Garai](https://github.com/garaimanoj)
