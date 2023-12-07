@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Clf.Blazor.Common\Clf.Blazor.Common.csproj" />
+    <ProjectReference Include="..\..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj" />
     <ProjectReference Include="..\Clf.LogicSystem\Clf.LogicSystem.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.5" />
   </ItemGroup>

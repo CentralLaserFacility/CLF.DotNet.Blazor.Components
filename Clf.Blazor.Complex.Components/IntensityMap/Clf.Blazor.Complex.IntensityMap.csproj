@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj" />
     <ProjectReference Include="..\..\CLF.DotNet.ChannelAccess\CLF.DotNet.Common\Clf.Tiff\Clf.Tiff.csproj" />
     <ProjectReference Include="..\..\Clf.Blazor.Basic.Components\Clf.Blazor.Basic.Components.csproj" />
     <ProjectReference Include="..\..\Clf.Blazor.Common\Clf.Blazor.Common.csproj" />
