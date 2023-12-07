@@ -1,6 +1,5 @@
 ﻿@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
 @using Clf.Blazor.Basic.Components.Controls.Models
-@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.JSInterop
 @inject IJSRuntime JSRuntime
@@ -19,7 +18,7 @@
               <Tooltip Text="@pane.Title">
                 <span>@pane.UnpinnedText</span>
                 <button class="unpin-icon-button" @onclick="pane.OnPinButtonToggle">
-                  <SingleColourIcon class="unpin-icon" IconId="clf_ic_pin_off_24_regular" />
+                  <SingleColourIcon class="unpin-icon" IconId="clf_ic_pin_24_regular" />
                 </button>
               </Tooltip>
             </span>
@@ -55,6 +54,9 @@
 
   [Parameter]
   public bool IsDraggable { get; set; } = false;
+
+  [Parameter]
+  public Action? OnAfterRendering { get; set; }
 
   public DashboardPane? SelectedPane { get; set; }
 
@@ -104,6 +106,10 @@
   protected override async Task OnAfterRenderAsync(bool firstRender)
   {
     await InvokeDashboardToMasonaryJSInterop();
+    if(OnAfterRendering!=null)
+    {
+      OnAfterRendering();
+    }
   }
 
   private async Task InvokeDashboardToMasonaryJSInterop()

@@ -31,9 +31,6 @@ ledValue:true
 <Checkbox ViewModel="new CheckboxViewModel(borderStatus: BorderStatus.Connected)" />
 
 <ProcessPVButton ViewModel="@m_MyActionButtonPVVM" />
-<FileSelector ViewModel="@m_FileVM" />
-<Picture ViewModel="@m_PictureVM" />
-<Symbol ViewModel="@m_SymbolVM" />
 <Graph ViewModel="@m_LineGraphVM"></Graph>
 <ImageViewer ViewModel="@m_ImageViewerVM"></ImageViewer>
 <ActionButton ViewModel="@m_MyActionButtonVM"></ActionButton>
@@ -73,10 +70,7 @@ ledValue:true
   private ChoiceButtonViewModel m_ChoiceButtonVM = null;
   private GraphViewModel m_LineGraphVM = null;
   private ModalDialogViewModel m_ModalDialogVM = null;
-  private ImageViewerViewModel m_ImageViewerVM = null;
-  private SymbolViewModel m_SymbolVM = null;
-  private PictureViewModel m_PictureVM = null;
-  private FileSelectorViewModel m_FileVM = new FileSelectorViewModel();
+  private ImageViewerViewModel m_ImageViewerVM = null;  
   ChannelsHandler m_channelsHandler = new ChannelsHandler();
 
   protected override void OnInitialized()
@@ -138,10 +132,6 @@ ledValue:true
     //Hub.GetOrCreateLocalChannel(new RecordDescriptor("Blazor:GraphCheckY",new DbFieldDescriptor( DbFieldType.DBF_LONG_i32,100)), true);
 
     m_LineGraphVM = new GraphViewModel(
-      xMinimum: 0,
-      xMaximum: 100,
-      yMinimum: 0,
-      yMaximum: 100,
       graphType: GraphType.Area,
       showOverlay: true,
       overlayStart: 0,
@@ -209,25 +199,6 @@ ledValue:true
     //  m_LineGraphVM.PolylinePointX = xValue;
     //  m_LineGraphVM.PolylinePointY = yValues;
     //  m_LineGraphVM.UpdatePoints();
-
-    List<string> Symbols = new List<string> {
-      "cat.jpg",
-      "images/squirrel.jpg",
-      "../Pages/fish.jpg"};
-
-    m_SymbolVM = new SymbolViewModel(
-      width: 100,
-      height: 100,
-      symbols: Symbols,
-      selectedSymbol: 2,
-      preserveRatio: true,
-      channelRecord: new("Blazor:SymbolCheck", m_channelsHandler)
-    );
-
-    m_PictureVM = new PictureViewModel(
-      imagePath: "cat.jpg",
-      width: 100,
-      height: 100);
   }
 
   public void OnTabChanged(Tab tab)

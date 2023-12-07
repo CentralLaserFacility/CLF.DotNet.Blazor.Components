@@ -92,7 +92,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     }
     public IntensityMapFeatures_StatisticsTabPluginSettingsViewModel(ChannelsHandler channelsHandler, string pvPrefix)
     {
-      statsPluginPrefix = "Stats1:";
+      statsPluginPrefix = ":Stats1:";
       StatisticsCommonPluginSettingsTab = new IntensityMapFeatures_CommonPluginSettingsViewModel(channelsHandler,pvPrefix, statsPluginPrefix);
       pageFileTitle = "Statistics Plugin Settings  " + pvPrefix + statsPluginPrefix;
       StatisticsEnable = new ComboBoxViewModel(

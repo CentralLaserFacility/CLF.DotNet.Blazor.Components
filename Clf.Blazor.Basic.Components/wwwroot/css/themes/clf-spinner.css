@@ -6,8 +6,8 @@
   --clf-spinner-units-border-radius: 0px 3px 3px 0px;
   --clf-spinner-input-padding: 0px 8px;
   --clf-spinner-transparent-border: 1px solid transparent;
-  --clf-spinner-disabled-background-colour: var(--clf-text-update-background-color);
-  --clf-spinner-units-background-colour: var(--clf-text-update-background-color);
+  --clf-spinner-disabled-background-colour: var(--clf-text-update-background-colour);
+  --clf-spinner-units-background-colour: var(--clf-text-update-background-colour);
   --clf-spinner-input-background-colour: #C2E7FF;
   --clf-spinner-edit-background-colour: rgba(255,255,0,0.2);
   --clf-spinner-edit-border: 1px solid #0082D9;

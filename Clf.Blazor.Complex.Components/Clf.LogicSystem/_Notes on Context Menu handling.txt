@@ -1,0 +1,12 @@
+﻿//
+// _Notes on Context Menu handling.txt
+//
+
+The Blazor app can be configured to either use a native 'Blazor' ContextMenu component to display context menus, or (since it's hosted in a WPF app) it can display context menus as WPF popups. The choice is made in App.cs. To use 'Blazor' flavoured menus, set the 'contextMenuService' to null instead of an instance of 'WpfContextMenuService'.
+
+There is one instance of the 'ContextMenu' component,
+hosted in the top level 'DisplayPanel'.
+
+The ContextMenu is driven by a MenuDescriptor, which is a property of the DisplayPanel component. That 'MenuDescriptor' has an 'IsVisible' property which determines whether or not the ContextMenu items will be displayed, or hidden.
+
+

@@ -19,7 +19,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       (valueInfo, _) => OnCentroidAlgorithmChange((System.Int16)valueInfo.Value)
         );
       m_parent.ChannelsHandler.InstallChannel(
-      _beamShape = Hub.GetOrCreateChannel(m_parent.PvPrefix + "BeamShape"),
+      _beamShape = Hub.GetOrCreateChannel(m_parent.PvPrefix + ":BeamShape"),
       (valueInfo, _) => OnBeamShapeChange((System.Int16)valueInfo.Value)
         );
       m_parent.ChannelsHandler.InstallChannel(

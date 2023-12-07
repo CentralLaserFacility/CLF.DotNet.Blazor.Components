@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Collections.ObjectModel;
 using Clf.Common.ImageProcessing;
+using Clf.Blazor.Basic.Components.Controls.Enums;
 
 namespace Clf.Blazor.Basic.Components.Controls.Helpers
 {
@@ -79,6 +80,20 @@ namespace Clf.Blazor.Basic.Components.Controls.Helpers
         case BorderStatus.Invalid:
         default:
           return false;
+      }
+    }
+
+    public static string GetButtonClass(ButtonType buttonType)
+    {
+      switch (buttonType)
+      {
+        case ButtonType.Navigation:
+          return "clf-button-navigation";
+        case ButtonType.Transparent:
+          return "clf-button-transparent";
+        case ButtonType.Default:
+        default:
+          return string.Empty;
       }
     }
   }

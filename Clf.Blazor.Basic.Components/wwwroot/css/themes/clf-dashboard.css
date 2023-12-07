@@ -30,3 +30,152 @@
   --clf-dashboard-pane-unpinned-box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.20);
 
 }
+
+.clf-dashboard-pane-wrapper {
+  /*Do not remove this class, as this is used by the JavaScript code to organise panes*/
+  border-left: var(--clf-dashboard-pane-drag-line-border);
+  border-color: transparent;
+  padding: var(--clf-dashboard-pane-drag-line-padding);
+  /*will-change is a hack to trigger GPU acceleration
+    It is essential, if we want to render the pane preview correctly 
+    due to a known bug of not handle draggable div if it has any child content with fixed position
+    other solutions that trigger GPU acceleration like transform: translate3d(0, 0, 0), 
+    is unsuitable becuase transform creates it's own view co-ordinates which again
+    does not work for fixed position elments.
+    https://github.com/react-dnd/react-dnd/issues/1492
+    https://stackoverflow.com/questions/32614455/how-to-gpu-accelerate-css-transform
+  */
+  /*  will-change: opacity;*/
+}
+
+.clf-dashboard-pane-unpinned {
+  position: absolute;
+  top: calc(var(--clf-dashboard-pane-unpinned-top) + 1px);
+  left: 0px;
+  background-color: var(--clf-background-colour);
+  z-index: 1000;
+  box-shadow: var(--clf-dashboard-pane-unpinned-box-shadow);
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--clf-dashboard-pane-border-radius);
+}
+
+.clf-pane-resize {
+  resize: both;
+  overflow: auto;
+}
+
+.clf-pane-selected {
+  filter: var(--clf-dashboard-pane-selected-filter);
+}
+
+.clf-pane-dragover {
+  border-left: var(--clf-dashboard-pane-drag-line-border);
+}
+
+.clf-dashboard-pane {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin: var(--clf-dashboard-pane-margin);
+  border-radius: var(--clf-dashboard-pane-border-radius);
+  box-shadow: var(--clf-dashboard-pane-box-shadow);
+}
+
+.clf-pane-header {
+  border: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-header-border-colour);
+  background-color: var(--clf-dashboard-header-background-colour);
+  border-top-left-radius: var(--clf-dashboard-pane-border-radius);
+  border-top-right-radius: var(--clf-dashboard-pane-border-radius);
+  padding: var(--clf-dashboard-pane-header-padding);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: var(--clf-dashboard-pane-header-font-size);
+}
+
+  .clf-pane-header:hover, .clf-pane-header:focus {
+    font-weight: var(--clf-bold-font-weight);
+  }
+
+.clf-pane-header-buttons {
+  display: inline-flex;
+  flex-direction: row;
+  margin-left: auto;
+  color: var(--clf-dashboard-pane-icon-colour);
+  align-items: center;
+}
+
+.clf-pane-header-icon {
+  font-size: var(--clf-dashboard-pane-icon-font-size);
+}
+
+.clf-pane-header-button {
+  background-color: transparent;
+  border: none; /* Remove borders */
+  margin: var(--clf-dashboard-pane-header-button-margin); /* Some padding */
+  cursor: pointer; /* Mouse pointer on hover */
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  padding: var(--clf-dashboard-pane-header-button-padding);
+  width: 32px;
+  height: 32px;
+  color: inherit;
+}
+
+  .clf-pane-header-button:focus {
+    outline: none;
+  }
+
+  .clf-pane-header-button:hover {
+    background-color: hsla(0,0%,9%,0.06);
+  }
+
+.clf-pane-header-toggle-button {
+  background-color: transparent !important;
+  width: 32px !important;
+  height: 32px !important;
+  color: inherit!important;
+}
+
+  .clf-pane-header-toggle-button:focus {
+    outline: none!important;
+  }
+
+  .clf-pane-header-toggle-button:hover {
+    background-color: hsla(0,0%,9%,0.06) !important;
+  }
+
+  .clf-pane-header-toggle-button:has(input[type="checkbox"]:checked) {
+    background-color: hsla(0,0%,9%,0.06) !important;
+  }
+
+  .clf-pane-header-title {
+    display: flex;
+    align-items: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+.clf-pane-body {
+  overflow: auto;
+  border-bottom-left-radius: var(--clf-dashboard-pane-border-radius);
+  border-bottom-right-radius: var(--clf-dashboard-pane-border-radius);
+  background-color: var(--clf-dashboard-background-colour);
+  border: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-body-border-colour);
+  padding: var(--clf-dashboard-body-padding);
+}
+
+  .clf-pane-body.clf-unpinned {
+    border-radius: var(--clf-dashboard-pane-border-radius);
+    border: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-header-border-colour);
+  }
+

@@ -41,12 +41,6 @@ namespace Clf.Blazor.Complex.IocManager.ViewModels
       get => _path2;
       set => SetProperty(ref _path2, value);
     }
-    private string _portNumber = "";
-    public string PortNumber
-    {
-      get => _portNumber;
-      set => SetProperty(ref _portNumber, value);
-    }
     private string _password = "";
     public string Password
     {
@@ -80,7 +74,6 @@ namespace Clf.Blazor.Complex.IocManager.ViewModels
     #region TextUpdate Declaration
     public TextUpdateViewModel IOCPrefixTextUpdateViewModel { get; private set; }
     public TextUpdateViewModel HostNameTextUpdateViewModel { get; private set; }
-    public TextUpdateViewModel PortNumberTextUpdateViewModel { get; private set; }
     public TextUpdateViewModel PathTextUpdateViewModel { get; private set; }
     #endregion
 
@@ -106,7 +99,7 @@ namespace Clf.Blazor.Complex.IocManager.ViewModels
     #region Led Declaration
     public LedViewModel IOCStatusLedViewModel { get; private set; }
     #endregion
-    public IocManagerViewModel(ChannelsHandler channelsHandler, string prefix , string hostname, string port, string path)
+    public IocManagerViewModel(ChannelsHandler channelsHandler, string prefix , string hostname, string path)
     {
       //TODO: Check if these items are assigned correctly or not
       _channelsHandler = channelsHandler;
@@ -126,10 +119,6 @@ namespace Clf.Blazor.Complex.IocManager.ViewModels
       PathTextUpdateViewModel = new TextUpdateViewModel(
                   width: 350,
                   text: path,
-                  borderStatus: BorderStatus.Connected
-        );
-      PortNumberTextUpdateViewModel = new TextUpdateViewModel(
-                  text: port,
                   borderStatus: BorderStatus.Connected
         );
       #endregion

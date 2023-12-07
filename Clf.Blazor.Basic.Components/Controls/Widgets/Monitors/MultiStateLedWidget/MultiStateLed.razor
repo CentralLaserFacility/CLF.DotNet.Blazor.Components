@@ -49,7 +49,7 @@
 
   internal void AddState(LedState state)
   {
-    _states.Add(state.Value, state);
+    _states.TryAdd(state.Value, state);
     if (CurrentState == null && state.Value == _fallbackStateValue)
       SetCurrentState(_fallbackStateValue);
     else if (ViewModel.LedValue == state.Value)

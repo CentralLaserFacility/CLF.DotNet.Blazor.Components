@@ -1,12 +1,3 @@
-using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels;
-using Clf.ChannelAccess;
-using Microsoft.AspNetCore.Http;
-using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Clf.Blazor.Common.FilePicker;
 
 namespace Clf.Blazor.Complex.IntensityMap.ViewModels
@@ -30,7 +21,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
               : imageViewer.NormalisationValue
             );
 
-            var xProfileDataRaw = normalisedOriginalImage.GetRowOfPixelsAtOffsetFromTop(Convert.ToInt32(Convert.ToDouble(m_parent.ProfileCrosshairY)/ IntensityMapViewerViewModel.DisplayImageScalingFactor));
+            var xProfileDataRaw = normalisedOriginalImage.GetRowOfPixelsAtOffsetFromTop(Convert.ToInt32(Convert.ToDouble(m_parent.ProfileCrosshairY)/ m_parent.YDisplayScalingFactor));
             var xProfileData = xProfileDataRaw.Select(x => Convert.ToInt16(x)).ToArray();
 
             if(xProfileData != null)
@@ -65,7 +56,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
               : imageViewer.NormalisationValue
             );
  
-            var yProfileDataRaw = normalisedOriginalImage.GetColumnOfPixelsAtOffsetFromLeft(Convert.ToInt32(Convert.ToDouble(m_parent.ProfileCrosshairX) / IntensityMapViewerViewModel.DisplayImageScalingFactor));
+            var yProfileDataRaw = normalisedOriginalImage.GetColumnOfPixelsAtOffsetFromLeft(Convert.ToInt32(Convert.ToDouble(m_parent.ProfileCrosshairX) / m_parent.XDisplayScalingFactor));
             var yProfileData = yProfileDataRaw.Select(x => Convert.ToInt16(x)).ToArray();
 
             if (yProfileData != null)

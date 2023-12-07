@@ -183,7 +183,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     public TextUpdateViewModel CameraGainAutoOutliersRBV { get; set; }
     public TextEntryViewModel CameraGainAutoAdjust { get; set; }
     public TextUpdateViewModel CameraGainAutoAdjustRBV { get; set; }
-    private ActionButtonViewModel CreateValueWriteActionButtonViewModel(string channelName, object valueToWrite)
+    private ActionButtonViewModel CreateValueWriteActionButtonViewModel(string channelName)
     {
       return new ActionButtonViewModel(
         width: 45,
@@ -194,7 +194,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         {
           await ChannelAccess.Hub.PutValueAsync(
             channelName,
-            valueToWrite
+            Byte.MinValue
           );
         }
       };
@@ -901,22 +901,22 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       itemsFromPv: true,
       channelRecord: new ChannelRecord(pvPrefix + camPluginPrefix + "GC_GainAuto", channelsHandler)
       );
-      CameraGevTimestampControlLatch = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_GevTimConLatch.PROC", (short)1);
+      CameraGevTimestampControlLatch = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_GevTimConLatch.PROC");
       CameraGevTimestampControlLatch.Text = "ControlLatch";
       CameraGevTimestampControlLatch.Width = 140;
-      CameraGevTimestampControlReset = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_GevTimConReset.PROC", (short)1);
+      CameraGevTimestampControlReset = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_GevTimConReset.PROC");
       CameraGevTimestampControlReset.Text = "ControlReset";
       CameraGevTimestampControlReset.Width = 140;
-      CameraAcquisitionStart = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_AcquisitionStart.PROC", (short)1);
+      CameraAcquisitionStart = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_AcquisitionStart.PROC");
       CameraAcquisitionStart.Text = "AcquisitionStart";
       CameraAcquisitionStart.Width = 150;
-      CameraAcquisitionStop = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_AcquisitionStop.PROC", (short)1);
+      CameraAcquisitionStop = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_AcquisitionStop.PROC");
       CameraAcquisitionStop.Text = "AcquisitionStop";
       CameraAcquisitionStop.Width = 150;
-      CameraAcquisitionAbort = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_AcquisitionAbort.PROC", (short)1);
+      CameraAcquisitionAbort = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_AcquisitionAbort.PROC");
       CameraAcquisitionAbort.Text = "AcquisitionAbort";
       CameraAcquisitionAbort.Width = 150;
-      CameraTriggerSoftware = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_TriggerSoftware.PROC", (short)1);
+      CameraTriggerSoftware = CreateValueWriteActionButtonViewModel(pvPrefix + camPluginPrefix + "GC_TriggerSoftware.PROC");
       CameraTriggerSoftware.Text = "TriggerSoftware";
       CameraTriggerSoftware.Width = 150;
     }

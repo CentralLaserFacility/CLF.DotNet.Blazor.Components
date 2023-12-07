@@ -95,7 +95,12 @@
     if ((e.Code == "Enter" || e.Code == "NumpadEnter"))
     {
       if (ViewModel.SpinnerViewModel != null)
+      {
         ViewModel.Value = ViewModel.SpinnerViewModel.Value;
+        ChangeEventArgs change = new ChangeEventArgs() { Value = ViewModel.Value };
+        ViewModel.OnSliderValueChange(change);
+      }
+        
     }
   }
 

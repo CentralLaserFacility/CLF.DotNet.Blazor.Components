@@ -35,7 +35,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
 
     public IntensityMapFeatures_CentroidTabSettingsViewModel(IntensityMapViewerViewModel parent)
     {
-      centroidPluginPrefix = "Centroid1:";
+      centroidPluginPrefix = ":Centroid1:";
       MinEnclosingAreaSet = new TextEntryViewModel(
         width: 50,
         channelRecord: parent.CreateChannelRecord(parent.PvPrefix + centroidPluginPrefix + "SetCentroidAreaPercent")

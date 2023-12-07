@@ -7,7 +7,7 @@
 input[type="color"] {
   width: var(--clf-color-picker-default-size);
   height: var(--clf-color-picker-default-size);
-  background-color: var(--clf-action-button-background-color);
+  background-color: var(--clf-action-button-background-colour);
   border-radius: var(--clf-border-radius);
   border: 0px;
   cursor: pointer;
@@ -23,14 +23,14 @@ input[type="color"] {
   }
 
   input[type="color"]:hover {
-    background-color: var(--clf-action-button-hover-color);
+    background-color: var(--clf-action-button-hover-colour);
   }
   input[type="color"]:focus {
-    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-color);
+    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-colour);
   }
 
   input[type="color"]:active {
-    background-color: var(--clf-action-button-active-background-color);
+    background-color: var(--clf-action-button-active-background-colour);
     color: var(--clf-action-button-active-font-colour);
   }
 

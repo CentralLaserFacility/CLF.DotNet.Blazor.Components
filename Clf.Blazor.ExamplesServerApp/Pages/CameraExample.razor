@@ -1,0 +1,440 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.Dashboard
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers;
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Complex.IntensityMap.Views
+@using Clf.ChannelAccess;
+@using System.ComponentModel;
+@using Clf.Common.Graphs;
+@using Clf.Common.ImageProcessing;
+@implements IDisposable
+
+
+<DashboardPane Title="@Title" UnpinnedText="@Title">
+  <HeaderContent>
+    <DropDownButton class="clf-pane-header-toggle-button" ViewModel="@_viewerSettings">
+      <Icon>
+        <SingleColourIcon class="clf-pane-header-icon" IconId="clf_ic_settings_24_regular" />
+      </Icon>
+      <ChildContent>
+        <Popup>
+          <Tabs Direction="Direction.Vertical">
+            <Tab Title="Display" Name="display">
+              <div class="settings-container">
+                <label>Colour Map</label>
+                <ComboBox ViewModel="@(new ComboBoxViewModel(itemsFromPv: true, channelRecord: new ChannelRecord(_colourMapPVName, _channelsHandler)))" />
+                <label>Normalisation</label>
+                <Checkbox ViewModel="@(new CheckboxViewModel(label: "Auto", channelRecord: new ChannelRecord(_autoNormalisePVName, _channelsHandler)))" />
+                <div class="manual-normalisation">
+                  <Slider ViewModel="@_manualNormalisationValue" />
+                </div>
+              </div>
+            </Tab>
+            <Tab Title="Crosshair" Name="crosshair">
+              <div class="overlay-container">
+                <div class="show-crosshair">
+                  <Checkbox ViewModel="@_showCrosshair" />
+                </div>
+                <label>X</label>
+                <Slider ViewModel="@_crosshairX" />
+                <label>Y</label>
+                <Slider ViewModel="@_crosshairY" />
+                <label>Size</label>
+                <Slider ViewModel="@(new SliderViewModel(minimum:5, maximum: 50, showSpinner: true, channelRecord: new(_crosshairSizePVName, _channelsHandler)))" />
+                <label>Colour</label>
+                <ColorPicker ViewModel="@(new ColorPickerViewModel(channelRecord: new(_crosshairColourPVName, _channelsHandler)))" />
+              </div>
+            </Tab>
+          </Tabs>
+
+        </Popup>
+      </ChildContent>
+    </DropDownButton>
+  </HeaderContent>
+  <ChildContent>
+    <div class="camera-viewer" style="--image-size:@($"{_imageSize}px"); --graph-size:@($"{_graphSize}px");">
+      <Tooltip Text="@(_intensityMapImageViewer?.ShowTooltip ?? false ? _intensityMapImageViewer.TooltipText : string.Empty)">
+        <div class="profile-vertical">
+          <IntensityProfileGraph ViewModel="@_verticalProfileGraph" />
+        </div>
+      </Tooltip>
+      <Tooltip Text="@(_intensityMapImageViewer?.ShowTooltip ?? false ? _intensityMapImageViewer.TooltipText : string.Empty)">
+        <div class="camera-image">
+          <ImageViewer ViewModel="@_intensityMapImageViewer" />
+        </div>
+      </Tooltip>
+      <Tooltip Text="@(_intensityMapImageViewer?.ShowTooltip ?? false ? _intensityMapImageViewer.TooltipText : string.Empty)">
+        <div class="profile-horizontal">
+          <IntensityProfileGraph ViewModel="@_horizontalProfileGraph" />
+        </div>
+      </Tooltip>
+    </div>
+  </ChildContent>
+</DashboardPane>
+
+
+
+
+@code {
+
+  [Parameter]
+  public string Prefix { get; set; } = "localcamera1";
+
+  [Parameter]
+  public string Title { get; set; } = "Camera 1";
+
+  
+  private IntensityProfileGraphViewModel _verticalProfileGraph;
+  private IntensityProfileGraphViewModel _horizontalProfileGraph;
+  private ImageViewerViewModel _intensityMapImageViewer;
+
+  private SliderViewModel _manualNormalisationValue;
+
+  private CheckboxViewModel _showCrosshair;
+  private SliderViewModel _crosshairX;
+  private SliderViewModel _crosshairY;
+
+  private DropDownButtonViewModel _viewerSettings;
+
+  private ChannelsHandler _channelsHandler = new ChannelsHandler();
+  private string _cameraPVName = "image1:ArrayData";
+  private string _cameraXSizePVName = "image1:ArraySize0_RBV";
+  private string _cameraYSizePVName = "image1:ArraySize1_RBV";
+  private string _colourMapPVName = "colourMap";
+  private string _autoNormalisePVName = "autoNormalise";
+  private string _manualNormalisePVName = "manualNormalisationValue";
+  private string _showCrosshairPVName = "showCrosshair";
+  private string _crosshairXPVName = "crosshairX";
+  private string _crosshairYPVName = "crosshairY";
+  private string _crosshairSizePVName = "crosshairSize";
+  private string _crosshairColourPVName = "crosshairColour";
+
+  private int _imageSize = 200;
+  private int _graphSize = 100;
+  private bool _showCrosshairValue = true;
+  private int _crosshairXValue = 20;
+  private int _crosshairYValue = 20;
+  private int _crosshairSizeValue = 20;
+  private string _crosshairColourValue = "#ff0000";
+
+
+  public RenderFragment GetIntensityMapViewerHeader()
+  {
+    return (__builder) =>
+    {
+      <DropDownButton class="clf-pane-header-toggle-button" ViewModel="@_viewerSettings">
+        <Icon>
+          <SingleColourIcon class="clf-pane-header-icon" IconId="clf_ic_settings_24_regular" />
+        </Icon>
+        <ChildContent>
+          <Popup>
+            <Tabs Direction="Direction.Vertical">
+              <Tab Title="Display" Name="display">
+                <div class="settings-container">
+                  <label>Colour Map</label>
+                  <ComboBox ViewModel="@(new ComboBoxViewModel(itemsFromPv: true, channelRecord: new ChannelRecord(_colourMapPVName, _channelsHandler)))" />
+                  <label>Normalisation</label>
+                  <Checkbox ViewModel="@(new CheckboxViewModel(label: "Auto", channelRecord: new ChannelRecord(_autoNormalisePVName, _channelsHandler)))" />
+                  <div class="manual-normalisation">
+                    <Slider ViewModel="@_manualNormalisationValue" />
+                  </div>
+                </div>
+              </Tab>
+              <Tab Title="Crosshair" Name="crosshair">
+                <div class="overlay-container">
+                  <div class="show-crosshair">
+                    <Checkbox ViewModel="@_showCrosshair" />
+                  </div>
+                  <label>X</label>
+                  <Slider ViewModel="@_crosshairX" />
+                  <label>Y</label>
+                  <Slider ViewModel="@_crosshairY" />
+                  <label>Size</label>
+                  <Slider ViewModel="@(new SliderViewModel(minimum:5, maximum: 50, showSpinner: true, channelRecord: new(_crosshairSizePVName, _channelsHandler)))" />
+                  <label>Colour</label>
+                  <ColorPicker ViewModel="@(new ColorPickerViewModel(channelRecord: new(_crosshairColourPVName, _channelsHandler)))" />
+                </div>
+              </Tab>
+            </Tabs>
+
+          </Popup>
+        </ChildContent>
+      </DropDownButton>
+    };
+  }
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+
+    _cameraPVName = Prefix +":" + _cameraPVName;
+    _cameraXSizePVName = Prefix + ":" + _cameraXSizePVName;
+    _cameraYSizePVName = Prefix + ":" + _cameraYSizePVName;
+    _colourMapPVName = Prefix + ":" + _colourMapPVName;
+    _autoNormalisePVName = Prefix + ":" + _autoNormalisePVName;
+    _manualNormalisePVName = Prefix + ":" + _manualNormalisePVName;
+    _showCrosshairPVName = Prefix + ":" + _showCrosshairPVName;
+    _crosshairXPVName = Prefix + ":" + _crosshairXPVName;
+    _crosshairYPVName = Prefix + ":" + _crosshairYPVName;
+    _crosshairSizePVName = Prefix + ":" + _crosshairSizePVName;
+    _crosshairColourPVName = Prefix + ":" + _crosshairColourPVName;
+
+    CreateLocalChannels();
+
+    _manualNormalisationValue = new SliderViewModel(
+      minimum: 0.0,
+      maximum: 255.0,
+      isDisabled: true,
+      showSpinner: true,
+      channelRecord: new ChannelRecord(_manualNormalisePVName, _channelsHandler));
+
+    _showCrosshair = new CheckboxViewModel(
+  label: "Show",
+  channelRecord: new ChannelRecord(_showCrosshairPVName, _channelsHandler));
+
+    _crosshairX = new SliderViewModel(
+    maximum: _imageSize,
+    showSpinner: true,
+    channelRecord: new(_crosshairXPVName, _channelsHandler));
+
+    _crosshairY = new SliderViewModel(
+    maximum: _imageSize,
+    showSpinner: true,
+    channelRecord: new(_crosshairYPVName, _channelsHandler));
+
+    _viewerSettings = new DropDownButtonViewModel();
+
+
+    _verticalProfileGraph = new IntensityProfileGraphViewModel(
+      width: _imageSize,
+      height: _graphSize,
+      axisRange_X: new(0, 100),
+      axisRange_Y: new(0, 255),
+      xborderStatus: BorderStatus.Connected,
+      yborderStatus: BorderStatus.Connected,
+      showGrid: true,
+      graphType: GraphType.Line
+      );
+
+    _horizontalProfileGraph = new IntensityProfileGraphViewModel(
+      width: _imageSize,
+      height: _graphSize,
+      axisRange_X: new(0, 100),
+      axisRange_Y: new(0, 255),
+      xborderStatus: BorderStatus.Connected,
+      yborderStatus: BorderStatus.Connected,
+      showGrid: true,
+      graphType: GraphType.Line
+    );
+
+    _intensityMapImageViewer = new ImageViewerViewModel(
+      displayImageScalingFactor: 10.0,
+      imageDataRecord: new(_cameraPVName, _channelsHandler),
+      imageWidthRecord: new(_cameraXSizePVName, _channelsHandler),
+      imageHeightRecord: new(_cameraYSizePVName, _channelsHandler)
+      )
+      {
+        ColourMapOption = ColourMapOption.GreyScale,
+        AutoNormalise = true
+      };
+
+    _intensityMapImageViewer.TooltipText = _cameraPVName;
+
+    Task.Run(LoopCameraDataAsync);
+
+    InstallAutoNormaliseChannel();
+    InstallManualNormalisationChannel();
+    InstallColourMapChannel();
+    InstallCrosshairChannels();
+    _intensityMapImageViewer.PropertyChanged += OnImageViewerPropertyChanged;
+  }
+
+  
+
+  private void OnImageViewerPropertyChanged(object? sender, PropertyChangedEventArgs e)
+  {
+    switch (e.PropertyName)
+    {
+      case nameof(_intensityMapImageViewer.DisplayImageData):
+        if (_intensityMapImageViewer.AutoNormalise)
+        {
+          _manualNormalisationValue.Value = Convert.ToDouble(_intensityMapImageViewer.OriginalImageData.MaxValue);
+          _intensityMapImageViewer.NormalisationValue = _intensityMapImageViewer.OriginalImageData.MaxValue;
+        }
+        SetHorizontalProfileGraph(_crosshairXValue); //ProfileCrosshairY
+        SetVerticalProfileGraph(_crosshairXValue); //ProfileCrosshairX
+        break;
+      default:
+        break;
+    }
+
+  }
+
+  private void CreateLocalChannels()
+  {
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_cameraPVName}|byte[400]|0,..."), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_cameraXSizePVName}|i32|20"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_cameraYSizePVName}|i32|20"), true);
+
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_colourMapPVName}|enum:{string.Join(",", Enum.GetNames(typeof(ColourMapOption)).Select(name => name == "GreyScale" ? "Grey" : name))}|0"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_autoNormalisePVName}|i16|1"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_manualNormalisePVName}|i32|255"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_showCrosshairPVName}|i16|1"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_crosshairXPVName}|i32|{_crosshairXValue}"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_crosshairYPVName}|i32|{_crosshairYValue}"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_crosshairSizePVName}|i32|{_crosshairSizeValue}"), true);
+    Hub.GetOrCreateLocalChannel(ChannelDescriptor.FromEncodedString($"{_crosshairColourPVName}|s39|{_crosshairColourValue}"), true);
+  }
+
+  private void InstallAutoNormaliseChannel()
+  {
+    _channelsHandler.InstallChannel(
+        Hub.GetOrCreateChannel(_autoNormalisePVName),
+        valueChangedHandler: (valueInfo, _) =>
+        {
+          var isAuto = (short)valueInfo.Value > 0;
+          _intensityMapImageViewer.AutoNormalise = isAuto;
+          _manualNormalisationValue.IsDisabled = isAuto;
+        }
+        );
+  }
+
+  private void InstallManualNormalisationChannel()
+  {
+    _channelsHandler.InstallChannel(
+        Hub.GetOrCreateChannel(_manualNormalisePVName),
+        valueChangedHandler: (valueInfo, _) =>
+        {
+          _intensityMapImageViewer.NormalisationValue = Convert.ToByte(valueInfo.Value);
+        }
+        );
+  }
+
+  private void InstallColourMapChannel()
+  {
+    _channelsHandler.InstallChannel(
+            Hub.GetOrCreateChannel(_colourMapPVName),
+            valueChangedHandler: (valueInfo, _) =>
+            {
+              _intensityMapImageViewer.ColourMapOption = (ColourMapOption)((short)valueInfo.Value);
+            }
+        );
+  }
+
+  private void InstallCrosshairChannels()
+  {
+    _channelsHandler.InstallChannel(
+      Hub.GetOrCreateChannel(_showCrosshairPVName),
+      valueChangedHandler: (valueInfo, _) =>
+      {
+        _showCrosshairValue = (short)valueInfo.Value > 0;
+        SetOverlay();
+      }
+    );
+
+    _channelsHandler.InstallChannel(
+      Hub.GetOrCreateChannel(_crosshairXPVName),
+      valueChangedHandler: (valueInfo, _) =>
+      {
+        _crosshairXValue = (int)valueInfo.Value;
+        SetOverlay();
+        SetVerticalProfileGraph(_crosshairXValue);
+
+      }
+    );
+
+    _channelsHandler.InstallChannel(
+      Hub.GetOrCreateChannel(_crosshairYPVName),
+      valueChangedHandler: (valueInfo, _) =>
+      {
+        _crosshairYValue = (int)valueInfo.Value;
+        SetOverlay();
+        SetHorizontalProfileGraph(_crosshairYValue);
+      }
+    );
+
+    _channelsHandler.InstallChannel(
+      Hub.GetOrCreateChannel(_crosshairSizePVName),
+      valueChangedHandler: (valueInfo, _) =>
+      {
+        _crosshairSizeValue = (int)valueInfo.Value;
+        SetOverlay();
+      }
+    );
+
+    _channelsHandler.InstallChannel(
+      Hub.GetOrCreateChannel(_crosshairColourPVName),
+      valueChangedHandler: (valueInfo, _) =>
+      {
+        _crosshairColourValue = (string)valueInfo.Value;
+        SetOverlay();
+      }
+    );
+  }
+
+  private void SetOverlay()
+  {
+    _intensityMapImageViewer.OverlaysDescriptor = new OverlaysDescriptor(OverlayCrossDescriptor.FromCentrePoint(_crosshairXValue, _crosshairYValue, _crosshairSizeValue, RgbByteValues.FromHexEncodedString(_crosshairColourValue), false)) { CanDraw = _showCrosshairValue };
+  }
+
+  private void SetHorizontalProfileGraph(int x)
+  {
+    var yData = _intensityMapImageViewer.DisplayImageData.GetRowOfPixelsAtOffsetFromTop(x);
+    var yDataDouble = yData?.Select(x => Convert.ToDouble(x)).ToList();
+    if (yDataDouble != null)
+    {
+      var xDataDouble = Enumerable.Range(0, yDataDouble.Count).Select(x => Convert.ToDouble(x)).ToList();
+      _horizontalProfileGraph.SetDataValues_X(xDataDouble);
+      _horizontalProfileGraph.SetDataValues_Y(yDataDouble);
+      _horizontalProfileGraph.XDataRange = new GraphAxisRange(0, yDataDouble.Count);
+    }
+  }
+
+  private void SetVerticalProfileGraph(int x)
+  {
+    var yData = _intensityMapImageViewer.DisplayImageData.GetColumnOfPixelsAtOffsetFromLeft(x);
+    var yDataDouble = yData?.Select(x => Convert.ToDouble(x)).ToList();
+    if (yDataDouble != null)
+    {
+      var xDataDouble = Enumerable.Range(0, yDataDouble.Count).Select(x => Convert.ToDouble(x)).ToList();
+      _verticalProfileGraph.SetDataValues_X(xDataDouble);
+      _verticalProfileGraph.SetDataValues_Y(yDataDouble);
+      _verticalProfileGraph.XDataRange = new GraphAxisRange(0, yDataDouble.Count);
+    }
+  }
+
+  void IDisposable.Dispose()
+  {
+    _channelsHandler.Dispose();
+    _intensityMapImageViewer.PropertyChanged -= OnImageViewerPropertyChanged;
+
+  }
+
+  private async Task LoopCameraDataAsync()
+  {
+    var channel = Hub.GetOrCreateChannel(_cameraPVName);
+    var currentState = channel.Snapshot().CurrentState;
+
+    while (true)
+    {
+      for (int i = 0; i < CameraExamplesData.Data.Length; i++)
+      {
+        if (currentState.FieldInfo!.DbFieldDescriptor.TryParseValue(CameraExamplesData.Data[i], out var valueToWrite))
+        {
+          await channel.PutValueAsync(valueToWrite);
+          await Task.Delay(1000);
+        }
+      }
+    }
+  }
+
+}

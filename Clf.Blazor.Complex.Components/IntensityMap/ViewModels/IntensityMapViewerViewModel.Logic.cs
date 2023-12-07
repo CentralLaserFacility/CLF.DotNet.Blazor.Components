@@ -24,78 +24,91 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     int _imageWidth = 0;
     int _imageHeight = 0;
 
-    private void IntensityMapViewerViewModel_Logic_Initiliasation()
+    public int ImageWidth { get => _imageWidth<1?DisplaySize.Width:_imageWidth; set => _imageWidth = value; }
+    public int ImageHeight { get => _imageHeight < 1 ? DisplaySize.Height : _imageHeight; set => _imageHeight = value; }
+
+    private void IntensityMapViewerViewModel_Logic_Initialisation()
     {
       ChannelsHandler.InstallChannel(
-        m_profXhairXHighChannel = Hub.GetOrCreateChannel(PvPrefix + "ProfXhairX.HOPR")
+        Hub.GetOrCreateChannel(PvPrefix + ":Username"),
+        valueChangedHandler: (valueInfo, _) =>
+        {
+          var userName = valueInfo.ValueAsString();
+          if(!string.IsNullOrEmpty(userName))
+          {
+            FriendlyName = userName;
+          }
+        }
       );
       ChannelsHandler.InstallChannel(
-        m_profXhairYHighChannel = Hub.GetOrCreateChannel(PvPrefix + "ProfXhairY.HOPR")
+        m_profXhairXHighChannel = Hub.GetOrCreateChannel(PvPrefix + ":ProfXhairX.HOPR")
       );
       ChannelsHandler.InstallChannel(
-        m_softXHighChannel = Hub.GetOrCreateChannel(PvPrefix + "SoftX.HOPR")
+        m_profXhairYHighChannel = Hub.GetOrCreateChannel(PvPrefix + ":ProfXhairY.HOPR")
       );
       ChannelsHandler.InstallChannel(
-        m_softYHighChannel = Hub.GetOrCreateChannel(PvPrefix + "SoftY.HOPR")
+        m_softXHighChannel = Hub.GetOrCreateChannel(PvPrefix + ":SoftX.HOPR")
       );
       ChannelsHandler.InstallChannel(
-        m_showProfileGraphChannel = Hub.GetOrCreateChannel(PvPrefix + "ShowProfileGraph"),
+        m_softYHighChannel = Hub.GetOrCreateChannel(PvPrefix + ":SoftY.HOPR")
+      );
+      ChannelsHandler.InstallChannel(
+        m_showProfileGraphChannel = Hub.GetOrCreateChannel(PvPrefix + ":ShowProfileGraph"),
       (valueInfo, _) => OnShowProfileGraphChange((System.Int16)valueInfo.Value)
       );
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "image1:ArraySize0_RBV"),
+        Hub.GetOrCreateChannel(PvPrefix + ":image1:ArraySize0_RBV"),
         valueChangedHandler: (valueInfo, _) =>
         {
           m_profXhairXHighChannel.PutValue(Convert.ToDouble(valueInfo.Value));
           m_softXHighChannel.PutValue(Convert.ToDouble(valueInfo.Value));
-          _imageWidth = (int)valueInfo.Value;
-          var scaledWidth = (int)((int)valueInfo.Value * DisplayImageScalingFactor); //It will always be Int32
-          DisplaySize = new DisplaySize(scaledWidth, DisplaySize.Height);
+          ImageWidth = (int)valueInfo.Value;
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "image1:ArraySize1_RBV"),
+        Hub.GetOrCreateChannel(PvPrefix + ":image1:ArraySize1_RBV"),
         valueChangedHandler: (valueInfo, _) =>
         {
           m_profXhairYHighChannel.PutValue(Convert.ToDouble(valueInfo.Value));
           m_softYHighChannel.PutValue(Convert.ToDouble(valueInfo.Value));
-          _imageHeight = (int)valueInfo.Value;
-          var scaledHeight = (int)((int)valueInfo.Value * DisplayImageScalingFactor); //It will always be Int32
-          DisplaySize = new DisplaySize(DisplaySize.Width, scaledHeight);
+          ImageHeight = (int)valueInfo.Value;
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "image1:ArrayData"),
+        Hub.GetOrCreateChannel(PvPrefix + ":image1:ArrayData"),
         valueChangedHandler: (valueInfo, _) =>
         {
           var fullArrayData = (byte[])valueInfo.Value;
-          int correctDataCount = _imageWidth * _imageHeight;
-          byte[] correctData = new byte[correctDataCount];
-          Array.Copy(fullArrayData, correctData, correctDataCount);
-          IntensityMapImage.ImageViewer.SetImageData(_imageWidth, _imageHeight, correctData);
+          int correctDataCount = ImageWidth * ImageHeight;
+          if (correctDataCount <= fullArrayData.Length)
+          {
+            byte[] correctData = new byte[correctDataCount];
+            Array.Copy(fullArrayData, correctData, correctDataCount);
+            IntensityMapImage.ImageViewer.SetImageData(ImageWidth, ImageHeight, correctData);
+          }
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ProfXhairX"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ProfXhairX"),
         valueChangedHandler: (valueInfo, _) =>
         {
-          ProfileCrosshairX = Convert.ToInt32((double)valueInfo.Value * DisplayImageScalingFactor);
+          ProfileCrosshairX = Convert.ToInt32((double)valueInfo.Value * XDisplayScalingFactor);
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ProfXhairY"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ProfXhairY"),
         valueChangedHandler: (valueInfo, _) =>
         {
-          ProfileCrosshairY = Convert.ToInt32((double)valueInfo.Value * DisplayImageScalingFactor);
+          ProfileCrosshairY = Convert.ToInt32((double)valueInfo.Value * YDisplayScalingFactor);
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ShowProfXhair"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ShowProfXhair"),
         valueChangedHandler: (valueInfo, _) =>
         {
           ShowProfileCrosshair = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -103,31 +116,31 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "SoftX"),
+        Hub.GetOrCreateChannel(PvPrefix + ":SoftX"),
         valueChangedHandler: (valueInfo, _) =>
         {
-          SoftwareX = Convert.ToInt32((double)valueInfo.Value * DisplayImageScalingFactor);
+          SoftwareX = Convert.ToInt32((double)valueInfo.Value * XDisplayScalingFactor);
         }
       );
         
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "Centroid1:RectangleBeamHeight"),
+            Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:RectangleBeamHeight"),
             valueChangedHandler: (valueInfo, _) =>
             {
-                EDRectangleHeight = Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor);
+                EDRectangleHeight = Convert.ToInt32((int)valueInfo.Value * YDisplayScalingFactor);
             }
         );
 
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "Centroid1:RectangleBeamWidth"),
+            Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:RectangleBeamWidth"),
             valueChangedHandler: (valueInfo, _) =>
             {
-                EDRectangleWidth = Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor);
+                EDRectangleWidth = Convert.ToInt32((int)valueInfo.Value * XDisplayScalingFactor);
             }
         );
 
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "Centroid1:RectangleBeamTiltAngle"),
+            Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:RectangleBeamTiltAngle"),
             valueChangedHandler: (valueInfo, _) =>
             {
                 EDRectangleTilt = Convert.ToInt32((int)valueInfo.Value);
@@ -135,14 +148,14 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         );
 
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "Centroid1:CircleDiameter"),
+            Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:CircleDiameter"),
             valueChangedHandler: (valueInfo, _) =>
             {
-                EDCircleRadius = (Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor))/2;
+                EDCircleRadius = (Convert.ToInt32((int)valueInfo.Value * XDisplayScalingFactor))/2;
             }
         );
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "ShowEDBeamShapeXhair"),
+            Hub.GetOrCreateChannel(PvPrefix + ":ShowEDBeamShapeXhair"),
             valueChangedHandler: (valueInfo, _) =>
             {
                 ShowEDBeamShape = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -150,7 +163,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         );
 
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "BeamShape"),
+            Hub.GetOrCreateChannel(PvPrefix + ":BeamShape"),
             valueChangedHandler: (valueInfo, _) =>
             {
                 EDBeamShape = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -158,7 +171,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         );
 
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "Centroid1:CentroidAlgorithm"),
+            Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:CentroidAlgorithm"),
             valueChangedHandler: (valueInfo, _) =>
             {
                 CentroidAlgorithm = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -166,14 +179,14 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         );
 
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "EDBeamShapeXhairThick"),
+            Hub.GetOrCreateChannel(PvPrefix + ":EDBeamShapeXhairThick"),
             valueChangedHandler: (valueInfo, _) =>
             {
                 EDBeamShapeThick = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
             }
         );
         ChannelsHandler.InstallChannel(
-            Hub.GetOrCreateChannel(PvPrefix + "EDBeamShapeXhairColour"),
+            Hub.GetOrCreateChannel(PvPrefix + ":EDBeamShapeXhairColour"),
             valueChangedHandler: (valueInfo, _) =>
             {
                 var colour = System.Drawing.ColorTranslator.FromHtml(valueInfo.ValueAsString());
@@ -183,13 +196,13 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         );
 
         ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "Centroid1:EdgeDetectionContour"),
+        Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:EdgeDetectionContour"),
         valueChangedHandler: (valueInfo, _) =>
         {
           if ( valueInfo.Value is int[] intArray )
           {
             ContourDataSet = intArray.Select(
-              i => (int) ( i * DisplayImageScalingFactor )
+              i => (int) ( i * XDisplayScalingFactor )
             ).ToArray() ;
           }
           else
@@ -201,15 +214,15 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         }
       );
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "SoftY"),
+        Hub.GetOrCreateChannel(PvPrefix + ":SoftY"),
         valueChangedHandler: (valueInfo, _) =>
         {
-          SoftwareY = Convert.ToInt32((double)valueInfo.Value * DisplayImageScalingFactor);
+          SoftwareY = Convert.ToInt32((double)valueInfo.Value * YDisplayScalingFactor);
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ShowSoftXhair"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ShowSoftXhair"),
         valueChangedHandler: (valueInfo, _) =>
         {
           ShowSoftwareCrosshair = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -217,7 +230,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "SoftWidth"),
+        Hub.GetOrCreateChannel(PvPrefix + ":SoftWidth"),
         valueChangedHandler: (valueInfo, _) =>
         {
           SoftwareBoxWidth = Convert.ToInt32((double)valueInfo.Value);
@@ -225,7 +238,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "SoftHeight"),
+        Hub.GetOrCreateChannel(PvPrefix + ":SoftHeight"),
         valueChangedHandler: (valueInfo, _) =>
         {
           SoftwareBoxHeight = Convert.ToInt32((double)valueInfo.Value);
@@ -233,7 +246,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ShowSoftBox"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ShowSoftBox"),
         valueChangedHandler: (valueInfo, _) =>
         {
           ShowSoftwareBox = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -241,7 +254,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ProfColour"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ProfColour"),
         valueChangedHandler: (valueInfo, _) =>
         {
           var colour = System.Drawing.ColorTranslator.FromHtml(valueInfo.ValueAsString());
@@ -250,7 +263,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         }
       );
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ContourXhairColour"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ContourXhairColour"),
         valueChangedHandler: (valueInfo, _) =>
         {
           var colour = System.Drawing.ColorTranslator.FromHtml(valueInfo.ValueAsString());
@@ -260,7 +273,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "SoftColour"),
+        Hub.GetOrCreateChannel(PvPrefix + ":SoftColour"),
         valueChangedHandler: (valueInfo, _) =>
         {
           var colour = System.Drawing.ColorTranslator.FromHtml(valueInfo.ValueAsString());
@@ -270,7 +283,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ProfXhairSize"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ProfXhairSize"),
         valueChangedHandler: (valueInfo, _) =>
         {
           ProfileCrosshairSize = Convert.ToInt32((double)valueInfo.Value);
@@ -278,7 +291,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ShowContourXhair"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ShowContourXhair"),
         valueChangedHandler: (valueInfo, _) =>
         {
           ShowContourCrosshair = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -286,14 +299,14 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "ContourXhairThick"),
+        Hub.GetOrCreateChannel(PvPrefix + ":ContourXhairThick"),
         valueChangedHandler: (valueInfo, _) =>
         {
           ContourCrosshairThick = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
         }
       );
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "SoftXhairSize"),
+        Hub.GetOrCreateChannel(PvPrefix + ":SoftXhairSize"),
         valueChangedHandler: (valueInfo, _) =>
         {
           SoftwareCrosshairSize = Convert.ToInt32((double)valueInfo.Value);
@@ -301,7 +314,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "Centroid1:FollowCentroid"),
+        Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:FollowCentroid"),
         valueChangedHandler: (valueInfo, _) =>
         {
           FollowCentroid = Converters.GetDoubleFromObject(valueInfo.Value) > 0;
@@ -309,22 +322,22 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "Centroid1:CentroidX"),
+        Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:CentroidX"),
         valueChangedHandler: (valueInfo, _) =>
         {
-          EDCentroidX = Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor);
+          EDCentroidX = Convert.ToInt32((int)valueInfo.Value * XDisplayScalingFactor);
           if (FollowCentroid)
-            ProfileCrosshairX = Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor);
+            ProfileCrosshairX = Convert.ToInt32((int)valueInfo.Value * XDisplayScalingFactor);
         }
       );
 
       ChannelsHandler.InstallChannel(
-        Hub.GetOrCreateChannel(PvPrefix + "Centroid1:CentroidY"),
+        Hub.GetOrCreateChannel(PvPrefix + ":Centroid1:CentroidY"),
         valueChangedHandler: (valueInfo, _) =>
         {
-          EDCentroidY = Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor);
+          EDCentroidY = Convert.ToInt32((int)valueInfo.Value * YDisplayScalingFactor);
           if (FollowCentroid)
-            ProfileCrosshairY = Convert.ToInt32((int)valueInfo.Value * DisplayImageScalingFactor);
+            ProfileCrosshairY = Convert.ToInt32((int)valueInfo.Value * YDisplayScalingFactor);
         }
       );
       

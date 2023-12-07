@@ -12,7 +12,7 @@
 }
 
 .choice-button-selected {
-    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-color);
-    background-color: var(--clf-action-button-active-background-color);
+    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-colour);
+    background-color: var(--clf-action-button-active-background-colour);
     color: var(--clf-action-button-active-font-colour);
 }

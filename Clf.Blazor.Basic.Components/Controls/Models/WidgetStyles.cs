@@ -206,9 +206,6 @@ namespace Clf.Blazor.Basic.Components.Controls.Models
   public enum GraphType
   {
     Line,
-    Step,
-    ErrorBars,
-    LineAndErrorBars,
     Area
   }
 

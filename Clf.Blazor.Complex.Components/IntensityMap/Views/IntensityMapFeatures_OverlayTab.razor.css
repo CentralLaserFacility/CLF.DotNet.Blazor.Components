@@ -1,8 +1,26 @@
 ﻿.overlay-tab {
+    align-items: center;
+    justify-content: space-between;
+
     display: grid;
     grid-template-columns: auto auto;
     column-gap: 10px;
     row-gap: 5px;
     padding: 15px;
     width: 435px;
+}
+
+.centered-div{ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 0px 6px;
+}
+
+.centered-div-j-between {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }

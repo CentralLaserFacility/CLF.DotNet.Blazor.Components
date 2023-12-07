@@ -19,7 +19,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
 
     public IntensityMapFeatures_CameraInfoTabViewModel(IntensityMapViewerViewModel parent)
     {
-      camPluginPrefix = "cam1:";
+      camPluginPrefix = ":cam1:";
       ManufacturerRBV = new TextUpdateViewModel(
       width: 150,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "GC_DeviceVendorName_RBV")
@@ -37,7 +37,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
 
       IPAddressRBV = new TextUpdateViewModel(
       width: 150,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "DeviceIP_RBV")
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":DeviceIP_RBV")
       );
 
       SizeXRBV = new TextUpdateViewModel(

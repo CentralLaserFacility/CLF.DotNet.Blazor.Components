@@ -1,0 +1,22 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using System.Text;
+@using Clf.Blazor.Basic.Components.Controls.Interfaces;
+@inherits WidgetBase
+
+@if (Show)
+{
+  <div class="popup-wrapper @Class">
+    @ChildContent
+  </div>
+}
+
+
+@code {
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [CascadingParameter]
+  public bool Show { get; set; } = false;
+
+}

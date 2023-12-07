@@ -21,7 +21,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     public ActionButtonViewModel TransformPluginSettings { get; }
     public IntensityMapFeatures_TransformTabViewModel(IntensityMapViewerViewModel parent)
     {
-      transPluginPrefix = "Trans1:";
+      transPluginPrefix = ":Trans1:";
       TransformTypeSet = new ComboBoxViewModel(
       width: 100,
       height: 20,
@@ -43,7 +43,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       TransformPluginSettings = new ActionButtonViewModel(
         text: "Transform Plugin Settings",
         height: 50,
-        width: 150
+        width: 200
         );
     }
     }

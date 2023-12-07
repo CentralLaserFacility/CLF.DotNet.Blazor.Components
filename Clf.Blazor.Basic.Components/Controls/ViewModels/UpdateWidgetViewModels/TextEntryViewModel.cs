@@ -126,7 +126,7 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
       BorderStatus = Utilities.GetBorderStatus(valueInfo.AlarmStatusAndSeverity, currentState.IsConnected);
 
       //setting Units property that is binded to the view 
-      if (valueInfo.AuxiliaryInfo?.EGU != null)
+      if (!string.IsNullOrEmpty(valueInfo.AuxiliaryInfo?.EGU))
         Units = valueInfo.AuxiliaryInfo.EGU;
     }
 

@@ -6,11 +6,10 @@ using Clf.ChannelAccess;
 namespace Clf.Blazor.Complex.IntensityMap.ViewModels
 {
 
-  public partial class IntensityMapFeaturesViewModel
+  public partial class IntensityMapFeaturesViewModel : IDisposable
   {
     private IntensityMapViewerViewModel parent;
     public IntensityMapFeatures_DisplayTabViewModel DisplayTab { get; }
-
     public IntensityMapFeatures_CentroidTabViewModel CentroidTab { get; }
     public IntensityMapFeatures_AcquisitionTabViewModel AcquisitionTab { get; }
     public IntensityMapFeatures_ROITabViewModel ROITab { get; }
@@ -33,14 +32,19 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       AcquisitionTab = new IntensityMapFeatures_AcquisitionTabViewModel(parent);
       ROITab = new IntensityMapFeatures_ROITabViewModel(parent);
       CameraInfoTab = new IntensityMapFeatures_CameraInfoTabViewModel(parent);
-      //HDF5Tab = new IntensityMapFeatures_HDF5TabViewModel(parent);
+      HDF5Tab = new IntensityMapFeatures_HDF5TabViewModel(parent);
       BinningTab = new IntensityMapFeatures_BinningTabViewModel(parent);
       TransformTab = new IntensityMapFeatures_TransformTabViewModel(parent);
       StatisticsTab = new IntensityMapFeatures_StatisticsTabViewModel(parent);
-      //KafkaTab = new IntensityMapFeatures_KafkaTabViewModel(parent);
+      KafkaTab = new IntensityMapFeatures_KafkaTabViewModel(parent);
       BackgroundTab = new IntensityMapFeatures_BackgroundTabViewModel(parent);
       AdvancedTab = new IntensityMapFeatures_AdvancedTabViewModel(parent);
       OverlayTab = new IntensityMapFeatures_OverlayTabViewModel(parent);
+    }
+
+    public void Dispose()
+    {
+      DisplayTab.Dispose();
     }
   }
 }

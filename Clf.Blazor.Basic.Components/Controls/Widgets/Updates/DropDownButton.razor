@@ -1,0 +1,83 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.Helpers;
+@using Clf.Blazor.Basic.Components.Controls.Interfaces;
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Microsoft.AspNetCore.Components.Web
+@inherits WidgetBase
+@implements IDisposable
+<CascadingValue Value="@ShowPopup">
+  <div class="clf-drop-down-wrapper">
+  <Tooltip Text="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+      <label class="clf-drop-down-button drop-down-button @Class" style="--drop-down-button-width: @GetWidth(); --drop-down-button-height:@GetHeight();">
+        <input type="checkbox" class="drop-down-toggle"
+        @bind="@ShowPopup"
+        @onclick="OnDropDownButtonClicked" />
+        <div class="clf-button-body">
+          @if (Icon != null)
+          {
+            @Icon
+          }
+          else
+          {
+            if (string.IsNullOrEmpty(IconId) == false)
+            {
+              <SingleColourIcon class="clf-icon-small" IconId="@IconId" />
+            }
+          }
+          @if (string.IsNullOrEmpty(ViewModel.Text) == false)
+          {
+            @ViewModel.Text
+          }
+        </div>
+      </label>
+  </Tooltip>
+  @ChildContent
+</div>
+</CascadingValue>
+
+
+@code {
+  [Parameter]
+  public DropDownButtonViewModel ViewModel { get; set; } = new DropDownButtonViewModel();
+
+  [Parameter]
+  public RenderFragment? Icon { get; set; }
+
+  [Parameter]
+  public string? IconId { get; set; }
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  public bool ShowPopup { get; private set; } = false;
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    ViewModel.PropertyChanged += OnPropertyChanged;
+  }
+
+  private string GetWidth()
+  {
+    return ViewModel.Width != null ? $"{ViewModel.Width}px" : "max-content";
+  }
+
+  private string GetHeight()
+  {
+    return ViewModel.Height != null ? $"{ViewModel.Height}px" : "var(--clf-action-button-default-height)";
+  }
+
+  private void OnDropDownButtonClicked()
+  {
+    ShowPopup = !ShowPopup;
+
+  }
+
+  void IDisposable.Dispose()
+  {
+    ViewModel.PropertyChanged -= OnPropertyChanged;
+  }
+}

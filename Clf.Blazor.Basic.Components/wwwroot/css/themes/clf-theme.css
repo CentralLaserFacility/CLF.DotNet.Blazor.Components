@@ -22,8 +22,10 @@
 @import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-treeview.css');
 @import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-slide-button.css');
 @import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-color-picker.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-graph.css');
 @import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-tooltip.css');
 @import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-modal-dialog.css');
+@import url('../../../../_content/Clf.Blazor.Basic.Components/css/themes/clf-drop-down-button.css');
 
 
 :root {
@@ -45,6 +47,7 @@
   --clf-font-family: 'Inter', sans-serif !important;
   --clf-font-style: normal;
   --clf-default-font-size: 14px;
+  --clf-camera-thumbnail-background-colour:#f5f5f5;
 }
 
 body {
@@ -58,4 +61,10 @@ body {
 
 p {
   font-weight: var(--clf-normal-font-weight);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

@@ -16,10 +16,6 @@
     <EmbeddedResource Remove="Controls\IntensityMap\**" />
     <None Remove="Controls\IntensityMap\**" />
   </ItemGroup>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
    
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />

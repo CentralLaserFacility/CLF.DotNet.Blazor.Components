@@ -57,11 +57,11 @@
 }
 
 .clf-modal-btn {
-  background-color: var(--clf-action-button-background-color);
+  background-color: var(--clf-action-button-background-colour);
   min-width: var(--clf-modal-btn-min-width);
   max-width: max-content;
   height: var(--clf-action-button-default-height);
-  background-color: var(--clf-action-button-background-color);
+  background-color: var(--clf-action-button-background-colour);
   color: var(--clf-font-colour);
   border-radius: var(--clf-border-radius);
   border: 0px;
@@ -73,15 +73,15 @@
 }
 
   .clf-modal-btn:hover {
-    background-color: var(--clf-action-button-hover-color);
+    background-color: var(--clf-action-button-hover-colour);
   }
 
   .clf-modal-btn:focus {
-    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-color);
+    outline: var(--clf-action-button-active-outline-width) solid var(--clf-action-button-focus-border-colour);
   }
 
   .clf-modal-btn:active {
-    background-color: var(--clf-action-button-active-background-color);
+    background-color: var(--clf-action-button-active-background-colour);
     color: var(--clf-action-button-active-font-colour);
   }
 

@@ -52,7 +52,7 @@
 }
 
 .expander-button:hover {
-  background-color: var(--clf-treeview-expander-hover-background-color);
+  background-color: var(--clf-treeview-expander-hover-background-colour);
 }
 
 .expander-button:active {

@@ -8,125 +8,94 @@
 @if (ViewModel.IsVisible)
 {
 
-  <div style="
+	<div style="
 	 display:inline-block;
-		width:@($"{ViewModel.Width+80}px");;
-		height:@($"{ViewModel.Height+80}px");;
-	 box-shadow: @($"0 0 0 2px {ViewModel.ComputeBorderStatus()}");
-	"
-       title="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
-    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-         width="@(ViewModel.Width + 80)" height="@(ViewModel.Height+80)">
-      <style type="text/css">
-        text {
-          font: @(ViewModel.HtmlFontString ?? Models.FontStyle.DEFAULT_FONT_STYLE);
-        }
-      </style>
-      @*Plotting data*@
-      @if (ViewModel.GraphType == GraphType.Line)
-      {
-        <polyline points="@(ViewModel.GraphPointsString)" stroke="@(ViewModel.TraceColor.HtmlRgbaString)" fill="none" stroke-width="@ViewModel.TraceWidth"></polyline>
-        if (ViewModel.ShowOverlay && !String.IsNullOrEmpty(ViewModel.OverlayPointsString))
-        {
-          <polyline points="@(ViewModel.OverlayPointsString)" stroke="@(ViewModel.OverlayColor.HtmlRgbaString)" fill="none" stroke-width="@ViewModel.OverlayWidth"></polyline>
-        }
-      }
-      else if (ViewModel.GraphType == GraphType.Area)
-      {
-        <polygon points="@(ViewModel.GraphPointsString)" stroke="@(ViewModel.TraceColor.HtmlRgbaString)" fill="@(ViewModel.TraceColor.HtmlRgbaString)"></polygon>
-        if (ViewModel.ShowOverlay && !String.IsNullOrEmpty(ViewModel.OverlayPointsString))
-        {
-          <polygon points="@(ViewModel.OverlayPointsString)" stroke="@(ViewModel.OverlayColor.HtmlRgbaString)" fill="@(ViewModel.OverlayColor.HtmlRgbaString)" fill-opacity="0.5"></polygon>
-        }
-      }
-      @if (ViewModel.ShowGrid)
-      {
-        @for (double x = ViewModel.XMinimum + ViewModel.XTickSize; x <= ViewModel.XMaximum; x += ViewModel.XTickSize)
-        {
-          <line x1="@(ViewModel.XLabels[x])" y1="@(ViewModel.YLabels[ViewModel.YMinimum])" x2="@(ViewModel.XLabels[x])" y2="@(ViewModel.YLabels[ViewModel.YMaximum])" stroke-dasharray="4" stroke="grey"></line>
-        }
-        @for (double y = ViewModel.YMinimum + ViewModel.YTickSize; y <= ViewModel.YMaximum; y += ViewModel.YTickSize)
-        {
-          <line x1="@(ViewModel.XLabels[ViewModel.XMinimum])" y1="@(ViewModel.YLabels[y])" x2="@(ViewModel.XLabels[ViewModel.XMaximum])" y2="@(ViewModel.YLabels[y])" stroke-dasharray="4" stroke="grey"></line>
-        }
-      }
+		width:@($"{ViewModel.Width + axisPadding}px");
+		height:@($"{ViewModel.Height + axisPadding}px");
+	 box-shadow: @($"0 0 0 2px {ViewModel.ComputeBorderStatus()}");"
+			 title="@(ViewModel.ShowTooltip? ViewModel.TooltipText:string.Empty)">
+		<svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+				 width="@(ViewModel.Width + axisPadding)" height="@(ViewModel.Height + axisPadding)">
+			@*Plotting data*@
+			@if (ViewModel.GraphType == GraphType.Line)
+			{
+				<polyline points="@(ViewModel.GraphPointsString)" class="plot"></polyline>
+			}
+			else if (ViewModel.GraphType == GraphType.Area)
+			{
+				<polygon points="@(ViewModel.GraphPointsString)" class="area-plot"></polygon>
+				if (ViewModel.ShowOverlay && !String.IsNullOrEmpty(ViewModel.OverlayPointsString))
+				{
+					<polygon points="@(ViewModel.OverlayPointsString)" class="area-overlay"></polygon>
+				}
+			}
+			@if (ViewModel.ShowGrid)
+			{
+				@for (double x = ViewModel.XMinimum + ViewModel.XTickSize; x <= ViewModel.XMaximum; x += ViewModel.XTickSize)
+				{
+					<line x1="@(ViewModel.ScaleXValue(x))" y1="@(ViewModel.ScaleYValue(ViewModel.YMinimum))" x2="@(ViewModel.ScaleXValue(x))" y2="@(ViewModel.ScaleYValue(ViewModel.YMaximum))" class="grid"></line>
+				}
+				@for (double y = ViewModel.YMinimum + ViewModel.YTickSize; y <= ViewModel.YMaximum; y += ViewModel.YTickSize)
+				{
+					<line x1="@(ViewModel.ScaleXValue(ViewModel.XMinimum))" y1="@(ViewModel.ScaleYValue(y))" x2="@(ViewModel.ScaleXValue(ViewModel.XMaximum))" y2="@(ViewModel.ScaleYValue(y))" class="grid"></line>
+				}
+			}
 
-      @*X-axis solid line*@
-      <line x1="@(ViewModel.XLabels[ViewModel.XMinimum])" y1="@(ViewModel.YLabels[ViewModel.YMinimum])" x2="@(ViewModel.XLabels[ViewModel.XMaximum])" y2="@(ViewModel.YLabels[ViewModel.YMinimum])" stroke="black"></line>
-      @*Y-axis solid line*@
-      <line x1="@(ViewModel.XLabels[ViewModel.XMinimum])" y1="@(ViewModel.YLabels[ViewModel.YMinimum])" x2="@(ViewModel.XLabels[ViewModel.XMinimum])" y2="@(ViewModel.YLabels[ViewModel.YMaximum])" stroke="black"></line>
+			@*X-axis solid line*@
+			<line x1="@(ViewModel.ScaleXValue(ViewModel.XMinimum))" y1="@(ViewModel.ScaleYValue(ViewModel.YMinimum))" x2="@(ViewModel.ScaleXValue(ViewModel.XMaximum))" y2="@(ViewModel.ScaleYValue(ViewModel.YMinimum))" class="axis"></line>
+			@*Y-axis solid line*@
+			<line x1="@(ViewModel.ScaleXValue(ViewModel.XMinimum))" y1="@(ViewModel.ScaleYValue(ViewModel.YMinimum))" x2="@(ViewModel.ScaleXValue(ViewModel.XMinimum))" y2="@(ViewModel.ScaleYValue(ViewModel.YMaximum))" class="axis"></line>
+			@*X Title*@
+			<text x="@(ViewModel.ScaleXValue(ViewModel.XMidpoint))" y="@(ViewModel.ScaleYValue(ViewModel.YMinimum)+(axisPadding/2))" class="text">@ViewModel.XTitle</text>
+			@*Y title*@
+			<text x="@(ViewModel.ScaleXValue(ViewModel.XMinimum))" y="@(ViewModel.ScaleYValue(ViewModel.YMidpoint)-(axisPadding/4))" transform="rotate(-90,@(ViewModel.ScaleXValue(ViewModel.XMinimum)), @(ViewModel.ScaleYValue(ViewModel.YMidpoint)+(axisPadding/8)))" class="text">@ViewModel.YTitle</text>
 
-      @if (ViewModel.ShowXAxis)
-      {
-        @*X Title*@
-        <text>
-          <text x="@(ViewModel.ScaleXValue(ViewModel.XMidpoint))" y="@(ViewModel.YLabels[ViewModel.YMinimum]+40)">@ViewModel.XTitle</text>
-        </text>
-      }
-
-      @if (ViewModel.ShowYAxis)
-      {
-        @*Y title*@
-        <text>
-          <text x="@(ViewModel.XLabels[ViewModel.XMinimum])" y="@(ViewModel.ScaleYValue(ViewModel.YMidpoint)-20)" transform="rotate(-90,@(ViewModel.XLabels[ViewModel.XMinimum]), @(ViewModel.ScaleYValue(ViewModel.YMidpoint)+10))">@ViewModel.YTitle</text>
-        </text>
-      }
-
-      @*Creating X labels*@
-      @for (double x = ViewModel.XMinimum; x <= ViewModel.XMaximum; x += ViewModel.XTickSize)
-      {
-        @* var x1 = ViewModel.XLabels[x]; *@
-        @*Creating markers for X-axis*@
-        <line x1="@(ViewModel.XLabels[x])" y1="@(ViewModel.YLabels[ViewModel.YMinimum]+5)" x2="@(ViewModel.ScaleXValue(x))" y2="@(ViewModel.YLabels[ViewModel.YMinimum])" stroke="black"></line>
-
-        @if (ViewModel.ShowXAxis)
-        {
-          @*Adding labels for the X-axis markers*@
-          <text>
-            <text x="@(ViewModel.XLabels[x]-ViewModel.PaddingCalculationX(x))" y="@(ViewModel.YLabels[ViewModel.YMinimum]+20)">@x</text>
-          </text>
-        }
-
-      }
-      @*Creating Y labels*@
-      @for (double y = ViewModel.YMinimum; y <= ViewModel.YMaximum; y += ViewModel.YTickSize)
-      {
-        @*Creating markers for Y-axis*@
-        <line x1="@(ViewModel.XLabels[ViewModel.XMinimum]-5)" y1="@(ViewModel.YLabels[y])" x2="@(ViewModel.XLabels[ViewModel.XMinimum])" y2="@(ViewModel.YLabels[y])" stroke="black"></line>
-
-        @if (ViewModel.ShowYAxis)
-        {
-          @*Adding labels for the Y-axis markers*@
-          <text>
-            <text x="@(ViewModel.XLabels[ViewModel.XMinimum]-ViewModel.PaddingCalculationY(y))" y="@(ViewModel.YLabels[y]+5)">@y</text>
-          </text>
-        }
-
-      }
-      @if (!String.IsNullOrEmpty(ViewModel.ErrorMessage))
-      {
-        <rect x="0.5" y="0.5" width="@(ViewModel.XLabels[ViewModel.XMaximum]+25)" height="@(ViewModel.YLabels[ViewModel.YMinimum]+40)" style="fill:white;opacity:0.5;"></rect>
-        <text>
-          <text x="@(ViewModel.ScaleXValue(ViewModel.XMidpoint))" y="@(ViewModel.ScaleYValue(ViewModel.YMidpoint))" style="fill:red;">@(ViewModel.ErrorMessage)</text>
-        </text>
-      }
-    </svg>
-  </div>
+			@*Creating X labels*@
+			@for (double x = ViewModel.XMinimum; x <= ViewModel.XMaximum; x += ViewModel.XTickSize)
+			{
+				@*Creating markers for X-axis*@
+				<line x1="@(ViewModel.ScaleXValue(x))" y1="@(ViewModel.ScaleYValue(ViewModel.YMinimum)+5)" x2="@(ViewModel.ScaleXValue(x))" y2="@(ViewModel.ScaleYValue(ViewModel.YMinimum))" class="axis"></line>
+				@*Adding labels for the X-axis markers*@
+				<text>
+					<text x="@(ViewModel.ScaleXValue(x)-ViewModel.PaddingCalculationX(x))" y="@(ViewModel.ScaleYValue(ViewModel.YMinimum)+20)" class="text">@x</text>
+				</text>
+			}
+			@*Creating Y labels*@
+			@for (double y = ViewModel.YMinimum; y <= ViewModel.YMaximum; y += ViewModel.YTickSize)
+			{
+				@*Creating markers for Y-axis*@
+				<line x1="@(ViewModel.ScaleXValue(ViewModel.XMinimum)-(axisPadding/16))" y1="@(ViewModel.ScaleYValue(y))" x2="@(ViewModel.ScaleXValue(ViewModel.XMinimum))" y2="@(ViewModel.ScaleYValue(y))" class="axis"></line>
+				@*Adding labels for the Y-axis markers*@
+				<text>
+					<text x="@(ViewModel.ScaleXValue(ViewModel.XMinimum)-ViewModel.PaddingCalculationY(y))" y="@(ViewModel.ScaleYValue(y)+(axisPadding/16))" class="text">@y</text>
+				</text>
+			}
+			@if (!String.IsNullOrEmpty(ViewModel.ErrorMessage))
+			{
+				<rect x="0.5" y="0.5" width="@(ViewModel.ScaleXValue(ViewModel.XMaximum)+(axisPadding/2))" height="@(ViewModel.ScaleYValue(ViewModel.YMinimum)+(axisPadding/2))" class="error-message-fade"></rect>
+				<text>
+					<text x="@(ViewModel.ScaleXValue(ViewModel.XMidpoint))" y="@(ViewModel.ScaleYValue(ViewModel.YMidpoint))" class="error-message">@(ViewModel.ErrorMessage)</text>
+				</text>
+			}
+		</svg>
+	</div>
 }
 
 @code {
-  [Parameter]
-  public GraphViewModel ViewModel { get; set; } = new GraphViewModel();
+	[Parameter]
+	public GraphViewModel ViewModel { get; set; } = new GraphViewModel();
 
-  protected override void OnInitialized()
-  {
-    base.OnInitialized();
-    ViewModel.PropertyChanged += OnPropertyChanged;
-  }
+	private const int  axisPadding = 80;
 
-  void IDisposable.Dispose()
-  {
-    ViewModel.PropertyChanged -= OnPropertyChanged;
-  }
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+		ViewModel.PropertyChanged += OnPropertyChanged;
+	}
+
+	void IDisposable.Dispose()
+	{
+		ViewModel.PropertyChanged -= OnPropertyChanged;
+	}
 }
 

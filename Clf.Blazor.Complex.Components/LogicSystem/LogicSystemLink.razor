@@ -1,0 +1,53 @@
+﻿@using Clf.LogicSystem.ViewModel;
+
+<g transform="translate(0,0)">
+  @switch (RenderEdgeAs)
+  {
+    case EdgeRenderMethod.Line:
+      // Just draw a line between the start point and the end point.
+      <line 
+        x1            = "@DependencyLinkViewModel.PointsOnPath[0].X"
+        y1            = "@DependencyLinkViewModel.PointsOnPath[0].Y"
+        x2            = "@DependencyLinkViewModel.PointsOnPath[^1].X"
+        y2            = "@DependencyLinkViewModel.PointsOnPath[^1].Y"
+        stroke        = "@DependencyLinkViewModel.LineColour.AsRgbText()"
+        stroke-width  = "@DependencyLinkViewModel.LineThicknessInPixels"
+        marker-end    = "url(#arrow)"
+      />
+      break;
+
+    case EdgeRenderMethod.Polyline:
+      //@if (UsePolyline)
+      {
+        // Ideally we'd use a smooth Bezier curve to connect the points,
+        // but that's reasonably complicated as you have to define the
+        // control points ... this will suffice for the time being.
+        <polyline 
+          points       = "@PolylinePoints"
+          stroke       = "@DependencyLinkViewModel.LineColour.AsRgbText()"
+          stroke-width = "@DependencyLinkViewModel.LineThicknessInPixels" 
+          fill         = "none"
+          marker-end   = "url(#@(MarkerId))"
+        />
+      }
+      break;
+
+    case EdgeRenderMethod.BezierCurves:
+    default:
+      //Use bezier curves
+      <path 
+        d             = "@BezierPoints"
+        stroke        = "@DependencyLinkViewModel.LineColour.AsRgbText()"
+        stroke-width  = "@DependencyLinkViewModel.LineThicknessInPixels"
+        fill          = "none" 
+        marker-end    = "url(#@(MarkerId))" />
+      break;
+  }
+</g>
+
+@code {
+
+  [Parameter]
+  public string MarkerId { get; set; }
+
+}

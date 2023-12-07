@@ -17,7 +17,7 @@
               style="--action-button-width: @GetWidth(); --action-button-height:@GetHeight()"
       @onclick="ViewModel.OnActionButtonClicked"
               disabled="@ViewModel.GetDisableStatus()">
-        <div class="action-button-body">
+        <div class="clf-button-body">
           @if (Icon != null)
           {
             @Icon
@@ -27,7 +27,7 @@
             var iconId = GetIconId();
             if (string.IsNullOrEmpty(iconId) == false)
             {
-              <SingleColourIcon class="small-icon" IconId="@iconId" />
+              <SingleColourIcon class="clf-icon-small" IconId="@iconId" />
             }
           }
           @if (string.IsNullOrEmpty(ViewModel.Text) == false)
@@ -70,7 +70,7 @@
 
   private string? GetIconId()
   {
-    if (string.IsNullOrEmpty(IconId) && ViewModel.Type == ActionButtonType.Navigation)
+    if (string.IsNullOrEmpty(IconId) && ViewModel.Type == ButtonType.Navigation)
     {
       return "clf_ic_settings_24_regular";
     }
@@ -80,14 +80,7 @@
 
   private string GetClass()
   {
-    switch (ViewModel.Type)
-    {
-      case ActionButtonType.Default:
-        return "action-button";
-      case ActionButtonType.Navigation:
-        return "action-button-navigation";
-    }
-    return "";
+    return $"{Utilities.GetButtonClass(ViewModel.Type)} action-button";
   }
 
   void IDisposable.Dispose()

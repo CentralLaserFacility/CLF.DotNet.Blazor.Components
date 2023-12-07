@@ -1,0 +1,68 @@
+﻿.tree-view {
+  display          : flex;
+  flex-direction   : column;
+  font             : normal normal 12px liberation-sans, sans-serif;
+  background-color : #FAFAFA;
+}
+
+.tree-item {
+  display        : flex;
+  flex-direction : row;
+  gap            : 4px;
+  align-content  : center;
+  padding        : 2px;
+}
+
+.tree-item:hover {
+  border-radius    : 4px;
+  background-color : #0078D4;
+  color            : #FFFFFF;
+}
+
+.tree-item-title {
+  display     : flex;
+  align-items : center;
+  padding-left: 2px;
+}
+
+.expander-button {
+  display          : flex;
+  outline          : none;
+  background-color : transparent;
+  border           : none; /* Remove borders ; was 1px solid black */
+  margin           : 2px;  /* Some padding */
+  width            : 12px;
+  height           : 12px;
+  cursor           : pointer; /* Mouse pointer on hover */
+  border-radius   : 4px;
+  align-content   : center;
+  justify-content : center;
+  align-items     : center;
+  text-align      : center;
+  font-family     : FluentSystemIcons-Regular !important;
+  font-style      : normal;
+  font-weight     : normal !important;
+  font-variant    : normal;
+  font-size       : 12px;
+  text-transform  : none;
+  color           : inherit; 
+  -webkit-font-smoothing : antialiased;
+}
+
+.expander-button:hover {
+  background-color : rgba(0,0,0,0.1);
+}
+
+.expanded-content {
+  padding-left : 20px;
+}
+
+.expander-icon {
+  transition : transform .2s linear;
+}
+
+.expander-icon-down {
+  transform  : rotate(90deg);
+  transition : transform .2s linear;
+}
+

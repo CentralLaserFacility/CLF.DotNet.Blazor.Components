@@ -39,70 +39,70 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         width: 70,
         height: 20,
         itemsFromPv: true,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:ComputeStatistics")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:ComputeStatistics")
         );
       StatisticsEnableRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:ComputeStatistics_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:ComputeStatistics_RBV")
         );
       StatisticsBackgroundWidth = new TextEntryViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:BgdWidth")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:BgdWidth")
         );
       StatisticsBackgroundWidthRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:BgdWidth_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:BgdWidth_RBV")
         );
       StatisticsMinimumPixelRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MinValue_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MinValue_RBV")
         );
       StatisticsMaximumPixelRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MaxValue_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MaxValue_RBV")
         );
       StatisticsMinimumXRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MinX_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MinX_RBV")
         );
       StatisticsMaximumXRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MaxX_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MaxX_RBV")
         );
       StatisticsMinimumYRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MinY_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MinY_RBV")
         );
       StatisticsMaximumYRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MaxY_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MaxY_RBV")
         );
       StatisticsTotalValueRBV = new TextUpdateViewModel(
         width: 70,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:Total_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:Total_RBV")
         );
       StatisticsNetValueRBV = new TextUpdateViewModel(
         width: 70,
         precision: 2,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:Net_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:Net_RBV")
         );
       StatisticsMeanValueRBV = new TextUpdateViewModel(
         width: 50,
         precision: 4,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:MeanValue_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:MeanValue_RBV")
         );
       StatisticsSigmaValueRBV = new TextUpdateViewModel(
         width: 50,
         precision: 4,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:Sigma_RBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:Sigma_RBV")
         );
       StatisticsEnergyCalibrationFactor = new TextEntryViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:EnergyCalibrationFactor")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:EnergyCalibrationFactor")
         );
       StatisticsEnergyCalibrationFactorRBV = new TextUpdateViewModel(
         width: 50,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "Stats1:EnergyCalibrationFactorRBV")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":Stats1:EnergyCalibrationFactorRBV")
         );
       StatisticsPluginSettings = new ActionButtonViewModel(
         text: "Statistics Plugin Settings",

@@ -28,7 +28,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     {
 
       m_parent.ChannelsHandler.InstallChannel(
-      _roiMethod = Hub.GetOrCreateChannel(m_parent.PvPrefix + "ROIMethod"),
+      _roiMethod = Hub.GetOrCreateChannel(m_parent.PvPrefix + ":ROIMethod"),
       (valueInfo, _) => OnROIMethodChange((System.Int16)valueInfo.Value)
         );
 
@@ -60,7 +60,6 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
         _cameraMaxSizeXRBV = Hub.GetOrCreateChannel(m_parent.PvPrefix + camPluginPrefix + "MaxSizeX_RBV"));
       m_parent.ChannelsHandler.InstallChannel(
         _cameraMaxSizeYRBV = Hub.GetOrCreateChannel(m_parent.PvPrefix + camPluginPrefix + "MaxSizeY_RBV"));
-      m_parent.ChannelsHandler.RaiseSyntheticEvents();
 
     }
 

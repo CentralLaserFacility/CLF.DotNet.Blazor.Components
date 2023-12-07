@@ -1,0 +1,41 @@
+//
+// _TODO.txt
+//
+
+Current prototype will break under various circumstances ... need to fix.
+
+*** Properly get the names of all the LogicNode properties !!!
+
+*** Properly avoid mentioning properties that aren't LogicNodes (eg constants)
+
+Handle the case where there are several 'LogicSystemBase' subclasses defined in the project.
+The SyntaxReceiver needs to build a collection of Descriptors, one for each LogicSystem encountered.
+
+Purge trailing comments from the formula text.
+
+Move the helper methods in the 'Example_01' demo into LogicSystemBase.
+
+Rationalise the way we're using Reflection/SourceGen to build the dependencies (XX).
+Will retain the original 'Reflection' technique, together with the scheme for verifying
+that the SourceGen variant gives the same result ; but hide the 'Reflection' variant
+behind a #define which removes the original code.
+
+?? Or, remove that completely ??? Maybe eventually, once tested properly.
+
+Handle malformed lambdas eg mentioning properties that are not defined.
+
+Detect when Input nodes not referred to in any Computed node.
+
+Detect circular dependencies - issue a red squiggly diagnostic.
+
+Need to test on larger examples eg D100X.
+
+Retire the D100X version, removing [Formula] ...
+
+Move the examples into a different project.
+
+CLEANUP, SIMPLIFY, RATIONALISE NAMES ETC ...
+
+HANDOVER ?? !!!
+
+

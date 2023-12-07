@@ -11,48 +11,56 @@
 @using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
 @using Clf.Blazor.Basic.Components.Controls.ViewModels
 
-  <div class = "acquisition-tab">
-    <div style="grid-column:1;">
-        <label>Acquire</label>
-    </div>
-    <div style="grid-column:2;">
-        <ActionButton ViewModel="@ViewModel.StartAcquisition" />
-        <ActionButton ViewModel="@ViewModel.StopAcquisition" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.AcquisitionStatusRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <label>TriggerSource</label>
-    </div>
-    <div style="grid-column:2;">
-        <ComboBox ViewModel="@ViewModel.TriggerSource" />
-    </div>
-    <div style="grid-column:3;">
-        <ActionButton ViewModel="@ViewModel.SoftwareTrigger" />
-    </div>
-    <div style="grid-column:1;">
-        <label>Exposure Time (ms)</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextEntry ViewModel="@ViewModel.ExposureTimeSet" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.ExposureTimeRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <label>Gain</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextEntry ViewModel="@ViewModel.GainSet" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.GainRBV" />
-    </div>
+<div class="acquisition-tab">
+  <label>Acquire</label>
+  <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.AcquisitionStatusRBV" />
+  <div class="acquisition-tab-second-col acquisition-tab-flex">
+    <ActionButton class="acquisition-tab-common-width" ViewModel="@ViewModel.StartAcquisition" />
+    <ActionButton class="acquisition-tab-common-width" ViewModel="@ViewModel.StopAcquisition" />
   </div>
+  <label>Detector State</label>
+  <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.DetectorStateRBV" />
+  @*<ActionButton ViewModel="@ViewModel.SoftwareTrigger" />*@
+  <label>Exposure Time</label>
+  <div class="acquisition-tab-flex">
+    <TextEntry class="acquisition-tab-common-width" ViewModel="@ViewModel.ExposureTime" />
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.ExposureTimeRBV" />
+  </div>
+  <label>Acquire Period</label>
+  <div class="acquisition-tab-flex">
+    <TextEntry class="acquisition-tab-common-width" ViewModel="@ViewModel.AcquirePeriod" />
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.AcquirePeriodRBV" />
+  </div>
+  <label>Gain</label>
+  <div class="acquisition-tab-flex">
+    <TextEntry class="acquisition-tab-common-width" ViewModel="@ViewModel.Gain" />
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.GainRBV" />
+  </div>
+  <label>Trigger Source</label>
+  <div class="acquisition-tab-flex">
+    <ComboBox class="acquisition-tab-common-width" ViewModel="@ViewModel.TriggerSource" />
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.TriggerSourceRBV" />
+  </div>
+  <label>Image Mode</label>
+  <div class="acquisition-tab-flex">
+    <ComboBox class="acquisition-tab-common-width" ViewModel="@ViewModel.ImageMode" />
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.ImageModeRBV" />
+  </div>
+  <label># Images to Acquire</label>
+  <div class="acquisition-tab-flex">
+    <TextEntry class="acquisition-tab-common-width" ViewModel="@ViewModel.NumImages" />
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.NumImagesRBV" />
+  </div>
+  <label># Images Complete</label>
+  <div class="acquisition-tab-second-col">
+    <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.NumImagesCounterRBV" />
+  </div>
+  <label>Image Rate</label>
+  <TextUpdate class="acquisition-tab-common-width" ViewModel="@ViewModel.ImageRateRBV" />
+</div>
 
 @code {
-    [Parameter]
-    public ViewModels.IntensityMapFeatures_AcquisitionTabViewModel ViewModel { get; set; }
+  [Parameter]
+  public ViewModels.IntensityMapFeatures_AcquisitionTabViewModel ViewModel { get; set; }
 }
 

@@ -47,8 +47,8 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     public IntensityMapFeatures_CentroidTabViewModel(IntensityMapViewerViewModel parent)
     {
       m_parent = parent;
-      centroidPluginPrefix = "Centroid1:";
-      statsPluginPrefix = "Stats1:";
+      centroidPluginPrefix = ":Centroid1:";
+      statsPluginPrefix = ":Stats1:";
       BeamDiameterLabel = new LabelViewModel(
         text: "Diameter",
         isVisible: false);
@@ -86,9 +86,9 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
 
       CentroidAlgorithm = new RadioButtonViewModel(
                 items: new ObservableCollection<string> { "Centre of Mass", "Edge Detection" },
-                isHorizontal: false,
+                isHorizontal: true,
                 width: 150,
-                height: 50,
+                height: 20,
                 channelRecord: parent.CreateChannelRecord(parent.PvPrefix + centroidPluginPrefix + "CentroidAlgorithm")
       );
 
@@ -120,22 +120,22 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       EdgeDetectionContourShow = new CheckboxViewModel(
         label: "Show ED Contour",
         width: 140,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ShowContourXhair")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":ShowContourXhair")
       );
       EdgeDetectionContourColor = new ColorPickerViewModel(
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ContourXhairColour")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":ContourXhairColour")
       );
       EdgeDetectionContourThick = new CheckboxViewModel(
         label: "Thick",
         width: 60,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ContourXhairThick")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":ContourXhairThick")
       );
 
       BeamShape = new RadioButtonViewModel(
           items: new ObservableCollection<string> { "Circular", "Rectangle" },
           isHorizontal: false,
           width: 100,
-          channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "BeamShape")
+          channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":BeamShape")
       );
 
       BeamDiameter = new TextUpdateViewModel(
@@ -174,15 +174,15 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
       EDBeamShapeShow = new CheckboxViewModel(
         label: "Show ED Shape",
         width: 140,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ShowEDBeamShapeXhair")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":ShowEDBeamShapeXhair")
       );
       EDBeamShapeColor = new ColorPickerViewModel(
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "EDBeamShapeXhairColour")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":EDBeamShapeXhairColour")
       );
       EDBeamShapeThick = new CheckboxViewModel(
         label: "Thick",
         width: 60,
-        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "EDBeamShapeXhairThick")
+        channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":EDBeamShapeXhairThick")
       );
 
     CentroidSettingsEDModal = new ModalDialogViewModel(

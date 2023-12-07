@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>11.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <DefineConstants>SUPPORTS_FUTURE_ACTIONS,SUPPORTS_SHADOW_VALUES_NO,ENABLE_INPUT_CHANGES_NO</DefineConstants>
+    <Configurations>Debug;Release;EPAC_SIM</Configurations>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+    <PackageReference Include="FluentAssertions" Version="6.11.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj" />
+    <ProjectReference Include="..\Clf.GraphViz\Clf.GraphViz.csproj" />
+  </ItemGroup>
+  
+</Project>

@@ -10,83 +10,130 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
   public partial class IntensityMapFeatures_AcquisitionTabViewModel
   {
     private IntensityMapViewerViewModel m_parent;
-    private string camPluginPrefix;
     public ActionButtonViewModel StartAcquisition { get; }
     public ActionButtonViewModel StopAcquisition { get; }
+    public TextUpdateViewModel DetectorStateRBV { get;}
     public TextUpdateViewModel AcquisitionStatusRBV { get; }
-    public ComboBoxViewModel TriggerSource { get; }
-    public ActionButtonViewModel SoftwareTrigger { get; }
-    public TextEntryViewModel ExposureTimeSet { get; }
+    public ComboBoxViewModel TriggerSource{ get; }
+    public TextUpdateViewModel TriggerSourceRBV { get;}
+    public ComboBoxViewModel ImageMode { get;}
+    public TextUpdateViewModel ImageModeRBV { get;}
+    public TextEntryViewModel NumImages { get; }
+    public TextUpdateViewModel NumImagesRBV { get; }
+    public TextUpdateViewModel NumImagesCounterRBV { get; }
+    //public ActionButtonViewModel SoftwareTrigger { get; }
+    public TextEntryViewModel ExposureTime { get; }
     public TextUpdateViewModel ExposureTimeRBV { get; set; }
-    public TextEntryViewModel GainSet { get; }
-    public TextUpdateViewModel GainRBV { get; set; }
-
-    private ActionButtonViewModel CreateValueWriteActionButtonViewModel(string channelName, object valueToWrite)
-    {
-      return new ActionButtonViewModel(
-        width: 45,
-        height: 20
-        )
-      {
-        OnActionButtonClicked = async () => {
-          await ChannelAccess.Hub.PutValueAsync(
-            channelName,
-            valueToWrite
-          );
-        }
-      };
-    }
+    public TextEntryViewModel AcquirePeriod { get; }
+    public TextUpdateViewModel AcquirePeriodRBV { get; }
+    public TextEntryViewModel Gain { get; }
+    public TextUpdateViewModel GainRBV { get;}
+    public TextUpdateViewModel ImageRateRBV { get; }
     public IntensityMapFeatures_AcquisitionTabViewModel(IntensityMapViewerViewModel parent)
     {
       m_parent = parent;
-      camPluginPrefix = "cam1:";
-      StartAcquisition = CreateValueWriteActionButtonViewModel(parent.PvPrefix + camPluginPrefix + "Acquire", (short)1);
-      StartAcquisition.Text = "Start";
 
-      StopAcquisition = new ActionButtonViewModel(
-        text: "Stop",
-        width: 45,
-        height: 20
-        );
-
-      TriggerSource = new ComboBoxViewModel(
-      width: 100,
-      height: 20,
-      itemsFromPv: true,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "TriggerSource")
+      AcquisitionStatusRBV = new TextUpdateViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "AcquireBusy")
       );
 
-      SoftwareTrigger = CreateValueWriteActionButtonViewModel(parent.PvPrefix + camPluginPrefix + "TriggerSoftware", (short)1);
-      SoftwareTrigger.Text = "Software Trigger";
-      SoftwareTrigger.Width = 120;
+      StartAcquisition = new ActionButtonViewModel(
+        text: "Start"
+        )
+      {
+        OnActionButtonClicked = async () =>
+        {
+          await ChannelAccess.Hub.PutValueAsync(parent.PvPrefix + parent.StreamPrefix + "Acquire", (short)1);
+        }
+      };
 
-      ExposureTimeSet = new TextEntryViewModel(
-      width: 100,
-      height: 20,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ExposureTime")
+      StopAcquisition = new ActionButtonViewModel(
+        text: "Stop"
+        )
+      {
+        OnActionButtonClicked = async () =>
+        {
+          await ChannelAccess.Hub.PutValueAsync(parent.PvPrefix + parent.StreamPrefix + "Acquire",(short)0);
+        }
+      };
+
+      DetectorStateRBV = new TextUpdateViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "DetectorState_RBV")
+      );
+
+      //SoftwareTrigger = CreateValueWriteActionButtonViewModel(parent.PvPrefix + camPluginPrefix + "TriggerSoftware", (short)1);
+      //SoftwareTrigger.Text = "Software Trigger";
+
+      ExposureTime = new TextEntryViewModel(
+      units: "s",
+      precision: 3,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "AcquireTime")
       );
 
       ExposureTimeRBV = new TextUpdateViewModel(
-      width: 70,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ExposureTime_RBV")
+        units: "s",
+        precision: 3,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "AcquireTime_RBV")
       );
 
-      GainSet = new TextEntryViewModel(
-      showUnits: false,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "Gain")
+      AcquirePeriod = new TextEntryViewModel(
+        units: "s",
+        precision: 3,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "AcquirePeriod")
+      );
+
+      AcquirePeriodRBV = new TextUpdateViewModel(
+        units: "s",
+        precision: 3,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "AcquirePeriod_RBV")
+      );
+
+      Gain = new TextEntryViewModel(
+        precision: 3,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "Gain")
       );
 
       GainRBV = new TextUpdateViewModel(
-      width: 70,
-      showUnits: false,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "Gain_RBV")
+        precision: 3,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "Gain_RBV")
       );
 
-      AcquisitionStatusRBV = new TextUpdateViewModel(
-      width: 120,
-      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "AcquireBusy")
+      TriggerSource = new ComboBoxViewModel(
+      itemsFromPv: true,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "TriggerSource")
       );
-      IntensityMapFeatures_AcquisitionTabViewModel_Logic_Initiliasation();
+
+      TriggerSourceRBV = new TextUpdateViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "TriggerSource_RBV")
+      );
+
+      ImageMode = new ComboBoxViewModel(
+      itemsFromPv: true,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "ImageMode")
+      );
+
+      ImageModeRBV = new TextUpdateViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "ImageMode_RBV")
+      );
+
+      NumImages = new TextEntryViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "NumImages")
+      );
+
+      NumImagesRBV = new TextUpdateViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "NumImages_RBV")
+      );
+
+      NumImagesCounterRBV = new TextUpdateViewModel(
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "NumImagesCounter_RBV")
+      );
+
+      ImageRateRBV = new TextUpdateViewModel(
+      precision: 2,
+      channelRecord: parent.CreateChannelRecord(parent.PvPrefix + parent.StreamPrefix + "ArrayRate_RBV")
+      );
+
+      IntensityMapFeatures_AcquisitionTabViewModel_Logic_Initialisation();
     }
   }
 }

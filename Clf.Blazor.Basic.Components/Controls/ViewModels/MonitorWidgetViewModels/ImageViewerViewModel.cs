@@ -90,18 +90,8 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       }
     }
 
+    public DisplaySize DisplaySize { get; private set; }
 
-    private double m_displayImageScalingFactor = 1;
-
-    public double DisplayImageScalingFactor
-    {
-      get { return m_displayImageScalingFactor; }
-      set
-      {
-        if (SetProperty(ref m_displayImageScalingFactor, value))
-          ComputeDisplayImageData();
-      }
-    }
 
     public int DisplayWidth => DisplayImageData?.Width ?? 0;
     public int DisplayHeight => DisplayImageData?.Height ?? 0;
@@ -152,7 +142,8 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     public ImageViewerViewModel(
       int? imageWidth = null,
       int? imageHeight = null,
-      double? displayImageScalingFactor = null,
+      double? displayImageScalingFactor = null, // Needs to be removed
+      DisplaySize? displaySize = null,
       bool isVisible = true,
       bool showTooltip = true,
       string? fontStyle = null,
@@ -169,16 +160,15 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       showTooltip: showTooltip
     )
     {
-      m_imageWidth = imageWidth ?? ImageViewerStyle.DEFAULT_IMAGE_WIDTH;
-      m_imageHeight = imageHeight ?? ImageViewerStyle.DEFAULT_IMAGE_HEIGHT;
+      DisplaySize = displaySize ?? new DisplaySize(400,400);
 
-      m_displayImageScalingFactor = displayImageScalingFactor ?? 1.0;
+      m_imageWidth = DisplaySize.Width;
+      m_imageHeight = DisplaySize.Height;
+
 
       m_originalImageData = new LinearArrayHoldingPixelBytes(m_imageWidth, m_imageHeight);
 
-      var scaledWidth = (int)(m_imageWidth * DisplayImageScalingFactor);
-      var scaledHeight = (int)(m_imageHeight * DisplayImageScalingFactor);
-      m_displayImageData = m_originalImageData.CreateResizedClone_NearestNeighbour(scaledWidth, scaledHeight);
+      m_displayImageData = m_originalImageData.CreateResizedClone_NearestNeighbour(DisplaySize.Width, DisplaySize.Height);
 
       m_borderStatus = borderStatus;
 
@@ -263,12 +253,10 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
 
     private void ComputeDisplayImageData()
     {
-      var scaledWidth = (int)(OriginalImageData.Width * DisplayImageScalingFactor);
-      var scaledHeight = (int)(OriginalImageData.Height * DisplayImageScalingFactor);
       // We're creating clones here, but they are only used as intermediate variables
       // that will immediately go out of scope and be garbage collected,
       // so it'll be more efficient to apply all the operations in one go ...
-      var resizedImage = OriginalImageData.CreateResizedClone_NearestNeighbour(scaledWidth, scaledHeight);
+      var resizedImage = OriginalImageData.CreateResizedClone_NearestNeighbour(DisplaySize.Width, DisplaySize.Height);
       //var rotatedResizedImage = resizedImage.CreateRotatedClone(RotationFactor) ;
       var normalisedRotatedResizedImage = resizedImage.CreateNormalisedClone(
         AutoNormalise

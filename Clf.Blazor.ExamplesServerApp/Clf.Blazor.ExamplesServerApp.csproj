@@ -4,10 +4,14 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Clf.Blazor.Basic.Components\Clf.Blazor.Basic.Components.csproj" />
+    <ProjectReference Include="..\Clf.Blazor.Complex.Components\IntensityMap\Clf.Blazor.Complex.IntensityMap.csproj" />
+    <ProjectReference Include="..\Clf.Blazor.Complex.Components\LogicSystem\Clf.Blazor.Complex.LogicSystem.csproj" />
+    <ProjectReference Include="..\Example.LogicSystem.TestData\Example.LogicSystem.TestData.csproj" />
   </ItemGroup>
 
 </Project>

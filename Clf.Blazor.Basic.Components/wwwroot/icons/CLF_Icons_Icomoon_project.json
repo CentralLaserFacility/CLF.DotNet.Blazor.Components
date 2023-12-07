@@ -1,0 +1,2046 @@
+{
+    "metadata": {
+        "name": "CLF Icons",
+        "lastOpened": 0,
+        "created": 1698329087094
+    },
+    "iconSets": [
+        {
+            "selection": [
+                {
+                    "order": 0,
+                    "id": 6,
+                    "name": "ic_machine_safety_24_filled",
+                    "prevSize": 24
+                },
+                {
+                    "order": 0,
+                    "id": 5,
+                    "name": "ic_stop_24_filled",
+                    "prevSize": 24
+                },
+                {
+                    "order": 0,
+                    "id": 4,
+                    "name": "ic_invalid_24_filled",
+                    "prevSize": 24
+                },
+                {
+                    "order": 0,
+                    "id": 3,
+                    "name": "ic_major_warning_circle_24_filled",
+                    "prevSize": 24
+                },
+                {
+                    "order": 0,
+                    "id": 2,
+                    "name": "ic_major_warning_triangle_24_filled",
+                    "prevSize": 24
+                },
+                {
+                    "order": 0,
+                    "id": 1,
+                    "name": "ic_minor_warning_24_filled",
+                    "prevSize": 24
+                },
+                {
+                    "order": 0,
+                    "id": 0,
+                    "name": "ic_not_connected_24_filled",
+                    "prevSize": 24
+                }
+            ],
+            "id": 1,
+            "metadata": {
+                "name": "Multiple Colours",
+                "license": "MIT License",
+                "importSize": {
+                    "width": 24,
+                    "height": 24
+                }
+            },
+            "height": 1024,
+            "prevSize": 24,
+            "icons": [
+                {
+                    "id": 6,
+                    "paths": [
+                        "M554.551 661.372c0-23.531-19.076-42.611-42.607-42.611-23.535 0-42.611 19.081-42.611 42.611s19.076 42.611 42.611 42.611c23.531 0 42.607-19.081 42.607-42.611z",
+                        "M543.492 326.299c-2.129-15.618-15.526-27.645-31.727-27.633-17.677 0.014-31.991 14.353-31.974 32.026l0.154 192.068 0.294 4.343c2.129 15.616 15.531 27.644 31.731 27.631 17.673-0.013 31.987-14.353 31.974-32.026l-0.154-192.068-0.299-4.342z",
+                        "M907.413 512.751c0-217.936-176.691-394.668-394.667-394.668-217.974 0-394.666 176.732-394.666 394.668 0 217.933 176.692 394.667 394.666 394.667 217.975 0 394.667-176.734 394.667-394.667z",
+                        "M342.927 679.957v-334.416l169.82 284.334 169.822-284.334v334.416"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        },
+                        {
+                            "fill": "rgb(222, 55, 48)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "miter",
+                            "strokeLinecap": "butt",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "none",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "round",
+                            "strokeLinecap": "round",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        }
+                    ],
+                    "isMulticolor": true,
+                    "isMulticolor2": true,
+                    "grid": 0,
+                    "tags": [
+                        "ic_machine_safety_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 4
+                            },
+                            {
+                                "f": 4
+                            },
+                            {
+                                "f": 1,
+                                "s": 4
+                            },
+                            {
+                                "s": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 5,
+                    "paths": [
+                        "M311.232 155.301c24.005-24.005 56.562-37.49 90.51-37.49h220.518c33.95 0 66.505 13.486 90.509 37.49l155.93 155.93c24.004 24.005 37.491 56.562 37.491 90.51v220.519c0 33.946-13.487 66.505-37.491 90.509l-155.93 155.93c-24.004 24.004-56.559 37.491-90.509 37.491h-220.518c-33.948 0-66.505-13.487-90.51-37.491l-155.93-155.93c-24.005-24.004-37.49-56.563-37.49-90.509v-220.519c0-33.948 13.486-66.505 37.49-90.51l155.93-155.93z",
+                        "M768 768l-512-512"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(222, 55, 48)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "miter",
+                            "strokeLinecap": "butt",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "none",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "round",
+                            "strokeLinecap": "round",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        }
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_stop_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 1,
+                                "s": 4
+                            },
+                            {
+                                "s": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 4,
+                    "paths": [
+                        "M143.932 575.373c-34.673-34.671-34.673-90.889 0-125.559l305.882-305.882c34.671-34.673 90.889-34.673 125.559 0l305.882 305.882c34.675 34.671 34.675 90.889 0 125.559l-305.882 305.882c-34.671 34.675-90.889 34.675-125.559 0l-305.882-305.882z",
+                        "M512.516 662.050c23.599 0 42.726 19.127 42.726 42.722s-19.127 42.722-42.726 42.722c-23.595 0-42.722-19.127-42.722-42.722s19.127-42.722 42.722-42.722zM512.516 288.224c64.887 0 117.491 52.601 117.491 117.488 0 43.184-12.715 67.248-44.911 100.767l-7.198 7.334c-26.569 26.573-33.34 37.854-33.34 62.788 0 17.698-14.345 32.043-32.043 32.043-17.694 0-32.038-14.345-32.038-32.043 0-43.179 12.71-67.247 44.907-100.762l7.198-7.339c26.569-26.569 33.34-37.85 33.34-62.79 0-29.494-23.91-53.403-53.406-53.403-27.648 0-50.389 21.014-53.124 47.943l-0.277 5.46c0 17.696-14.345 32.044-32.043 32.044-17.696 0-32.042-14.348-32.042-32.044 0-64.887 52.603-117.488 117.487-117.488z"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(165, 165, 165)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "miter",
+                            "strokeLinecap": "butt",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        }
+                    ],
+                    "isMulticolor": true,
+                    "isMulticolor2": true,
+                    "grid": 0,
+                    "tags": [
+                        "ic_invalid_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 3,
+                                "s": 4
+                            },
+                            {
+                                "f": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 3,
+                    "paths": [
+                        "M907.413 512.751c0-217.936-176.691-394.668-394.667-394.668-217.974 0-394.666 176.732-394.666 394.668 0 217.933 176.692 394.667 394.666 394.667 217.975 0 394.667-176.734 394.667-394.667z",
+                        "M554.551 661.372c0-23.531-19.076-42.611-42.607-42.611-23.535 0-42.611 19.081-42.611 42.611s19.076 42.611 42.611 42.611c23.531 0 42.607-19.081 42.607-42.611z",
+                        "M543.492 326.299c-2.129-15.618-15.526-27.645-31.727-27.633-17.677 0.014-31.991 14.353-31.974 32.026l0.154 192.068 0.294 4.343c2.129 15.616 15.531 27.644 31.731 27.631 17.673-0.013 31.987-14.353 31.974-32.026l-0.154-192.068-0.299-4.342z"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(222, 55, 48)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "miter",
+                            "strokeLinecap": "butt",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        }
+                    ],
+                    "isMulticolor": true,
+                    "isMulticolor2": true,
+                    "grid": 0,
+                    "tags": [
+                        "ic_major_warning_circle_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 1,
+                                "s": 4
+                            },
+                            {
+                                "f": 4
+                            },
+                            {
+                                "f": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 2,
+                    "paths": [
+                        "M589.879 861.077c-33.796 61.094-121.63 61.090-155.426-0.004l-305.718-552.66c-32.744-59.193 10.068-131.8 77.713-131.8h611.458c67.644 0 110.455 72.609 77.709 131.802l-305.737 552.662z",
+                        "M511.945 636.011c23.531 0 42.607 19.081 42.607 42.611s-19.076 42.611-42.607 42.611c-23.535 0-42.611-19.081-42.611-42.611s19.076-42.611 42.611-42.611z",
+                        "M511.765 315.917c16.201-0.013 29.598 12.015 31.727 27.632l0.299 4.342 0.154 192.068c0.013 17.673-14.302 32.013-31.974 32.026-16.201 0.013-29.602-12.015-31.731-27.631l-0.294-4.343-0.154-192.068c-0.017-17.673 14.298-32.012 31.974-32.026z"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(222, 55, 48)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "miter",
+                            "strokeLinecap": "butt",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        }
+                    ],
+                    "isMulticolor": true,
+                    "isMulticolor2": true,
+                    "grid": 0,
+                    "tags": [
+                        "ic_major_warning_triangle_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 1,
+                                "s": 4
+                            },
+                            {
+                                "f": 4
+                            },
+                            {
+                                "f": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 1,
+                    "paths": [
+                        "M589.879 222.862c-33.796-61.094-121.63-61.093-155.426 0.002l-305.718 552.658c-32.744 59.196 10.068 131.802 77.713 131.802h611.458c67.644 0 110.455-72.61 77.709-131.802l-305.737-552.66z",
+                        "M511.945 682.803c23.531 0 42.607 19.076 42.607 42.611 0 23.531-19.076 42.607-42.607 42.607-23.535 0-42.611-19.076-42.611-42.607 0-23.535 19.076-42.611 42.611-42.611z",
+                        "M511.765 362.708c16.201-0.013 29.598 12.015 31.727 27.632l0.299 4.342 0.154 192.069c0.013 17.673-14.302 32.009-31.974 32.026-16.201 0.013-29.602-12.015-31.731-27.635l-0.294-4.339-0.154-192.069c-0.017-17.673 14.298-32.012 31.974-32.026z"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(255, 158, 27)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "miter",
+                            "strokeLinecap": "butt",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        },
+                        {
+                            "fill": "rgb(255, 255, 255)"
+                        }
+                    ],
+                    "isMulticolor": true,
+                    "isMulticolor2": true,
+                    "grid": 0,
+                    "tags": [
+                        "ic_minor_warning_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 2,
+                                "s": 4
+                            },
+                            {
+                                "f": 4
+                            },
+                            {
+                                "f": 4
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 0,
+                    "paths": [
+                        "M117.635 260.154c0-78.711 63.808-142.519 142.519-142.519h504.296c78.711 0 142.519 63.808 142.519 142.519v504.296c0 78.711-63.808 142.519-142.519 142.519h-504.296c-78.711 0-142.519-63.808-142.519-142.519v-504.296z",
+                        "M760.329 614.494c4.954-12.497 7.671-26.078 7.671-40.273 0-58.325-45.862-106.24-104.439-111.518-11.985-70.863-75.277-124.925-151.561-124.925-11.43 0-22.571 1.214-33.293 3.517M391.359 394.67c-15.726 19.372-26.621 42.625-30.918 68.033-58.579 5.278-104.441 53.193-104.441 111.518 0 61.858 51.577 112 115.2 112h281.6c11.674 0 22.946-1.685 33.566-4.826M281.6 288l460.8 448"
+                    ],
+                    "attrs": [
+                        {
+                            "fill": "rgb(250, 0, 250)",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "round",
+                            "strokeLinecap": "round",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        },
+                        {
+                            "fill": "none",
+                            "stroke": "rgb(255, 255, 255)",
+                            "strokeLinejoin": "round",
+                            "strokeLinecap": "round",
+                            "strokeMiterlimit": "4",
+                            "strokeWidth": 64
+                        }
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_not_connected_24_filled"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {
+                                "f": 0,
+                                "s": 4
+                            },
+                            {
+                                "s": 4
+                            }
+                        ]
+                    }
+                }
+            ],
+            "colorThemes": [
+                [
+                    [
+                        250,
+                        0,
+                        250,
+                        1
+                    ],
+                    [
+                        222,
+                        55,
+                        48,
+                        1
+                    ],
+                    [
+                        255,
+                        158,
+                        27,
+                        1
+                    ],
+                    [
+                        165,
+                        165,
+                        165,
+                        1
+                    ],
+                    [
+                        255,
+                        255,
+                        255,
+                        1
+                    ]
+                ]
+            ],
+            "invisible": false,
+            "colorThemeIdx": 0
+        },
+        {
+            "selection": [
+                {
+                    "order": 142,
+                    "id": 70,
+                    "name": "ic_add_24_regular",
+                    "prevSize": 24,
+                    "code": 59648,
+                    "tempChar": ""
+                },
+                {
+                    "order": 143,
+                    "id": 69,
+                    "name": "ic_archive_24_regular",
+                    "prevSize": 24,
+                    "code": 59649,
+                    "tempChar": ""
+                },
+                {
+                    "order": 144,
+                    "id": 68,
+                    "name": "ic_arrow_down_24_regular",
+                    "prevSize": 24,
+                    "code": 59650,
+                    "tempChar": ""
+                },
+                {
+                    "order": 145,
+                    "id": 67,
+                    "name": "ic_arrow_left_24_regular",
+                    "prevSize": 24,
+                    "code": 59651,
+                    "tempChar": ""
+                },
+                {
+                    "order": 146,
+                    "id": 66,
+                    "name": "ic_arrow_right_24_regular",
+                    "prevSize": 24,
+                    "code": 59652,
+                    "tempChar": ""
+                },
+                {
+                    "order": 147,
+                    "id": 65,
+                    "name": "ic_arrow_up_24_regular",
+                    "prevSize": 24,
+                    "code": 59653,
+                    "tempChar": ""
+                },
+                {
+                    "order": 148,
+                    "id": 64,
+                    "name": "ic_audio_on_24_regular",
+                    "prevSize": 24,
+                    "code": 59654,
+                    "tempChar": ""
+                },
+                {
+                    "order": 149,
+                    "id": 63,
+                    "name": "ic_barcode_scanner_24_regular",
+                    "prevSize": 24,
+                    "code": 59655,
+                    "tempChar": ""
+                },
+                {
+                    "order": 150,
+                    "id": 72,
+                    "name": "ic_checkmark_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 151,
+                    "id": 61,
+                    "name": "ic_chevron_down_24_regular",
+                    "prevSize": 24,
+                    "code": 59656,
+                    "tempChar": ""
+                },
+                {
+                    "order": 152,
+                    "id": 60,
+                    "name": "ic_chevron_left_24_regular",
+                    "prevSize": 24,
+                    "code": 59657,
+                    "tempChar": ""
+                },
+                {
+                    "order": 153,
+                    "id": 59,
+                    "name": "ic_chevron_right_24_regular",
+                    "prevSize": 24,
+                    "code": 59658,
+                    "tempChar": ""
+                },
+                {
+                    "order": 154,
+                    "id": 58,
+                    "name": "ic_chevron_up_24_regular",
+                    "prevSize": 24,
+                    "code": 59659,
+                    "tempChar": ""
+                },
+                {
+                    "order": 155,
+                    "id": 56,
+                    "name": "ic_close_page_24_regular",
+                    "prevSize": 24,
+                    "code": 59660,
+                    "tempChar": ""
+                },
+                {
+                    "order": 156,
+                    "id": 55,
+                    "name": "ic_cloud_24_regular",
+                    "prevSize": 24,
+                    "code": 59661,
+                    "tempChar": ""
+                },
+                {
+                    "order": 157,
+                    "id": 54,
+                    "name": "ic_database_24_regular",
+                    "prevSize": 24,
+                    "code": 59662,
+                    "tempChar": ""
+                },
+                {
+                    "order": 158,
+                    "id": 53,
+                    "name": "ic_delete_24_regular",
+                    "prevSize": 24,
+                    "code": 59663,
+                    "tempChar": ""
+                },
+                {
+                    "order": 159,
+                    "id": 71,
+                    "name": "ic_dismiss_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 160,
+                    "id": 51,
+                    "name": "ic_door_close_24_regular",
+                    "prevSize": 24,
+                    "code": 59664,
+                    "tempChar": ""
+                },
+                {
+                    "order": 161,
+                    "id": 50,
+                    "name": "ic_door_open_24_regular",
+                    "prevSize": 24,
+                    "code": 59665,
+                    "tempChar": ""
+                },
+                {
+                    "order": 162,
+                    "id": 49,
+                    "name": "ic_edit_24_regular",
+                    "prevSize": 24,
+                    "code": 59666,
+                    "tempChar": ""
+                },
+                {
+                    "order": 163,
+                    "id": 48,
+                    "name": "ic_ellipses_24_regular",
+                    "prevSize": 24,
+                    "code": 59667,
+                    "tempChar": ""
+                },
+                {
+                    "order": 164,
+                    "id": 79,
+                    "name": "ic_energise_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 165,
+                    "id": 47,
+                    "name": "ic_error_24_regular",
+                    "prevSize": 24,
+                    "code": 59668,
+                    "tempChar": ""
+                },
+                {
+                    "order": 166,
+                    "id": 46,
+                    "name": "ic_exclamation_24_regular",
+                    "prevSize": 24,
+                    "code": 59669,
+                    "tempChar": ""
+                },
+                {
+                    "order": 167,
+                    "id": 45,
+                    "name": "ic_experiment_24_regular",
+                    "prevSize": 24,
+                    "code": 59670,
+                    "tempChar": ""
+                },
+                {
+                    "order": 168,
+                    "id": 44,
+                    "name": "ic_eyedropper_24_regular",
+                    "prevSize": 24,
+                    "code": 59671,
+                    "tempChar": ""
+                },
+                {
+                    "order": 169,
+                    "id": 43,
+                    "name": "ic_file_lock_24_regular",
+                    "prevSize": 24,
+                    "code": 59672,
+                    "tempChar": ""
+                },
+                {
+                    "order": 170,
+                    "id": 80,
+                    "name": "ic_flash_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 171,
+                    "id": 81,
+                    "name": "ic_flash_off_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 172,
+                    "id": 42,
+                    "name": "ic_folder_open_24_regular",
+                    "prevSize": 24,
+                    "code": 59673,
+                    "tempChar": ""
+                },
+                {
+                    "order": 173,
+                    "id": 41,
+                    "name": "ic_glasses_24_regular",
+                    "prevSize": 24,
+                    "code": 59674,
+                    "tempChar": ""
+                },
+                {
+                    "order": 174,
+                    "id": 40,
+                    "name": "ic_globe_24_regular",
+                    "prevSize": 24,
+                    "code": 59675,
+                    "tempChar": ""
+                },
+                {
+                    "order": 175,
+                    "id": 39,
+                    "name": "ic_graph_24_regular",
+                    "prevSize": 24,
+                    "code": 59676,
+                    "tempChar": ""
+                },
+                {
+                    "order": 176,
+                    "id": 38,
+                    "name": "ic_image_24_regular",
+                    "prevSize": 24,
+                    "code": 59677,
+                    "tempChar": ""
+                },
+                {
+                    "order": 177,
+                    "id": 37,
+                    "name": "ic_info_24_regular",
+                    "prevSize": 24,
+                    "code": 59678,
+                    "tempChar": ""
+                },
+                {
+                    "order": 178,
+                    "id": 35,
+                    "name": "ic_invalid_24_regular",
+                    "prevSize": 24,
+                    "code": 59679,
+                    "tempChar": ""
+                },
+                {
+                    "order": 179,
+                    "id": 34,
+                    "name": "ic_laser_crystal_24_regular",
+                    "prevSize": 24,
+                    "code": 59680,
+                    "tempChar": ""
+                },
+                {
+                    "order": 180,
+                    "id": 33,
+                    "name": "ic_laser_source_24_regular",
+                    "prevSize": 24,
+                    "code": 59681,
+                    "tempChar": ""
+                },
+                {
+                    "order": 181,
+                    "id": 77,
+                    "name": "ic_limit_left_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 182,
+                    "id": 78,
+                    "name": "ic_limit_right_24_regular",
+                    "prevSize": 24
+                },
+                {
+                    "order": 183,
+                    "id": 32,
+                    "name": "ic_link_24_regular",
+                    "prevSize": 24,
+                    "code": 59682,
+                    "tempChar": ""
+                },
+                {
+                    "order": 184,
+                    "id": 31,
+                    "name": "ic_lock_closed_24_regular",
+                    "prevSize": 24,
+                    "code": 59683,
+                    "tempChar": ""
+                },
+                {
+                    "order": 185,
+                    "id": 30,
+                    "name": "ic_lock_open_24_regular",
+                    "prevSize": 24,
+                    "code": 59684,
+                    "tempChar": ""
+                },
+                {
+                    "order": 186,
+                    "id": 29,
+                    "name": "ic_maintenance_24_regular",
+                    "prevSize": 24,
+                    "code": 59685,
+                    "tempChar": ""
+                },
+                {
+                    "order": 187,
+                    "id": 26,
+                    "name": "ic_maximize_24_regular",
+                    "prevSize": 24,
+                    "code": 59686,
+                    "tempChar": ""
+                },
+                {
+                    "order": 188,
+                    "id": 25,
+                    "name": "ic_menu_24_regular",
+                    "prevSize": 24,
+                    "code": 59687,
+                    "tempChar": ""
+                },
+                {
+                    "order": 189,
+                    "id": 24,
+                    "name": "ic_minimize_24_regular",
+                    "prevSize": 24,
+                    "code": 59688,
+                    "tempChar": ""
+                },
+                {
+                    "order": 190,
+                    "id": 22,
+                    "name": "ic_network_switch_24_regular",
+                    "prevSize": 24,
+                    "code": 59689,
+                    "tempChar": ""
+                },
+                {
+                    "order": 191,
+                    "id": 20,
+                    "name": "ic_not_connected_24_regular",
+                    "prevSize": 24,
+                    "code": 59690,
+                    "tempChar": ""
+                },
+                {
+                    "order": 192,
+                    "id": 19,
+                    "name": "ic_person_24_regular",
+                    "prevSize": 24,
+                    "code": 59691,
+                    "tempChar": ""
+                },
+                {
+                    "order": 193,
+                    "id": 18,
+                    "name": "ic_pin_24_regular",
+                    "prevSize": 24,
+                    "code": 59692,
+                    "tempChar": ""
+                },
+                {
+                    "order": 194,
+                    "id": 17,
+                    "name": "ic_pin_off_24_regular",
+                    "prevSize": 24,
+                    "code": 59693,
+                    "tempChar": ""
+                },
+                {
+                    "order": 195,
+                    "id": 16,
+                    "name": "ic_play_24_regular",
+                    "prevSize": 24,
+                    "code": 59694,
+                    "tempChar": ""
+                },
+                {
+                    "order": 196,
+                    "id": 15,
+                    "name": "ic_refresh_24_regular",
+                    "prevSize": 24,
+                    "code": 59695,
+                    "tempChar": ""
+                },
+                {
+                    "order": 197,
+                    "id": 14,
+                    "name": "ic_remote_control_24_regular",
+                    "prevSize": 24,
+                    "code": 59696,
+                    "tempChar": ""
+                },
+                {
+                    "order": 198,
+                    "id": 13,
+                    "name": "ic_restore_down_24_regular",
+                    "prevSize": 24,
+                    "code": 59697,
+                    "tempChar": ""
+                },
+                {
+                    "order": 199,
+                    "id": 12,
+                    "name": "ic_sample_24_regular",
+                    "prevSize": 24,
+                    "code": 59698,
+                    "tempChar": ""
+                },
+                {
+                    "order": 200,
+                    "id": 11,
+                    "name": "ic_search_24_regular",
+                    "prevSize": 24,
+                    "code": 59699,
+                    "tempChar": ""
+                },
+                {
+                    "order": 201,
+                    "id": 10,
+                    "name": "ic_server_24_regular",
+                    "prevSize": 24,
+                    "code": 59700,
+                    "tempChar": ""
+                },
+                {
+                    "order": 202,
+                    "id": 9,
+                    "name": "ic_settings_24_regular",
+                    "prevSize": 24,
+                    "code": 59701,
+                    "tempChar": ""
+                },
+                {
+                    "order": 203,
+                    "id": 8,
+                    "name": "ic_share_24_regular",
+                    "prevSize": 24,
+                    "code": 59702,
+                    "tempChar": ""
+                },
+                {
+                    "order": 204,
+                    "id": 7,
+                    "name": "ic_shutter_24_regular",
+                    "prevSize": 24,
+                    "code": 59703,
+                    "tempChar": ""
+                },
+                {
+                    "order": 205,
+                    "id": 6,
+                    "name": "ic_sign_in_24_regular",
+                    "prevSize": 24,
+                    "code": 59704,
+                    "tempChar": ""
+                },
+                {
+                    "order": 206,
+                    "id": 5,
+                    "name": "ic_sign_out_24_regular",
+                    "prevSize": 24,
+                    "code": 59705,
+                    "tempChar": ""
+                },
+                {
+                    "order": 207,
+                    "id": 4,
+                    "name": "ic_skip_left_24_regular",
+                    "prevSize": 24,
+                    "code": 59706,
+                    "tempChar": ""
+                },
+                {
+                    "order": 208,
+                    "id": 3,
+                    "name": "ic_skip_right_24_regular",
+                    "prevSize": 24,
+                    "code": 59707,
+                    "tempChar": ""
+                },
+                {
+                    "order": 209,
+                    "id": 2,
+                    "name": "ic_target_24_regular",
+                    "prevSize": 24,
+                    "code": 59708,
+                    "tempChar": ""
+                },
+                {
+                    "order": 210,
+                    "id": 0,
+                    "name": "ic_warning_24_regular",
+                    "prevSize": 24,
+                    "code": 59709,
+                    "tempChar": ""
+                }
+            ],
+            "id": 0,
+            "metadata": {
+                "name": "Single Color",
+                "license": "MIT License",
+                "licenseURL": "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
+                "designer": "Microsoft",
+                "designerURL": "https://github.com/microsoft/fluentui-system-icons",
+                "importSize": {
+                    "width": 24,
+                    "height": 24
+                }
+            },
+            "height": 1024,
+            "prevSize": 24,
+            "icons": [
+                {
+                    "id": 70,
+                    "paths": [
+                        "M501.325 128c16.201 0 29.594 12.032 31.714 27.651l0.294 4.342 0.051 309.34h309.466c17.673 0 32 14.327 32 32 0 16.201-12.041 29.589-27.657 31.71l-4.343 0.29h-309.466l0.085 309.295c0.004 17.673-14.319 32.009-31.991 32.009-16.201 0-29.594-12.032-31.714-27.652l-0.294-4.343-0.085-309.308h-309.291c-17.673 0-32-14.327-32-32 0-16.201 12.038-29.589 27.658-31.71l4.342-0.29h309.291l-0.051-309.327c-0.004-17.673 14.319-32.006 31.991-32.006z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_add_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 69,
+                    "paths": [
+                        "M437.333 469.333c-17.673 0-32 14.327-32 32s14.327 32 32 32h149.333c17.673 0 32-14.327 32-32s-14.327-32-32-32h-149.333zM128 224c0-53.019 42.981-96 96-96h576c53.018 0 96 42.981 96 96v64c0 33.284-16.939 62.612-42.667 79.834v368.166c0 88.367-71.633 160-160 160h-362.667c-88.366 0-160-71.633-160-160v-368.166c-25.728-17.222-42.667-46.55-42.667-79.834v-64zM234.667 384v352c0 53.018 42.981 96 96 96h362.667c53.018 0 96-42.982 96-96v-352h-554.667zM224 192c-17.673 0-32 14.327-32 32v64c0 17.673 14.327 32 32 32h576c17.673 0 32-14.327 32-32v-64c0-17.673-14.327-32-32-32h-576z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_archive_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 68,
+                    "paths": [
+                        "M844.395 566.071c12.19-12.796 11.695-33.054-1.101-45.244s-33.054-11.695-45.244 1.101l-254.059 266.722v-628.651c0-17.673-14.323-32-32-32-17.673 0-32 14.327-32 32v628.668l-254.071-266.739c-12.189-12.796-32.445-13.291-45.242-1.101s-13.289 32.448-1.1 45.244l301.513 316.54c6.869 7.215 15.633 11.477 24.747 12.796 1.993 0.388 4.049 0.593 6.153 0.593 2.121 0 4.194-0.205 6.199-0.602 9.092-1.327 17.835-5.589 24.691-12.787l301.513-316.54z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_arrow_down_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 67,
+                    "paths": [
+                        "M457.929 844.395c12.796 12.19 33.054 11.695 45.244-1.101s11.695-33.054-1.101-45.244l-266.728-254.063h628.656c17.673 0 32-14.327 32-32s-14.327-32-32-32h-628.66l266.732-254.066c12.796-12.189 13.286-32.445 1.101-45.242-12.19-12.797-32.448-13.289-45.244-1.1l-316.54 301.513c-7.208 6.865-11.472 15.62-12.794 24.725-0.39 1.997-0.594 4.062-0.594 6.17 0 2.116 0.205 4.181 0.596 6.182 1.324 9.101 5.588 17.852 12.792 24.713l316.54 301.513z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_arrow_left_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 66,
+                    "paths": [
+                        "M566.071 179.579c-12.796-12.189-33.054-11.697-45.244 1.1s-11.695 33.052 1.101 45.242l266.726 254.062h-628.655c-17.673 0-32 14.327-32 32s14.327 32 32 32h628.659l-266.731 254.067c-12.796 12.19-13.291 32.448-1.101 45.244s32.448 13.291 45.244 1.101l316.54-301.513c7.206-6.865 11.473-15.625 12.796-24.725 0.388-1.997 0.593-4.062 0.593-6.174s-0.205-4.181-0.597-6.182c-1.323-9.097-5.589-17.847-12.791-24.708l-316.54-301.513z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_arrow_right_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 65,
+                    "paths": [
+                        "M179.579 457.929c-12.189 12.796-11.697 33.054 1.1 45.244s33.052 11.695 45.242-1.101l254.058-266.722v628.651c0 17.673 14.327 32 32 32s32-14.327 32-32v-628.666l254.071 266.737c12.19 12.796 32.448 13.291 45.244 1.101s13.291-32.448 1.101-45.244l-301.513-316.54c-6.874-7.213-15.637-11.478-24.747-12.797-1.993-0.388-4.049-0.591-6.157-0.591-2.121 0-4.194 0.206-6.195 0.6-9.092 1.328-17.835 5.591-24.691 12.788l-301.513 316.54z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_arrow_up_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 64,
+                    "paths": [
+                        "M640 181.312c0-46.021-54.379-70.436-88.768-39.858l-191.64 170.38c-5.858 5.208-13.423 8.085-21.262 8.085h-156.997c-53.019 0-96 42.981-96 96v191.91c0 53.018 42.981 96 96 96h156.995c7.839 0 15.406 2.876 21.264 8.085l191.636 170.398c34.394 30.583 88.772 6.17 88.772-39.855v-661.145zM402.116 359.664l173.884-154.595v613.632l-173.882-154.611c-17.574-15.629-40.273-24.26-63.791-24.26h-156.995c-17.673 0-32-14.327-32-32v-191.91c0-17.673 14.327-32 32-32h156.997c23.515 0 46.213-8.631 63.786-24.255zM810.308 251.599c14.199-10.519 34.24-7.533 44.762 6.668 52.523 70.915 83.597 158.732 83.597 253.712s-31.074 182.797-83.597 253.713c-10.522 14.204-30.562 17.19-44.762 6.669-14.204-10.517-17.186-30.558-6.669-44.762 44.638-60.267 71.027-134.814 71.027-215.62 0-80.802-26.389-155.35-71.027-215.619-10.517-14.202-7.535-34.242 6.669-44.761zM731.435 357.071c15.539-8.413 34.961-2.635 43.375 12.907 22.878 42.266 35.857 90.665 35.857 142.001s-12.979 99.738-35.857 142.003c-8.414 15.539-27.836 21.321-43.375 12.907-15.543-8.414-21.325-27.836-12.911-43.375 17.941-33.143 28.143-71.1 28.143-111.535s-10.202-78.391-28.143-111.533c-8.414-15.542-2.633-34.961 12.911-43.375z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_audio_on_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 63,
+                    "paths": [
+                        "M85.333 245.333c0-64.801 52.532-117.333 117.333-117.333h64c17.673 0 32 14.327 32 32s-14.327 32-32 32h-64c-29.455 0-53.333 23.878-53.333 53.333v64c0 17.673-14.327 32-32 32s-32-14.327-32-32v-64zM725.333 160c0-17.673 14.327-32 32-32h64c64.802 0 117.333 52.532 117.333 117.333v64c0 17.673-14.327 32-32 32s-32-14.327-32-32v-64c0-29.455-23.876-53.333-53.333-53.333h-64c-17.673 0-32-14.327-32-32zM117.333 682.667c17.673 0 32 14.327 32 32v64c0 29.457 23.878 53.333 53.333 53.333h64c17.673 0 32 14.327 32 32s-14.327 32-32 32h-64c-64.801 0-117.333-52.531-117.333-117.333v-64c0-17.673 14.327-32 32-32zM906.667 682.667c17.673 0 32 14.327 32 32v64c0 64.802-52.531 117.333-117.333 117.333h-64c-17.673 0-32-14.327-32-32s14.327-32 32-32h64c29.457 0 53.333-23.876 53.333-53.333v-64c0-17.673 14.327-32 32-32zM245.333 298.667c17.673 0 32 14.327 32 32v362.667c0 17.673-14.327 32-32 32s-32-14.327-32-32v-362.667c0-17.673 14.327-32 32-32zM448 330.667c0-17.673-14.327-32-32-32s-32 14.327-32 32v362.667c0 17.673 14.327 32 32 32s32-14.327 32-32v-362.667zM586.667 298.667c17.673 0 32 14.327 32 32v362.667c0 17.673-14.327 32-32 32s-32-14.327-32-32v-362.667c0-17.673 14.327-32 32-32zM789.333 330.667c0-17.673-14.327-32-32-32s-32 14.327-32 32v362.667c0 17.673 14.327 32 32 32s32-14.327 32-32v-362.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_barcode_scanner_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 72,
+                    "paths": [
+                        "M193.294 553.374c-12.497-12.497-32.758-12.497-45.255 0s-12.497 32.755 0 45.252l192 192c12.497 12.497 32.758 12.497 45.255 0l469.332-469.332c12.497-12.497 12.497-32.758 0-45.255s-32.755-12.497-45.252 0l-446.707 446.704-169.373-169.37z"
+                    ],
+                    "attrs": [
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_checkmark_24_regular"
+                    ]
+                },
+                {
+                    "id": 61,
+                    "paths": [
+                        "M180.039 361.373c12.497-12.497 32.758-12.497 45.255 0l286.706 286.704 286.707-286.704c12.497-12.497 32.755-12.497 45.252 0s12.497 32.758 0 45.255l-309.333 309.332c-12.497 12.497-32.755 12.497-45.252 0l-309.335-309.332c-12.497-12.497-12.497-32.758 0-45.255z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_chevron_down_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 60,
+                    "paths": [
+                        "M662.626 180.039c12.497 12.497 12.497 32.758 0 45.255l-286.705 286.706 286.705 286.707c12.497 12.497 12.497 32.755 0 45.252s-32.755 12.497-45.252 0l-309.335-309.333c-12.497-12.497-12.497-32.755 0-45.252l309.335-309.335c12.497-12.497 32.755-12.497 45.252 0z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_chevron_left_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 59,
+                    "paths": [
+                        "M361.373 180.039c-12.497 12.497-12.497 32.758 0 45.255l286.704 286.706-286.704 286.707c-12.497 12.497-12.497 32.755 0 45.252s32.758 12.497 45.255 0l309.332-309.333c12.497-12.497 12.497-32.755 0-45.252l-309.332-309.335c-12.497-12.497-32.758-12.497-45.255 0z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_chevron_right_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 58,
+                    "paths": [
+                        "M180.039 662.626c12.497 12.497 32.758 12.497 45.255 0l286.706-286.705 286.707 286.705c12.497 12.497 32.755 12.497 45.252 0s12.497-32.755 0-45.252l-309.333-309.335c-12.497-12.497-32.755-12.497-45.252 0l-309.335 309.335c-12.497 12.497-12.497 32.755 0 45.252z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_chevron_up_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 56,
+                    "paths": [
+                        "M350.706 350.706c12.497-12.497 32.758-12.497 45.255 0l116.039 116.038 116.041-116.038c12.497-12.497 32.755-12.497 45.252 0s12.497 32.758 0 45.255l-116.036 116.039 116.036 116.041c12.497 12.497 12.497 32.755 0 45.252s-32.755 12.497-45.252 0l-116.041-116.036-116.039 116.036c-12.497 12.497-32.758 12.497-45.255 0s-12.497-32.755 0-45.252l116.038-116.041-116.038-116.039c-12.497-12.497-12.497-32.758 0-45.255zM266.667 128c-76.584 0-138.667 62.083-138.667 138.667v490.667c0 76.582 62.083 138.667 138.667 138.667h490.667c76.582 0 138.667-62.084 138.667-138.667v-490.667c0-76.584-62.084-138.667-138.667-138.667h-490.667zM192 266.667c0-41.237 33.429-74.667 74.667-74.667h490.667c41.237 0 74.667 33.429 74.667 74.667v490.667c0 41.237-33.429 74.667-74.667 74.667h-490.667c-41.237 0-74.667-33.429-74.667-74.667v-490.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_close_page_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 55,
+                    "paths": [
+                        "M512 234.667c-102.965 0-187.015 81.064-191.786 182.832-0.8 17.070-14.874 30.502-31.965 30.502h-10.916c-70.692 0-128 57.306-128 128s57.308 128 128 128h469.333c70.694 0 128-57.306 128-128s-57.306-128-128-128h-10.914c-17.092 0-31.168-13.431-31.966-30.502-4.77-101.768-88.823-182.832-191.787-182.832zM259.405 384.826c19.98-121.492 125.457-214.159 252.595-214.159s232.614 92.667 252.595 214.159c97.634 9.041 174.071 91.18 174.071 191.174 0 106.039-85.961 192-192 192h-469.333c-106.039 0-192-85.961-192-192 0-99.994 76.439-182.133 174.072-191.174z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_cloud_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 54,
+                    "paths": [
+                        "M170.667 256c0-29.463 13.453-55.183 33.034-75.936 19.421-20.583 46.028-37.666 76.478-51.316 60.974-27.333 142.963-43.414 231.822-43.414s170.846 16.081 231.821 43.414c30.451 13.65 57.058 30.734 76.48 51.316 19.58 20.753 33.033 46.473 33.033 75.936v512c0 29.466-13.453 55.185-33.033 75.938-19.422 20.582-46.029 37.666-76.48 51.315-60.975 27.332-142.963 43.413-231.821 43.413s-170.848-16.081-231.822-43.413c-30.45-13.649-57.057-30.733-76.478-51.315-19.581-20.753-33.034-46.473-33.034-75.938v-512zM234.667 256c0 8.828 3.859 19.588 15.584 32.015 11.886 12.597 30.579 25.393 56.108 36.838 50.983 22.854 123.662 37.815 205.642 37.815s154.658-14.96 205.641-37.815c25.527-11.444 44.224-24.24 56.111-36.838 11.725-12.427 15.582-23.186 15.582-32.015s-3.857-19.588-15.582-32.015c-11.887-12.597-30.583-25.394-56.111-36.838-50.982-22.854-123.661-37.815-205.641-37.815s-154.659 14.96-205.642 37.815c-25.528 11.444-44.222 24.24-56.108 36.838-11.725 12.427-15.584 23.186-15.584 32.015zM789.333 358.077c-13.692 9.404-29.039 17.792-45.513 25.176-60.975 27.333-142.963 43.414-231.821 43.414s-170.848-16.081-231.822-43.414c-16.471-7.384-31.818-15.772-45.512-25.176v409.923c0 8.828 3.859 19.588 15.584 32.013 11.886 12.599 30.579 25.395 56.108 36.838 50.983 22.857 123.662 37.815 205.642 37.815s154.658-14.959 205.641-37.815c25.527-11.443 44.224-24.239 56.111-36.838 11.725-12.425 15.582-23.185 15.582-32.013v-409.923z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_database_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 53,
+                    "paths": [
+                        "M426.667 213.333h170.667c0-47.128-38.204-85.333-85.333-85.333s-85.333 38.205-85.333 85.333zM362.667 213.333c0-82.475 66.859-149.333 149.333-149.333s149.333 66.859 149.333 149.333h245.333c17.673 0 32 14.327 32 32s-14.327 32-32 32h-56.282l-50.005 516.745c-7.936 82.014-76.86 144.589-159.258 144.589h-258.245c-82.396 0-151.319-62.575-159.256-144.589l-50.007-516.745h-56.281c-17.673 0-32-14.327-32-32s14.327-32 32-32h245.333zM448 416c0-17.673-14.327-32-32-32s-32 14.327-32 32v320c0 17.673 14.327 32 32 32s32-14.327 32-32v-320zM608 384c17.673 0 32 14.327 32 32v320c0 17.673-14.327 32-32 32s-32-14.327-32-32v-320c0-17.673 14.327-32 32-32zM287.324 787.913c4.762 49.207 46.116 86.754 95.553 86.754h258.245c49.438 0 90.79-37.547 95.552-86.754l49.412-510.579h-548.174l49.411 510.579z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_delete_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 71,
+                    "paths": [
+                        "M187.607 194.295l3.098-3.589c11.361-11.361 29.138-12.393 41.666-3.098l3.589 3.098 276.039 276.025 276.041-276.025c12.497-12.497 32.755-12.497 45.252 0s12.497 32.758 0 45.255l-276.023 276.039 276.023 276.041c11.362 11.358 12.395 29.137 3.098 41.664l-3.098 3.588c-11.358 11.362-29.137 12.395-41.664 3.098l-3.588-3.098-276.041-276.023-276.039 276.023c-12.497 12.497-32.758 12.497-45.255 0s-12.497-32.755 0-45.252l276.025-276.041-276.025-276.039c-11.361-11.361-12.393-29.138-3.098-41.666v0z"
+                    ],
+                    "attrs": [
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_dismiss_24_regular"
+                    ]
+                },
+                {
+                    "id": 51,
+                    "paths": [
+                        "M392.533 572.954c32.99 0 59.733-27.29 59.733-60.954s-26.743-60.954-59.733-60.954c-32.99 0-59.733 27.29-59.733 60.954s26.743 60.954 59.733 60.954zM332.8 85.333c-65.98 0-119.467 54.579-119.467 121.905v609.526c0 67.324 53.487 121.903 119.467 121.903h358.4c65.98 0 119.467-54.579 119.467-121.903v-609.526c0-67.326-53.487-121.905-119.467-121.905h-358.4zM273.067 207.238c0-33.663 26.743-60.952 59.733-60.952h358.4c32.99 0 59.733 27.289 59.733 60.952v609.526c0 33.66-26.743 60.949-59.733 60.949h-358.4c-32.99 0-59.733-27.29-59.733-60.949v-609.526z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_door_close_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 50,
+                    "paths": [
+                        "M461.713 85.466l4.284 0.713 362.667 85.333c13.009 3.061 22.583 13.815 24.371 26.761l0.299 4.389v618.668c0 13.363-8.273 25.148-20.467 29.85l-4.203 1.297-362.667 85.333c-18.654 4.39-36.578-8.435-39.044-26.812l-0.286-4.335v-789.334c0-17.687 14.135-31.411 30.827-31.995l4.22 0.133zM490.667 157.731v708.526l298.667-70.272v-567.979l-298.667-70.275zM384 170.662v64h-149.333v554.668h149.333v64h-181.333c-16.201 0-29.589-12.041-31.708-27.657l-0.292-4.343v-618.668c0-16.2 12.038-29.589 27.658-31.708l4.342-0.292h181.333zM597.333 469.329c23.565 0 42.667 19.102 42.667 42.667s-19.102 42.667-42.667 42.667c-23.565 0-42.667-19.102-42.667-42.667s19.102-42.667 42.667-42.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_door_open_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 49,
+                    "paths": [
+                        "M893.948 130.052c-59.631-59.628-156.305-59.625-215.927 0.006l-509.87 509.929c-17.337 17.34-29.522 39.147-35.201 62.997l-46.745 196.331c-2.574 10.812 0.645 22.182 8.502 30.037 7.858 7.859 19.229 11.076 30.039 8.503l196.32-46.741c23.859-5.683 45.674-17.873 63.016-35.217l509.871-509.93c59.618-59.626 59.618-156.293-0.004-215.915zM723.277 175.311c34.628-34.635 90.782-34.636 125.414-0.003 34.628 34.63 34.633 90.776 0.004 125.408l-38.029 38.035-125.414-125.412 38.025-38.028zM640 258.596l125.414 125.412-426.59 426.638c-8.966 8.969-20.246 15.27-32.582 18.21l-145.734 34.697 34.701-145.741c2.936-12.335 9.236-23.607 18.199-32.572l426.592-426.644z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_edit_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 48,
+                    "paths": [
+                        "M330.667 512c0 41.237-33.429 74.667-74.667 74.667s-74.667-33.429-74.667-74.667c0-41.237 33.429-74.667 74.667-74.667s74.667 33.429 74.667 74.667zM586.667 512c0 41.237-33.429 74.667-74.667 74.667s-74.667-33.429-74.667-74.667c0-41.237 33.429-74.667 74.667-74.667s74.667 33.429 74.667 74.667zM768 586.667c41.237 0 74.667-33.429 74.667-74.667s-33.429-74.667-74.667-74.667c-41.237 0-74.667 33.429-74.667 74.667s33.429 74.667 74.667 74.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_ellipses_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 79,
+                    "paths": [
+                        "M350.014 869.781c-9.398-14.327-3.899-32.691 12.281-41.011l185.174-95.245c16.179-8.32 36.915-3.452 46.315 10.876 9.395 14.327 3.9 32.691-12.284 41.011l-185.172 95.245c-16.18 8.324-36.916 3.452-46.313-10.876z",
+                        "M525.376 107.111c15.71 7.797 20.412 26.113 10.5 40.909l-205.748 307.183c-9.91 14.797-30.678 20.467-46.386 12.672-15.708-7.799-20.409-26.112-10.499-40.909l205.749-307.183c9.907-14.796 30.677-20.469 46.383-12.672z",
+                        "M696.132 394.676c2.065 17.552-10.487 33.455-28.041 35.52l-362.668 42.667c-17.552 2.065-33.455-10.492-35.52-28.041-2.065-17.553 10.49-33.456 28.042-35.521l362.666-42.667c17.553-2.065 33.455 10.49 35.52 28.042z",
+                        "M362.437 881.728c-16.224-7.219-21.823-25.161-12.504-40.077l285.041-456.301c9.318-14.918 30.029-21.161 46.251-13.946 16.226 7.216 21.824 25.159 12.506 40.076l-285.043 456.299c-9.319 14.916-30.026 21.163-46.25 13.948z",
+                        "M383.796 885.905c-17.887 1.365-34.394-11.486-36.871-28.715l-26.645-185.348c-2.476-17.225 10.016-32.299 27.903-33.668s34.394 11.486 36.87 28.71l26.645 185.348c2.476 17.229-10.016 32.303-27.903 33.673z"
+                    ],
+                    "attrs": [
+                        {},
+                        {},
+                        {},
+                        {},
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_energise_24_regular"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {},
+                            {},
+                            {},
+                            {},
+                            {}
+                        ]
+                    }
+                },
+                {
+                    "id": 47,
+                    "paths": [
+                        "M512 85.333c235.648 0 426.667 191.061 426.667 426.667s-191.019 426.667-426.667 426.667c-235.648 0-426.667-191.061-426.667-426.667s191.019-426.667 426.667-426.667zM512 156.459c-196.053 0-355.541 159.488-355.541 355.541s159.488 355.541 355.541 355.541c196.053 0 355.541-159.488 355.541-355.541s-159.488-355.541-355.541-355.541zM511.945 618.761c23.531 0 42.607 19.081 42.607 42.611s-19.076 42.611-42.607 42.611c-23.535 0-42.611-19.081-42.611-42.611s19.076-42.611 42.611-42.611zM511.765 298.667c16.201-0.013 29.598 12.015 31.727 27.633l0.299 4.342 0.154 192.068c0.013 17.673-14.302 32.013-31.974 32.026-16.201 0.013-29.602-12.015-31.731-27.631l-0.294-4.343-0.154-192.068c-0.017-17.673 14.298-32.012 31.974-32.026z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_error_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 46,
+                    "paths": [
+                        "M511.945 810.778c23.531 0 42.607 19.076 42.607 42.611 0 23.531-19.076 42.607-42.607 42.607-23.535 0-42.611-19.076-42.611-42.607 0-23.535 19.076-42.611 42.611-42.611zM512 170.667c16.201-0.013 29.598 12.015 31.731 27.633l0.294 4.342-0.081 469.419c0.013 17.673-14.302 32.009-31.974 32.026-16.201 0.013-29.602-12.015-31.731-27.635l-0.294-4.339 0.081-469.419c-0.013-17.673 14.302-32.012 31.974-32.026z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_exclamation_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 45,
+                    "paths": [
+                        "M682.667 512c117.82 0 213.333-95.513 213.333-213.333s-95.514-213.333-213.333-213.333c-117.82 0-213.333 95.513-213.333 213.333 0 38.673 10.291 74.943 28.284 106.221l-115.788 77.143c-31.2-34.031-76.023-55.364-125.829-55.364-94.257 0-170.667 76.412-170.667 170.667s76.41 170.667 170.667 170.667c55.295 0 104.448-26.295 135.636-67.068l165.847 82.914c-1.847 8.649-2.816 17.621-2.816 26.82 0 70.694 57.306 128 128 128s128-57.306 128-128c0-70.694-57.306-128-128-128-38.524 0-73.071 17.020-96.538 43.947l-165.838-82.906c4.154-14.746 6.376-30.302 6.376-46.374 0-21.431-3.95-41.937-11.161-60.834l122.137-81.374c38.059 35.294 89.020 56.875 145.024 56.875zM682.667 448c-82.475 0-149.333-66.859-149.333-149.333s66.859-149.333 149.333-149.333c82.475 0 149.333 66.859 149.333 149.333s-66.859 149.333-149.333 149.333zM256 704c-58.91 0-106.667-47.757-106.667-106.667s47.756-106.667 106.667-106.667c58.91 0 106.667 47.757 106.667 106.667s-47.756 106.667-106.667 106.667zM746.667 810.667c0 35.345-28.655 64-64 64s-64-28.655-64-64c0-35.345 28.655-64 64-64s64 28.655 64 64z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_experiment_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 44,
+                    "paths": [
+                        "M897.293 126.719c-59.622-59.625-156.297-59.625-215.919 0l-84.041 84.040-0.538-0.536c-29.158-29.159-76.433-29.159-105.596-0l-24.99 24.994c-29.163 29.159-29.163 76.436 0 105.595l0.538 0.539-289.291 289.289c-18.003 18.005-28.118 42.423-28.118 67.883v29.333l-54.627 100.147c-35.67 65.395 35.908 136.977 101.304 101.303l100.15-54.626h29.33c25.461 0 49.879-10.112 67.882-28.117l289.293-289.289 0.529 0.529c29.163 29.163 76.437 29.163 105.596 0l24.994-24.99c29.158-29.163 29.158-76.437 0-105.596l-0.538-0.538 84.041-84.039c59.627-59.625 59.627-156.296 0-215.921zM726.626 171.974c34.633-34.631 90.782-34.631 125.414 0 34.628 34.632 34.628 90.781 0 125.412l-106.667 106.668c-12.497 12.497-12.497 32.76 0 45.253l23.159 23.164c4.169 4.169 4.169 10.923 0 15.087l-24.99 24.994c-4.169 4.164-10.923 4.164-15.087 0l-216.994-216.994c-4.164-4.166-4.164-10.92 0-15.085l24.994-24.994c4.164-4.166 10.918-4.166 15.087 0l23.164 23.163c12.493 12.497 32.755 12.497 45.252 0l106.667-106.668zM637.414 512.017l-289.291 289.289c-6.001 6.003-14.14 9.374-22.627 9.374h-37.49c-5.354 0-10.623 1.344-15.323 3.908l-107.313 58.534c-2.95 1.609-5.14 1.681-6.777 1.391-1.908-0.337-4.040-1.378-5.873-3.213s-2.875-3.964-3.213-5.875c-0.29-1.634-0.218-3.827 1.391-6.775l58.535-107.311c2.564-4.702 3.907-9.971 3.907-15.326v-37.491c0-8.486 3.371-16.623 9.373-22.626l289.292-289.291 125.41 125.412z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_eyedropper_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 43,
+                    "paths": [
+                        "M789.333 853.333c0 11.733-9.557 21.333-21.333 21.333h-256v42.667c0 7.305-0.734 14.438-2.133 21.333h258.133c47.104 0 85.333-38.229 85.333-85.333v-434.005c0-22.613-9.003-44.331-25.003-60.331l-248.704-248.661c-0.64-0.638-1.361-1.191-2.078-1.741-0.533-0.407-1.058-0.811-1.549-1.246-3.029-2.731-6.016-5.419-9.344-7.68-1.079-0.728-2.257-1.302-3.435-1.874-0.683-0.333-1.365-0.666-2.027-1.027-0.713-0.401-1.421-0.812-2.133-1.223-2.313-1.338-4.634-2.682-7.083-3.726-8.405-3.499-17.451-5.248-26.624-5.888-0.841-0.054-1.673-0.167-2.509-0.281-1.156-0.158-2.317-0.316-3.507-0.316h-263.339c-47.104 0-85.333 38.229-85.333 85.333v322.155c17.487-17.843 39.417-31.322 64-38.639v-283.516c0-11.733 9.557-21.333 21.333-21.333h256v192c0 47.104 38.229 85.333 85.333 85.333h192v426.667zM576 197.163l165.461 165.504h-144.128c-11.776 0-21.333-9.6-21.333-21.333v-144.171zM170.667 640h-21.333c-35.346 0-64 28.655-64 64v213.333c0 35.345 28.654 64 64 64h256c35.345 0 64-28.655 64-64v-213.333c0-35.345-28.655-64-64-64h-21.333v-42.667c0-58.91-47.756-106.667-106.667-106.667s-106.667 47.757-106.667 106.667v42.667zM234.667 597.333c0-23.565 19.103-42.667 42.667-42.667s42.667 19.102 42.667 42.667v42.667h-85.333v-42.667zM320 810.667c0 23.565-19.103 42.667-42.667 42.667s-42.667-19.102-42.667-42.667c0-23.565 19.103-42.667 42.667-42.667s42.667 19.102 42.667 42.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_file_lock_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 80,
+                    "paths": [
+                        "M274.094 120.769c7.569-21.247 27.686-35.436 50.24-35.436h275.354c36.403 0 62.11 35.664 50.598 70.199l-61.935 185.801h168.909c47.108 0 71.083 56.611 38.302 90.445l-471.935 487.091c-44.96 46.404-122.537 4.531-108.418-58.517l54.154-241.839-66.921-0.256c-51.488-0.196-87.33-51.221-70.051-99.721l141.702-397.768zM331.857 149.333l-139.177 390.677c-2.469 6.929 2.652 14.221 10.007 14.246l106.722 0.41c9.694 0.038 18.848 4.467 24.893 12.045s8.329 17.489 6.211 26.948l-62.851 280.678 454.407-469.005h-188.117c-10.287 0-19.942-4.945-25.958-13.289s-7.65-19.072-4.399-28.83l71.296-213.881h-253.034z"
+                    ],
+                    "attrs": [
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_flash_24_regular"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {}
+                        ]
+                    }
+                },
+                {
+                    "id": 81,
+                    "paths": [
+                        "M253.391 298.65l-158.686-158.689c-12.497-12.497-12.496-32.758 0.001-45.255s32.758-12.496 45.255 0.001l789.323 789.338c12.497 12.497 12.497 32.759 0 45.257s-32.759 12.497-45.257 0l-268.087-268.096-249.646 257.664c-44.96 46.404-122.537 4.531-108.418-58.517l54.154-241.839-66.921-0.256c-51.488-0.196-87.33-51.221-70.051-99.721l78.333-219.887zM570.679 615.945l-267.194-267.2-68.138 191.266c-2.469 6.929 2.652 14.221 10.007 14.246l106.722 0.41c9.694 0.038 18.848 4.467 24.893 12.045s8.329 17.489 6.211 26.948l-62.851 280.678 250.35-258.394zM774.737 405.333l-114.982 118.677 45.257 45.261 133.218-137.493c32.781-33.833 8.806-90.445-38.302-90.445h-168.909l61.935-185.801c11.511-34.535-14.195-70.199-50.598-70.199h-275.354c-22.555 0-42.671 14.188-50.24 35.436l-15.824 44.419 50.094 50.095 23.494-65.95h253.034l-71.296 213.881c-3.251 9.758-1.617 20.486 4.399 28.83s15.671 13.289 25.958 13.289h188.117z"
+                    ],
+                    "attrs": [
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_flash_off_24_regular"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {}
+                        ]
+                    }
+                },
+                {
+                    "id": 42,
+                    "paths": [
+                        "M853.355 405.418v-32.090c0-53.019-42.982-96-96-96h-244.279l-101.591-84.476c-17.241-14.337-38.957-22.186-61.38-22.186h-168.769c-53.007 0-95.982 42.961-96 95.967l-0.169 490.666c-0.018 53.035 42.968 96.034 96 96.034h1.125c0.175 0 0.351 0 0.527 0h605.227c34.261 0 64.124-23.313 72.435-56.55l74.662-298.586c11.785-47.125-23.859-92.78-72.435-92.78h-9.353zM181.336 234.667h168.769c7.474 0 14.713 2.616 20.46 7.395l110.481 91.871c5.747 4.779 12.988 7.395 20.463 7.395h255.846c17.673 0 32 14.327 32 32v32.090h-515.249c-44.053 0-82.452 29.983-93.135 72.722l-31.751 127.031 0.117-338.516c0.006-17.669 14.331-31.989 32-31.989zM243.060 493.658c3.561-14.246 16.361-24.239 31.045-24.239h588.602c6.938 0 12.032 6.519 10.347 13.252l-74.662 298.586c-1.186 4.749-5.453 8.077-10.347 8.077h-605.227c-6.939 0-12.031-6.519-10.348-13.252l70.59-282.423z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_folder_open_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 41,
+                    "paths": [
+                        "M337.444 213.333h57.199c17.673 0 32 14.327 32 32 0 16.201-12.039 29.589-27.658 31.708l-4.342 0.292h-57.199c-7.465 0-14.644 2.607-20.337 7.293l-3.228 3.057-88.471 96.273 147.875 0.024c49.479 0 90.213 37.432 95.436 85.523h86.511c5.222-48.091 45.956-85.523 95.437-85.523l148.352-0.024-88.883-96.324c-5.052-5.472-11.814-8.977-19.098-9.993l-4.425-0.307h-57.421c-17.673 0-32-14.327-32-32 0-16.201 12.041-29.589 27.661-31.708l4.339-0.292h57.421c24.124 0 47.253 9.075 64.887 25.249l5.67 5.652 155.388 168.413c2.146 2.324 3.878 4.88 5.205 7.58 13.052 16.399 20.851 37.164 20.851 59.756v149.184c0 76.582-62.080 138.667-138.667 138.667h-106.615c-76.582 0-138.667-62.084-138.667-138.667l-0.043-95.663h-85.376l0.034 95.663c0 76.582-62.082 138.667-138.665 138.667h-106.617c-76.584 0-138.667-62.084-138.667-138.667v-149.184c0-23.966 8.779-45.875 23.297-62.696l1.613-2.354 1.872-2.236 154.635-168.313c16.362-17.809 38.768-28.713 62.676-30.716l8.018-0.335v0zM373.283 447.983h-191.95c-17.673 0-32 14.323-32 32v149.184c0 41.237 33.429 74.667 74.667 74.667h106.617c41.237 0 74.667-33.429 74.667-74.667v-149.184c0-17.677-14.327-32-32-32zM842.615 447.983h-191.949c-17.673 0-32 14.323-32 32v149.184c0 41.237 33.429 74.667 74.667 74.667h106.615c41.237 0 74.667-33.429 74.667-74.667v-149.184c0-17.677-14.327-32-32-32z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_glasses_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 40,
+                    "paths": [
+                        "M512.004 85.25c235.678 0 426.731 191.055 426.731 426.733s-191.053 426.731-426.731 426.731c-235.679 0-426.733-191.053-426.733-426.731s191.055-426.733 426.733-426.733zM637.397 703.97h-250.787c27.82 103.006 76.178 170.743 125.394 170.743s97.57-67.738 125.393-170.743zM320.358 703.996l-116.16-0.004c40.889 65.408 102.050 116.847 174.685 145.519-22.284-34.978-40.673-78.767-54.198-128.661l-4.327-16.853zM819.81 703.991l-116.16 0.004c-13.815 56.909-33.766 106.65-58.573 145.515 68.139-26.88 126.153-73.771 166.831-133.423l7.902-12.096zM302.656 426.622h-143.258l-0.203 0.736c-6.489 27.149-9.925 55.484-9.925 84.625 0 45.065 8.217 88.205 23.235 128.013l135.388-0.017c-6.071-40.495-9.289-83.511-9.289-127.996 0-29.184 1.385-57.737 4.052-85.361zM656.939 426.624h-289.871c-2.902 27.319-4.464 55.893-4.464 85.359 0 45.205 3.676 88.311 10.229 128.004h278.342c6.554-39.693 10.227-82.799 10.227-128.004 0-29.466-1.562-58.039-4.463-85.359zM864.627 426.586l-143.275 0.037c2.667 27.624 4.049 56.176 4.049 85.36 0 44.484-3.217 87.501-9.289 127.996l135.39 0.017c15.014-39.808 23.232-82.948 23.232-128.013 0-29.414-3.499-58.010-10.108-85.397zM378.929 174.453l-0.977 0.372c-87.352 34.761-158.009 102.486-196.608 187.814l130.053 0.016c13.37-74.786 36.702-139.892 67.532-188.201zM512.004 149.25l-4.937 0.226c-53.99 4.939-106.15 90.356-130.372 213.161h270.618c-24.158-122.46-76.092-207.743-129.92-213.117l-5.389-0.269zM645.124 174.456l4.557 7.428c28.553 47.465 50.236 109.754 62.929 180.771l130.052-0.016c-36.89-81.553-103.066-147.027-185.114-183.009l-12.425-5.174z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_globe_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 39,
+                    "paths": [
+                        "M128 160c0-17.673 14.327-32 32-32s32 14.327 32 32v266.995l155.764-81.979c9.804-5.16 21.579-4.881 31.128 0.736l162.961 95.861 238.946-179.213c9.698-7.273 22.673-8.442 33.51-3.022 10.842 5.42 17.69 16.501 17.69 28.622v544h32c17.673 0 32 14.327 32 32s-14.327 32-32 32h-704c-17.673 0-32-14.327-32-32v-383.398c-0.007-0.384-0.007-0.768 0-1.152v-319.45zM192 499.319v332.681h576v-480l-204.8 153.6c-10.325 7.744-24.294 8.529-35.422 1.984l-165.975-97.634-169.803 89.369z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_graph_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 38,
+                    "paths": [
+                        "M757.333 128c76.582 0 138.667 62.083 138.667 138.667v490.667c0 76.582-62.084 138.667-138.667 138.667h-490.667c-76.584 0-138.667-62.084-138.667-138.667v-490.667c0-76.584 62.083-138.667 138.667-138.667h490.667zM782.101 827.793l-247.714-242.628c-11.311-11.072-28.783-12.083-41.212-3.021l-3.567 3.021-247.755 242.615c7.763 2.731 16.114 4.22 24.813 4.22h490.667c8.683 0 17.020-1.481 24.768-4.207v0zM757.333 192h-490.667c-41.237 0-74.667 33.429-74.667 74.667v490.667c0 8.892 1.554 17.421 4.406 25.331l248.428-243.23c35.546-34.803 91.379-36.459 128.853-4.966l5.478 4.971 248.414 243.268c2.859-7.923 4.42-16.465 4.42-25.374v-490.667c0-41.237-33.429-74.667-74.667-74.667zM650.756 277.333c53.069 0 96.090 43.021 96.090 96.090s-43.021 96.089-96.090 96.089c-53.069 0-96.090-43.020-96.090-96.089s43.021-96.090 96.090-96.090zM650.756 341.333c-17.724 0-32.090 14.367-32.090 32.090s14.366 32.090 32.090 32.090c17.724 0 32.090-14.367 32.090-32.090s-14.366-32.090-32.090-32.090z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_image_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 37,
+                    "paths": [
+                        "M512.004 85.25c235.678 0 426.731 191.055 426.731 426.733s-191.053 426.731-426.731 426.731c-235.679 0-426.733-191.053-426.733-426.731s191.055-426.733 426.733-426.733zM512.004 149.25c-200.332 0-362.733 162.401-362.733 362.733s162.401 362.731 362.733 362.731c200.333 0 362.731-162.398 362.731-362.731s-162.398-362.733-362.731-362.733zM511.846 447.94c16.201-0.009 29.598 12.019 31.727 27.639l0.294 4.339 0.154 234.735c0.013 17.673-14.306 32.013-31.979 32.021-16.201 0.013-29.598-12.019-31.727-27.635l-0.294-4.343-0.154-234.735c-0.009-17.673 14.306-32.009 31.979-32.021zM512.021 298.703c23.535 0 42.611 19.077 42.611 42.61s-19.076 42.609-42.611 42.609c-23.531 0-42.607-19.077-42.607-42.609s19.076-42.61 42.607-42.61z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_info_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 35,
+                    "paths": [
+                        "M512 170.667c-117.94 0-213.333 95.394-213.333 213.333 0 17.673 14.327 32 32 32s32-14.327 32-32c0-82.594 66.739-149.333 149.333-149.333s149.333 66.74 149.333 149.333c0 36.343-9.451 60.565-22.566 79.339-13.82 19.785-32.717 35.123-55.539 52.574-1.937 1.481-3.9 2.978-5.892 4.489-43.11 32.777-97.335 73.997-97.335 162.266v10.667c0 17.673 14.327 32 32 32s32-14.327 32-32v-10.667c0-56.205 30.464-79.492 76.173-114.436l1.933-1.476c22.511-17.216 48.947-37.879 69.129-66.761 20.881-29.892 34.099-67.004 34.099-115.994 0-117.94-95.394-213.333-213.333-213.333zM512 896c23.565 0 42.667-19.102 42.667-42.667s-19.102-42.667-42.667-42.667c-23.565 0-42.667 19.102-42.667 42.667s19.102 42.667 42.667 42.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_invalid_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 34,
+                    "paths": [
+                        "M767.953 128c10.278 0 19.836 4.926 25.809 13.077l2.334 3.686 139.243 257.208 1.617 3.963 0.516 1.699 0.858 4.36 0.247 4.007c0 2.946-0.397 5.798-1.143 8.507l-2.022 5.377-1.6 2.927c-0.943 1.519-2.014 2.97-3.221 4.339l2.551-3.302-1.045 1.459-394.658 448.239c-3.418 4.535-7.825 7.834-12.685 9.894l-4.19 1.408-3.294 0.742-5.299 0.422-4.279-0.282-5.030-1.088c-2.569-0.738-5.069-1.826-7.407-3.243l-0.393-0.32c-2.010-1.207-3.887-2.684-5.594-4.403l-397.455-451.371-1.71-2.496c-2.367-3.823-3.95-8.179-4.527-12.849l-0.243-3.962 0.122-2.81 0.564-3.787c0.264-1.277 0.601-2.504 1.007-3.699l0.974-2.496 1.195-2.446 138.622-256c4.894-9.037 13.775-15.093 23.788-16.466l4.352-0.297h511.998zM639.872 448h-255.957l128.038 327.979 127.919-327.979zM315.264 448h-127.147l228.309 259.157-101.163-259.157zM835.712 448h-127.104l-101.035 258.987 228.139-258.987zM382.763 192h-107.778l-104.019 192h150.357l61.44-192zM573.905 192h-123.947l-61.478 192h246.827l-61.402-192zM748.881 192h-107.772l61.44 192h150.272l-103.94-192z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_laser_crystal_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 33,
+                    "paths": [
+                        "M192.334 86.505c-17.704 0-32.056 14.352-32.056 32.056v122.949c0 37.619 19.633 70.645 49.18 89.403v33.546c0 44.865 36.37 81.236 81.236 81.236h189.252v164.659c0 17.707 14.353 32.060 32.055 32.060 17.707 0 32.055-14.353 32.055-32.060v-164.659h189.252c44.868 0 81.237-36.371 81.237-81.236v-33.546c29.547-18.758 49.178-51.784 49.178-89.403v-122.949c0-17.705-14.349-32.056-32.055-32.056-17.702 0-32.055 14.352-32.055 32.056v122.949c0 23.037-18.675 41.713-41.715 41.713h-491.793c-23.037 0-41.713-18.676-41.713-41.713v-122.949c0-17.705-14.352-32.056-32.057-32.056zM273.57 364.46v-17.123h476.86v17.123c0 9.457-7.663 17.123-17.122 17.123h-442.615c-9.457 0-17.123-7.666-17.123-17.123z",
+                        "M290.693 676.659c-17.704 0-32.056 14.353-32.056 32.055 0 17.707 14.352 32.060 32.056 32.060h73.769c17.705 0 32.056-14.353 32.056-32.060 0-17.702-14.352-32.055-32.056-32.055h-73.769z",
+                        "M512 676.659c-17.702 0-32.055 14.353-32.055 32.055 0 17.707 14.353 32.060 32.055 32.060 17.707 0 32.055-14.353 32.055-32.060 0-17.702-14.349-32.055-32.055-32.055z",
+                        "M659.541 676.659c-17.707 0-32.060 14.353-32.060 32.055 0 17.707 14.353 32.060 32.060 32.060h73.766c17.707 0 32.055-14.353 32.055-32.060 0-17.702-14.349-32.055-32.055-32.055h-73.766z",
+                        "M460.898 735.228c-12.518-12.518-32.815-12.518-45.334 0l-73.769 73.771c-12.519 12.518-12.519 32.815 0 45.333s32.816 12.518 45.335 0l73.769-73.771c12.518-12.518 12.518-32.815 0-45.333z",
+                        "M608.439 735.228c-12.523-12.518-32.819-12.518-45.338 0s-12.518 32.815 0 45.333l73.771 73.771c12.518 12.518 32.815 12.518 45.333 0s12.518-32.815 0-45.333l-73.766-73.771z",
+                        "M512 775.019c-17.702 0-32.055 14.353-32.055 32.055v98.359c0 17.707 14.353 32.055 32.055 32.055 17.707 0 32.055-14.349 32.055-32.055v-98.359c0-17.702-14.349-32.055-32.055-32.055z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_laser_source_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 77,
+                    "paths": [
+                        "M896 522.667c0 17.673-14.327 32-32 32h-370.743l158.703 158.707c12.497 12.497 12.497 32.755 0 45.252s-32.755 12.497-45.252 0l-213.335-213.333c-12.497-12.497-12.497-32.755 0-45.252l213.335-213.335c12.497-12.497 32.755-12.497 45.252 0s12.497 32.758 0 45.255l-158.703 158.706h370.743c17.673 0 32 14.327 32 32zM224 213.333c53.019 0 96 42.981 96 96v426.667c0 53.018-42.981 96-96 96h-21.333c-17.673 0-32-14.327-32-32s14.327-32 32-32h21.333c17.673 0 32-14.327 32-32v-426.667c0-17.673-14.327-32-32-32h-21.333c-17.673 0-32-14.327-32-32s14.327-32 32-32h21.333z"
+                    ],
+                    "attrs": [
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_limit_left_24_regular"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {}
+                        ]
+                    }
+                },
+                {
+                    "id": 78,
+                    "paths": [
+                        "M170.667 522.667c0-17.673 14.327-32 32-32h370.743l-158.704-158.706c-12.497-12.497-12.497-32.758 0-45.255 12.498-12.497 32.756-12.497 45.254 0l213.333 213.335c12.497 12.497 12.497 32.755 0 45.252l-213.333 213.333c-12.497 12.497-32.755 12.497-45.254 0-12.497-12.497-12.497-32.755 0-45.252l158.704-158.707h-370.743c-17.673 0-32-14.327-32-32zM842.667 832c-53.018 0-96-42.982-96-96v-426.667c0-53.019 42.982-96 96-96h21.333c17.673 0 32 14.327 32 32s-14.327 32-32 32h-21.333c-17.673 0-32 14.327-32 32v426.667c0 17.673 14.327 32 32 32h21.333c17.673 0 32 14.327 32 32s-14.327 32-32 32h-21.333z"
+                    ],
+                    "attrs": [
+                        {}
+                    ],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_limit_right_24_regular"
+                    ],
+                    "colorPermutations": {
+                        "165165165122255481250025012551582712552552551": [
+                            {}
+                        ]
+                    }
+                },
+                {
+                    "id": 32,
+                    "paths": [
+                        "M394.667 298.667c17.673 0 32 14.327 32 32 0 16.067-11.84 29.367-27.271 31.653l-4.729 0.347h-96c-82.475 0-149.333 66.859-149.333 149.333 0 79.531 62.168 144.538 140.559 149.082l8.774 0.252h96c17.673 0 32 14.327 32 32 0 16.068-11.84 29.367-27.271 31.654l-4.729 0.346h-96c-117.821 0-213.333-95.514-213.333-213.333 0-114.25 89.812-207.524 202.686-213.072l10.647-0.261h96zM725.333 298.667c117.82 0 213.333 95.513 213.333 213.333 0 114.249-89.813 207.522-202.688 213.073l-10.645 0.26h-96c-17.673 0-32-14.327-32-32 0-16.068 11.84-29.367 27.273-31.654l4.727-0.346h96c82.475 0 149.333-66.859 149.333-149.333 0-79.531-62.17-144.538-140.557-149.080l-8.777-0.253h-96c-17.673 0-32-14.327-32-32 0-16.067 11.84-29.367 27.273-31.653l4.727-0.347h96zM298.667 480h426.667c17.673 0 32 14.327 32 32 0 16.201-12.041 29.589-27.657 31.71l-4.343 0.29h-426.667c-17.673 0-32-14.327-32-32 0-16.201 12.038-29.589 27.658-31.71l4.342-0.29v0z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_link_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 31,
+                    "paths": [
+                        "M512 661.333c35.345 0 64-28.655 64-64s-28.655-64-64-64c-35.345 0-64 28.655-64 64s28.655 64 64 64zM341.333 256c0-94.257 76.41-170.667 170.667-170.667 94.255 0 170.667 76.41 170.667 170.667v42.667h32c76.582 0 138.667 62.083 138.667 138.667v320c0 76.582-62.084 138.667-138.667 138.667h-405.333c-76.584 0-138.667-62.084-138.667-138.667v-320c0-76.584 62.083-138.667 138.667-138.667h32v-42.667zM512 149.333c-58.91 0-106.667 47.756-106.667 106.667v42.667h213.333v-42.667c0-58.91-47.757-106.667-106.667-106.667zM309.333 362.667c-41.237 0-74.667 33.429-74.667 74.667v320c0 41.237 33.429 74.667 74.667 74.667h405.333c41.237 0 74.667-33.429 74.667-74.667v-320c0-41.237-33.429-74.667-74.667-74.667h-405.333z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_lock_closed_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 30,
+                    "paths": [
+                        "M682.667 213.333c0-58.91 47.757-106.667 106.667-106.667s106.667 47.756 106.667 106.667v10.667c0 17.673 14.327 32 32 32s32-14.327 32-32v-10.667c0-94.257-76.412-170.667-170.667-170.667s-170.667 76.41-170.667 170.667v85.333h-309.333c-76.584 0-138.667 62.083-138.667 138.667v320c0 76.582 62.083 138.667 138.667 138.667h405.333c76.582 0 138.667-62.084 138.667-138.667v-320c0-76.584-62.084-138.667-138.667-138.667h-32v-85.333zM309.333 362.667h405.333c41.237 0 74.667 33.429 74.667 74.667v320c0 41.237-33.429 74.667-74.667 74.667h-405.333c-41.237 0-74.667-33.429-74.667-74.667v-320c0-41.237 33.429-74.667 74.667-74.667zM512 661.333c35.345 0 64-28.655 64-64s-28.655-64-64-64c-35.345 0-64 28.655-64 64s28.655 64 64 64z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_lock_open_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 29,
+                    "paths": [
+                        "M693.333 85.333c-12.122 0-23.202 6.848-28.621 17.689l-42.667 85.333c-4.787 9.57-4.471 20.898 0.836 30.187l38.451 67.288v226.169h-32c-17.673 0-32 14.327-32 32v245.333c0 82.475 66.859 149.333 149.333 149.333s149.333-66.859 149.333-149.333v-245.333c0-17.673-14.327-32-32-32h-32v-226.169l38.451-67.288c5.308-9.289 5.623-20.617 0.836-30.187l-42.667-85.333c-5.419-10.841-16.499-17.689-28.621-17.689h-106.667zM768 512h-42.667v-234.667c0-5.569-1.455-11.041-4.215-15.876l-34.172-59.797 26.163-52.326h67.115l26.163 52.326-34.172 59.797c-2.761 4.835-4.215 10.307-4.215 15.876v234.667zM661.333 789.333v-106.667h170.667v106.667c0 47.13-38.204 85.333-85.333 85.333s-85.333-38.204-85.333-85.333zM832 618.667h-170.667v-42.667h170.667v42.667zM406.456 91.115c-9.855-3.907-21.005-2.68-29.775 3.276s-14.019 15.87-14.019 26.471v156.466c0 23.564-19.103 42.667-42.667 42.667s-42.667-19.103-42.667-42.667v-156.462c0-10.601-5.251-20.515-14.020-26.471s-19.921-7.183-29.775-3.276c-86.758 34.403-148.2 119.094-148.2 218.214 0 90.627 51.365 169.19 126.476 208.286v312.849c0 59.75 48.438 108.19 108.19 108.19s108.19-48.439 108.19-108.19v-312.849c75.11-39.095 126.477-117.659 126.477-208.286 0-99.124-61.449-183.818-148.21-218.218zM426.662 277.328v-101.242c39.040 31.295 64.004 79.377 64.004 133.247 0 71.512-43.994 132.826-106.513 158.208-12.068 4.898-19.963 16.623-19.963 29.649v333.278c0 24.405-19.785 44.19-44.19 44.19s-44.19-19.785-44.19-44.19v-333.278c0-13.026-7.895-24.751-19.963-29.649-62.52-25.382-106.513-86.696-106.513-158.208 0-53.865 24.961-101.944 63.996-133.239v101.234c0 58.91 47.756 106.667 106.667 106.667s106.667-47.756 106.667-106.667z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_maintenance_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 26,
+                    "paths": [
+                        "M543.915 128.083l322.295 0.022 4.275 0.593 4.22 1.178 2.607 1.106c3.371 1.489 6.524 3.645 9.293 6.415l1.741 1.879 2.581 3.476 1.587 2.775 1.651 3.853 0.815 2.736 0.58 2.728 0.397 3.977 0.026 321.425c0 17.677-14.327 32-32 32-16.201 0-29.589-12.036-31.71-27.657l-0.29-4.343-0.026-243.023-594.771 594.989 242.797 0.034c16.201 0 29.589 12.041 31.706 27.661l0.294 4.339c0 16.201-12.041 29.589-27.661 31.71l-4.339 0.29-322.768-0.154c-2.819-0.196-5.494-0.785-8.023-1.685l-3.846-1.66-0.733-0.448c-8.713-4.71-14.961-13.376-16.387-23.586l-0.309-4.467v-320.162c0-17.677 14.327-32 32-32 16.2 0 29.589 12.036 31.708 27.657l0.292 4.343v242.859l594.771-594.903-242.773 0.043c-16.196 0-29.585-12.038-31.706-27.658l-0.294-4.342c0-16.2 12.041-29.589 27.661-31.708l4.339-0.292z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_maximize_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 25,
+                    "paths": [
+                        "M117.442 767.987h789.332c17.677 0 32 14.327 32 32 0 16.201-12.036 29.589-27.657 31.706l-4.343 0.294h-789.332c-17.673 0-32-14.327-32-32 0-16.201 12.038-29.589 27.658-31.71l4.342-0.29v0zM117.442 490.782h789.332c17.677 0 32 14.327 32 32 0 16.201-12.036 29.589-27.657 31.71l-4.343 0.29h-789.332c-17.673 0-32-14.327-32-32 0-16.201 12.038-29.589 27.658-31.71l4.342-0.29v0zM117.405 213.458h789.334c17.673 0 32 14.327 32 32 0 16.201-12.041 29.589-27.657 31.708l-4.343 0.292h-789.334c-17.673 0-32-14.327-32-32 0-16.201 12.038-29.589 27.658-31.708l4.342-0.292v0z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_menu_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 24,
+                    "paths": [
+                        "M929.178 94.787c11.354 11.36 12.386 29.137 3.102 41.665l-3.093 3.59-265.506 265.546 242.884 0.041c16.201 0 29.589 12.039 31.71 27.657l0.29 4.343c0 16.201-12.036 29.589-27.657 31.71l-4.343 0.29-322.782-0.154c-2.914-0.222-5.709-0.845-8.337-1.809l-4.173-1.941c-8.747-4.698-15.027-13.38-16.461-23.62l-0.311-4.476v-320.166c0-17.673 14.327-32 32-32 16.201 0 29.589 12.038 31.71 27.658l0.29 4.342-0.004 242.813 265.463-265.483c12.484-12.498 32.73-12.501 45.218-0.006zM469.44 586.85v320.162c0 17.677-14.327 32-32 32-16.201 0-29.589-12.036-31.708-27.657l-0.292-4.343-0.021-242.991-265.455 265.212c-12.495 12.497-32.756 12.501-45.255 0.004-11.362-11.358-12.397-29.137-3.103-41.664l3.098-3.588 265.403-265.148-242.732 0.013c-16.2 0-29.589-12.041-31.708-27.661l-0.292-4.339c0-17.677 14.327-32 32-32l322.318 0.077 3.136 0.375 4.16 0.994 2.253 0.798 3.682 1.741 3.776 2.453c2.385 1.801 4.506 3.925 6.306 6.31l2.85 4.518 1.737 3.989 0.913 3.025 0.482 2.334 0.26 2.47 0.026-0.363 0.166 3.277z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_minimize_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 22,
+                    "paths": [
+                        "M266.667 149.333c-41.237 0-74.667 33.429-74.667 74.667v106.667c0 41.237 33.429 74.667 74.667 74.667h106.667c41.237 0 74.667-33.429 74.667-74.667v-106.667c0-41.237-33.429-74.667-74.667-74.667h-106.667zM576 224c0-41.237 33.429-74.667 74.667-74.667h106.667c41.237 0 74.667 33.429 74.667 74.667v106.667c0 41.237-33.429 74.667-74.667 74.667h-106.667c-41.237 0-74.667-33.429-74.667-74.667v-106.667zM650.667 213.333c-5.892 0-10.667 4.776-10.667 10.667v106.667c0 5.891 4.774 10.667 10.667 10.667h106.667c5.892 0 10.667-4.776 10.667-10.667v-106.667c0-5.891-4.774-10.667-10.667-10.667h-106.667zM298.667 746.667c35.346 0 64-28.655 64-64s-28.654-64-64-64c-35.346 0-64 28.655-64 64s28.654 64 64 64zM576 682.667c0 35.345-28.655 64-64 64s-64-28.655-64-64c0-35.345 28.655-64 64-64s64 28.655 64 64zM725.333 746.667c35.345 0 64-28.655 64-64s-28.655-64-64-64c-35.345 0-64 28.655-64 64s28.655 64 64 64zM85.333 682.667c0-106.039 85.961-192 192-192h469.333c106.039 0 192 85.961 192 192s-85.961 192-192 192h-469.333c-106.039 0-192-85.961-192-192zM277.333 554.667c-70.692 0-128 57.306-128 128s57.308 128 128 128h469.333c70.694 0 128-57.306 128-128s-57.306-128-128-128h-469.333z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_network_switch_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 20,
+                    "paths": [
+                        "M139.961 94.706c-12.497-12.497-32.758-12.497-45.255-0.001s-12.497 32.758-0.001 45.255l197.706 197.71c-16.273 27.085-27.679 57.429-33.006 89.824-97.632 9.041-174.072 91.179-174.072 191.172 0 106.039 85.961 192 192 192h469.333c6.037 0 12.011-0.277 17.907-0.823l119.454 119.458c12.497 12.497 32.759 12.497 45.257 0s12.497-32.759 0-45.257l-789.323-789.338zM701.402 746.667h-424.068c-70.692 0-128-57.306-128-128s57.308-128 128-128h10.916c17.091 0 31.165-13.431 31.965-30.502 1.263-26.94 8.083-52.432 19.339-75.352l361.849 361.854zM874.667 618.667c0 33.374-12.77 63.761-33.694 86.549l45.282 45.282c32.491-34.389 52.412-80.785 52.412-131.831 0-99.994-76.437-182.131-174.071-191.172-19.981-121.494-125.457-214.161-252.595-214.161-46.801 0-90.667 12.557-128.413 34.487l47.394 47.395c24.619-11.474 52.070-17.882 81.020-17.882 102.963 0 187.017 81.064 191.787 182.831 0.798 17.071 14.874 30.502 31.966 30.502h10.914c70.694 0 128 57.306 128 128z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_not_connected_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 19,
+                    "paths": [
+                        "M757.525 597.342c52.996 0 95.953 42.957 95.953 95.953v24.55c0 38.157-13.636 75.055-38.447 104.043-66.961 78.229-168.815 116.834-303.014 116.834-134.225 0-236.028-38.618-302.857-116.881-24.737-28.966-38.327-65.809-38.327-103.902v-24.644c0-52.996 42.959-95.953 95.952-95.953h490.74zM757.525 661.342h-490.74c-17.647 0-31.952 14.306-31.952 31.953v24.644c0 22.857 8.154 44.962 22.996 62.34 53.475 62.622 137.352 94.443 254.188 94.443 116.834 0 200.785-31.821 254.391-94.451 14.891-17.395 23.070-39.535 23.070-62.426v-24.55c0-17.647-14.306-31.953-31.953-31.953zM512.017 85.542c117.82 0 213.333 95.513 213.333 213.333s-95.514 213.334-213.333 213.334c-117.822 0-213.335-95.513-213.335-213.334s95.513-213.333 213.335-213.333zM512.017 149.542c-82.475 0-149.335 66.859-149.335 149.333s66.86 149.334 149.335 149.334c82.475 0 149.333-66.86 149.333-149.334s-66.859-149.333-149.333-149.333z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_person_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 18,
+                    "paths": [
+                        "M693.013 125.094l205.897 205.899c56.631 56.63 41.139 152.096-30.494 187.915l-207.825 103.91c-7.479 3.742-13.201 10.266-15.932 18.172l-61.41 177.762c-12.864 37.235-60.267 48.154-88.124 20.301l-132.458-132.463-189.409 189.414h-45.258l0.003-45.257 189.409-189.41-132.458-132.459c-27.856-27.857-16.937-75.26 20.298-88.124l177.761-61.408c7.908-2.732 14.432-8.452 18.173-15.935l103.91-207.824c35.819-71.632 131.285-87.124 187.917-30.494zM853.658 376.248l-205.901-205.899c-25.741-25.741-69.137-18.699-85.414 13.861l-103.91 207.824c-11.226 22.45-30.797 39.612-54.521 47.804l-161.644 55.842 286.058 286.059 55.842-161.643c8.196-23.727 25.357-43.294 47.804-54.519l207.825-103.915c32.559-16.277 39.603-59.673 13.862-85.414z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_pin_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 17,
+                    "paths": [
+                        "M139.962 94.706c-12.497-12.497-32.758-12.497-45.255-0s-12.497 32.758-0 45.255l251.944 251.944-141.396 48.847c-37.235 12.86-48.154 60.267-20.298 88.119l132.46 132.459-189.411 189.41-0.003 45.257h45.259l189.411-189.414 132.459 132.459c27.857 27.857 75.264 16.939 88.124-20.297l48.845-141.389 251.938 251.938c12.497 12.497 32.759 12.497 45.257 0s12.497-32.755 0-45.252l-789.331-789.335zM581.773 627.029l-53.444 154.701-286.060-286.054 154.708-53.444 184.797 184.798zM839.804 461.658l-161.587 80.794 47.701 47.701 142.507-71.253c71.633-35.814 87.125-131.283 30.494-187.912l-205.901-205.897c-56.631-56.63-152.098-41.137-187.917 30.494l-71.249 142.501 47.701 47.703 80.794-161.583c16.282-32.56 59.674-39.602 85.414-13.861l205.905 205.898c25.741 25.74 18.697 69.134-13.862 85.416z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_pin_off_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 16,
+                    "paths": [
+                        "M324.628 196.902c-21.323-11.602-47.294 3.833-47.294 28.108v573.966c0 24.273 25.971 39.71 47.294 28.109l527.426-286.985c22.276-12.117 22.276-44.096 0-56.218l-527.426-286.981zM213.333 225.010c0-72.826 77.913-119.133 141.883-84.326l527.429 286.985c66.82 36.356 66.82 132.288 0 168.649l-527.429 286.985c-63.97 34.803-141.883-11.503-141.883-84.326v-573.966z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_play_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 15,
+                    "paths": [
+                        "M512 192c-176.731 0-320 143.269-320 320 0 176.73 143.269 320 320 320 176.73 0 320-143.27 320-320 0-16.060-1.182-31.838-3.465-47.262-2.871-19.375 11.311-38.071 30.895-38.071 15.825 0 29.7 10.931 32.102 26.573 2.94 19.157 4.467 38.78 4.467 58.761 0 212.079-171.921 384-384 384-212.077 0-384-171.921-384-384 0-212.077 171.923-384 384-384 98.351 0 188.062 36.973 256 97.778v-44.445c0-17.673 14.327-32 32-32s32 14.327 32 32v128c0 17.673-14.327 32-32 32h-128c-17.673 0-32-14.327-32-32s14.327-32 32-32h57.562c-57.097-52.957-133.547-85.333-217.562-85.333z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_refresh_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 14,
+                    "paths": [
+                        "M174.683 228.084c14.135-58.707 66.663-100.084 127.057-100.084h420.599c60.395 0 112.922 41.376 127.057 100.084l84.992 352.998c22.942 95.275-49.271 186.918-147.281 186.918h-339.055v-64h339.055c56.597 0 98.295-52.924 85.052-107.938l-84.996-352.999c-7.211-29.952-34.010-51.063-64.823-51.063h-420.599c-30.813 0-57.613 21.111-64.825 51.063l-28.798 119.604h-48.111c-6.141 0-12.173 0.472-18.060 1.381l32.737-135.964zM447.569 874.667h288.503c17.677 0 32.004-14.327 32.004-32s-14.327-32-32.004-32h-288.021v53.333c0 3.597-0.162 7.155-0.482 10.667zM245.358 618.667c29.46 0 53.341-23.876 53.341-53.333s-23.882-53.333-53.341-53.333c-29.46 0-53.341 23.876-53.341 53.333s23.882 53.333 53.341 53.333zM85.333 480c0-41.237 33.434-74.667 74.678-74.667h170.692c41.243 0 74.678 33.429 74.678 74.667v384c0 41.237-33.435 74.667-74.678 74.667h-170.693c-41.243 0-74.678-33.429-74.678-74.667v-384zM160.012 469.333c-5.892 0-10.668 4.774-10.668 10.667v384c0 5.892 4.776 10.667 10.668 10.667h170.693c5.892 0 10.668-4.774 10.668-10.667v-384c0-5.892-4.777-10.667-10.668-10.667h-170.692z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_remote_control_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 13,
+                    "paths": [
+                        "M320.75 213.333h-64.352c5.446-71.599 65.268-128 138.264-128h341.338c111.927 0 202.667 90.737 202.667 202.667v341.333c0 72.994-56.401 132.817-128 138.261v-64.35c36.186-5.175 64-36.297 64-73.911v-341.333c0-76.584-62.084-138.667-138.667-138.667h-341.338c-37.616 0-68.736 27.816-73.911 64zM224.001 256c-76.584 0-138.668 62.083-138.668 138.667v405.333c0 76.582 62.084 138.667 138.668 138.667h405.336c76.587 0 138.671-62.084 138.671-138.667v-405.333c0-76.584-62.084-138.667-138.671-138.667h-405.336zM149.334 394.667c0-41.237 33.43-74.667 74.668-74.667h405.336c41.237 0 74.667 33.429 74.667 74.667v405.333c0 41.237-33.429 74.667-74.667 74.667h-405.336c-41.238 0-74.668-33.429-74.668-74.667v-405.333z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_restore_down_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 12,
+                    "paths": [
+                        "M341.333 192h42.666v266.163c0 16-3.998 31.744-11.631 45.803l-152.947 281.741c-27.008 49.754 9.011 110.289 65.621 110.289h453.914c56.61 0 92.629-60.535 65.621-110.289l-152.947-281.741c-7.633-14.059-11.631-29.803-11.631-45.803v-266.163h42.667c17.673 0 32-14.327 32-32s-14.327-32-32-32h-341.333c-17.673 0-32 14.327-32 32s14.327 32 32 32zM448 458.163v-266.163h128v266.163c0 26.662 6.66 52.902 19.383 76.335l34.108 62.835h-234.986l34.112-62.835c12.719-23.433 19.383-49.673 19.383-76.335zM359.762 661.333h304.473l84.096 154.91c3.857 7.108-1.289 15.753-9.374 15.753h-453.914c-8.087 0-13.233-8.644-9.374-15.753l84.094-154.91z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_sample_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 11,
+                    "paths": [
+                        "M426.667 117.333c170.842 0 309.333 138.493 309.333 309.333 0 73.894-25.911 141.734-69.141 194.935l209.101 209.105c12.497 12.497 12.497 32.755 0 45.252-11.358 11.362-29.137 12.395-41.664 3.098l-3.588-3.098-209.105-209.101c-53.201 43.23-121.041 69.141-194.935 69.141-170.84 0-309.333-138.492-309.333-309.333 0-170.84 138.493-309.333 309.333-309.333zM426.667 181.333c-135.494 0-245.333 109.839-245.333 245.333 0 135.492 109.839 245.333 245.333 245.333 135.492 0 245.333-109.841 245.333-245.333 0-135.494-109.841-245.333-245.333-245.333z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_search_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 10,
+                    "paths": [
+                        "M394.667 256c-17.673 0-32 14.327-32 32s14.327 32 32 32h234.667c17.673 0 32-14.327 32-32s-14.327-32-32-32h-234.667zM362.667 757.333c0-17.673 14.327-32 32-32h234.667c17.673 0 32 14.327 32 32s-14.327 32-32 32h-234.667c-17.673 0-32-14.327-32-32zM394.667 597.333c-17.673 0-32 14.327-32 32s14.327 32 32 32h234.667c17.673 0 32-14.327 32-32s-14.327-32-32-32h-234.667zM256 213.333c0-70.692 57.308-128 128-128h256c70.694 0 128 57.308 128 128v597.333c0 70.694-57.306 128-128 128h-256c-70.692 0-128-57.306-128-128v-597.333zM384 149.333c-35.346 0-64 28.654-64 64v597.333c0 35.345 28.654 64 64 64h256c35.345 0 64-28.655 64-64v-597.333c0-35.346-28.655-64-64-64h-256z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_server_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 9,
+                    "paths": [
+                        "M512.521 96c31.317 0.361 62.511 3.979 93.077 10.796 13.342 2.976 23.322 14.1 24.836 27.687l7.262 65.146c3.29 29.911 28.544 52.567 58.65 52.598 8.094 0.013 16.098-1.673 23.578-4.981l59.759-26.252c12.429-5.46 26.953-2.483 36.228 7.427 43.187 46.124 75.349 101.441 94.071 161.79 4.036 13.013-0.61 27.155-11.575 35.239l-52.971 39.044c-15.113 11.102-24.034 28.732-24.034 47.484 0 18.748 8.922 36.378 24.068 47.505l53.013 39.057c10.97 8.081 15.62 22.225 11.584 35.243-18.714 60.339-50.859 115.652-94.020 161.783-9.267 9.907-23.778 12.894-36.207 7.445l-60.002-26.287c-17.169-7.514-36.881-6.413-53.107 2.965-16.222 9.374-27.017 25.907-29.077 44.531l-7.215 65.139c-1.489 13.431-11.251 24.482-24.401 27.61-61.798 14.703-126.187 14.703-187.988 0-13.146-3.127-22.911-14.178-24.399-27.61l-7.203-65.041c-2.116-18.59-12.929-35.072-29.139-44.416s-35.892-10.441-53.001-2.97l-60.016 26.291c-12.431 5.449-26.946 2.462-36.215-7.454-43.185-46.182-75.332-101.564-94.019-161.967-4.025-13.009 0.625-27.145 11.59-35.221l53.049-39.083c15.11-11.102 24.034-28.732 24.034-47.479 0-18.752-8.924-36.382-24.054-47.497l-53.015-39.017c-10.981-8.081-15.636-22.232-11.596-35.254 18.72-60.349 50.883-115.667 94.070-161.79 9.278-9.91 23.8-12.887 36.229-7.427l59.75 26.247c17.192 7.545 36.957 6.406 53.254-3.116 16.227-9.412 27.030-25.961 29.116-44.589l7.256-65.096c1.516-13.594 11.504-24.722 24.856-27.692 30.605-6.806 61.833-10.423 93.926-10.792zM512.529 159.996c-19.375 0.228-38.69 1.9-57.796 4.997l-4.646 41.692c-4.343 38.805-26.832 73.252-60.522 92.794-33.897 19.803-75.224 22.187-111.183 6.406l-38.327-16.837c-24.402 29.618-43.825 63.010-57.505 98.864l34.039 25.050c31.523 23.16 50.14 59.943 50.14 99.060 0 39.113-18.617 75.895-50.106 99.029l-34.093 25.118c13.668 35.917 33.094 69.372 57.513 99.046l38.619-16.917c35.759-15.612 76.805-13.329 110.609 6.157s56.353 53.858 60.777 92.723l4.651 41.98c37.956 6.455 76.736 6.455 114.692 0l4.651-41.975c4.301-38.852 26.825-73.344 60.668-92.902 33.843-19.563 74.974-21.858 110.797-6.178l38.588 16.905c24.397-29.628 43.814-63.027 57.493-98.889l-34.048-25.084c-31.522-23.159-50.138-59.942-50.138-99.055 0-39.117 18.615-75.9 50.099-99.031l34.001-25.062c-13.679-35.86-33.105-69.259-57.51-98.881l-38.251 16.803c-15.586 6.897-32.448 10.446-49.476 10.42-62.707-0.066-115.337-47.276-122.18-109.557l-4.646-41.691c-19.008-3.093-38.127-4.761-56.909-4.983zM511.987 351.998c88.367 0 160 71.634 160 160.002 0 88.363-71.633 160-160 160-88.366 0-160-71.637-160-160 0-88.368 71.634-160.002 160-160.002zM511.987 415.998c-53.018 0-96 42.98-96 96.002 0 53.018 42.982 96 96 96s96-42.982 96-96c0-53.022-42.982-96.002-96-96.002z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_settings_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 8,
+                    "paths": [
+                        "M287.875 170.647h147.807c17.673 0 32 14.327 32 32 0 16.201-12.041 29.589-27.661 31.708l-4.339 0.292h-147.807c-50.81 0-92.401 39.473-95.779 89.427l-0.221 6.573v405.332c0 50.812 39.473 92.403 89.427 95.782l6.573 0.218h405.364c50.812 0 92.399-39.471 95.778-89.425l0.222-6.575v-21.235c0-17.677 14.327-32 32-32 16.201 0 29.589 12.036 31.71 27.657l0.29 4.343v21.235c0 85.517-67.089 155.362-151.501 159.778l-8.499 0.222h-405.364c-85.515 0-155.361-67.085-159.778-151.501l-0.222-8.499v-405.332c0-85.515 67.087-155.361 151.503-159.778l8.497-0.222v0zM618.714 278.161v-118.181c0-26.623 30.153-40.962 50.641-26.035l3.507 2.941 255.77 245.333c11.938 11.45 13.026 29.84 3.26 42.553l-3.255 3.631-255.77 245.414c-19.213 18.432-50.441 6.596-53.85-18.526l-0.303-4.565v-116.279l-14.656 1.284c-102.387 10.679-200.523 56.798-295.022 139.123-22.149 19.294-56.416 1.050-52.773-28.096 28.364-226.968 147.057-352.067 349.676-367.759l12.774-0.838v0zM682.714 235.016v74.298c0 17.673-14.327 32-32 32-165.265 0-267.693 71.515-311.949 220.039l-3.373 11.887 15.027-10.103c95.423-62.37 195.664-93.824 300.295-93.824 16.201 0 29.589 12.041 31.706 27.661l0.294 4.339v74.364l177.545-170.358-177.545-170.302z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_share_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 7,
+                    "paths": [
+                        "M512 85.333c235.639 0 426.667 191.025 426.667 426.667 0 235.639-191.027 426.667-426.667 426.667-235.642 0-426.667-191.027-426.667-426.667 0-235.642 191.025-426.667 426.667-426.667zM650.675 611.507l-1.651 3.072-2.714 3.891-202.957 249.707c22.229 4.262 45.175 6.49 68.646 6.49 92.629 0 177.143-34.726 241.242-91.87l-88.922-193.732c-3.981 7.846-8.55 15.347-13.645 22.443zM191.586 682.044c39.962 75.145 105.585 134.562 185.18 166.571l134.85-165.948-8.132-0.209-5.606-0.367-306.291-0.047zM858.884 405.842h-213.244c3.482 4.379 6.754 8.933 9.801 13.647 1.045 1.156 2.001 2.438 2.867 3.804l2.078 3.823 1.664 3.503c3.674 6.758 6.903 13.79 9.651 21.060l128.674 280.277c46.605-61.009 74.291-137.25 74.291-219.955 0-36.937-5.521-72.58-15.782-106.158zM149.333 512c0 36.902 5.512 72.521 15.758 106.069h213.199c-3.489-4.39-6.767-8.96-9.817-13.687l-5.771-9.472-154.212-281.504c-37.404 57.049-59.158 125.28-59.158 198.594zM427.511 446.878l-1.89 3.059c-0.935 1.459-1.968 2.816-3.086 4.066-10.904 16.683-17.202 36.604-17.202 57.997 0 55.223 41.963 100.642 95.744 106.112h21.845c53.781-5.47 95.744-50.889 95.744-106.112 0-55.531-42.432-101.148-96.64-106.202l-15.902 0.083-2.475-0.226c-30.967 2.398-58.227 18.019-76.139 41.222zM512 149.333c-102.032 0-194.223 42.135-260.122 109.954l102.484 187.194c5.41-13.001 12.381-25.188 20.68-36.33l166.565-259.627c-9.766-0.789-19.639-1.191-29.606-1.191zM494.686 342.201c5.696-0.573 11.469-0.867 17.314-0.867 4.378 0 8.717 0.165 13.013 0.489l307.354 0.051c-44.066-82.815-119.309-146.52-210.069-175.463l-12.471-3.729-115.14 179.52z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_shutter_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 6,
+                    "paths": [
+                        "M428.309 128c-17.222 0-31.181 14.327-31.181 32s13.96 32 31.181 32h311.795c51.657 0 93.538 42.981 93.538 96v448c0 53.018-41.882 96-93.538 96h-311.795c-17.222 0-31.181 14.327-31.181 32s13.96 32 31.181 32h311.795c86.097 0 155.895-71.633 155.895-160v-448c0-88.366-69.798-160-155.895-160h-311.795zM637.431 489.374l-187.076-192.001c-12.177-12.497-31.919-12.497-44.095 0s-12.176 32.758 0 45.255l133.848 137.373h-423.596c-17.22 0-31.18 14.327-31.18 32s13.96 32 31.18 32h423.596l-133.848 137.374c-12.176 12.497-12.176 32.755 0 45.252s31.918 12.497 44.095 0l187.076-192c12.177-12.497 12.177-32.755 0-45.252z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_sign_in_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 5,
+                    "paths": [
+                        "M929.536 489.374l-187.076-192.001c-12.177-12.497-31.919-12.497-44.096 0s-12.177 32.758 0 45.255l133.85 137.373h-423.598c-17.22 0-31.18 14.327-31.18 32s13.96 32 31.18 32h423.598l-133.85 137.374c-12.177 12.497-12.177 32.755 0 45.252s31.919 12.497 44.096 0l187.076-192c12.177-12.497 12.177-32.755 0-45.252z",
+                        "M595.695 128c17.216 0 31.177 14.327 31.177 32s-13.961 32-31.177 32h-311.797c-51.66 0-93.539 42.981-93.539 96v448c0 53.018 41.879 96 93.539 96h311.797c17.216 0 31.177 14.327 31.177 32s-13.961 32-31.177 32h-311.797c-86.1 0-155.898-71.633-155.898-160v-448c0-88.366 69.798-160 155.898-160h311.797z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_sign_out_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 4,
+                    "paths": [
+                        "M895.996 202.795c0-60.067-67.319-95.546-116.873-61.595l-447.933 306.92c-43.101 29.53-43.322 93.060-0.429 122.893l447.935 311.535c49.506 34.432 117.299-0.998 117.299-61.299v-618.453zM815.3 193.996c7.078-4.85 16.695 0.218 16.695 8.799v618.453c0 8.614-9.685 13.675-16.755 8.755l-447.936-311.531c-6.128-4.262-6.096-13.338 0.061-17.557l447.935-306.92zM128 160c0-17.673 14.327-32 32-32s32 14.327 32 32v704c0 17.673-14.327 32-32 32s-32-14.327-32-32v-704z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_skip_left_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 3,
+                    "paths": [
+                        "M128.005 202.795c0-60.067 67.32-95.546 116.871-61.595l447.933 306.92c43.102 29.53 43.324 93.060 0.431 122.893l-447.935 311.535c-49.507 34.432-117.299-0.998-117.299-61.299v-618.453zM208.701 193.996c-7.079-4.85-16.696 0.218-16.696 8.799v618.453c0 8.614 9.685 13.675 16.757 8.755l447.933-311.531c6.127-4.262 6.097-13.338-0.060-17.557l-447.935-306.92zM896 160c0-17.673-14.327-32-32-32s-32 14.327-32 32v704c0 17.673 14.327 32 32 32s32-14.327 32-32v-704z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_skip_right_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 2,
+                    "paths": [
+                        "M511.923 597.342c47.125 0 85.333-38.208 85.333-85.333 0-47.13-38.208-85.333-85.333-85.333-47.13 0-85.335 38.204-85.335 85.333 0 47.125 38.205 85.333 85.335 85.333zM255.922 512.009c0-141.387 114.615-256.002 256.001-256.002 141.385 0 256 114.615 256 256.002 0 141.385-114.615 256-256 256-141.386 0-256.001-114.615-256.001-256zM511.923 320.006c-106.040 0-192.001 85.961-192.001 192.002 0 106.035 85.961 192 192.001 192 106.035 0 192-85.965 192-192 0-106.041-85.965-192.002-192-192.002zM85.167 512.004c0-235.689 191.066-426.754 426.757-426.754s426.756 191.065 426.756 426.754c0 235.695-191.066 426.756-426.756 426.756s-426.757-191.061-426.757-426.756zM511.923 149.25c-200.345 0-362.757 162.412-362.757 362.754 0 200.346 162.412 362.756 362.757 362.756s362.756-162.411 362.756-362.756c0-200.343-162.411-362.754-362.756-362.754z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_target_24_regular"
+                    ],
+                    "colorPermutations": {}
+                },
+                {
+                    "id": 0,
+                    "paths": [
+                        "M554.637 725.333c0-23.535-19.076-42.611-42.611-42.611-23.531 0-42.607 19.076-42.607 42.611 0 23.531 19.076 42.607 42.607 42.607 23.535 0 42.611-19.076 42.611-42.607zM543.578 390.259c-2.133-15.618-15.531-27.645-31.731-27.633-17.673 0.014-31.987 14.353-31.974 32.026l0.154 192.070 0.294 4.339c2.133 15.62 15.531 27.648 31.731 27.635 17.673-0.017 31.987-14.353 31.974-32.026l-0.154-192.070-0.294-4.342zM596.023 156.112c-36.535-66.039-131.477-66.039-168.009 0.002l-330.464 597.396c-35.395 63.983 10.883 142.468 84.004 142.468h660.95c73.122 0 119.398-78.485 84.002-142.473l-330.483-597.394zM484.019 187.094c12.177-22.013 43.823-22.014 56-0.001l330.487 597.398c11.797 21.325-3.627 47.488-28.002 47.488h-660.95c-24.374 0-39.799-26.163-28.001-47.488l330.466-597.397z"
+                    ],
+                    "attrs": [],
+                    "isMulticolor": false,
+                    "isMulticolor2": false,
+                    "grid": 0,
+                    "tags": [
+                        "ic_warning_24_regular"
+                    ],
+                    "colorPermutations": {}
+                }
+            ],
+            "colorThemes": [],
+            "invisible": false,
+            "colorThemeIdx": 0
+        }
+    ],
+    "preferences": {
+        "showGlyphs": true,
+        "showCodes": true,
+        "showQuickUse": true,
+        "showQuickUse2": true,
+        "showSVGs": true,
+        "fontPref": {
+            "prefix": "clf_",
+            "metadata": {
+                "fontFamily": "clf-fluent-icons-regular",
+                "majorVersion": 1,
+                "minorVersion": 0,
+                "license": "MIT",
+                "licenseURL": "https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE",
+                "designer": "Microsoft"
+            },
+            "metrics": {
+                "emSize": 1024,
+                "baseline": 6.25,
+                "whitespace": 50
+            },
+            "embed": false,
+            "hideFormats": false,
+            "showSelector": true,
+            "selector": "",
+            "classSelector": ".icon",
+            "showMetrics": true,
+            "showMetadata": true,
+            "showVersion": true,
+            "noie8": true,
+            "ie7": false
+        },
+        "imagePref": {
+            "prefix": "clf_",
+            "png": false,
+            "useClassSelector": true,
+            "color": 0,
+            "bgColor": 16777215,
+            "name": "CLF-Icons-set",
+            "classSelector": ".clf",
+            "height": 24,
+            "columns": 16,
+            "margin": 16,
+            "overrideSize": "true",
+            "autoHost": false,
+            "sprite": false
+        },
+        "historySize": 50,
+        "gridSize": 16,
+        "quickUsageToken": {
+            "CLFIcons": "Y2M2NzQ4ZjYzYTM3NWE4NmIzMjZhMWE2N2IxNjk0ZjcjMSMxNjg4NzM3NzMyIyMjYWEyNDNiNjVhMGJl"
+        },
+        "showLiga": false
+    },
+    "uid": -1
+}

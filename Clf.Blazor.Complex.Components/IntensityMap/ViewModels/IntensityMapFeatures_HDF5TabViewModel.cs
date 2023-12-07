@@ -34,7 +34,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     }
     public IntensityMapFeatures_HDF5TabViewModel(IntensityMapViewerViewModel parent)
     {
-      hdf5PluginPrefix = "HDF1:";
+      hdf5PluginPrefix = ":HDF1:";
       StartHdf5Capture = CreateValueWriteActionButtonViewModel(parent.PvPrefix + hdf5PluginPrefix + "Capture", (short)1);
       StartHdf5Capture.Text = "Start";
       StartHdf5Capture.Width = 60;

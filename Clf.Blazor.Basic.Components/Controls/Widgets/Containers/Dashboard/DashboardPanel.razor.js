@@ -6,7 +6,7 @@
 
 function resizeDashboardPane(item) {
   grid = document.getElementsByClassName("dashboard-panel-grid")[0];
-  content = item.querySelector('.dashboard-pane');
+  content = item.querySelector('.clf-dashboard-pane');
   contentWidth = content.getBoundingClientRect().width;
   contentHeight = content.getBoundingClientRect().height;
 
@@ -27,7 +27,7 @@ function resizeDashboardPane(item) {
 }
 
 function resizeDashboardToMasonaryLayout() {
-  allItems = document.getElementsByClassName("dashboard-pane-wrapper");
+  allItems = document.getElementsByClassName("clf-dashboard-pane-wrapper");
   for (x = 0; x < allItems.length; x++) {
     resizeDashboardPane(allItems[x]);
   }

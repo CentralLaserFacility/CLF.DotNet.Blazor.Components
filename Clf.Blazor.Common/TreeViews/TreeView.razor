@@ -1,0 +1,75 @@
+﻿<!-- TreeView.razor -->
+
+@using Microsoft.AspNetCore.Components.Web
+
+<!--
+
+  A TreeView shows a 'tree item', followed (underneath) by 'child content'
+  that is only shown if the 'expander' button associated with the TreeItem
+  has been clicked. The child content would normally be a sequence 
+  of nested TreeView components.
+  
+  A 'tree-item' comprises two items laid out in a horizontal row :
+    - a piece of text showing the Title property
+    - an 'expand' button, visible only if there are child items
+
+-->
+<div 
+  class    = "tree-view" 
+  style    = "cursor:@(OnClick!=null?"pointer":"default") " 
+  @onclick = "@onClick" 
+>
+  <div class="tree-item">
+    <!-- The title of the TreeView is always displayed, at the left -->
+    <span class="tree-item-title">
+      @Title
+    </span>
+    <!-- This button, at the right, is visible only if there is 'child content' representing nested items -->
+    <button 
+       class    = "expander-button icon-ic_fluent_chevron_right_16_regular @buttonExpandedClass" 
+       @onclick = "ToggleExpandedCollapsed" 
+       style    = "visibility:@(ChildContent!=null?"visible":"hidden")" 
+     />
+  </div>
+  @if ( buttonExpandedClass == expandedClass )
+  {
+    /* If we're in an 'expanded' state', make the 'child content' visible */
+    <div class="expanded-content">
+      @ChildContent
+    </div>
+  }
+</div>
+
+@code {
+
+  [Parameter]
+  public RenderFragment? ChildContent { get ; set ; }
+
+  [Parameter,EditorRequired]
+  public string Title { get ; set ; } = "" ;
+
+  [Parameter]
+  public Action? OnClick { get ; set ; } = null ;
+
+  private const string collapsedClass = "expander-icon" ;
+  private const string expandedClass  = "expander-icon-down" ;
+
+  private string buttonExpandedClass = collapsedClass ;
+
+  private void ToggleExpandedCollapsed ( )
+  {
+    buttonExpandedClass = buttonExpandedClass switch {
+      expandedClass  => collapsedClass,
+      collapsedClass => expandedClass,
+      _              => collapsedClass
+    } ;
+  }
+
+  private void onClick ( )
+  {
+    OnClick?.Invoke() ;
+  }
+
+}
+
+

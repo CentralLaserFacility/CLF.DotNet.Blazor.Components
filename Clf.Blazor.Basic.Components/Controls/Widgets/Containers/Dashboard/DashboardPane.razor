@@ -10,7 +10,7 @@
   {
     @if (Parent.IsDraggable)
     {
-      <div class="dashboard-pane-wrapper @SelectedClass @DropClass" draggable="true" dropzone="move" style=" order:@Order.ToString();"
+      <div class="clf-dashboard-pane-wrapper @SelectedClass @DropClass" draggable="true" dropzone="move" style=" order:@Order.ToString();"
       @ondragstart="HandleDragStart"
       @ondragend="HandleDragEnd"
       ondragover="event.preventDefault();"
@@ -22,19 +22,11 @@
     }
     else
     {
-      <div class="dashboard-pane-wrapper" style="order:@Order.ToString();">
+      <div class="clf-dashboard-pane-wrapper" style="order:@Order.ToString();">
         @GetDashboardPaneHtml()
       </div>
     }
 
-  }
-  else
-  {
-    @*<div class="dashboard-pane-floating @Class">
-        <div class="pane-body">
-          @ChildContent
-        </div>
-      </div>*@
   }
 }
 
@@ -51,6 +43,9 @@
 
   [Parameter]
   public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public RenderFragment? HeaderContent { get; set; }
 
   [Parameter]
   public Action? OnSettingsButtonClicked { get; set; }
@@ -72,10 +67,10 @@
 
   internal Guid Id { get; set; }
 
-  private const string _pinnedId = "clf_ic_pin_24_regular";
   private const string _unpinnedId = "clf_ic_pin_off_24_regular";
+  private const string _pinnedId = "clf_ic_pin_24_regular";
 
-  private string _buttonPinnedIconId = _pinnedId;
+  private string _buttonPinnedIconId = _unpinnedId;
 
   private int _counter = 0;
 
@@ -92,7 +87,7 @@
     UnpinnedText ??= Title;
     if (!Pinned)
     {
-      _buttonPinnedIconId = _unpinnedId;
+      _buttonPinnedIconId = _pinnedId;
       _isPinned = Pinned;
       IsVisible = false;
       Parent.AddUnPinnedPane(this);
@@ -103,13 +98,13 @@
   {
     if (pinned)
     {
-      _buttonPinnedIconId = _pinnedId;
+      _buttonPinnedIconId = _unpinnedId;
       _isPinned = true;
       IsVisible = true;
     }
     else
     {
-      _buttonPinnedIconId = _unpinnedId;
+      _buttonPinnedIconId = _pinnedId;
       _isPinned = false;
       IsVisible = false;
     }
@@ -129,24 +124,33 @@
   {
     return (__builder) =>
     {
-      <div class="dashboard-pane @Class">
-        <div class="pane-header" tabindex="1">
-          <span class="pane-header-title">@Title</span>
-          <div class="pane-header-buttons">
-            @if (OnSettingsButtonClicked != null)
-            {
-              <button class="pane-header-button" @onclick="OnSettingsButtonClicked">
-                <SingleColourIcon class="pane-header-icon" IconId="clf_ic_settings_24_regular" />
-              </button>
-            }
-            <button class="pane-header-button" @onclick="OnPinButtonToggle">
-              <SingleColourIcon class="pane-header-icon" IconId="@_buttonPinnedIconId" />
-            </button>
-          </div>
+      <div class="clf-dashboard-pane @Class">
+        <div class="clf-pane-header" tabindex="1">
+          <span class="clf-pane-header-title">@Title</span>
+          @GetHeaderMenuWithPinButton()
         </div>
-        <div class="pane-body">
+        <div class="clf-pane-body">
           @ChildContent
         </div>
+      </div>
+    };
+  }
+
+  public RenderFragment GetHeaderMenuWithPinButton()
+  {
+    return (__builder) =>
+    {
+      <div class="clf-pane-header-buttons">
+        @HeaderContent
+        @if (OnSettingsButtonClicked!=null)
+        {
+          <button class="clf-pane-header-button" @onclick="OnSettingsButtonClicked">
+            <SingleColourIcon class="clf-pane-header-icon" IconId="clf_ic_settings_24_regular" />
+          </button>
+        }
+        <button class="clf-pane-header-button" @onclick="OnPinButtonToggle">
+          <SingleColourIcon class="clf-pane-header-icon" IconId="@_buttonPinnedIconId" />
+        </button>
       </div>
     };
   }
@@ -155,8 +159,8 @@
   {
     return (__builder) =>
     {
-      <div class="dashboard-pane-unpinned @Class">
-        <div class="pane-body unpinned">
+      <div class="clf-dashboard-pane-unpinned @Class">
+        <div class="clf-pane-body unpinned">
           @ChildContent
         </div>
       </div>
@@ -165,7 +169,7 @@
 
   private void HandleDragStart(DragEventArgs dragEventArgs)
   {
-    SelectedClass = "pane-selected";
+    SelectedClass = "clf-pane-selected";
     Parent.SelectedPane = this;
   }
 
@@ -187,7 +191,7 @@
     if (this != Parent.SelectedPane)
     {
       _counter++;
-      DropClass = "pane-dragover";
+      DropClass = "clf-pane-dragover";
     }
   }
 
@@ -206,16 +210,16 @@
 
   public void OnPinButtonToggle()
   {
-    if (_buttonPinnedIconId == _pinnedId)
+    if (_buttonPinnedIconId == _unpinnedId)
     {
-      _buttonPinnedIconId = _unpinnedId;
+      _buttonPinnedIconId = _pinnedId;
       _isPinned = false;
       IsVisible = false;
       Parent.AddUnPinnedPane(this);
     }
     else
     {
-      _buttonPinnedIconId = _pinnedId;
+      _buttonPinnedIconId = _unpinnedId;
       _isPinned = true;
       IsVisible = true;
       Parent.RemoveUnPinnedPane(this);

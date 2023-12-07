@@ -1,0 +1,90 @@
+﻿@page "/"
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.Dashboard
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.Common.FilePicker;
+@using Clf.Blazor.Complex.IntensityMap.ViewModels;
+@using Clf.Blazor.Complex.IntensityMap.Views
+@using Clf.ChannelAccess;
+@using Clf.Common.Drawing;
+@using System.Diagnostics;
+@inject FilePickerService FilePicker
+@implements IDisposable
+
+<DashboardPanel IsDraggable="false">
+  <Dashboard>
+    @foreach(var camera in _cameras)
+    {
+      <DashboardPane Title="@camera.FriendlyName" UnpinnedText="@camera.FriendlyName">
+        <HeaderContent>
+          <DropDownButton class="clf-pane-header-toggle-button" ViewModel="@(new DropDownButtonViewModel())">
+            <Icon>
+              <SingleColourIcon class="clf-pane-header-icon" IconId="clf_ic_settings_24_regular" />
+            </Icon>
+            <ChildContent>
+              <Popup>
+                <Tabs Direction="Direction.Vertical">
+                  <Tab Title="Display" Name="display">
+                    <IntensityMapFeatures_DisplayTab ViewModel="@camera.Features.DisplayTab" />
+                  </Tab>
+                  <Tab Title="Acquisition" Name="acquisition">
+                    <IntensityMapFeatures_AcquisitionTab ViewModel="@camera.Features.AcquisitionTab" />
+                  </Tab>
+                  <Tab Title="Sim Setup" Name="sim_setup">
+                    <AreaDetectorSimSetup PvPrefix="@($"{camera.PvPrefix}{camera.StreamPrefix}")" ChannelsHandler="_channelsHandler"/>
+                  </Tab>
+                </Tabs>
+              </Popup>
+            </ChildContent>
+          </DropDownButton>
+        </HeaderContent>
+        <ChildContent>
+          <IntensityMapViewer ViewModel="@camera" InDashboard="true" />
+        </ChildContent>
+      </DashboardPane>
+    }
+  </Dashboard>
+</DashboardPanel>
+
+@code {
+  private List<IntensityMapViewerViewModel> _cameras = new List<IntensityMapViewerViewModel>();
+  private ChannelsHandler _channelsHandler = new ChannelsHandler();
+
+  protected override async Task OnInitializedAsync()
+  {
+    await base.OnInitializedAsync();
+
+    //EPAC-DEV:CAM1
+    Stopwatch stopwatch = new Stopwatch();
+    stopwatch.Start();
+    InitializeCameraAsync();
+    stopwatch.Stop();
+    Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+  }
+
+  private async void InitializeCameraAsync()
+  {
+    await Task.Run(() =>
+    {
+      for (int i = 1; i <= 20; i++)
+      {
+        _cameras.Add(new IntensityMapViewerViewModel($"EPAC-DEV:CAM{i}" + ":", "cam1:", _channelsHandler, FilePicker, displaySize: new DisplaySize(580, 364)) { FriendlyName = $"EPAC-DEV:CAM{i}" });
+        InvokeAsync(StateHasChanged);
+      }
+    });
+  }
+
+  void IDisposable.Dispose()
+  {
+    foreach (var camera in _cameras)
+    {
+      camera.Dispose();
+    }
+    _channelsHandler.Dispose();
+  }
+}

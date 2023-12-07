@@ -1,0 +1,44 @@
+﻿<!-- BooleanMenuItem.razor -->
+
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Common.TreeViews
+
+<!-- Hmm, the UI for an Action item needn't be a TreeView, could be a button ? -->
+
+<TreeView 
+  Title   = "@TitleText" 
+  OnClick = "()=>OnActionClicked()"
+></TreeView>
+
+<!-- NEED TO DISMISS AFTER THE CLICK HAS BEEN HANDLED -->
+<!-- DO THIS BY NO LONGER SHOWING THE PARENT MENU ??? -->
+<!--
+<button @onclick="()=>OnActionClicked()">
+  @ViewModel.ItemText
+</button>
+-->
+
+@code {
+
+  [Parameter]
+  [EditorRequired]
+  public Clf.Common.MenuHandling.BooleanMenuItemDescriptor BooleanMenuItemDescriptor { get; set; }
+
+  private string TitleText => $"{BooleanMenuItemDescriptor.ItemText} {BooleanMenuItemDescriptor.InitialValue}" ;
+
+  private void OnActionClicked ( )
+  {
+    BooleanMenuItemDescriptor.HandleClick(
+      ! BooleanMenuItemDescriptor.InitialValue
+    ) ;
+    var topLevelParent = BooleanMenuItemDescriptor.TopLevelParentMenu ;
+    if (topLevelParent is Clf.Common.MenuHandling.ContextMenuDescriptor contextMenu)
+    {
+      topLevelParent.IsVisible = false ;
+      contextMenu.ClickableItemClickHandler?.Invoke(BooleanMenuItemDescriptor) ;
+      contextMenu.ClickableItemClickHandler = null;
+    }
+    topLevelParent.IsVisible = false ;
+  }
+
+}

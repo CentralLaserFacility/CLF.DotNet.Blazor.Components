@@ -16,7 +16,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     {
 
       m_parent.ChannelsHandler.InstallChannel(
-      _binningMethod = Hub.GetOrCreateChannel(m_parent.PvPrefix + "BinningMethod"),
+      _binningMethod = Hub.GetOrCreateChannel(m_parent.PvPrefix + ":BinningMethod"),
        (valueInfo, _) => OnBinningMethodChange((System.Int16)valueInfo.Value)
         );
       m_parent.ChannelsHandler.InstallChannel(

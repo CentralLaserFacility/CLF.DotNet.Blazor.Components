@@ -25,7 +25,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
 
     public IntensityMapFeatures_AdvancedTabViewModel(IntensityMapViewerViewModel parent)
     {
-      camPluginPrefix = "cam1:";
+      camPluginPrefix = ":cam1:";
       CameraStreamsBytesPerSecond = new TextEntryViewModel(
       width: 100,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "GC_StrBytesPerSecond")

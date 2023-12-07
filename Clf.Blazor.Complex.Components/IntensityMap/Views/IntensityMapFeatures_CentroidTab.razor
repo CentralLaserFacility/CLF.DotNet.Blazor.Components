@@ -25,11 +25,15 @@
     <div style="grid-column:1;">
         <label>Centroid </label>
     </div>
-    <div style="display:flex;">
-        <label>X</label>
-        <TextUpdate ViewModel="@ViewModel.CentroidX" />
-        <label>Y</label>
-        <TextUpdate ViewModel="@ViewModel.CentroidY" />
+    <div style="display:flex;flex-direction:row;align-items:center;gap:0px 20px">
+        <div style="display:flex;flex-direction:row;align-items:center;gap:0px 5px">
+          <label>X</label>
+          <TextUpdate ViewModel="@ViewModel.CentroidX" />
+        </div>
+        <div style="display:flex;flex-direction:row;align-items:center;gap:0px 5px">
+          <label>Y</label>
+          <TextUpdate ViewModel="@ViewModel.CentroidY" />
+        </div>
     </div>
     <div style="grid-column:1;">
         <label>Algorithm </label>
@@ -42,12 +46,13 @@
         <label>Threshold </label>
     </div>
     <div style="grid-column:2;">
-        <RadioButton ViewModel="@ViewModel?.ThresholdAlgorithm" />
         <div style="display:flex;">
-            <TextEntry ViewModel="@ViewModel.ThresholdManualSet" />
-            <TextUpdate ViewModel="@ViewModel.ThresholdAppliedRBV" />
+          <RadioButton ViewModel="@ViewModel?.ThresholdAlgorithm" />
+          <TextEntry ViewModel="@ViewModel.ThresholdManualSet" />
+          <TextUpdate ViewModel="@ViewModel.ThresholdAppliedRBV" />
         </div>
     </div>
+
 
     <div style="grid-column:1; width:fit-content;">
         <GroupBox ViewModel = "@ViewModel.EdgeDetectionGroupBox" >

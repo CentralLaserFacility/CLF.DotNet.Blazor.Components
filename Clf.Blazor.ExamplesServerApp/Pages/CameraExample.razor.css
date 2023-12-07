@@ -1,0 +1,49 @@
+﻿.camera-viewer {
+  display: inline-grid;
+  grid-template-columns: var(--graph-size) var(--image-size);
+  grid-template-rows: var(--image-size) var(--graph-size);
+}
+
+.profile-vertical {
+  transform-origin: top left;
+  transform: rotate(90deg) translateY(-100px);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.profile-horizontal {
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.camera-image {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.settings-container {
+  display: inline-grid;
+  grid-template-columns: 100px auto;
+  align-items: center;
+}
+
+.manual-normalisation {
+  grid-column: 2;
+}
+
+.overlay-container {
+  display: inline-grid;
+  align-items: center;
+  grid-template-columns: 50px auto;
+}
+
+.show-crosshair {
+  grid-column: 2;
+}
+
+.crosshair-position {
+  display: inline-flex;
+  align-items: center;
+}
+
+

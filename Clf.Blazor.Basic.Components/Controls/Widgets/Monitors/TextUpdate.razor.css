@@ -18,7 +18,7 @@
   }
 
 .text-update-value {
-  background-color: var(--clf-text-update-background-color);
+  background-color: var(--clf-text-update-background-colour);
   width: 100%;
   height: 100%;
   flex-grow: 1;

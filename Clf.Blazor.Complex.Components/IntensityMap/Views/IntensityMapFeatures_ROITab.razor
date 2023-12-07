@@ -11,58 +11,65 @@
 @using Clf.Blazor.Basic.Components.Controls.ViewModels.HelperWidgetViewModels
 @using Clf.Blazor.Basic.Components.Controls.ViewModels
 
+<div>
+  <RadioButton ViewModel="@ViewModel?.ROIMethod" />
+</div>
   <div class = "roi-tab">
-    <div style="grid-column:1;">
-        <RadioButton ViewModel="@ViewModel?.ROIMethod" />
+  <div><label>ROI Start X</label></div>    
+  <div class="roi-tab-flex">
+    <div>
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.CameraROIStartXSet" />
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROIStartXSet" />
     </div>
-    <div style="grid-column:1;">
-        <label>ROI Start X</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextEntry ViewModel="@ViewModel.CameraROIStartXSet" />
-        <TextEntry ViewModel="@ViewModel.SoftwareROIStartXSet" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.CameraROIStartXRBV" />
-        <TextUpdate ViewModel="@ViewModel.SoftwareROIStartXRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <label>ROI Start Y</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextEntry ViewModel="@ViewModel.CameraROIStartYSet" />
-        <TextEntry ViewModel="@ViewModel.SoftwareROIStartYSet" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.CameraROIStartYRBV" />
-        <TextUpdate ViewModel="@ViewModel.SoftwareROIStartYRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <label>ROI Size X</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextEntry ViewModel="@ViewModel.CameraROISizeXSet" />
-        <TextEntry ViewModel="@ViewModel.SoftwareROISizeXSet" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.CameraROISizeXRBV" />
-        <TextUpdate ViewModel="@ViewModel.SoftwareROISizeXRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <label>ROI Size Y</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextEntry ViewModel="@ViewModel.CameraROISizeYSet" />
-        <TextEntry ViewModel="@ViewModel.SoftwareROISizeYSet" />
-    </div>
-    <div style="grid-column:3;">
-        <TextUpdate ViewModel="@ViewModel.CameraROISizeYRBV" />
-        <TextUpdate ViewModel="@ViewModel.SoftwareROISizeYRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <ActionButton ViewModel="@ViewModel.ROIPluginSettings" />
+    <div>
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.CameraROIStartXRBV" />
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROIStartXRBV" />
     </div>
   </div>
+    <div><label>ROI Start Y</label></div>
+  <div class="roi-tab-flex">
+    <div>
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.CameraROIStartYSet" />
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROIStartYSet" />
+    </div>
+    <div>
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.CameraROIStartYRBV" />
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROIStartYRBV" />
+    </div>
+    </div>
+    
+    <div>
+        <label>ROI Size X</label>
+    </div>
+  <div class="roi-tab-flex">
+    <div>
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.CameraROISizeXSet" />
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROISizeXSet" />
+    </div>
+    <div>
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.CameraROISizeXRBV" />
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROISizeXRBV" />
+    </div>
+    </div>
+    
+    <div>
+        <label>ROI Size Y</label>
+    </div>
+  <div class="roi-tab-flex">
+    <div>
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.CameraROISizeYSet" />
+      <TextEntry class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROISizeYSet" />
+    </div>
+    <div>
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.CameraROISizeYRBV" />
+      <TextUpdate class="roi-tab-common-width" ViewModel="@ViewModel.SoftwareROISizeYRBV" />
+    </div>
+    </div>    
+  </div>
+
+<div class="roi-setttings-tab">
+  <ActionButton ViewModel="@ViewModel.ROIPluginSettings" />
+</div>
 
 
 @code {

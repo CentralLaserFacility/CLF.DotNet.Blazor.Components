@@ -7,10 +7,10 @@
   --clf-tab-border-width: 1px;
   --clf-tab-font-size: var(--clf-h3-font-size);
   /* Colors */
-  --clf-tab-content-background-color: var(--clf-tab-active-background-color);
-  --clf-tab-hover-background-color: var(--clf-action-button-hover-color);
+  --clf-tab-content-background-colour: var(--clf-tab-active-background-colour);
+  --clf-tab-hover-background-colour: var(--clf-action-button-hover-colour);
   --clf-tab-colour: var(--clf-font-colour);
-  --clf-tab-background-color: var(--clf-dashboard-header-background-colour);
-  --clf-tab-active-background-color: #fafafa;
-  --clf-tab-border-color: #c3c3c3;
+  --clf-tab-background-colour: var(--clf-dashboard-header-background-colour);
+  --clf-tab-active-background-colour: #fafafa;
+  --clf-tab-border-colour: #c3c3c3;
 }

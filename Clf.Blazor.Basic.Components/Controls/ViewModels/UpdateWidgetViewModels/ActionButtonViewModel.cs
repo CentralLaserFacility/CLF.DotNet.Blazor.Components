@@ -5,24 +5,8 @@ using System;
 
 namespace Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
 {
-  public class ActionButtonViewModel : UpdateWidgetViewModelBase
+  public class ActionButtonViewModel : ButtonViewModel
   {
-
-    // 2 enums for action type -> style
-    // icon id for icon
-    private ActionButtonType _actionButtonType = ActionButtonType.Default;
-    public ActionButtonType Type {
-      get { return _actionButtonType; }
-      set => SetProperty(ref _actionButtonType, value);
-    }
-
-    private string _text=string.Empty;
-    public string Text
-    {
-      get { return _text; }
-      set => SetProperty(ref _text, value ?? string.Empty);
-    }
-
     public Action OnActionButtonClicked { get; set; } = delegate { };
 
     public ActionButtonViewModel(
@@ -34,7 +18,7 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
       string? text = null,
       bool showTooltip = true,
       string? tooltipText = null,
-      ActionButtonType buttonType = ActionButtonType.Default
+      ButtonType buttonType = ButtonType.Default
       )
     : base(
         isVisible: isVisible,
@@ -43,11 +27,11 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels
         showTooltip: showTooltip,
         width: width,
         height: height,
-        borderStatus: borderStatus
+        borderStatus: borderStatus,
+        text: text,
+        buttonType: buttonType
         )
     {
-      _text = text??string.Empty;
-      _actionButtonType = buttonType ;
     }
   }
 }

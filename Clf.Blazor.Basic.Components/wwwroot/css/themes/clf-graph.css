@@ -1,0 +1,5 @@
+﻿:root {
+  --clf-graph-grid-color: #7F7474;
+  --clf-graph-overlay-color: #08BDBA;
+  --clf-graph-trace-color: var(--clf-dashboard-unpinned-button-selected-background-colour);
+}

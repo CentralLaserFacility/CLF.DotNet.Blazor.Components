@@ -31,7 +31,7 @@
   justify-content: center;
   align-items: center;
   padding: var(--clf-dashboard-unpinned-navigation-button-padding);
-  background-color: var(--clf-action-button-background-color);
+  background-color: var(--clf-action-button-background-colour);
   outline: none;
   border: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-header-border-colour);
   border-right: 0px;

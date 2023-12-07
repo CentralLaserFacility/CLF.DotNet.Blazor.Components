@@ -1,0 +1,135 @@
+//
+// _Notes.txt
+//
+
+
+Source Generators (overview)
+https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/source-generators-overview
+
+A source generator can retrieve a Compilation object that represents all user code that is being compiled.
+That object can be inspected, and you can write code that works with the syntax and semantic models
+for the code being compiled.
+
+A source generator can generate C# source files that can be added to a Compilation object during compilation.
+
+A Source Generator is a .NET Standard 2.0 assembly that is loaded by the compiler.
+Hmm, does this mean we can't package it along with the LogicSystem ??
+
+===========================
+
+Names and so on are represented as instances of 'SyntaxToken'.
+Useful properties :
+  mySyntaxToken.Value        Object representation of the value, eg string or int
+  mySyntaxToken.ValueText    String representation of the value (logical, ie with leading '@' removed if present) **** USE THIS !!!
+  mySyntaxToken.Text         ToString() => Text !!!! BEWARE !!!
+    Most of the time 'Text' is the same as 'ValueText', but can be different ...
+    'Text' is the raw string in the code ; 'ValueText' is the 'logical' equivalent
+    eg
+        Text            ValueText
+        @this           this
+        1.2f            1.2
+  https://stackoverflow.com/questions/46574525/in-what-situation-might-text-be-different-from-valuetext
+  https://github.com/dotnet/roslyn/blob/main/src/Compilers/Core/Portable/Syntax/SyntaxToken.cs
+
+==========================================
+
+https://wengier.com/SourceGeneratorPlayground/
+
+============================
+
+
+NOTE : WHEN YOU MAKE ANY CHANGES TO THIS SOURCE GENERATOR,
+IT'S NECESSARY TO REBUILD THE PROJECT AND THEN RELAUNCH VISUAL STUDIO.
+
+=============================
+
+Best scheme seems to be : 
+
+  Install a SyntaxReceiver, but keep it simple - just populating
+  collections of SyntaxNodes that are of interest.
+
+  In the 'Execute' method, scan these collections and use
+  LINQ queries to access related ancestor and descendent nodes,
+  using the SemanticModel where appropriate, and generate
+  code for each relevant class.
+
+=========================
+
+To see the generated code in Visual Studio :
+
+  From the Solution Explorer window,
+  go to the project that's using the SourceGenerator.
+    Dependencies > Analyzers > SourceGeneratorProjectName > SourceGeneratorClassName
+  Under that node you'll see the most recently generated '.g.cs' files.
+  Double-click to open a file in the editor.
+  If the generator runs again, the files will be updated.
+
+==============================
+
+AHA ! There *is* a way to debug a SourceGenerator 'in situ' ...
+https://github.com/JoanComasFdz/dotnet-how-to-debug-source-generator-vs2022
+Open the SourceGenerator project 'Properties' tab
+  Go to the 'Debug' section
+  Delete the profile shown
+  Add a new 'Roslyn component' profile
+  In the 'Target project' box, select a project that's set up to use the Source Generator.
+  That defines the 'main' project that will be activated when you debug the Source generator.
+  Close the UI.
+Restart VS2022.
+In the debug profiles dropdown next to the Play button, select your SourceGenerator project.
+Put a break point in your SourceGenerator to make sure the debugger stops.
+Click Play.
+-------------------
+The debugger will stop at the breakpoints you've set up.
+Note that the session stops once the 'Execution' has completed.
+------------------------
+Every time you change your source generator code, you need to restart Visual Studio,
+otherwise rebuilding the target project will not use the new version.
+This has something to do with Visual Studio caching.
+
+=========================
+
+BUT - by far the best way is to debug a SourceGenerator via an explicit Test,
+that uses a CSharpGeneratorDriver that applies a specified SourceGenerator instance
+to a Compilation, and applies the changes that it makes.
+
+https://github.com/davidwengier/SourceGeneratorTemplate
+
+============================
+
+Need to accommodate PARTIAL CLASSES !!!
+
+Hmm, this throws a spanner in the works, particularly for an Incremental generator.
+
+A LogicSystem can be spread over several 'partial' definitions, which might be either in different
+source files or in the same source file. When an edit is made to a particular file, we'll be notified
+of a change to the SyntaxNode pertaining to that section of the class definition, but in order to build
+a valid representation of the whole LogicSystem we'll have to visit the other Syntax nodes that represent
+the other partical definitions.
+
+Our 'LogicSystemSubclassDescriptor' will need to reference the entire set of Syntax nodes that contribute
+to the definition. That set will change as contributing partial classes are created and removed.
+
+For an Incremental generator, we'll want to rapidly decide whether a change to a Syntax node needs to be pursued
+by invoking the Transform. That can still be easily decided : if the SyntaxNode is represents a LogicSystem class
+definition, it's definitely interesting.
+
+In the Transform, we have to decide, as quickly as possible, whether the LogicSystemSubclassDescriptor will have been 
+influenced by the edit that's been made to the SyntaxNode. The syntax node will tell us the name of the LogicSystem subclass,
+and by comparing hashes we can establish whether there has been any meaningful alteration. That's easy when there is just 
+a single Syntax node involved, but when there are several ... we have to identify the candidate eg by the name of the source
+file that contains it.
+
+The various computed-node properties we're collecting in our LogicSystemSubclassDescriptor will normally come from different 
+partial classes, but in error situations a particular property could be defined twice, in different sections of the partial class.
+
+This all gets very tricky.
+
+For a SyntaxNode, we can get the SyntaxTree to which it belongs, and from that get the SourceFile and the span within that source file.
+
+Once we have the symbol for a class definition, we can get the Member Names - that will tell us the property names and so on,
+and from there we can get the property types and presumably the expressions ?
+
+
+
+

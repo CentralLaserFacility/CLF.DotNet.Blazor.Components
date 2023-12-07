@@ -39,101 +39,83 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     public IntensityMapFeatures_ROITabViewModel(IntensityMapViewerViewModel parent)
     {
       m_parent = parent;
-      camPluginPrefix = "cam1:";
-      roiPluginPrefix = "ROI1:";
+      camPluginPrefix = ":cam1:";
+      roiPluginPrefix = ":ROI1:";
 
       ROIMethod = new RadioButtonViewModel(
-          width: 120,
           items: new ObservableCollection<string> { "Camera ROI", "Software ROI" },
           isHorizontal: false,
-          channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "ROIMethod")
+          channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":ROIMethod")
       );
 
       CameraROISizeXSet = new TextEntryViewModel(
-      width: 50,
-      isVisible:false,
+      isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "SizeX")
       );
       CameraROISizeXRBV = new TextUpdateViewModel(
-      width: 50,
-      isVisible:false,
+      isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "SizeX_RBV")
       );
       CameraROIStartXSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "MinX")
       );
       CameraROIStartXRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "MinX_RBV")
       );
       CameraROISizeYSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "SizeY")
       );
       CameraROISizeYRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "SizeY_RBV")
       );
       CameraROIStartYSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "MinY")
       );
       CameraROIStartYRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + camPluginPrefix + "MinY_RBV")
       );
       SoftwareROISizeXSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "SizeX")
       );
       SoftwareROISizeXRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "SizeX_RBV")
       );
       SoftwareROIStartXSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "MinX")
       );
       SoftwareROIStartXRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "MinX_RBV")
       );
       SoftwareROISizeYSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "SizeY")
       );
       SoftwareROISizeYRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "SizeY_RBV")
       );
       SoftwareROIStartYSet = new TextEntryViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "MinY")
       );
       SoftwareROIStartYRBV = new TextUpdateViewModel(
-      width: 50,
       isVisible: false,
       channelRecord: parent.CreateChannelRecord(parent.PvPrefix + roiPluginPrefix + "MinY_RBV")
       );
 
       ROIPluginSettings = new ActionButtonViewModel(
       text: "ROI Plugin Settings",
-      isVisible: true,
-      width: 200
+      isVisible: true
       );
       IntensityMapFeatures_ROITabViewModel_Logic_Initiliasation();
 

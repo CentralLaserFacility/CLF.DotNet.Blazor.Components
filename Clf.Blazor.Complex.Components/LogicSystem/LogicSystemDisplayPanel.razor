@@ -1,0 +1,121 @@
+﻿@using Clf.Blazor.Common.ContextMenus
+@using Microsoft.AspNetCore.Components.Web
+
+<!-- This overall panel is driven by the DiagramCanvasViewModel. -->
+<!-- Would be better to define a DiagramCanvas component !!!     -->
+
+<CascadingValue Value="@this" IsFixed="true">
+
+@if ( ContextMenuDescriptor.IsVisible )
+{
+  <div style = "
+    position          : absolute ;
+    left              : @ContextMenuTopLeftPos_X_InPageCoordinates ;
+    top               : @ContextMenuTopLeftPos_Y_InPageCoordinates ;
+    box-shadow        : 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding           : 2px;
+    background-color  : #fff;
+    border-radius     : 6px;
+  "
+  >
+    <ContextMenu MenuDescriptor="@ContextMenuDescriptor"></ContextMenu>
+  </div>
+}
+<!--
+  style = "
+    width  : calc(100vm-10vmax) ;
+    height : 90vh ;
+  "
+-->
+<div>
+    <!--<p>Render #@RenderNumber</p>-->
+  <!-- 
+    It's essential here to leave the 'height' property unspecified, and to only define 
+    the 'width' property, as being 100% of the enclosing div. That gives the layout engine the freedom
+    to assign the height in a way that preserves the aspect ratio, with the content of the 'svg' 
+    positioned with its origin at the top left as expected.
+    If we do specify the height, the engine will honour that height but will position
+    the svg in the centre of the available vertical space. So graphics drawn at [0,0]
+    will appear not at the top left but further down on the page.
+  -->
+  <svg 
+    xmlns   = "http://www.w3.org/2000/svg" 
+    version = "1.1" 
+    width   = "100%"
+    viewBox = "
+      0 
+      0 
+      @(DiagramCanvasViewModel.BoundingRectanglesDescriptor.OuterBoundingRectangleEnclosingAllNodesAndBothMargins.Width)
+      @(DiagramCanvasViewModel.BoundingRectanglesDescriptor.OuterBoundingRectangleEnclosingAllNodesAndBothMargins.Height)
+    "
+  > 
+    <!-- It seems that we need to install the 'onclick' handlers on each element ??  -->
+    <!-- Although previous experiments indicated that it was enough just to install  -->
+    <!-- a handler on the 'outermost' rectangle ...                                  -->
+    <rect 
+      x      = "0"
+      y      = "0"
+      width  = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.OuterBoundingRectangleEnclosingAllNodesAndBothMargins.Width"
+      height = "@(DiagramCanvasViewModel.BoundingRectanglesDescriptor.OuterBoundingRectangleEnclosingAllNodesAndBothMargins.Height)"
+      style  = "fill:@DiagramCanvasViewModel.OuterBoundingRectangleEnclosingAllNodesAndBothMargins_Colour.AsRgbText();"
+      @onclick="@OnLeftClick"
+      @oncontextmenu:preventDefault
+      @oncontextmenu="@OnRightClick" 
+    />
+    <rect 
+      x      = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodesAndInnerMargin.X"
+      y      = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodesAndInnerMargin.Y"
+      width  = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodesAndInnerMargin.Width"
+      height = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodesAndInnerMargin.Height"
+      style  = "fill:@DiagramCanvasViewModel.InnerBoundingRectangleEnclosingAllNodesAndInnerMargin_Colour.AsRgbText();"
+      title  = "@DiagramCanvasViewModel.Parent.LogicSystem.Timings"
+      @onclick="@OnLeftClick"
+      @oncontextmenu:preventDefault
+      @oncontextmenu="@OnRightClick" 
+    />
+    @if ( DiagramCanvasViewModel.IsEmpty )
+    {
+      // We only show this if there are no nodes !
+      // Maybe we should also show a text message ??
+      <rect 
+        x      = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodes.X"
+        y      = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodes.Y"
+        width  = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodes.Width"
+        height = "@DiagramCanvasViewModel.BoundingRectanglesDescriptor.InnerBoundingRectangleEnclosingAllNodes.Height"
+        style  = "fill:@DiagramCanvasViewModel.InnerBoundingRectangleEnclosingAllNodes_Colour.AsRgbText();"
+        @onclick="@OnLeftClick"
+        @oncontextmenu:preventDefault
+        @oncontextmenu="@OnRightClick" 
+      />
+    }
+
+    <defs>
+      <marker id='@ArrowMarkerId'
+              orient="auto"
+              markerWidth='10'
+              markerHeight='10'
+              refX='4'
+              refY='2'>
+        <path d='M0,0 V4 L5,2 Z' fill="@LogicSystemViewModel.DependencyLinkViewModels.FirstOrDefault()?.LineColour.AsRgbText()" />
+      </marker>
+    </defs>
+
+    @foreach ( var dependencyLinkViewModel in LogicSystemViewModel.DependencyLinkViewModels )
+    {
+      <LogicSystemLink DependencyLinkViewModel="@dependencyLinkViewModel" MarkerId="@ArrowMarkerId"/>
+    }
+    @foreach ( var logicNodeViewModel in LogicSystemViewModel.LogicNodeViewModels )
+    {
+      <LogicSystemNode LogicNodeViewModel="@logicNodeViewModel" />
+    }
+    </svg>
+</div>
+
+</CascadingValue>
+
+
+@code {
+
+  private readonly string ArrowMarkerId = $"arrow_{Guid.NewGuid()}" ;
+
+}

@@ -7,7 +7,7 @@
   --clf-slider-track-selected-colour: #0082D9;
   --clf-slider-track-disabled-selected-colour: #A5A5A5;
   --clf-slider-track-background-colour: #C2E7FF;
-  --clf-slider-track-disabled-background-colour: var(--clf-text-update-background-color);
+  --clf-slider-track-disabled-background-colour: var(--clf-text-update-background-colour);
   --clf-slider-thumb-background-colour: white;
   --clf-slider-thumb-selected-background-colour: color-mix(in srgb, #ffff00 20%, white);
   --clf-slider-thumb-border: 1px solid rgba(000,000,000,0.1);
@@ -55,6 +55,6 @@ input[type=range]{
 
   input[type=range]:disabled {
     pointer-events: none;
-    background: var(--clf-text-update-background-color);
+    background: var(--clf-text-update-background-colour);
     filter: var(--clf-disabled-filter);
   }

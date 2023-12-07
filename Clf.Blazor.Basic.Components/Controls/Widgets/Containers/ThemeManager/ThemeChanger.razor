@@ -1,0 +1,67 @@
+﻿﻿@using Clf.Blazor.Common.Services;
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop;
+@inject IJSRuntime JSRuntime
+@inject ThemeSelectorService ThemeSelectorService
+@implements IDisposable;
+
+@if (IsVisible)
+{
+  <div>
+    <select @onchange="ChangeTheme">
+      @foreach (var item in _themes)
+      {
+        <option selected="@(item==ThemeSelectorService.CurrentTheme)">@item</option>
+      }
+    </select>
+  </div>
+}
+@ChildContent
+
+@code {
+
+  [Parameter]
+  public bool IsVisible { get; set; } = false;
+
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  private List<string> _themes = new List<string> { "Light", "Dark" };
+  private IJSObjectReference? _module;
+
+  protected override async Task OnInitializedAsync()
+  {
+    await base.OnInitializedAsync();
+    ThemeSelectorService.ThemeChanged += OnThemeChange;
+  }
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      _module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Clf.Blazor.Basic.Components/Controls/Widgets/Containers/ThemeManager/ThemeChanger.razor.js");
+      await _module!.InvokeVoidAsync("changeTheme", ThemeSelectorService.CurrentTheme);
+    }
+  }
+
+  private async void OnThemeChange(string targetTheme)
+  {
+    await _module!.InvokeVoidAsync("changeTheme", targetTheme);
+    await InvokeAsync(StateHasChanged);
+  }
+
+  void ChangeTheme(ChangeEventArgs e)
+  {
+    var theme = e?.Value?.ToString();
+    if (!string.IsNullOrEmpty(theme))
+    {
+      ThemeSelectorService.CurrentTheme = theme;
+    }
+  }
+
+  void IDisposable.Dispose()
+  {
+    ThemeSelectorService.ThemeChanged -= OnThemeChange;
+    _module?.DisposeAsync();
+  }
+}

@@ -1,8 +1,19 @@
 ﻿.acquisition-tab {
-    display: grid;
-    grid-template-columns: 100px auto;
-    column-gap: 10px;
-    row-gap: 5px;
-    padding: 15px;
-    width: 435px;
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  align-items: center;
+  column-gap: 10px;
+}
+
+.acquisition-tab-second-col {
+  grid-column: 2;
+}
+
+.acquisition-tab-flex {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+::deep .acquisition-tab-common-width {
+  width: 80px;
 }

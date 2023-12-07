@@ -1,114 +1,140 @@
 @using Clf.Blazor.Basic.Components.Controls
+@using Clf.Blazor.Basic.Components.Controls.Models;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
 @using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
 @using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.Dashboard
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.TabWidget
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers
 @using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
 @using Clf.Blazor.Common.FilePicker;
-
+@using Microsoft.JSInterop;
+@inject IJSRuntime JSRuntime
 @inherits WidgetBase
 @implements IDisposable
 
 
-<!-- 
-
-      +---------+---------------------------------+-----------+
-      |                        T                              |
-      +---------+---------------------------------+-----------+
-      |         |                                 |           |
-      |    A    |              B                  |     C     |
-      |         |                                 |           |      Overall size fills available area
-      |         |                                 |           |      That is :
-      |         |                                 |           |        'B' is variable size
-      |         |                                 |           |        'A' height is variable
-      |         |                                 |           |        'C' height is variable
-      |         |                                 |           |        'E' width  is variable
-      |         |                                 |           |
-      +---------+---------------------------------+           + ---
-      |         |                                 |           |  |
-      |    D    |              E                  |           | 100px
-      |         |                                 |           |  |
-      +---------+---------------------------------+-----------+ ---
-      |         |                                 |           |
-      |  100px  |                                 |   300px   |
-
-   Area           Content
-   |              |
-   T              Title
-   A              VerticalProfileGraph
-   B              Image display
-   C              Panels (stacked vertically)
-   D              Miscellaneous
-   E              HorizontalProfileGraph
-
--->
-
-<!-- 
-  Hello
-</GroupBox>
--->
-@*width                 : @(IntensityMapViewer.TotalWidth+"px") ;*@
-@{
-  int a = 0;
-}
-<div 
-  class = "imv-main"
-  style = "  
-    grid-template-columns : @(ViewModels.IntensityMapViewerViewModel.GraphHeight+"px")     @(ViewModel.DisplaySize.Width.ToString())px auto ;
-    grid-template-rows    : auto @(ViewModel.DisplaySize.Height+"px") @(ViewModels.IntensityMapViewerViewModel.GraphHeight+"px") auto ;
-  "
->
-  <div class="imv-t">
-    <!--
-    Intensity Map : PV = '@ViewModel.PvPrefix' Stream = '@ViewModel.StreamPrefix'
-    -->
-      <TextUpdate ViewModel="@ViewModel.UserName" />
-      <Led ViewModel="@ViewModel.CameraStatus" />
-  </div>
-
-    <div class="imv-a">
-    <!-- 
-    -->
-        <IntensityMapVerticalProfileGraphPanel ViewModel="@ViewModel.VerticalProfileGraph" />
+<div class="camera-viewer" style="--image-width:@($"{ViewModel.DisplaySize.Width}px"); --image-height:@($"{ViewModel.DisplaySize.Height}px"); --graph-size:@($"{ViewModels.IntensityMapViewerViewModel.GraphHeight}px");">
+  <Tooltip Text="@(ViewModel.IntensityMapImage.ImageViewer?.ShowTooltip ?? false ? ViewModel.IntensityMapImage.ImageViewer.TooltipText : string.Empty)">
+    <div class="profile-vertical">
+      <IntensityProfileGraph ViewModel="@ViewModel.VerticalProfileGraph.IntensityProfileGraph" />
     </div>
-    <div class="imv-b">
-        <ImageViewer ViewModel = "@ViewModel.IntensityMapImage.ImageViewer" />
+  </Tooltip>
+  <Tooltip Text="@(ViewModel.IntensityMapImage.ImageViewer?.ShowTooltip ?? false ? ViewModel.IntensityMapImage.ImageViewer.TooltipText : string.Empty)">
+    <div class="camera-image">
+      <ImageViewer ViewModel="@ViewModel.IntensityMapImage.ImageViewer" />
     </div>
-  <div class="imv-c" style="height: @($"{ViewModel.DisplaySize.Height+ViewModels.IntensityMapViewerViewModel.GraphHeight}px");">
-    <IntensityMapFixedDisplayPanel ViewModel="@ViewModel.FixedDisplay" />
-    <IntensityMapFeatures ViewModel="@ViewModel.Features" />
-    <!-- 
-    -->
-  </div>
-  <div class="imv-d">
-    <!-- 
-    <SpinnerWithSlider />
-    -->
-  </div>
-  <div class="imv-e">
-    <!-- 
-    -->
-    <IntensityMapHorizontalProfileGraphPanel ViewModel="@ViewModel.HorizontalProfileGraph"/>
-  </div>
+  </Tooltip>
+  <Tooltip Text="@(ViewModel.IntensityMapImage.ImageViewer?.ShowTooltip ?? false ? ViewModel.IntensityMapImage.ImageViewer.TooltipText : string.Empty)">
+    <div class="profile-horizontal">
+      <IntensityProfileGraph ViewModel="@ViewModel.HorizontalProfileGraph.IntensityProfileGraph" />
+    </div>
+  </Tooltip>
 </div>
 
 @code {
 
-    [Parameter]
-    public ViewModels.IntensityMapViewerViewModel ViewModel { get ; set ; }
+  [Parameter]
+  public ViewModels.IntensityMapViewerViewModel ViewModel { get; set; }
 
-    protected override void OnInitialized ( )
+  [Parameter]
+  public bool InDashboard { get; set; } = false;
+
+  private bool _isDashboardRenderingPending = false;
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    if (ViewModel != null)
     {
-        base.OnInitialized() ;
-        if (ViewModel != null)
-            ViewModel.PropertyChanged += OnPropertyChanged;
+      ViewModel.PropertyChanged += OnPropertyChanged;
+      ViewModel.PropertyChanged += RenderDashboardLayout;
+    }
+  }
+
+  public static RenderFragment GetIntensityMapViewerHeader(ViewModels.IntensityMapViewerViewModel _viewModel)
+  {
+    return (__builder) =>
+    {
+      <DropDownButton class="clf-pane-header-toggle-button" ViewModel="@(new DropDownButtonViewModel())">
+        <Icon>
+          <SingleColourIcon class="clf-pane-header-icon" IconId="clf_ic_settings_24_regular" />
+        </Icon>
+        <ChildContent>
+          <Popup>
+            <Tabs Direction="Direction.Vertical">
+              <Tab Title="Display" Name="display">
+                <IntensityMapFeatures_DisplayTab ViewModel="@_viewModel.Features.DisplayTab" />
+              </Tab>
+              <Tab Title="Acquisition" Name="acquisition">
+                <IntensityMapFeatures_AcquisitionTab ViewModel="@_viewModel.Features.AcquisitionTab" />
+              </Tab>
+              <Tab Title="ROI" Name="roi">
+                <IntensityMapFeatures_ROITab ViewModel="_viewModel.Features.ROITab" />
+              </Tab>
+              <Tab Title="Binning" Name="binning">
+                <IntensityMapFeatures_BinningTab ViewModel="_viewModel.Features.BinningTab" />
+              </Tab>
+              <Tab Title="Centroid" Name="centroid">
+                <IntensityMapFeatures_CentroidTab ViewModel="_viewModel.Features.CentroidTab" />
+              </Tab>
+              <Tab Title="Overlay" Name="overlay">
+                <IntensityMapFeatures_OverlayTab ViewModel="_viewModel.Features.OverlayTab" />
+              </Tab>
+              <Tab Title="BackGround" Name="background">
+                <IntensityMapFeatures_BackgroundTab ViewModel="_viewModel.Features.BackgroundTab" />
+              </Tab>
+              <Tab Title="Transform" Name="transform">
+                <IntensityMapFeatures_TransformTab ViewModel="_viewModel.Features.TransformTab" />
+              </Tab>
+              <Tab Title="Statistics" Name="statistics">
+                <IntensityMapFeatures_StatisticsTab ViewModel="_viewModel.Features.StatisticsTab" />
+              </Tab>
+              <Tab Title="Kafka" Name="kafka">
+                <IntensityMapFeatures_KafkaTab ViewModel="_viewModel.Features.KafkaTab" />
+              </Tab>
+              <Tab Title="HDF5" Name="hdf5">
+                <IntensityMapFeatures_HDF5Tab ViewModel="_viewModel.Features.HDF5Tab" />
+              </Tab>
+              <Tab Title="CameraInfo" Name="camerainfo">
+                <IntensityMapFeatures_CameraInfoTab ViewModel="_viewModel.Features.CameraInfoTab" />
+              </Tab>
+              <Tab Title="Advanced" Name="advanced">
+                <IntensityMapFeatures_AdvancedTab ViewModel="_viewModel.Features.AdvancedTab" />
+              </Tab>
+            </Tabs>
+          </Popup>
+        </ChildContent>
+      </DropDownButton>
+    };
+  }
+
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+  {
+    if(InDashboard && _isDashboardRenderingPending)
+    {
+      await JSRuntime.InvokeVoidAsync("resizeDashboardToMasonaryLayout");
     }
 
-    void IDisposable.Dispose()
+  }
+
+  private void RenderDashboardLayout(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+  {
+    if(e.PropertyName== nameof(ViewModel.DisplaySize))
     {
-        if (ViewModel != null)
-        {
-            ViewModel.PropertyChanged -= OnPropertyChanged;
-            ViewModel.Dispose();
-        }
-            
+      _isDashboardRenderingPending = true;
+      InvokeAsync(StateHasChanged);
     }
+  }
+
+  void IDisposable.Dispose()
+  {
+    if (ViewModel != null)
+    {
+      ViewModel.PropertyChanged -= OnPropertyChanged;
+      ViewModel.PropertyChanged -= RenderDashboardLayout;
+    }
+
+  }
 }

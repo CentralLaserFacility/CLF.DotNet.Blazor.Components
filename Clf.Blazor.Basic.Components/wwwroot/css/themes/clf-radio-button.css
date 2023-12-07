@@ -8,7 +8,7 @@
   --clf-radio-button-default-border-disabled-colour: #B3B3B3;
   --clf-radio-button-border-style: solid;
   --clf-radio-button-hover-focus-checked-border-colour: #0082D9;
-  --clf-radio-button-focus-checked-background-color: rgba(255,255,0,0.2);
+  --clf-radio-button-focus-checked-background-colour: rgba(255,255,0,0.2);
   --clf-radio-button-to-radio-button-gap: 10px;
 }
 
@@ -44,7 +44,7 @@ input[type="radio"] {
   }
 
   input[type="radio"]:focus:checked::before {
-    box-shadow: inset var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-focus-checked-background-color);
+    box-shadow: inset var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-inner-circle-default-size) var(--clf-radio-button-focus-checked-background-colour);
     outline: var(--clf-radio-button-inner-border-size) var(--clf-radio-button-border-style) var(--clf-radio-button-hover-focus-checked-border-colour);
   }
 

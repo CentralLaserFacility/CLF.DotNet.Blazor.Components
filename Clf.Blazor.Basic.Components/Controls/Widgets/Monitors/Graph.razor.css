@@ -1,0 +1,49 @@
+﻿.plot {
+  fill: none;
+  stroke: var(--clf-graph-trace-color);
+  stroke-width: 1px;
+}
+
+.overlay {
+  fill: none;
+  stroke: var(--clf-graph-overlay-color);
+  stroke-width: 1px;
+}
+
+.area-plot {
+  fill: var(--clf-graph-trace-color);
+  stroke: var(--clf-graph-trace-color);
+  stroke-width: 2px;
+  fill-opacity: 0.6;
+  stroke-opacity: 0.9;
+}
+
+.area-overlay {
+  fill: var(--clf-graph-overlay-color);
+  stroke: var(--clf-graph-overlay-color);
+  stroke-width: 2px;
+  fill-opacity: 0.6;
+  stroke-opacity: 0.9;
+}
+.axis {
+  stroke: var(--clf-graph-axis-color);
+}
+
+.text {
+  fill: var( --clf-graph-text-color);
+}
+
+.error-message {
+  fill: var(--clf-graph-error-message-color);
+}
+
+.error-message-fade {
+  fill: var(--clf-graph-error-message-fade-box-color);
+  opacity: 0.5;
+}
+
+.grid {
+  stroke: var(--clf-graph-grid-color);
+  stroke-dasharray: 4;
+  opacity: 0.3;
+}

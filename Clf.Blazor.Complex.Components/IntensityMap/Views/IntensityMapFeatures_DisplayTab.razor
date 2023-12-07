@@ -11,51 +11,36 @@
 @using Clf.Blazor.Basic.Components.Controls.ViewModels
 
   <div class = "display-tab">
-    <div style="grid-column:1;">
-        <label>Image Counter</label>
+    <label>EPICS Name</label>
+    <TextUpdate class="epics-name" ViewModel="@ViewModel.EPICSName" />
+    <label>Image Rate</label>
+  <TextUpdate class="display-tab-common-width" ViewModel="@ViewModel.ImageRateRBV" />
+    <label>Image Counter</label>
+    <div class="display-tab-flex">
+    <TextEntry class="display-tab-common-width" ViewModel="@ViewModel.ImageCounter" />
+    <TextUpdate class="display-tab-common-width" ViewModel="@ViewModel.ImageCounterRBV" />
     </div>
-    <div style="grid-column:2;">
-        <TextUpdate ViewModel="@ViewModel.ImageCounterRBV" />
+    <label>Maximum Pixel</label>
+  <TextUpdate class="display-tab-common-width" ViewModel="@ViewModel.MaxPixelValueRBV" />
+    <label>Pixel Bit Depth</label>
+  <TextUpdate class="display-tab-common-width" ViewModel="@ViewModel.PixelBitDepthRBV" />
+    <label>Colour Map</label>
+  <ComboBox class="display-tab-common-width" ViewModel="@ViewModel.ColourMap" />
+    <label>Normalisation</label>
+  <Checkbox ViewModel="@ViewModel.AutoNormalise" />
+  <div class="display-tab-second-col">
+    <Slider class="manual-norm" SpinnerClass="display-tab-common-width" ViewModel="@ViewModel.ManualNormalisationValue" />
     </div>
-    <div style="grid-column:1;">
-        <label>Max Pixel Value</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextUpdate ViewModel="@ViewModel.MaxPixelValueRBV" />
-    </div>
-    <div style="grid-column:1;">
-        <label>Pixel Bit Depth</label>
-    </div>
-    <div style="grid-column:2;">
-        <TextUpdate ViewModel="@ViewModel.PixelBitDepthRBV" />
-    </div>
-        <div style="grid-column:1;">
-        <label>Colour Map</label>
-    </div>
-    <div style="grid-column:2;">
-        <ComboBox ViewModel="@ViewModel.ColourMap" />
-    </div>
-   @* <div style="grid-column:1;">
-        <label>Brightness</label>
-    </div>
-    <div style="grid-column:1;">
-        <Slider ViewModel="@ViewModel.BrightnessSliderSet" />
-    </div>
-    <div style="grid-column:1;">
-        <label>Contrast</label>
-    </div>
-    <div style="grid-column:1;">
-        <Slider ViewModel="@ViewModel.ContrastSliderSet" />
-    </div>*@
-    <div style="grid-column:1;">
-        <label>Normalisation</label>
-    </div>
-    <div style="grid-column:1;">
-        <Checkbox ViewModel="@ViewModel.AutoNormalise" />
-    </div>
-    <div style="grid-column:1;">
-        <Slider ViewModel="@ViewModel.ManualNormalisationValue" />
-    </div>
+  <label>Show Profile</label>
+  <Checkbox ViewModel="@ViewModel.ShowProfileGraph" />
+  <label>Export</label>
+  <div class="display-tab-flex">
+    <ActionButton class="export-buttons" ViewModel="@ViewModel.ExportProfileGraphX" />
+    <ActionButton class="export-buttons" ViewModel="@ViewModel.ExportProfileGraphY" />
+  </div>
+  <div class="display-tab-second-col">
+    <ActionButton class="export-image" ViewModel="@ViewModel.ExportImage" />
+  </div>
   </div>
 
 @code {

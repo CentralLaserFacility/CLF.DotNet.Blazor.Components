@@ -36,7 +36,7 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     }
     public IntensityMapFeatures_KafkaTabViewModel(IntensityMapViewerViewModel parent)
     {
-      kafkaPluginPrefix = "Kafka1:";
+      kafkaPluginPrefix = ":Kafka1:";
       StartKafkaStreaming = CreateValueWriteActionButtonViewModel(parent.PvPrefix + kafkaPluginPrefix + "EnableCallbacks", (short)1);
       StartKafkaStreaming.Text = "Start";
       StartKafkaStreaming.Width = 60;

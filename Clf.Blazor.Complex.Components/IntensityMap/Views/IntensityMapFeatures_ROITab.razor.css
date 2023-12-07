@@ -1,8 +1,25 @@
-﻿.roi-tab {
-    display: grid;
-    grid-template-columns: 100px auto;
-    column-gap: 10px;
-    row-gap: 5px;
-    padding: 15px;
-    width: 435px;
+﻿.roi-tab{
+  display:grid;
+  grid-template-columns:repeat(2,auto);
+  align-items:center;
+}
+
+.roi-tab-flex{
+  display:inline-flex;
+  flex-direction:row;
+}
+
+::deep .roi-tab-common-width{
+  width:80px;
+}
+
+
+.roi-setttings-tab{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.roi-tab > div {
+  margin:10px;
 }

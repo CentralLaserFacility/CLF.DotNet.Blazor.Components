@@ -1,0 +1,207 @@
+﻿@using Clf.Blazor.Basic.Components.Controls.ViewModels.ContainerWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Monitors
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+@using Clf.Blazor.ExamplesServerApp.ViewModels;
+@using Clf.ChannelAccess;
+
+<div class="sim-setup-tab-wrapper">
+  <div class="common-group sim-setup-tab">
+    <label>Simulation Mode</label>
+    <div class="sim-setup-tab-flex">
+      <ComboBox class="sim-mode" ViewModel="@_viewModel.SimMode" />
+      <ActionButton class="reset-image-button" ViewModel="@_viewModel.ResetImageButton" />
+    </div>
+  </div>
+  <div class="gain-group sim-setup-tab">
+    <h4 class="sim-setup-group-header">Gains, Offset & Noise</h4>
+    <label>X</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainX" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainXRBV" />
+    </div>
+    <label>Y</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainY" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainYRBV" />
+    </div>
+    <label>Overall</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.Gain" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainRBV" />
+    </div>
+    <label>Red</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainRed" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainRedRBV" />
+    </div>
+    <label>Green</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainGreen" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainGreenRBV" />
+    </div>
+    <label>Blue</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainBlue" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.GainBlueRBV" />
+    </div>
+    <label>Offset</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.Offset" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.OffsetRBV" />
+    </div>
+    <label>Noise</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.Noise" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.NoiseRBV" />
+    </div>
+  </div>
+  <div class="peak-group sim-setup-tab">
+    <h4 class="sim-setup-group-header">Peak Mode</h4>
+    <label>Start X</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStartX" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStartXRBV" />
+    </div>
+    <label>Start Y</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStartY" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStartYRBV" />
+    </div>
+    <label>Num X</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakNumX" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakNumXRBV" />
+    </div>
+    <label>Num Y</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakNumY" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakNumYRBV" />
+    </div>
+    <label>Step X</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStepX" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStepXRBV" />
+    </div>
+    <label>Step Y</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStepY" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakStepYRBV" />
+    </div>
+    <label>Width X</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakWidthX" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakWidthXRBV" />
+    </div>
+    <label>Width Y</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakWidthY" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakWidthYRBV" />
+    </div>
+    <label>% Variat.</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakVariation" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.PeakVariationRBV" />
+    </div>
+  </div>
+  <h4 class="sim-setup-group-header sine-group-header">Sine Mode</h4>
+  <div class="sine-group-x sim-setup-tab">
+    <h4 class="sim-setup-group-header">X</h4>
+    <label>Operation</label>
+    <ComboBox class="sine-operation" ViewModel="@_viewModel.XSineOperation" />
+    </div>
+  <div class="sine-group-y sim-setup-tab">
+    <h4 class="sim-setup-group-header">Y</h4>
+    <label>Operation</label>
+    <ComboBox class="sine-operation" ViewModel="@_viewModel.YSineOperation" />
+    </div>
+  <h4 class="sim-setup-group-header sine-group-header">Sine #1</h4>
+  <div class="sine-group-x sim-setup-tab">    
+    <label>Amplitude</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine1Amplitude" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine1AmplitudeRBV" />
+    </div>
+    <label>Frequency</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine1Frequency" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine1FrequencyRBV" />
+    </div>
+    <label>Phase</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine1Phase" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine1PhaseRBV" />
+    </div>
+  </div>
+  <div class="sine-group-y sim-setup-tab">
+    <label>Amplitude</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine1Amplitude" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine1AmplitudeRBV" />
+    </div>
+    <label>Frequency</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine1Frequency" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine1FrequencyRBV" />
+    </div>
+    <label>Phase</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine1Phase" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine1PhaseRBV" />
+    </div>
+  </div>
+  <h4 class="sim-setup-group-header sine-group-header">Sine #2</h4>
+  <div class="sine-group-x sim-setup-tab">
+    <label>Amplitude</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine2Amplitude" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine2AmplitudeRBV" />
+    </div>
+    <label>Frequency</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine2Frequency" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine2FrequencyRBV" />
+    </div>
+    <label>Phase</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine2Phase" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.XSine2PhaseRBV" />
+    </div>
+  </div>
+  <div class="sine-group-y sim-setup-tab">
+    <label>Amplitude</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine2Amplitude" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine2AmplitudeRBV" />
+    </div>
+    <label>Frequency</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine2Frequency" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine2FrequencyRBV" />
+    </div>
+    <label>Phase</label>
+    <div class="sim-setup-tab-flex">
+      <TextEntry class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine2Phase" />
+      <TextUpdate class="sim-setup-tab-common-width" ViewModel="@_viewModel.YSine2PhaseRBV" />
+    </div>
+  </div>
+</div>
+
+
+
+
+@code {
+  [Parameter, EditorRequired]
+  public string PvPrefix { get; set; }
+
+  [Parameter, EditorRequired]
+  public ChannelsHandler ChannelsHandler { get; set; }
+
+  private AreaDetectorSimSetupViewModel _viewModel;
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    _viewModel = new AreaDetectorSimSetupViewModel(PvPrefix, ChannelsHandler);
+  }
+}

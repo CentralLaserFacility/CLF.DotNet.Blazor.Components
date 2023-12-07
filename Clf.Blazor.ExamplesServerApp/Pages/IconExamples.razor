@@ -1,0 +1,73 @@
+﻿@page "/icon-examples";
+@using System.IO;
+@using System.Text.RegularExpressions;
+@using System.Collections.Generic;
+@using System.Xml;
+@using System.Xml.Serialization;
+@using System.Xml.Linq;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Helpers;
+
+<h3>Multi-Colour Icons</h3>
+<div class="grid-container">
+  @foreach (var icons in MultiColourIcons)
+  {
+    <div class="grids">
+      <svg class="clf-icon">
+        <use href="_content/Clf.Blazor.Basic.Components/icons/multi_colour/symbol-defs.svg#@(icons)" />
+      </svg>
+      <span class="title">@icons</span>
+    </div>
+  }
+</div>
+
+<h3>Single Colour Icons</h3>
+<div class="grid-container">
+  @foreach (var icons in SingleColourIcons)
+  {
+    <div class="grids">
+      <SingleColourIcon IconId="@icons" /><span class="title"> @icons</span>
+    </div>
+  }
+</div>
+
+
+@code {
+
+  public List<string> SingleColourIcons;
+
+  public List<string> MultiColourIcons;
+
+  public void GetSingleColourIcons()
+  {
+    string filePath = "../Clf.Blazor.Basic.Components/wwwroot/icons/single_colour/symbol-defs.svg";
+
+    XmlDocument svgDocument = new XmlDocument();
+    svgDocument.Load(filePath);
+
+    SingleColourIcons = svgDocument.GetElementsByTagName("symbol").Cast<XmlElement>().Select(element =>
+      element.GetAttribute("id")
+   ).ToList();
+
+  }
+
+  public void GetMultiColourIcons()
+  {
+    string filePath = "../Clf.Blazor.Basic.Components/wwwroot/icons/multi_colour/symbol-defs.svg";
+
+    MultiColourIcons = new List<string>();
+
+    XmlDocument svgDocument = new XmlDocument();
+    svgDocument.Load(filePath);
+
+    MultiColourIcons = svgDocument.GetElementsByTagName("symbol").Cast<XmlElement>().Select(element =>
+     element.GetAttribute("id")
+  ).ToList();
+  }
+
+  protected override void OnInitialized()
+  {
+    GetSingleColourIcons();
+    GetMultiColourIcons();
+    base.OnInitialized();
+  }
+}

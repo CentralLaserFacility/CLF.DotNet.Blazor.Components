@@ -1,0 +1,22 @@
+﻿.grid-container{
+  display:grid;
+  width:auto;
+  grid-template-columns:repeat(5,1fr);
+  grid-template-rows:auto;
+  gap:15px;
+  align-items:center;
+  justify-content:center
+}
+
+
+.grids{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:20px
+}
+
+
+.title {
+  font-weight: var(--clf-normal-font-weight);
+}

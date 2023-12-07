@@ -1,0 +1,39 @@
+//
+// _Notes.txt
+//
+
+//
+// https://stackoverflow.com/questions/13103584/graphviz-how-do-i-make-the-text-in-labels-left-aligned
+// https://graphviz.org/docs/attrs/nojustify/
+// https://renenyffenegger.ch/notes/tools/Graphviz/attributes/label/HTML-like/index
+//
+// https://marc.info/?l=graphviz-interest&m=115548621302054
+// Lines in graphviz node and edge labels can be individually aligned.
+// Just put "\n", "\l" or "\r" at the end of a line to align that line
+// to the center (default), left, or right, respectively.
+//
+//   Text of line\n   Align that text to the centre (default)
+//   Text of line\l   Align that text to the left
+//   Text of line\r   Align that text to the right
+//
+// You can mix these as necessary :
+//
+//   Align to centre\nAlignToLeft\lAlignToRight\rAlign to centre\n
+//                  |            |             |                |
+//                  +------------+-------------+----------------+
+//                   Control characters affect the previous line
+//
+//   +-------------------------+
+//   |     Align to centre     |
+//   |AlignToLeft              |
+//   |             AlignToRight|
+//   |     Align to centre     |
+//   +-------------------------+
+//
+
+Must avoid double quotes inside 'label' or 'tooltip' strings !!!
+And there's no way of 'escaping' them.
+
+escString : String with backslashed escape sequences
+https://graphviz.org/docs/attr-types/escString/
+

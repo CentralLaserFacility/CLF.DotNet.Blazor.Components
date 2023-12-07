@@ -1,8 +1,35 @@
 ﻿.display-tab {
-    display: grid;
-    grid-template-columns: 100px auto;
-    column-gap: 10px;
-    row-gap: 5px;
-    padding: 15px;
-    width: 435px;
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  align-items: center;
+  column-gap: 10px;
+}
+
+.display-tab-flex {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+::deep .display-tab-common-width {
+  width: 80px;
+}
+
+.display-tab-second-col {
+  grid-column: 2;
+}
+
+::deep .export-image {
+  width: 180px;
+}
+
+::deep .export-buttons {
+  width: 80px;
+}
+
+::deep .epics-name {
+  width: 180px;
+}
+
+::deep .manual-norm {
+--slider-width:90px!important;
 }

@@ -1,0 +1,81 @@
+﻿@using Clf.LogicSystem.ViewModel
+@using Clf.LogicSystem.LogicNodes
+@using Microsoft.AspNetCore.Components.Web
+
+<g 
+  width="@LogicNodeViewModel.NodeOutlineRectangle.Width"
+  height="@LogicNodeViewModel.NodeOutlineRectangle.Height"
+  transform = "translate(
+    @LogicNodeViewModel.NodeOutlineRectangle.TopLeftPoint.X,
+    @LogicNodeViewModel.NodeOutlineRectangle.TopLeftPoint.Y
+  )"
+  @onclick = "@OnGroupLeftClicked"
+  @oncontextmenu:preventDefault
+  @oncontextmenu="@OnGroupRightClicked"
+>
+  @if ( LogicNodeViewModel.LogicNode is Clf.LogicSystem.LogicNodes.ComputedNodeBase computedNode )
+  {
+    // Cheap and cheerful way to display a SINGLE LINE TOOLTIP.
+    // Can only be a single line ; to display multiple lines
+    // you have to use HTML inside a 'foreign object' tag
+    // and explicitly show or hide the tooltip element, with logic to
+    // detect a 'hover' and handle the timing aspects ...
+    // https://stackoverflow.com/questions/10643426/how-to-add-a-tooltip-to-an-svg-graphic
+    // But there are some 'Blazor Component' solutions to follow up ...
+    // https://chrissainty.com/building-a-simple-tooltip-component-for-blazor-in-under-10-lines-of-code/
+    // https://www.puresourcecode.com/dotnet/blazor/create-tooltip-component-for-blazor/
+    // https://mudblazor.com/components/tooltip#arrow-tooltips
+    <title>
+      @computedNode.FormulaTextLine_DerivedFromLambdaFunctionBody
+    </title>
+  }
+  <!-- 
+  @onclick = "@OnBackgroundRectangleClicked"
+  -->
+  <rect 
+    width  = "@LogicNodeViewModel.NodeOutlineRectangle.Width"
+    height = "@LogicNodeViewModel.NodeOutlineRectangle.Height"
+    style  = "
+      fill:@LogicNodeViewModel.NodeFillColour.AsRgbText();
+      stroke-width:@LogicNodeViewModel.LayoutSizingParameters.NodeOutlineThickness;
+      stroke:@LogicNodeViewModel.NodeOutlineColour.AsRgbText()
+    " 
+  />
+  @{
+    //
+    // This will work better (!!) when we're passing *all* the Layout parameters
+    // to GraphViz ; at the moment the LogicSystem doesn't take any notice of
+    // the TextOffset parameters and so on, so the text displayed here doesn't have 
+    // the right size and offset ... but at least multiple lines are visible.
+    //
+    // We start drawing text at this position, which refers to the baseline.
+    // For subsequent lines, we move down by one TextHeight's worth.
+    //
+    // ??? USE FOREIGN OBJECT INSTEAD !!! (can get the bounding-box)
+    //
+    double yForCurrentLine = TextOffsetY ;
+    foreach ( string labelTextLine in @LogicNodeViewModel.LabelTextLines )
+    {
+      // Yikes ! We have to enclose our <text> inside another <text>
+      // as a workaround for a subtle parsing bug which treats 'text' as a special keyword ...
+      // https://social.msdn.microsoft.com/Forums/en-US/b7941c81-56e6-4223-84e8-c4bc1a31c636/svg-text-tag-in-foreach-loop
+      // The Razor View Engine typically uses <text> as a 'keyword' to indicate that it should
+      // break from the actual code and output the text within those tags explicitly. 
+      <!--
+      @onclick = "@OnTextLineClicked"
+      -->
+      <text>
+        <text 
+          x     = "@TextOffsetX" 
+          y     = "@yForCurrentLine" 
+          style = "fill:black;font-size:@(TextHeight+"px");font-family:'Cascadia Code'"
+        >
+          @($"{labelTextLine}" /*#{RenderNumber} */)
+        </text>
+      </text>
+      yForCurrentLine += @TextHeight ;
+    }
+  }
+
+</g>
+

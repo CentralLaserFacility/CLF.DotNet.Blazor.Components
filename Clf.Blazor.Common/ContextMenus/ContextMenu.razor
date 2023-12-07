@@ -1,0 +1,39 @@
+﻿<!-- ContextMenu.razor -->
+
+@using Microsoft.AspNetCore.Components.Web
+
+@{
+  foreach ( var item in MenuDescriptor.ChildMenuItemDescriptors )
+  {
+    OnAccessingItem(item) ;
+    if (item is Clf.Common.MenuHandling.ActionMenuItemDescriptor actionItem)
+    {
+      <ActionMenuItem ActionMenuItemDescriptor=@actionItem />
+    }
+    if (item is Clf.Common.MenuHandling.BooleanMenuItemDescriptor booleanItem)
+    {
+      <BooleanMenuItem BooleanMenuItemDescriptor=@booleanItem />
+    }
+    else if (item is Clf.Common.MenuHandling.MenuDescriptor nestedMenu)
+    {
+      <NestedMenu MenuDescriptor=@nestedMenu />
+    }
+    else if (item is Clf.Common.MenuHandling.SeparatorMenuItemDescriptor separator)
+    {
+      <SeparatorMenuItem ViewModel=@separator />
+    }
+  }
+}
+
+@code {
+
+  [Parameter]
+  [EditorRequired]
+  public Clf.Common.MenuHandling.MenuDescriptor MenuDescriptor { get; set; }
+
+  private void OnAccessingItem(Clf.Common.MenuHandling.MenuItemDescriptor item)
+  {
+    // Just so we can put a breakpoint here ...
+  }
+
+}

@@ -1,0 +1,45 @@
+//
+// _Notes on graph layout.txt
+//
+
+QuickGraph
+https://archive.codeplex.com/?p=quickgraph
+
+GraphX
+https://github.com/panthernet/GraphX/tree/PCL/GraphX.Controls
+https://github.com/panthernet/GraphX/blob/PCL/GraphX.Controls/GeometryHelper.cs
+GraphX for .NET is an open-source project which incorporates many layout algorithms separated from the visualization engine.
+
+MSAGL
+https://github.com/Microsoft/automatic-graph-layout
+The Core Layout engine (AutomaticGraphLayout.dll) contains the core layout functionality. 
+Use this library if you just want MSAGL to perform the layout only and afterwards you will use a separate tool to perform the rendering and visalization.
+
+====================
+
+skanaar/nomnoml: The sassy UML diagram renderer
+https://github.com/skanaar/nomnoml
+
+Sketchviz - Create and publish Graphviz graphs on the web for free
+https://sketchviz.com/new
+
+Graphviz Examples and Tutorial
+https://sketchviz.com/graphviz-examples
+
+Graphviz
+https://docs.deistercloud.com/content/Axional%20development%20libraries.20/Studio%20J2EE%20Server.4/Processors.12/Graphviz.30.xml?embedded=true
+
+GraphvizLayouts : Graphviz Layout Methods in Rgraphviz
+https://rdrr.io/bioc/Rgraphviz/man/GraphvizLayouts.html
+
+Clusters in Graphviz
+https://graphviz.org/Gallery/directed/cluster.html
+
+Graphviz and hierarchical graph layout: a review and plugin proposal
+https://forum.obsidian.md/t/graphviz-and-hierarchical-graph-layout-a-review-and-plugin-proposal/31596
+
+Juggl - Juggl
+https://juggl.io/Juggl
+
+rank - Subgraph layout in graphviz
+https://stackoverflow.com/questions/12463541/subgraph-layout-in-graphviz

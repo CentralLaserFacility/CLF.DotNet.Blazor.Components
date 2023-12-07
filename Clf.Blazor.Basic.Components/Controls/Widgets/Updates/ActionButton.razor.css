@@ -2,34 +2,3 @@
   width: var(--action-button-width);
   height: var(--action-button-height);
 }
-
-/* Navigation Button Styles */
-.action-button-navigation {
-    width: var(--action-button-width);
-    height: var(--action-button-height);
-    background-color: var(--clf-navigation-action-button-background-color);
-    color: var(--clf-navigation-action-button-color);
-}
-
-  .action-button-navigation:hover {
-    background-color: var(--clf-navigation-action-button-hover-background-color);
-    color: var(--clf-font-colour);
-  }
-
-/*active datalist when thead button being pressed*/
-  .action-button-navigation:active {
-    background-color: var(--clf-action-button-active-background-color);
-    color: var(--clf-action-button-active-font-colour);
-  }
-
-.action-button-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 4px;
-}
-
-::deep .small-icon {
-    font-size: 16px;
-}

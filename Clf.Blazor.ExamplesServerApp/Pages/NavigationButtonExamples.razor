@@ -46,7 +46,7 @@
         text: ButtonText,
         tooltipText: "Settings",
         borderStatus: BorderStatus.Connected,
-        buttonType: ActionButtonType.Navigation
+        buttonType: ButtonType.Navigation
   );
 
   private ActionButtonViewModel _disabledNavigationActionButton = new ActionButtonViewModel(
@@ -54,32 +54,32 @@
         tooltipText: "Settings",
         borderStatus: BorderStatus.Connected,
         isDisabled: true,
-        buttonType: ActionButtonType.Navigation
+        buttonType: ButtonType.Navigation
   );
   private ActionButtonViewModel _disconnectedNavigationActionButton = new ActionButtonViewModel(
        text: ButtonText,
         tooltipText: "Settings",
        borderStatus: BorderStatus.NotConnected,
-       buttonType: ActionButtonType.Navigation
+       buttonType: ButtonType.Navigation
    );
   private ActionButtonViewModel _minorAlarmNavigationActionButton = new ActionButtonViewModel(
         text: ButtonText,
         tooltipText: "Settings",
         borderStatus: BorderStatus.MinorAlarm,
-        buttonType: ActionButtonType.Navigation
+        buttonType: ButtonType.Navigation
   );
   private ActionButtonViewModel _majorAlarmNavigationActionButton = new ActionButtonViewModel(
         text: ButtonText,
         tooltipText: "Settings",
         borderStatus: BorderStatus.MajorAlarm,
-        buttonType: ActionButtonType.Navigation
+        buttonType: ButtonType.Navigation
   );
 
   private ActionButtonViewModel _invalidNavigationActionButton = new ActionButtonViewModel(
       text: ButtonText,
       tooltipText: "Settings",
       borderStatus: BorderStatus.Invalid,
-      buttonType: ActionButtonType.Navigation
+      buttonType: ButtonType.Navigation
   );
 
 }

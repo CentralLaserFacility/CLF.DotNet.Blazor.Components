@@ -27,14 +27,14 @@ namespace Clf.Blazor.Complex.IntensityMap.ViewModels
     public IntensityMapFeatures_BinningTabViewModel(IntensityMapViewerViewModel parent)
     {
       m_parent = parent;
-      camPluginPrefix = "cam1:";
-      roiPluginPrefix = "ROI1:";
+      camPluginPrefix = ":cam1:";
+      roiPluginPrefix = ":ROI1:";
 
       BinningMethod = new RadioButtonViewModel(
           width: 150,
           items: new ObservableCollection<string> { "Camera Binning", "Software Binning" },
           isHorizontal: false,
-          channelRecord: parent.CreateChannelRecord(parent.PvPrefix + "BinningMethod")
+          channelRecord: parent.CreateChannelRecord(parent.PvPrefix + ":BinningMethod")
       );
 
       CameraBinningXSet = new TextEntryViewModel(

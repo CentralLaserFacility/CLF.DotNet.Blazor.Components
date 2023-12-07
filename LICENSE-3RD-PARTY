@@ -5,3 +5,11 @@ the individual licenses apply.
 * SSH.NET
     Copyright (c) Renci, Oleg Kapeljushnik, Gert Driesen and contributors
     MIT, https://github.com/sshnet/SSH.NET/blob/develop/LICENSE
+	
+* Graphviz
+	Common Public License Version 1.0
+	https://graphviz.gitlab.io/license/
+
+* Roslyn
+	Roslyn .NET compiler, MIT License
+	https://github.com/dotnet/roslyn

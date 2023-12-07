@@ -6,7 +6,14 @@
 
   <div class="page">
     <main>
-    <ThemeSelector IsVisible=true />
+      <div class="top-menu">
+      <Examples />
+      <div class="theme-menu">
+        <label class="theme-label">Theme: </label>
+        <ThemeChanger IsVisible=true />
+      </div>
+      </div>
+    
       <article class="content px-4">
         @Body
       </article>

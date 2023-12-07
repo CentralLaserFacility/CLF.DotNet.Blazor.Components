@@ -1,0 +1,30 @@
+﻿<!-- ActionMenuItem.razor -->
+
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Common.TreeViews
+
+<TreeView 
+  Title   = "@ActionMenuItemDescriptor.ItemText" 
+  OnClick = "()=>OnActionClicked()"
+></TreeView>
+
+@code {
+
+  [Parameter]
+  [EditorRequired]
+  public Clf.Common.MenuHandling.ActionMenuItemDescriptor ActionMenuItemDescriptor { get ; set ; }
+
+  private void OnActionClicked ( )
+  {
+    ActionMenuItemDescriptor.HandleClick(null) ;
+    var topLevelParent = ActionMenuItemDescriptor.TopLevelParentMenu ;
+    if (topLevelParent is Clf.Common.MenuHandling.ContextMenuDescriptor contextMenu)
+    {
+      topLevelParent.IsVisible = false ;
+      contextMenu.ActionItemClickHandler?.Invoke(ActionMenuItemDescriptor) ;
+      contextMenu.ActionItemClickHandler = null ;
+    }
+    topLevelParent.IsVisible = false ;
+  }
+
+}

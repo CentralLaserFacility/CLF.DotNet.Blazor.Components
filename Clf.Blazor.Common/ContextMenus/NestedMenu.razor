@@ -1,0 +1,48 @@
+﻿<!-- NestedMenu.razor -->
+
+@using Microsoft.AspNetCore.Components.Web
+@using Clf.Blazor.Common.TreeViews
+
+<TreeView Title="@MenuDescriptor.Title">
+  @if ( UseEmbeddedContextMenu )
+  {
+    // The 'ContextMenu' code scane the ChildMenuItemDescriptors
+    // in exactly the same way as the code shown below ...
+    <ContextMenu MenuDescriptor="@MenuDescriptor"></ContextMenu>
+  }
+  else
+  {
+    foreach ( var item in MenuDescriptor.ChildMenuItemDescriptors )
+    {
+      OnAccessingItem(item) ;
+      if ( item is Clf.Common.MenuHandling.ActionMenuItemDescriptor actionItem )
+      {
+        <ActionMenuItem ActionMenuItemDescriptor=@actionItem />
+      }
+      else if (item is Clf.Common.MenuHandling.MenuDescriptor nestedMenu)
+      {
+        <NestedMenu MenuDescriptor=@nestedMenu />
+      }
+      else if (item is Clf.Common.MenuHandling.SeparatorMenuItemDescriptor separator)
+      {
+        // <SeparatorMenuItem ViewModel=@separator />
+      }
+    }
+  }
+</TreeView>
+
+@code {
+
+  [Parameter]
+  [EditorRequired]
+  public Clf.Common.MenuHandling.MenuDescriptor MenuDescriptor { get; set; }
+
+  [Parameter]
+  public bool UseEmbeddedContextMenu { get ; set ; } = true ;
+
+  private void OnAccessingItem(Clf.Common.MenuHandling.MenuItemDescriptor item)
+  {
+    // Just so we can put a breakpoint here ...
+  }
+
+}

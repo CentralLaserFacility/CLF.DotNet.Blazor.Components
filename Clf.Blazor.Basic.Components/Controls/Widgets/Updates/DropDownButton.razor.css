@@ -1,0 +1,8 @@
+﻿.drop-down-button {
+  width: var(--drop-down-button-width);
+  height: var(--drop-down-button-height);
+}
+
+.drop-down-toggle {
+  display: none;
+}

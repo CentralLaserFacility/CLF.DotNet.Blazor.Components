@@ -1,0 +1,79 @@
+﻿.sim-setup-tab-wrapper {
+  display: inline-grid;
+  grid-template-columns: repeat(2,auto);
+  column-gap: 10px;
+}
+
+.common-group {
+  grid-column: 1 / span 2;
+
+}
+
+  .common-group > label {
+    width: 120px!important;
+  }
+
+.sim-setup-tab {
+  display: inline-grid;
+  grid-template-columns: repeat(2,auto);
+  grid-auto-rows: max-content;
+  align-items: center;
+  column-gap: 10px;
+  justify-content: start;
+}
+
+  .sim-setup-tab > label {
+    width: 60px;
+  }
+
+  .sim-setup-tab-flex {
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+::deep .sim-setup-tab-common-width {
+  width: 80px;
+}
+
+::deep .reset-image-button {
+  width: 174px;
+}
+
+::deep .sim-mode {
+  width: 200px;
+}
+
+.sim-setup-group-header {
+  grid-column: 1 / span 2;
+  width: 100%; /* Or auto */
+  padding: 4px 16px; /* To give a bit of padding on the left and right */
+  border-radius: 4px;
+  background-color: var(--clf-group-box-title-background-colour);
+  text-align: center;
+  margin:8px 0px;
+  align-self:start;
+}
+
+.gain-group {
+  grid-column: 1;
+}
+
+.peak-group {
+  grid-column: 2;
+}
+
+.sine-group-header {
+  grid-column: 1 / span 2;
+}
+
+.sine-group-x {
+  grid-column: 1;
+}
+
+.sine-group-y {
+  grid-column: 2;
+}
+
+::deep .sine-operation {
+width: 178px;
+}

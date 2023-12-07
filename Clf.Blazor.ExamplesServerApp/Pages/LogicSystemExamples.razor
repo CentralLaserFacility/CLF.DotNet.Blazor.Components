@@ -1,0 +1,19 @@
+﻿@page "/logic-examples"
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Complex.LogicSystem
+@using Example.LogicSystem.TestData
+
+<GroupBox>
+  <LogicSystemDisplayPanel LogicSystem="@_ABCEqualsD" />
+</GroupBox>
+
+@code {
+
+  private ABCEqualsD _ABCEqualsD;
+
+  protected override void OnInitialized()
+  {
+    base.OnInitialized();
+    _ABCEqualsD = new ABCEqualsD();
+  }
+}

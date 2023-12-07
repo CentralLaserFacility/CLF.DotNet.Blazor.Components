@@ -1,10 +1,10 @@
 ﻿:root {
-  --clf-treeview-hover-color: var(--clf-action-button-hover-color);
+  --clf-treeview-hover-color: var(--clf-action-button-hover-colour);
   --clf-treeview-active-font-colour: var(--clf-action-button-active-font-colour);
-  --clf-treeview-active-background-color: var(--clf-action-button-active-background-color);
+  --clf-treeview-active-background-color: var(--clf-action-button-active-background-colour);
   --clf-treeview-item-border-radius: var(--clf-border-radius);
   --clf-treeview-item-gap: 8px;
-  --clf-treeview-expander-hover-background-color: #0000001A;
+  --clf-treeview-expander-hover-background-colour: #0000001A;
   --clf-treeview-expander-margin: 2px;
   --clf-treeview-expander-font-size: 24px;
   --clf-treeview-expander-resize: 1em;

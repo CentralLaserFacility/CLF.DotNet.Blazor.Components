@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Profile 1": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\LogicSystemSourceGeneration_TestApp\\LogicSystemSourceGeneration_TestApp.csproj"
+    }
+  }
+}

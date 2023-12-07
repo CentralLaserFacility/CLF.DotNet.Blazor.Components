@@ -1,0 +1,191 @@
+﻿@inject IJSRuntime _jsRunTime
+
+<div class="examples-container">
+
+  <button @onclick="NavigateToLedExamples">LED</button>
+  
+  <button @onclick="NavigateToGraphExamples">Graph</button>
+
+  <button @onclick="NavigateToTypescaleExamples">Type Scale</button>
+
+  <button @onclick="NavigateToTextEntryExamples">Text Entry</button>
+
+  <button @onclick="NavigateToSpinnerExamples">Spinner</button>
+
+  <button @onclick="NavigateToCheckBoxExamples">Checkbox</button>
+
+  <button @onclick="NavigateToTextUpdateExamples">Text Update</button>
+
+  <button @onclick="NavigateToRadioButtonExamples">Radio Button</button>
+
+  <button @onclick="NavigateToBooleanButtonExamples">Boolean Button</button>
+
+  <button @onclick="NavigateToActionButtonExamples">Action Button</button>
+
+  <button @onclick="NavigateToNavigationButtonExamples">Navigation Button</button>
+
+  <button @onclick="NavigateToComboBoxExamples">Combo Box</button>
+
+  <button @onclick="NavigateToSliderExamples">Slider</button>
+
+  <button @onclick="NavigateToProgressBarExamples"> Progress Bar </button>
+
+  <button @onclick="NavigateToChoiceButtonExamples">Choice Button</button>
+
+  <button @onclick="NavigateToTreeViewExamples">Treeview</button>
+
+  <button @onclick="NavigateToSlideButtonExamples">Slide Button</button>
+
+  <button @onclick="NavigateToTabExamples">Tab</button>
+
+  <button @onclick="NavigateToMultiStateLedExamples">Multi-State LED</button>
+
+  <button @onclick="NavigateToColorPickerExamples">Color Picker</button>
+
+  <button @onclick="NavigateToModalDialogExamples">Modal Dialog</button>
+
+  <button @onclick="NavigateToDropDownButtonExamples">Drop-down Button</button>
+
+  <button @onclick="NavigateToIconExamples">Icons</button>
+
+  <button @onclick="NavigateToCameraExamples">Camera</button>
+  
+  <button @onclick="NavigateToAreaDetectorExamples">Area Detector</button>
+
+  <button @onclick="NavigateToLogicSystemExamples">Logic System Example</button>
+
+</div>
+
+@code {
+  public async Task NavigateToLedExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "led-examples", "LEDs");
+  }
+  public async Task NavigateToGraphExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "graph-examples", "Graphs");
+  }
+
+  public async Task NavigateToTypescaleExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "type-scale-examples", "Type Scale");
+  }
+
+  public async Task NavigateToTextEntryExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "text-entry-examples", "Text Entry");
+  }
+
+  public async Task NavigateToCheckBoxExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "check-box-examples", "Checkboxes");
+  }
+
+  public async Task NavigateToTextUpdateExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "text-update-examples", "Test Updates");
+  }
+
+  public async Task NavigateToRadioButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "radio-button-examples", "Radion Buttons");
+  }
+  public async Task NavigateToSliderExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "slider-examples", "Slider");
+  }
+
+  public async Task NavigateToActionButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "action-button-examples", "Action Buttons");
+  }
+
+  public async Task NavigateToNavigationButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "navigation-button-examples", "Navigation Buttons");
+  }
+  public async Task NavigateToComboBoxExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "combo-box-examples", "Combo Boxes");
+  }
+
+  public async Task NavigateToBooleanButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "boolean-button-examples", "Boolean Buttons");
+  }
+  public async Task NavigateToSpinnerExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "spinner-examples", "Spinners");
+  }
+
+  public async Task NavigateToProcessPVButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "process-pv-button-examples", "CA PROC PV Buttons");
+  }
+
+  public async Task NavigateToProgressBarExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "progress-bar-examples", "Progress Bars");
+  }
+
+  public async Task NavigateToChoiceButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "choice-button-examples", "Choice Buttons");
+  }
+
+  public async Task NavigateToTreeViewExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "treeview-examples", "TreeViews");
+  }
+
+  public async Task NavigateToTabExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "tab-examples", "Tabs");
+  }
+
+  public async Task NavigateToSlideButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "Slide-button-examples", "Slide Buttons");
+  }
+
+  public async Task NavigateToMultiStateLedExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "multi-state-led-Examples", "Multi-State LEDS");
+  }
+
+  public async Task NavigateToColorPickerExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "Color-Picker-Examples", "Colour Picker");
+  }
+
+  public async Task NavigateToModalDialogExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "modal-dialog-examples", "Modal Dialogs");
+  }
+
+  public async Task NavigateToCameraExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "/camera-examples", "Cameras");
+  }
+
+  public async Task NavigateToIconExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "icon-examples", "Icons");
+  }
+
+  public async Task NavigateToDropDownButtonExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "drop-down-button-examples", "DropDown Buttons");
+  }
+
+  public async Task NavigateToAreaDetectorExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "/", "AreaDetector");
+  }
+
+  public async Task NavigateToLogicSystemExamples()
+  {
+    await _jsRunTime.InvokeVoidAsync("openNewWindowTab", "logic-examples", "LogicSystem");
+  }
+}
+

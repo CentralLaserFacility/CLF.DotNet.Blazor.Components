@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Configurations>Debug;Release;EPAC_SIM</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Clf.Blazor.Common\Clf.Blazor.Common.csproj" />
+    <ProjectReference Include="..\Clf.LogicSystem\Clf.LogicSystem.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.5" />
+  </ItemGroup>
+
+</Project>

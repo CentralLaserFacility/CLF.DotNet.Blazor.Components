@@ -8,8 +8,8 @@
   --clf-text-area-padding: 4px 8px;
   --clf-text-entry-disabled-font-colour: #A5A5A5;
   --clf-text-entry-transparent-border: 1px solid transparent;
-  --clf-text-entry-disabled-background-colour: var(--clf-text-update-background-color);
-  --clf-text-entry-units-background-colour: var(--clf-text-update-background-color);
+  --clf-text-entry-disabled-background-colour: var(--clf-text-update-background-colour);
+  --clf-text-entry-units-background-colour: var(--clf-text-update-background-colour);
   --clf-text-entry-input-background-colour: #C2E7FF;
   --clf-text-entry-edit-background-colour: rgba(255,255,0,0.2);
   --clf-text-entry-edit-border: 1px solid #0082D9;

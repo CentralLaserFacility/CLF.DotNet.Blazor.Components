@@ -20,4 +20,8 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\CLF.DotNet.Common\Clf.Common\Clf.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,26 @@
+﻿.popup-wrapper {
+  position: absolute;
+  background-color: var(--clf-background-colour);
+  z-index: 1001;
+  box-shadow: var(--clf-dashboard-pane-unpinned-box-shadow);
+  height: fit-content;
+  width: fit-content;
+  display: inline-block;
+  flex-direction: column;
+  border-radius: var(--clf-dashboard-pane-border-radius);
+  overflow: auto;
+  padding: var(--clf-dashboard-body-padding);
+  border: var(--clf-dashboard-pane-border-width) solid var(--clf-dashboard-header-border-colour);
+  --popup-margin: 2px;
+  color: var(--clf-font-colour);
+  font-family: var(--clf-font-family);
+  font-style: var(--clf-font-style);
+  font-weight: var(--clf-medium-font-weight);
+  font-size: var(--clf-default-font-size);
+  overflow: hidden;
+  top: calc(100% + var(--popup-margin));
+  left: 0px;
+}
+
+
+

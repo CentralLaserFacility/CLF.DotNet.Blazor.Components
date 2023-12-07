@@ -1,18 +1,17 @@
 ﻿using Clf.ChannelAccess;
 using Clf.Blazor.Basic.Components.Controls.Helpers;
-using Clf.Blazor.Basic.Components.Controls.Interfaces;
 using Clf.Blazor.Basic.Components.Controls.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using Clf.Common.ImageProcessing;
-using Clf.Common.Drawing;
 using Clf.Common.Graphs;
+using System.Numerics;
 
 namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModels
 {
-  public class GraphViewModel : MonitorWidgetViewModelBase
+    public class GraphViewModel : MonitorWidgetViewModelBase
   {
     private string m_xTitle;
     public string XTitle
@@ -32,7 +31,9 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     public double XMinimum
     {
       get { return m_xMinimum; }
-      set { m_xMinimum = value;
+      set
+      {
+        m_xMinimum = value;
         ComputeXLabels();
         UpdatePoints();
       }
@@ -42,8 +43,8 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     public double XMaximum
     {
       get { return m_xMaximum; }
-      set 
-      { 
+      set
+      {
         m_xMaximum = value;
         ComputeXLabels();
         UpdatePoints();
@@ -63,7 +64,9 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     public double YMinimum
     {
       get { return m_yMinimum; }
-      set { m_yMinimum = value;
+      set
+      {
+        m_yMinimum = value;
         ComputeYLabels();
         UpdatePoints();
       }
@@ -73,17 +76,17 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     public double YMaximum
     {
       get { return m_yMaximum; }
-      set 
-      { 
+      set
+      {
         m_yMaximum = value;
         ComputeYLabels();
         UpdatePoints();
       }
     }
 
-		public double YMidpoint => ((YMaximum - YMinimum) / 2) + YMinimum;
+    public double YMidpoint => ((YMaximum - YMinimum) / 2) + YMinimum;
 
-		private double m_yTickSize;
+    private double m_yTickSize;
     public double YTickSize
     {
       get { return m_yTickSize; }
@@ -136,17 +139,29 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
 
     public double ScaleXValue(double x)
     {
-      return (x-XMinimum) * ScaleX + PaddingX;
+      double calc = 0;
+      if (XCache.TryGetValue(x, out calc) == false)
+      {
+        calc = (x - XMinimum) * ScaleX + PaddingX;
+        XCache.Add(x, calc);
+      }
+      return calc;
     }
-
+    
     public double ScaleYValue(double y)
     {
-      return (((y-YMinimum) * ScaleY) - Height!.Value) * -1 + PaddingY;
+      double calc = 0;
+      if (YCache.TryGetValue(y, out calc) == false)
+      {
+        calc = (((y - YMinimum) * ScaleY) - Height!.Value) * -1 + PaddingY;
+        YCache.Add(y, calc);
+      }
+      return calc;
     }
 
-    public Dictionary<double, double> XLabels { get; private set; } = new Dictionary<double, double>();
+    public Dictionary<double, double> XCache { get; private set; } = new Dictionary<double, double>();
 
-    public Dictionary<double, double> YLabels { get; private set; } = new Dictionary<double, double>();
+		public Dictionary<double, double> YCache { get; private set; } = new Dictionary<double, double>();
 
     public double PaddingX { get; private set; } = 40;
 
@@ -171,13 +186,13 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       get => m_overlayStart;
       set
       {
-        if (value < XMinimum)
+        if (value < m_xMinimum)
         {
-          m_overlayStart = XMinimum;
+          m_overlayStart = m_xMinimum;
         }
-        else if (value > XMaximum)
+        else if (value > m_xMaximum)
         {
-          m_overlayEnd = XMaximum;
+          m_overlayEnd = m_xMaximum;
         }
         else
         {
@@ -193,13 +208,13 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       get => m_overlayEnd;
       set
       {
-        if (value < XMinimum)
+        if (value < m_xMinimum)
         {
-          m_overlayEnd = XMinimum;
+          m_overlayEnd = m_xMinimum;
         }
-        else if (value > XMaximum)
+        else if (value > m_xMaximum)
         {
-          m_overlayEnd = XMaximum;
+          m_overlayEnd = m_xMaximum;
         }
         else
         {
@@ -214,10 +229,33 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     public int TraceWidth { get; private set; }
 
     public int OverlayWidth { get; private set; }
+    
+    private const int singleDigitDisplay = 1;
+    private const int doubleDigitDisplay = 2;
+    private const int threeDigitDisplay = 3;
+    private const int fourDigitDisplay = 4;
 
-    Dictionary<int, int> XPadding = new Dictionary<int, int>() { { 1, 5 }, { 2, 10 }, { 3, 15 }, { 4, 35 } };
+    private const int singleDigitPaddingX = 5;
+    private const int doubleDigitPaddingX = 10;
+    private const int threeDigitPaddingX = 15;
+    private const int fourDigitPaddingX = 35;
 
-    Dictionary<int, int> YPadding = new Dictionary<int, int>() { { 1, 25 }, { 2, 27 }, { 3, 35 }, { 4, 35 } };
+    private const int singleDigitPaddingY = 25;
+    private const int doubleDigitPaddingY = 27;
+    private const int threeDigitPaddingY = 35;
+    private const int fourDigitPaddingY = 35;
+    
+    Dictionary<int, int> XPadding = new Dictionary<int, int>() { 
+            { singleDigitDisplay, singleDigitPaddingX }, 
+            { doubleDigitDisplay, doubleDigitPaddingX }, 
+            { threeDigitDisplay, threeDigitPaddingX }, 
+            { fourDigitDisplay, fourDigitPaddingX } };
+
+    Dictionary<int, int> YPadding = new Dictionary<int, int>() { 
+        { singleDigitDisplay, singleDigitPaddingY }, 
+        { doubleDigitDisplay, doubleDigitPaddingY }, 
+        { threeDigitDisplay, threeDigitPaddingY }, 
+        { fourDigitDisplay, fourDigitPaddingY } };
 
     public string m_errorMessage = "";
     public string ErrorMessage
@@ -226,18 +264,12 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       set { SetProperty(ref m_errorMessage, value); }
     }
 
-		public bool ShowXAxis { get; private set; } = true;
-
-		public bool ShowYAxis { get; private set; } = true;
-
-		public ChannelRecord? XChannelRecord { get; private set; }
+    public ChannelRecord? XChannelRecord { get; private set; }
     public ChannelRecord? YChannelRecord { get; private set; }
 
     public GraphViewModel(
-      double? xMaximum = null,
-      double? yMaximum = null,
-      double? xMinimum = null,
-      double? yMinimum = null,
+      AxisRange XAxisRange = null,
+      AxisRange YAxisRange = null,
       double? xTickSize = null,
       double? yTickSize = null,
       Dictionary<int, int>? xPadding = null,
@@ -257,10 +289,7 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       bool isVisible = true,
       string? xTitle = null,
       string? yTitle = null,
-      bool showXAxis = true, 
-      bool showYAxis = true,
       bool showTooltip = true,
-      string? fontStyle = null,
       string? tooltipText = null,
       BorderStatus xborderStatus = BorderStatus.NotConnected,
       BorderStatus yborderStatus = BorderStatus.NotConnected,
@@ -276,20 +305,17 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
         height: height <= 0 ? GraphStyle.DEFAULT_HEIGHT : height
         )
     {
-      ShowXAxis = showXAxis;
-      ShowYAxis = showYAxis;
-
       m_xborderStatus = xborderStatus;
       m_yborderStatus = yborderStatus;
 
       m_xTitle = xTitle ?? GraphStyle.DEFAULT_XTitle;
       m_yTitle = yTitle ?? GraphStyle.DEFAULT_YTitle;
 
-      m_xMaximum = xMaximum ?? GraphStyle.DEFAULT_XMaximum;
-      m_yMaximum = yMaximum ?? GraphStyle.DEFAULT_YMaximum;
+      m_xMaximum = XAxisRange == null ? GraphStyle.DEFAULT_XMaximum : XAxisRange.Max;
+      m_yMaximum = YAxisRange == null ? GraphStyle.DEFAULT_YMaximum : YAxisRange.Max;
 
-      m_xMinimum = xMinimum ?? GraphStyle.DEFAULT_XMinimum;
-      m_yMinimum = yMinimum ?? GraphStyle.DEFAULT_YMinimum;
+      m_xMinimum = XAxisRange == null ? GraphStyle.DEFAULT_XMinimum : XAxisRange.Min;
+      m_yMinimum = YAxisRange == null ? GraphStyle.DEFAULT_YMinimum : YAxisRange.Min;
 
       m_xTickSize = xTickSize ?? (XMaximum - XMinimum) / 10;
       m_yTickSize = yTickSize ?? (YMaximum - YMinimum) / 10;
@@ -301,17 +327,17 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
 
       if (yPadding != null)
       {
-        YPadding = yPadding;
+        YPadding = yPadding;    
       }
 
 
-      m_showGrid = showGrid ;
+      m_showGrid = showGrid;
       m_autoScale = autoScale;
 
       TraceColor = traceColor ?? GraphStyle.DEFAULT_TRACE_COLOR;
       GraphType = graphType ?? GraphStyle.DEFAULT_GRAPH_TYPE;
 
-      ShowOverlay = showOverlay ;
+      ShowOverlay = showOverlay;
       OverlayStart = overlayStart ?? XMinimum;
       OverlayEnd = overlayEnd ?? XMinimum;
       OverlayColor = overlayColor ?? GraphStyle.DEFAULT_OVERLAY_COLOR;
@@ -325,7 +351,7 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       // Create or get the Channel/PV object
       XChannelRecord = xChannelRecord;
       XChannelRecord?.InitialiseChannel(
-        (isConnected, currentState) => { XBorderStatus = isConnected ? BorderStatus.Connected : BorderStatus.NotConnected;},
+        (isConnected, currentState) => { XBorderStatus = isConnected ? BorderStatus.Connected : BorderStatus.NotConnected; },
         (valueInfo, currentState) => SetLineGraphValueX(valueInfo, currentState)
         );
 
@@ -341,40 +367,30 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     void ComputeXLabels()
     {
       ScaleX = Width!.Value / (XMaximum - XMinimum);
-      XLabels.Clear();
-      // Creating X label co-ordinate relationship
-      for (double x = XMinimum; x <= XMaximum; x += XTickSize)
-      {
-        XLabels.Add(x, ScaleXValue(x));
-      }
+      XCache.Clear();
     }
 
     void ComputeYLabels()
     {
       ScaleY = Height!.Value / (YMaximum - YMinimum);
-      YLabels.Clear();
-      // Creating Y label co-ordinate relationship
-      for (double y = YMinimum; y <= YMaximum; y += YTickSize)
-      {
-        YLabels.Add(y, ScaleYValue(y));
-      }
+      YCache.Clear();
     }
 
     private void SetLineGraphValueX(ValueInfo valueInfo, ChannelState currentState)
     {
-        List<double>? values_double;
-        try
-        {
-          values_double = ((IEnumerable)valueInfo.Value).Cast<object>()
-                               .Select(x => Convert.ToDouble(x))
-                               .ToList();
-        }
-        catch (Exception x)
-        {
-          x.ToString(); //TODO: Handle exception in Log... suppressing warning
+      List<double>? values_double;
+      try
+      {
+        values_double = ((IEnumerable)valueInfo.Value).Cast<object>()
+                              .Select(x => Convert.ToDouble(x))
+                              .ToList();
+      }
+      catch (Exception x)
+      {
+        x.ToString(); //TODO: Handle exception in Log... suppressing warning
         values_double = null;
-        }
-        SetXData(values_double);
+      }
+      SetXData(values_double);
 
       XBorderStatus = currentState.IsConnected ? BorderStatus.Connected : BorderStatus.NotConnected;
     }
@@ -387,65 +403,69 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
 
     private void SetLineGraphValueY(ValueInfo valueInfo, ChannelState currentState)
     {
-        List<double>? values_double;
-        try
-        {
-          values_double = ((IEnumerable)valueInfo.Value).Cast<object>()
-                             .Select(x => Convert.ToDouble(x))
-                             .ToList();
-        }
-        catch (Exception x)
-        {
-          x.ToString(); //TODO: Handle exception in Log... suppressing warning
-          values_double = null;
-        }
-        SetYData(values_double);
+      List<double>? values_double;
+      try
+      {
+        values_double = ((IEnumerable)valueInfo.Value).Cast<object>()
+                           .Select(x => Convert.ToDouble(x))
+                           .ToList();
+      }
+      catch (Exception x)
+      {
+        x.ToString(); //TODO: Handle exception in Log... suppressing warning
+        values_double = null;
+      }
+      SetYData(values_double);
 
       YBorderStatus = currentState.IsConnected ? BorderStatus.Connected : BorderStatus.NotConnected;
     }
 
     public void SetAutoScaledYData(List<double> values_double)
     {
-			var min = values_double.Min();
-			var max = values_double.Max();
-			double factor = max != 0 ? Math.Abs(1 / max) * 10 : 1.0;
+      var min = values_double.Min();
+      var max = values_double.Max();
+      // 10 is a multiplying factor to scale the data 
+      double factor = max != 0 ? Math.Abs(1 / max) * 10 : 1.0;
 
-			for (int i = 0; i < values_double.Count; i++)
-			{
-				values_double[i] = values_double[i] * factor;
-			}
-			m_yMinimum = Math.Floor(min * factor);
-			m_yMaximum = Math.Ceiling(max * factor);
-      if(m_yMinimum== m_yMaximum)
+      for (int i = 0; i < values_double.Count; i++)
       {
-        m_yMinimum -= 2; 
-        m_yMaximum +=2;
+        values_double[i] = values_double[i] * factor;
+      }
+      m_yMinimum = Math.Floor(min * factor);
+      m_yMaximum = Math.Ceiling(max * factor);
+      // if max and min are same then their will be no graph 
+      // so we are extending the range to show some data in Y axis
+      if (m_yMinimum == m_yMaximum)
+      {
+        m_yMinimum -= 2;
+        m_yMaximum += 2;
 
-			}
-			m_yData = values_double;
-			ComputeYLabels();
-			UpdatePoints();
-		}
+      }
+      m_yData = values_double;
+      ComputeYLabels();
+      UpdatePoints();
+    }
 
-		public void SetAutoScaledXData(List<double> values_double)
-		{
-			var min = values_double.Min();
-			var max = values_double.Max();
-			double factor = max != 0 ? Math.Abs(1 / max) * 10 : 1.0;
+    public void SetAutoScaledXData(List<double> values_double)
+    {
+      var min = values_double.Min();
+      var max = values_double.Max();
+      // 10 is a multiplying factor to scale the data 
+      double factor = max != 0 ? Math.Abs(1 / max) * 10 : 1.0;
 
-			for (int i = 0; i < values_double.Count; i++)
-			{
-				values_double[i] = values_double[i] * factor;
-			}
-			m_xMinimum = Math.Floor(min * factor);
-			m_xMaximum = Math.Ceiling(max * factor);
-			m_xData = values_double;
-			ComputeXLabels();
-			UpdatePoints();
-		}
+      for (int i = 0; i < values_double.Count; i++)
+      {
+        values_double[i] = values_double[i] * factor;
+      }
+      m_xMinimum = Math.Floor(min * factor);
+      m_xMaximum = Math.Ceiling(max * factor);
+      m_xData = values_double;
+      ComputeXLabels();
+      UpdatePoints();
+    }
 
 
-		public void SetYData(List<double>? values_double)
+    public void SetYData(List<double>? values_double)
     {
       m_yData = values_double;
       UpdatePoints();
@@ -458,15 +478,21 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       UpdatePoints();
     }
 
-    public double PaddingCalculationY(double y)
+    public int PaddingCalculationY(double y)
     {
       var numberOfdigits = y.ToString().Count();
-      return YPadding[numberOfdigits];
+      int padding;
+      if (!YPadding.TryGetValue(numberOfdigits, out padding))
+        padding = fourDigitPaddingY;
+			return padding;
     }
-    public double PaddingCalculationX(double x)
+    public int PaddingCalculationX(double x)
     {
       var numberOfdigits = x.ToString().Count();
-      return XPadding[numberOfdigits];
+      int padding;
+      if (!XPadding.TryGetValue(numberOfdigits, out padding))
+        padding = fourDigitPaddingX;
+			return padding;
     }
 
     public void UpdatePoints()
@@ -476,7 +502,7 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       if (m_xData == null)
       {
         //Display Error Message
-        ErrorMessage += "X-Axis data is invalid.";
+        ErrorMessage += "X-Axis data is invalid.\n";
         errorFlag = true;
       }
       if (m_yData == null)
@@ -484,7 +510,7 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
         //Display Error Message
         if (!String.IsNullOrEmpty(ErrorMessage))
           ErrorMessage += Environment.NewLine;
-        ErrorMessage += "Y-Axis data is invalid.";
+        ErrorMessage += "Y-Axis data is invalid.\n";
         errorFlag = true;
       }
 
@@ -496,25 +522,25 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
       if (m_xData!.Count != m_yData!.Count)
       {
         ErrorMessage = m_xData!.Count > m_yData!.Count ?
-                        "Y-Axis data count is less than X-Axis data count" :
-                        "X-Axis data count is less than Y-Axis data count";
+                        "Y-Axis data count is less than X-Axis data count\n" :
+                        "X-Axis data count is less than Y-Axis data count\n";
         return;
       }
 
-			GraphPoints = m_xData.Zip(
-					m_yData,
-					(x, y) => new GraphPoint(x, y)
-				).ToList();
-	
-      if(GraphPoints
-        .Count > 10000 ) 
+      GraphPoints = m_xData.Zip(
+          m_yData)
+        .Where(point => point.First >= XMinimum && point.Second >= YMinimum && point.First <= XMaximum && point.Second <= YMaximum)
+        .Select( point => new GraphPoint(point.First, point.Second) ).ToList();
+
+      if (GraphPoints
+        .Count > 10000)
       {
-				UpdateGraphPoints(GetResampledGraphPointsList(GraphPoints,10000));
-			}
+        UpdateGraphPoints(GetResampledGraphPointsList(GraphPoints, 10000));
+      }
       else
       {
-				UpdateGraphPoints(GraphPoints);
-			}
+        UpdateGraphPoints(GraphPoints);
+      }
       if (ShowOverlay)
       {
         UpdateOverlayPoints();
@@ -524,70 +550,69 @@ namespace Clf.Blazor.Basic.Components.Controls.ViewModels.MonitorWidgetViewModel
     List<GraphPoint> GetResampledGraphPointsList(List<GraphPoint> graphPoints, int newCount)
     {
       List<GraphPoint> resampledList = new List<GraphPoint>() { graphPoints[0] };
-			double step = (double)(graphPoints.Count - 3) / (newCount - 3);
+      double step = (double)(graphPoints.Count - 3) / (newCount - 3);
 
-			for (int i=0; i<newCount-2;i++)
+      for (int i = 0; i < newCount - 2; i++)
       {
-				int index = (int)Math.Round(i * step);
-				resampledList.Add(graphPoints[index]);
-			}   
+        int index = (int)Math.Round(i * step);
+        resampledList.Add(graphPoints[index]);
+      }
       resampledList.Add(graphPoints[^1]);
       return resampledList;
     }
 
     private void UpdateGraphPoints(List<GraphPoint> graphPointsToPlot)
     {
-			System.Text.StringBuilder pointsStringBuilder = new();
+      System.Text.StringBuilder pointsStringBuilder = new();
 
-			//rather then using ScaleXValue and ScaleYValue, we need implementation similar to GetDataPositionInViewCoordinates_X in IntensityProfileGraph
-			foreach (var point in graphPointsToPlot)
+      foreach (var point in graphPointsToPlot)
       {
-				pointsStringBuilder.Append(
-						$"{ScaleXValue(point.X):F2},{ScaleYValue(point.Y):F2} "
-					);
+        pointsStringBuilder.Append(
+            $"{ScaleXValue(point.X):F2},{ScaleYValue(point.Y):F2} "
+          );
       }
       if (GraphType == GraphType.Area && graphPointsToPlot.Any())
       {
-        //inserting at 0 is slow, only done as a stop gap, needs to handle end points as it is done in IntensityProfileGraph
-        pointsStringBuilder.Insert(
-              0,
-              $"{ScaleXValue(graphPointsToPlot[0].X):F2},{ScaleYValue(YMinimum):F2} "
-            );
         pointsStringBuilder.Append(
-          $"{ScaleXValue(graphPointsToPlot[^1].X):F2},{ScaleYValue(YMinimum):F2} "
+          $"{ScaleXValue(graphPointsToPlot[^1].X):F2},{ScaleYValue(YMinimum):F2}  {ScaleXValue(graphPointsToPlot[0].X):F2},{ScaleYValue(YMinimum):F2} "
         );
       }
-      GraphPointsString = pointsStringBuilder.ToString();
+      string result = pointsStringBuilder.ToString();
+      if (!GraphPointsString.Equals(result))
+      {
+        GraphPointsString = result;
+      }
     }
 
     private void UpdateOverlayPoints()
     {
-      string temp = "";
+      System.Text.StringBuilder pointsStringBuilder = new();
       if (GraphType == GraphType.Line)
       {
         foreach (var point in GraphPoints)
         {
           if (point.X >= OverlayStart && point.X <= OverlayEnd)
           {
-            temp += $" {ScaleXValue(point.X)},{ScaleYValue(point.Y)} ";
+            pointsStringBuilder.Append($" {ScaleXValue(point.X)},{ScaleYValue(point.Y)} ");
           }
         }
       }
       else if (GraphType == GraphType.Area)
       {
-        temp = $" {ScaleXValue(OverlayStart)},{ScaleYValue(YMinimum)} ";
+        pointsStringBuilder.Append($" {ScaleXValue(OverlayStart)},{ScaleYValue(YMinimum)} ");
         foreach (var point in GraphPoints)
         {
           if (point.X >= OverlayStart && point.X <= OverlayEnd)
           {
-            temp += $" {ScaleXValue(point.X)},{ScaleYValue(point.Y)} ";
+            pointsStringBuilder.Append($" {ScaleXValue(point.X)},{ScaleYValue(point.Y)} ");
           }
         }
-        temp += $" {ScaleXValue(OverlayEnd)},{ScaleYValue(YMinimum)} ";
+        pointsStringBuilder.Append($" {ScaleXValue(OverlayEnd)},{ScaleYValue(YMinimum)} ");
       }
-      if (!OverlayPointsString.Equals(temp))
+      string result = pointsStringBuilder.ToString();
+      if (!OverlayPointsString.Equals(result))
       {
-        OverlayPointsString = temp;
+        OverlayPointsString = result;
       }
     }
 

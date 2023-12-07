@@ -1,0 +1,64 @@
+﻿@page "/camera-examples"
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers.Dashboard
+@inject IJSRuntime JSRuntime
+
+<DashboardPanel IsDraggable="false">
+  <Dashboard>
+    @for(int i=0;i<=5;i++)
+    {
+      <CameraExample Prefix="@($"localcamera{i+1}")" Title="@($"Camera {i+1}")" />
+    }
+    @*<DashboardPane Title="Code Snippets" UnpinnedText="Code Snippets">
+      <h3>Camera Image Viewer</h3>
+      <pre>
+      <code class="razor-cshtml">
+          @imageViewerCode
+        </code>
+      </pre>
+      <h3>Colour Map Combo Box</h3>
+      <pre>
+      <code class="razor-cshtml">
+          @comboBoxCode
+        </code>
+      </pre>
+      <h3>Auto Normalise Check Box</h3>
+      <pre>
+      <code class="razor-cshtml">
+          @checkboxCode
+        </code>
+      </pre>
+      <h3>Crosshair Size Slider & Spinner</h3>
+      <pre>
+      <code class="razor-cshtml">
+          @sliderCode
+        </code>
+      </pre>
+      <h3>Crosshair Colour Picker</h3>
+      <pre>
+      <code class="razor-cshtml">
+          @colorPickerCode
+        </code>
+      </pre>
+    </DashboardPane>
+*@
+  </Dashboard>
+</DashboardPanel>
+
+@code {
+  private string comboBoxCode = @"<ComboBox ViewModel=""@(new ComboBoxViewModel(itemsFromPv: true, channelRecord: new ChannelRecord(""local:colourMap"", _channelsHandler)))"" />";
+  private string checkboxCode = @"<Checkbox ViewModel=""@(new CheckboxViewModel(label: ""Auto"",channelRecord: new ChannelRecord(""local:autoNormalise"", _channelsHandler)))"" />";
+  private string sliderCode = @"
+<Slider ViewModel=""@(new SliderViewModel(minimum: 5, maximum: 50, showSpinner: true,
+                                         channelRecord: new ChannelRecord(""local:crosshairSize"", _channelsHandler)))"" />";
+  private string imageViewerCode = @"
+<ImageViewer ViewModel=""@(new ImageViewerViewModel(imageDataRecord: new ChannelRecord(""camera:image1:ArrayData"", _channelsHandler),
+                                                   imageWidthRecord: new ChannelRecord(""camera:image1:ArraySize0_RBV"", _channelsHandler),
+                                                   imageHeightRecord: new ChannelRecord(""camera:image1:ArraySize1_RBV"", _channelsHandler)))"" />";
+
+  private string colorPickerCode = @"<ColorPicker ViewModel=""@(new ColorPickerViewModel(channelRecord: new ChannelRecord(""local:crosshairColour"", _channelsHandler)))"" />";
+
+  private async void HighlightCode()
+  {
+    await JSRuntime.InvokeVoidAsync("highlightSnippet");
+  }
+}

@@ -1,0 +1,22 @@
+﻿@page "/drop-down-button-examples"
+@using Clf.Blazor.Basic.Components.Controls.Enums;
+@using Clf.Blazor.Basic.Components.Controls.ViewModels.UpdateWidgetViewModels;
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Containers
+@using Clf.Blazor.Basic.Components.Controls.Widgets.Updates
+
+<h3>Drop-down Button Examples</h3>
+<div class="drop-down-button-examples-wrapper">
+  <DropDownButton ViewModel="@_dropDown" IconId="clf_ic_settings_24_regular">
+    <Popup>
+      <div style="width:300px; height:300px;">
+      </div>
+    </Popup>
+  </DropDownButton>
+</div>
+
+
+@code {
+  private DropDownButtonViewModel _dropDown = new DropDownButtonViewModel(
+    text: "Default"
+  );
+}

@@ -29,12 +29,12 @@
 
 /* Tab */
 .tab {
-  background-color: var(--clf-tab-background-color);
+  background-color: var(--clf-tab-background-colour);
   color: var(--clf-tab-colour);
   padding: var(--clf-tab-padding);
   cursor: pointer;
   position: relative;
-  border: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+  border: var(--clf-tab-border-width) solid var(--clf-tab-border-colour);
   font-size: var(--clf-tab-font-size);
 }
 
@@ -53,13 +53,13 @@
 
 /* Tab Hover */
 .tab:hover {
-    background-color: var(--clf-tab-hover-background-color);
+    background-color: var(--clf-tab-hover-background-colour);
 }
 
 /* Tab Active */
 .tab-active {
     font-weight: bold;
-    background-color: var(--clf-tab-active-background-color)!important;
+    background-color: var(--clf-tab-active-background-colour)!important;
     z-index: 3;
     
 }
@@ -80,26 +80,26 @@
 /* Tab Content Padder */
 /* Used to hide the bottom border of tabs */
 .tab-content-padder {
-  background-color: var(--clf-tab-content-background-color);
+  background-color: var(--clf-tab-content-background-colour);
   position: relative;
   z-index: 2;
 }
 
 .tabs-hor .tab-content-padder {
   width: 100%;
-  border-top: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+  border-top: var(--clf-tab-border-width) solid var(--clf-tab-border-colour);
 }
 
 .tabs-ver .tab-content-padder {
   height: 100%;
-  border-right: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+  border-right: var(--clf-tab-border-width) solid var(--clf-tab-border-colour);
 }
 
 
 /*Tab Content*/
 .tab-content {
-  background-color: var(--clf-tab-content-background-color);
-  border: var(--clf-tab-border-width) solid var(--clf-tab-border-color);
+  background-color: var(--clf-tab-content-background-colour);
+  border: var(--clf-tab-border-width) solid var(--clf-tab-border-colour);
   display: flex;
 }
 
