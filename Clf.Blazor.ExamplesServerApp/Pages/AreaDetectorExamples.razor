@@ -59,7 +59,7 @@
   {
     await base.OnInitializedAsync();
 
-    //EPAC-DEV:CAM1
+    //SIM:CAM1
     Stopwatch stopwatch = new Stopwatch();
     stopwatch.Start();
     InitializeCameraAsync();
@@ -73,7 +73,7 @@
     {
       for (int i = 1; i <= 20; i++)
       {
-        _cameras.Add(new IntensityMapViewerViewModel($"EPAC-DEV:CAM{i}" + ":", "cam1:", _channelsHandler, FilePicker, displaySize: new DisplaySize(580, 364)) { FriendlyName = $"EPAC-DEV:CAM{i}" });
+        _cameras.Add(new IntensityMapViewerViewModel($"SIM:CAM{i}" + ":", "cam1:", _channelsHandler, FilePicker, displaySize: new DisplaySize(580, 364)) { FriendlyName = $"SIM:CAM{i}" });
         InvokeAsync(StateHasChanged);
       }
     });

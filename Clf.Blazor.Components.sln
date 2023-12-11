@@ -29,6 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.Common", "CLF.DotNet.Ch
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.ChannelAccess", "CLF.DotNet.ChannelAccess\Clf.ChannelAccess\Clf.ChannelAccess.csproj", "{27C56C39-0DB6-498A-BEA5-CA751B00C493}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{624F9AC2-B134-4E2F-9A0C-5A626D6C4FA8}"
+	ProjectSection(SolutionItems) = preProject
+		CLF.DotNet.ChannelAccess\Clf.EpicsDlls\Clf.EpicsDlls.csproj = CLF.DotNet.ChannelAccess\Clf.EpicsDlls\Clf.EpicsDlls.csproj
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clf.EpicsDlls", "CLF.DotNet.ChannelAccess\Clf.EpicsDlls\Clf.EpicsDlls.csproj", "{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +121,12 @@ Global
 		{27C56C39-0DB6-498A-BEA5-CA751B00C493}.EPAC_SIM|Any CPU.Build.0 = Debug|Any CPU
 		{27C56C39-0DB6-498A-BEA5-CA751B00C493}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27C56C39-0DB6-498A-BEA5-CA751B00C493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}.EPAC_SIM|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}.EPAC_SIM|Any CPU.Build.0 = Debug|Any CPU
+		{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D265845-5C8E-45C5-B00B-73F4DD2B0B61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -98,8 +98,8 @@ namespace Clf.LogicSystem.ViewModel
         VisualisationOptions = visualisationOptions ;
       }
 
-#if EPAC_SIM && ENABLE_INPUT_CHANGES
-    m_inputChangesAreEnabled = true;
+#if OFFLINE_SIM && ENABLE_INPUT_CHANGES
+      m_inputChangesAreEnabled = true;
 #endif
 
       BackgroundCanvasViewModel = new LogicSystemCanvasViewModel(this) ;

@@ -35,7 +35,7 @@ namespace Clf.LogicSystem.ViewModel
       //   "This is a tooltip"
       // ) ;
 
-#if EPAC_SIM && ENABLE_INPUT_CHANGES
+#if OFFLINE_SIM && ENABLE_INPUT_CHANGES
     contextMenu.AddBooleanItem(
         "Enable input changes",
         (isChecked) => {

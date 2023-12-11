@@ -23,7 +23,7 @@ namespace Clf.LogicSystem.ViewModel
     public static readonly VisualisationOptions Default = new(
       SupportMouseButtonInteraction       : true,
       SupportReplacingCurrentNodes        : false,
-#if EPAC_SIM && ENABLE_INPUT_CHANGES
+#if OFFLINE_SIM && ENABLE_INPUT_CHANGES
       SupportChangingInputValues: true,
 #else
      SupportChangingInputValues: false,

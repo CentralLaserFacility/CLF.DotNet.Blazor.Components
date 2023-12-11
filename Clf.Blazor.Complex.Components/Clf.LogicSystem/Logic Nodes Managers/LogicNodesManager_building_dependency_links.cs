@@ -62,8 +62,7 @@ namespace Clf.LogicSystem.LogicNodesManagers
     private void MaybeCheckForIllegalCircularDependency ( LogicNode nodeProvidingValue )
     {
       // This code, if enabled, checks for a circular dependency and issues
-      // a warning message if it finds one. This was useful in the D100X system,
-      // but the check is deemed unnecessary for EPAC.
+      // a warning message if it finds one. 
       // We could easily enable this via a configuration variable,
       // but currently the feature is disabled at compile time.
       #if false
